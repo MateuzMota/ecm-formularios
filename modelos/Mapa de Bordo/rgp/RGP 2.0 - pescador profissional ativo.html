@@ -1,0 +1,3036 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link href="assets/global/plugins/jcrop/css/jquery.Jcrop.css" rel="stylesheet" type="text/css" /><script src="../Scripts/webapi/ecmApi.js"></script>
+	<style data-filename="style.01.css" type="text/css">@media (min-width: 1px) and (max-width: 767px) {
+            .container-de-cadastro {
+                padding: 5px 5px 5px 5px !important;
+            }
+
+            .div-buttons-acoes {
+                width: 100% !important;
+                margin-left: 0 !important;
+            }
+
+            .div-buttons-acoes a {
+                width: 47% !important;
+                margin-left: 2% !important;
+            }
+        }
+
+        .div-buttons-acoes {
+            margin-left: 44.66667%;
+            margin-top: 15px;
+        }
+
+        .input-icon.right>i {
+            right: 20px;
+        }
+
+        /*Alteração para ocupar cnpj e UF na mesma linha*/
+
+        h4 {
+            cursor: pointer;
+        }
+
+        .cabecalho {
+            font-size: medium;
+            font-weight: 500 !important;
+            background: #8cdad5 !important;
+            padding: 5px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+        }
+
+        .container-de-cadastro {
+            border: solid 1px #d8e4e3;
+            padding: 25px 140px 25px 70px;
+            font-size: small;
+            -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+        }
+
+        .container-de-cadastro .form-group {
+            margin-bottom: 5px;
+        }
+
+        .mt-element-step .step-line .mt-step-col {
+            padding: 0 !important;
+            transition: transform 1s ease-in-out;
+        }
+
+        .mt-element-step .step-line .mt-step-number>i {
+            top: 16px !important;
+            /* cursor: pointer; */
+        }
+
+        #body-rgp .portlet-body {
+            padding: 0 !important;
+        }
+
+        #campos {
+            background-color: #fff !important;
+            padding: 0 !important;
+        }
+
+        .color-red {
+            color: red;
+        }
+
+        .mt-element-step .step-line .mt-step-title:before {
+            top: -13px !important;
+            width: 51% !important;
+        }
+
+        .mt-element-step .step-line .mt-step-number {
+            padding: 3px;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .modal-header {
+            border: none;
+        }
+
+        .help-block {
+            color: black !important;
+        }
+
+        body .tooltip-inner {
+            background-color: black;
+            /*opacity: 0.2;*/
+            min-width: 500px;
+        }
+
+        .tooltips {
+            color: #ccc;
+        }
+
+        .tooltips {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Tooltip text */
+        .tooltips .tooltiptext {
+            visibility: hidden;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 5px;
+            border-radius: 6px;
+            bottom: 140%;
+            left: 50%;
+            margin-left: -10px;
+            /* Use half of the width (120/2 = 60), to center the tooltip */
+            white-space: nowrap;
+            /* Position the tooltip text - see examples below! */
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        /* Show the tooltip text when you mouse over the tooltip container */
+        .tooltips:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltips .tooltiptext::after {
+            content: " ";
+            position: absolute;
+            top: 100%;
+            /* At the bottom of the tooltip */
+            left: 10px;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: black transparent transparent transparent;
+        }
+
+        .help-block {
+            font-size: 12px;
+        }
+
+        .withoutPadding {
+            padding: 0 !important;
+        }
+
+        #areapescachk {
+            padding-left: 0px;
+        }
+
+        #areapescachk label {
+            padding-left: 30px;
+        }
+
+        .textoDeObrigatorio {
+            color: red;
+            font-size: 12px;
+            display: none;
+
+        }
+	</style>
+	<script src="assets/global/plugins/jquery-mask/jquery.mask.min.js"></script><script src="assets/global/plugins/jcrop/js/jquery.Jcrop.js"></script>
+</head>
+<body class="vsc-initialized" id="bodyMapaBordoOnlineNovoRPG" style="cursor: auto;">
+<div id="body-rgp">
+<form action="#" class="horizontal-form">
+<div class="row">
+<div class="profile-userpic col-md-3"><img alt="" class="img-responsive" src="../Imagens/aparencia/customizado/LogoEllosP.png" style="width: 55%" /></div>
+
+<div class="caption bold bs-glyphicon-class font-blue-oleo col-md-6">
+<h3>Cadastro de Pescador Profissional</h3>
+</div>
+
+<div class="col-sm-12 col-md-4" style="display: none">
+<div class="form-group"><label class="control-label">Data primeiro registro</label> <input class="form-control input-sm date-picker" data-campo-id="@@71@@" data-nome="Data Primeiro Registro" data-placement="bottom" data-toggle="tooltip" id="txtDataPrimeiroRegistro" maxlength="10" placeholder="dd/mm/aaaa" type="text" /></div>
+</div>
+
+<div id="divDataDeclaracao" style="display: none"><input class="form-control date-picker" data-campo-id="@@81@@" data-nome="Data da Declaração" id="txtDataDeclaracao" name="txtDataDeclaracao" type="text" /> <input class="form-control date-picker" data-campo-id="@@83@@" data-nome="RGP" id="txtRgp" name="txtRgp" type="text" /> <input class="form-control" data-campo-id="@@99@@" data-nome="Tipo de registro" id="txtTipoRegistroDeclaracao" name="txtTipoRegistroDeclaracao" type="text" /></div>
+
+<div class="col-md-2" id="divProtocolo">
+<div class="form-group"><label class="control-label bold">Protocolo</label> <input class="form-control input-sm bold" data-campo-id="@@3@@" data-nome="Protocolo" disabled="disabled" id="txtProtocolo" type="text" /></div>
+</div>
+</div>
+
+<div class="mt-element-step">
+<div class="row step-line" style="display: flex; justify-content: center; margin-top: 20px;">
+<div class="col-xs-2 col-sm-2 col-md-2 mt-step-col first active" id="step1">
+<div class="mt-step-number bg-white" id="circle-tab1" title="Dados Pessoais do Pescador"><i class="fa fa-user"></i></div>
+
+<div class="mt-step-title uppercase font-grey-cascade" style="display: block"><span class="h-card" data-campo-altura="10" data-campo-classe="" data-campo-estilo="" data-campo-largura="200" style="display: block"><span class="form-group form-md-line-input"><input class="form-control" data-campo-id="@@94@@" data-nome="Usuário" id="@@94@@" placeholder="94 - IdUsuarioPescador" style="width: 200px; display: none;" type="text" /></span></span></div>
+
+<div class="mt-step-content font-grey-cascade">&nbsp;</div>
+</div>
+
+<div class="col-xs-2 col-sm-2 col-md-2 mt-step-col" id="step2">
+<div class="mt-step-number bg-white" id="circle-tab2" title="Dados Profissionais"><i class="fa fa-anchor"></i></div>
+
+<div class="mt-step-title uppercase font-grey-cascade">&nbsp;</div>
+
+<div class="mt-step-content font-grey-cascade">&nbsp;</div>
+</div>
+
+<div class="col-xs-2 col-sm-2 col-md-2 mt-step-col" id="step3">
+<div class="mt-step-number bg-white" id="circle-tab3" title="Dados Profissionais"><i class="fa fa-usd"></i></div>
+
+<div class="mt-step-title uppercase font-grey-cascade">&nbsp;</div>
+
+<div class="mt-step-content font-grey-cascade">&nbsp;</div>
+</div>
+
+<div class="col-xs-2 col-sm-2 col-md-2 mt-step-col" id="step4">
+<div class="mt-step-number bg-white" id="circle-tab4" title="Documentação"><i class="fa fa-file"></i></div>
+
+<div class="mt-step-title uppercase font-grey-cascade">&nbsp;</div>
+
+<div class="mt-step-content font-grey-cascade">&nbsp;</div>
+</div>
+
+<div class="col-xs-2 col-sm-2 col-md-2 mt-step-col last" id="step5">
+<div class="mt-step-number bg-white" id="circle-tab5" title="Declaração"><i class="fa fa-check"></i></div>
+
+<div class="mt-step-title uppercase font-grey-cascade">&nbsp;</div>
+
+<div class="mt-step-content font-grey-cascade">&nbsp;</div>
+</div>
+</div>
+</div>
+
+<div class="form-body">
+<div class="alert alert-danger bold" id="mensagemAlerta" role="alert" style="display: none">Preencha todos os campos obrigat&oacute;rios antes de prosseguir.</div>
+<!--Menu Identificação-->
+
+<div class="tab-pane active" id="tab1">
+<h4 class="bs-glyphicon-class cabecalho">Dados Pessoais do Pescador</h4>
+
+<div class="container-de-cadastro" id="menuIdentificacao">
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">CPF</label> <input class="form-control input-sm" data-campo-id="@@1@@" data-nome="CPF" disabled="disabled" id="txtCpf" placeholder="999.999.999-99" type="text" /> <span class="color-red" id="CPFInvalido" style="display: none"></span></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Nome</label> <input class="form-control input-sm campoNome" data-campo-id="@@2@@" data-nome="Nome" id="txtNome" placeholder="Nome completo" type="text" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Apelido</label> <input class="form-control input-sm campoNome" data-campo-id="@@13@@" data-nome="Apelido" id="txtApelido" placeholder="Apelido" type="text" /></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Tipo Registro</label> <select class="form-control input-sm" data-campo-id="@@95@@" data-nome="Tipo Registro" data-placement="bottom" data-toggle="tooltip" id="ddlTipoRegistro" title="Selecione o tipo do registro de acordo com seu perfil, caso seja um pescador já registrado com Nº de RGP selecione “Recadastramento”, caso seja um pescador apenas com protocolo de registro selecione “Registro com Protocolo” caso seja a primeira vez que irá se registrar selecione “Registro Inicial”.!"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group" style="display: none"><label class="control-label">Data Protocolo</label> <input class="form-control input-sm date-picker" data-campo-id="@@96@@" data-nome="Data Protocolo" data-placement="bottom" data-toggle="tooltip" id="txtDataProtocolo" maxlength="10" placeholder="dd/mm/aaaa" title="Insira nesse campo a data informada no protocolo de entrega de documentação que possui.!" type="text" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group" style="display: none"><label class="control-label">N&uacute;mero de Protocolo (NUP/SEI)</label> <input class="form-control input-sm campoNumero" data-campo-id="@@100@@" data-nome="Protocolo Pescador" data-placement="bottom" data-toggle="tooltip" id="txtProtocoloPescador" maxlength="20" placeholder="Protocolo Pescador" title="Insira neste campo o número do protocolo de entrega de documentação, caso haja." type="tel" /></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Data Nascimento</label> <input class="form-control input-sm date-picker" data-campo-id="@@9@@" data-nome="Data de Nascimento" id="txtDataNasc" maxlength="10" placeholder="dd/mm/aaaa" type="text" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Sexo</label> <select class="form-control input-sm" data-campo-id="@@10@@" data-nome="Sexo" id="ddlSexo"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Voc&ecirc; se Considera</label> <select class="form-control input-sm" data-campo-id="@@33@@" data-nome="Você se Considera" id="ddlNivelAlfabetizacao"></select></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Nome M&atilde;e</label> <input class="form-control input-sm campoNome" data-campo-id="@@12@@" data-nome="Nome Mãe" id="txtNomeMae" placeholder="Nome completo" type="text" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Nome Pai</label> <input class="form-control input-sm campoNome" data-campo-id="@@11@@" data-nome="Nome Pai" id="txtNomePai" placeholder="Nome completo" type="text" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Escolaridade</label> <select class="form-control input-sm" data-campo-id="@@32@@" data-nome="Escolaridade" id="ddlEscolaridade"></select></div>
+</div>
+</div>
+</div>
+
+<hr />
+<div class="tab-pane active">
+<h4 class="bs-glyphicon-class cabecalho">Documenta&ccedil;&atilde;o</h4>
+
+<div class="container-de-cadastro" id="menuIdentificacao">
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">RG</label> <input class="form-control input-sm campoNumero" data-campo-id="@@6@@" data-nome="RG" id="txtRg" maxlength="14" placeholder="RG" type="tel" /> <span class="color-red" id="RGInvalido" style="display: none"></span></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">&Oacute;rg&atilde;o emissor</label> <select class="form-control input-sm" data-campo-id="@@7@@" data-lista-id="17" data-nome="Órgão Emissor" id="ddlOrgaoEmissor"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-2">
+<div class="form-group"><label class="control-label">UF</label> <select class="form-control input-sm" data-campo-id="@@42@@" data-nome="UF Orgão Emissor" id="txtUfOrgaoEmissor"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-2">
+<div class="form-group"><label class="control-label">Data emiss&atilde;o</label> <input class="form-control input-sm date-picker" data-campo-id="@@8@@" data-nome="Data Emissão Órgão Emissor" id="txtDataEmissao" maxlength="10" placeholder="dd/mm/aaaa" type="text" /></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">N&ordm; T&iacute;tulo de Eleitor</label> <input class="form-control input-sm campoNumero" data-campo-id="@@92@@" data-nome="Nº Título de Eleitor" id="txtTituloEleitor" maxlength="14" placeholder="Nº Título de Eleitor" type="text" /> <span class="color-red" id="TituloEleitorInvalido" style="display: none"></span></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">PIS/PASEP/NIT/NIS</label> <select class="form-control input-sm" data-campo-id="@@91@@" data-lista-id="59" data-nome="PIS/PASEP/NIT/NIS" id="ddlTipoDocumento"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">N&uacute;mero do Documento</label> <input class="form-control input-sm campoNumero" data-campo-id="@@14@@" data-nome="Nº do Documento" id="txtPis" maxlength="14" placeholder="Número do Documento" type="tel" /> <span class="color-red" id="PisInvalido" style="display: none"></span></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Nacionalidade</label> <select class="form-control input-sm" data-campo-id="@@4@@" data-nome="Nacionalidade" id="ddlNacionalidade"></select></div>
+</div>
+
+<div id="divValidadeVisto" style="display: none">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">N&uacute;mero do Passaporte</label> <input class="form-control input-sm" data-nome="Nº do Passaporte" id="txtNumeroPassaporte" placeholder="Número do Passaporte" type="text" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Data Validade do Visto</label> <input class="form-control input-sm date-picker" data-campo-id="@@43@@" data-nome="Data Validade do Visto" id="txtValidadeVisto" maxlength="10" placeholder="dd/mm/aaaa" type="text" /></div>
+</div>
+</div>
+</div>
+</div>
+
+<hr />
+<div class="tab-pane active">
+<h4 class="bs-glyphicon-class cabecalho">Endere&ccedil;o</h4>
+
+<div class="container-de-cadastro" id="menuIdentificacao">
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">CEP</label> <input class="form-control input-sm cep" data-campo-id="@@16@@" data-nome="CEP" id="txtCep" placeholder="11111-111" type="text" /></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Endere&ccedil;o</label> <input class="form-control input-sm" data-campo-id="@@15@@" data-nome="Endereço" id="txtLogradouro" placeholder="Endereço Completo (Rua, Avenida,etc.)" type="text" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">N&uacute;mero</label> <input class="form-control input-sm" data-campo-id="@@44@@" data-nome="Número" id="txtNumero" maxlength="5" placeholder="ex: 1234" type="tel" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Complemento</label> <input class="form-control input-sm" data-campo-id="@@45@@" data-nome="Complemento" id="txtComplemento" placeholder="ex: casa,apartamento 200" type="text" /></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">E-mail</label> <input class="form-control input-sm" data-campo-id="@@21@@" data-nome="E-mail" id="txtEmail" placeholder="exemplo@exemplo.com.br" type="text" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Celular</label> <input class="form-control input-sm tel" data-campo-id="@@46@@" data-nome="Celular" id="txtCelular" placeholder="(99) 99999-9999" type="tel" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Telefone para Contato</label> <input class="form-control input-sm tel" data-campo-id="@@20@@" data-nome="Telefone" id="txtTelefone" placeholder="3333-3333" type="tel" /></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Bairro</label> <input class="form-control input-sm" data-campo-id="@@19@@" data-nome="Bairro" id="txtBairro" placeholder="Bairro" type="text" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Estado</label> <select class="form-control input-sm" data-campo-id="@@18@@" data-lista-id="15" data-nome="Estado" data-tipo-fisico="LST" id="ddlEstado" name="ddlEstado"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Munic&iacute;pio</label> <select class="form-control input-sm" data-campo-id="@@17@@" data-campo-pai-id="18" data-lista-id="16" data-lista-pai-id="15" data-nome="Município" id="ddlCidade" name="ddlCidade"></select></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--Menu Embarcação-->
+
+<div class="tab-pane" id="tab2" style="display: none">
+<h4 class="bs-glyphicon-class cabecalho" id="cabecalhoEmbarcacao">Dados da Atividade do Pescador</h4>
+
+<div class="container-de-cadastro" id="menuEmbarcacao">
+<h4>Dados de Pesca</h4>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Categoria</label> <select class="form-control input-sm" data-campo-id="@@22@@" data-nome="Categoria" id="ddlCategoria"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Forma de Atua&ccedil;&atilde;o <i class="fa fa-info-circle tooltips"> <span class="tooltiptext">Informa&ccedil;&otilde;es de como deve ser preenchido esse campo.</span> </i> </label><select class="form-control input-sm" data-campo-id="@@23@@" data-nome="Forma de Atuação" id="ddlFormaAtuacao"></select></div>
+</div>
+
+<div id="divRgp" style="display: none">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">N&ordm; RGP Embarca&ccedil;&atilde;o</label> <input class="form-control input-sm" data-campo-id="@@25@@" data-nome="Nº RGP Embarcação" data-placement="bottom" data-toggle="tooltip" id="txtNumeroRGP" placeholder="Nº RGP Embarcação" title="Insira o número de RGP da embarcação em que estará embarcado durante a atividade de pesca, sem traços e sem espaços, somente com letras e números." type="tel" /></div>
+</div>
+</div>
+</div>
+
+<div class="row" id="divDadosEmbarcacao" style="display: none">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Nome Embarca&ccedil;&atilde;o</label> <input class="form-control input-sm" data-campo-id="@@24@@" data-nome="Nome Embarcação" disabled="true" id="txtNomeEmbarcacao" placeholder="Nome" type="text" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">N&ordm; TIE/TIEM</label> <input class="form-control input-sm" data-campo-id="@@93@@" data-nome="Nº TIE" disabled="true" id="txtNumeroTie" maxlength="10" placeholder="Nº TIE/TIEM" type="text" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">N&ordm; CIR</label> <input class="form-control input-sm" data-campo-id="@@101@@" data-nome="Nº CIR" id="txtNumeroCIR" maxlength="20" placeholder="Nº CIR" type="text" /></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4" style="margin-top: 20px;">
+<div class="form-group"><label class="control-label">Grupo Alvo de Pesca Pretendido <i class="fa fa-info-circle tooltips"> <span class="tooltiptext">Informa&ccedil;&otilde;es de como deve ser preenchido esse campo.</span> </i> <span class="textoDeObrigatorio"> (Obrigat&oacute;rio)</span> </label>
+
+<div class="mt-checkbox-list" data-campo-id="@@27@@" id="campo27"><label class="mt-checkbox mt-checkbox-outline"> <input data-nome="Grupo Alvo de Pesca Pretendido" data-valor="" id="chkListProdutosPesca" name="Produtos
+                                                        de pesca
+                                                        pretendidos" type="checkbox" /> <label data-texto="">Peixes</label> <span></span> </label></div>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-4" style="margin-top: 20px;">
+<div class="form-group"><label class="control-label">&Aacute;rea que Pretende Realizar a Pesca <i class="fa fa-info-circle tooltips"> <span class="tooltiptext">Informa&ccedil;&otilde;es de como deve ser preenchido esse campo.</span> </i> <span class="textoDeObrigatorio"> (Obrigat&oacute;rio)</span> </label>
+
+<div class="mt-checkbox-list" data-campo-id="@@28@@" id="campo28"><label class="mt-checkbox mt-checkbox-outline"> <input data-nome="Área que Pretende Realizar a Pesca" data-valor="" id="chkListAreaPesca" name="Área que
+                                                        pretende
+                                                        realizar a
+                                                        pesca" type="checkbox" /> <label data-texto="">Peixes</label> <span></span> </label></div>
+<input class="form-control input-sm" data-campo-id="@@123@@" data-nome="Especificação de Área de Pesca" id="txtEspecifique" style="display: none;" /></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Estado do Local da Pesca</label> <select class="form-control input-sm" data-campo-id="@@97@@" data-lista-id="15" data-nome="Estado do Local da Pesca" data-placement="bottom" data-tipo-fisico="LST" data-toggle="tooltip" id="ddlEstadoLocalPesca" name="ddlEstadoLocalPesca" title="Informe o estado principal em que realiza a atividade de pesca."></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Munic&iacute;pio mais pr&oacute;ximo do local da pesca</label> <select class="form-control input-sm" data-campo-id="@@98@@" data-campo-pai-id="97" data-lista-id="16" data-lista-pai-id="15" data-nome="Município mais próximo do Local da Pesca" data-placement="bottom" data-toggle="tooltip" id="ddlCidadeLocalPesca" name="ddlCidadeLocalPesca" title="Informe o município mais próximo em que realiza a atividade de
+                                            pesca."></select></div>
+</div>
+</div>
+
+<hr />
+<h4>Dados da Entidade</h4>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Filiado a Entidade Colaboradora?</label> <span data-campo-id="@@34@@" id="radioEntidade" style="display: block"> <label> <input data-nome="Filiado a Entidade Colaboradora?" data-placement="bottom" data-toggle="tooltip" data-valor="" id="chkListEntidade" name="opcao_34" title="Informe se é um pescador filiado a alguma entidade colaboradora." type="radio" /> <span data-texto="">Op&ccedil;&atilde;o 1</span> </label> </span></div>
+</div>
+</div>
+
+<div id="divEntidade" style="display: none">
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">CNPJ Entidade</label> <input class="form-control input-sm cnpj" data-campo-id="@@37@@" data-nome="CNPJ Entidade" data-placement="bottom" data-toggle="tooltip" id="txtCnpjEntidade" placeholder="11.111.111/1111-11" title="Insira o CNPJ da entidade a qual é filiado. A entidade deve ser
+                                                cadastrada no sistema atual de registro." type="text" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Nome da Entidade Colaboradora</label> <input class="form-control input-sm" data-campo-id="@@36@@" data-nome="Nome da Entidade Colaboradora" id="txtNomeEntidade" placeholder="Nome da Entidade Colaboradora" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">UF da Entidade Colaboradora</label> <select class="form-control input-sm" data-campo-id="@@38@@" data-nome="UF da Entidade Colaboradora" id="ddlUfEntidade"></select></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--Questionário socioeconômico-->
+
+<div class="tab-pane" id="tab3" style="display: none">
+<h4 class="bs-glyphicon-class cabecalho" id="cabecalhoEmbarcacao">Question&aacute;rio socioecon&ocirc;mico</h4>
+
+<div class="container-de-cadastro" id="menuEmbarcacao">
+<h4>Componentes da fam&iacute;lia: identificar todas as pessoas que moram na mesma casa, incluindo o interessado.</h4>
+
+<div class="form-group">
+<div class="table-responsive grid" data-campo-id="@@143@@">
+<table class="table table-striped table-bordered table-hover">
+	<thead>
+		<tr data-cabecalho-container="">
+			<th data-cabecalho-celula-container="" data-cabecalho-celula-container-template=""><span data-cabecalho-celula-texto="">Campo 1</span></th>
+			<th data-cabecalho-celula-container="" data-remover=""><span data-cabecalho-celula-texto="">Campo 2</span></th>
+			<th data-cabecalho-celula-container="" data-remover=""><span data-cabecalho-celula-texto="">Campo N</span></th>
+			<th data-cabecalho-celula-acoes="" style="text-align:center;"><span>A&ccedil;&otilde;es</span></th>
+		</tr>
+	</thead>
+	<tbody data-corpo-container="">
+		<tr data-corpo-linha-container="">
+			<td data-corpo-celula-container="" data-corpo-celula-container-template="">
+			<div data-corpo-celula-elemento-container=""><input class="form-control input-sm" type="text" />
+			<div>&nbsp;</div>
+			</div>
+			</td>
+			<td data-corpo-celula-container="" data-remover="">
+			<div data-corpo-celula-elemento-container=""><input class="form-control input-sm" type="text" />
+			<div>&nbsp;</div>
+			</div>
+			</td>
+			<td data-corpo-celula-container="" data-remover="">
+			<div data-corpo-celula-elemento-container=""><input class="form-control input-sm" type="text" />
+			<div>&nbsp;</div>
+			</div>
+			</td>
+			<td data-corpo-celula-acoes="" style="text-align:center;"><button class="btn default btn-xs" data-botao-editar="" style="display:none;"><i class="fa fa-edit"></i></button><button class="btn default btn-xs" data-botao-linkar="" style="display: none;"><i class="fa fa-link"></i></button><button class="btn red-sunglo btn-xs" data-botao-remover=""><i class="fa fa-remove"></i></button></td>
+		</tr>
+	</tbody>
+</table>
+<button class="btn blue btn-xs pull-right" data-botao-adicionar=""><i class="fa fa-plus"></i>Novo item</button></div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Possui Outra Atividade/Ocupa&ccedil;&atilde;o Al&eacute;m da Pesca? </label> <select class="form-control input-sm" data-campo-id="@@133@@" data-nome="QS_Possui Outra Atividade Além da Pesca" id="ddlPossuiOutraAtividade"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group" style="display: none;"><label class="control-label">Se Sim, Qual Atividade?</label> <input class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@134@@" data-nome="QS_Se Sim Qual" id="txtQualAtividade" pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+" placeholder="Qual Atividade?" type="text" /></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group" style="display: none;"><label class="control-label">Tempo de Profiss&atilde;o </label> <select class="form-control input-sm" data-campo-id="@@141@@" data-nome="QS_Tempo de Profissão" id="ddlTempoDeProfissao"></select></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Possui Renda N&atilde;o Originada da Pesca?</label> <select class="form-control input-sm" data-campo-id="@@87@@" data-nome="Possui Renda Não Originada da Pesca" data-placement="bottom" data-toggle="tooltip" id="ddlPossuiRenda" title="Informe se possui qualquer renda não originada da atividade
+                                            pesqueira. (Ex: Bolsa Família, Aposentadoria, Pensão, etc.)"></select></div>
+</div>
+
+<div id="divRenda" style="display: none">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Qual a Origem?</label> <select class="form-control input-sm" data-campo-id="@@89@@" data-nome="Qual a Origem" id="ddlOrigemRenda"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Origem da Renda</label> <input class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@88@@" data-nome="Origem da Renda" id="txtOrigemRenda" pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+" placeholder="Origem da Renda" type="text" /></div>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Recebe Bolsa Fam&iacute;lia? </label> <select class="form-control input-sm" data-campo-id="@@137@@" data-nome="QS_Recebe Bolsa Familia" id="ddlRecebeBolsaFamilia"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Recebe Outro Aux&iacute;lio? </label> <select class="form-control input-sm" data-campo-id="@@138@@" data-nome="QS_Recebe Outro Auxilio" id="ddlRecebeOutroAuxilio"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group" style="display: none;"><label class="control-label">Qual?</label> <input class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@139@@" data-nome="QS_Qual Auxilio" id="txtQual" pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+" placeholder="Qual?" type="text" /></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Renda Total do Pescador (Mensal) </label> <select class="form-control input-sm" data-campo-id="@@135@@" data-nome="QS_Renda Total Pescador" id="ddlRendaPescador"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Renda Total Familiar (Mensal) </label> <select class="form-control input-sm" data-campo-id="@@136@@" data-nome="QS_Renda Familiar Total" id="ddlRendaFamiliar"></select></div>
+</div>
+</div>
+&nbsp;
+
+<h4>Informa&ccedil;&otilde;es socioecon&ocirc;micas.</h4>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Possui Computador em Casa? </label> <select class="form-control input-sm" data-campo-id="@@128@@" data-nome="QS_Possui Computador em Casa" id="ddlPossuiComputador"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Tem Acesso a Internet? </label> <select class="form-control input-sm" data-campo-id="@@129@@" data-nome="QS_Tem Acesso a Internet" id="ddlTemAcessoAInternet"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Tem Aparelho Celular em Casa? </label> <select class="form-control input-sm" data-campo-id="@@130@@" data-nome="	QS_Tem Aparelho Celular em Casa" id="ddlTemCelular"></select></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">A Casa Onde Mora &eacute;: </label> <select class="form-control input-sm" data-campo-id="@@131@@" data-nome="QS_A Casa Onde Mora é" id="ddlCasaOndeMora"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Possui Curso de Capacita&ccedil;&atilde;o Profissional? </label> <select class="form-control input-sm" data-campo-id="@@142@@" data-nome="QS_Possui curso" id="ddlPossuiCurso"></select></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Tempo que Reside no Munic&iacute;pio Atual </label> <select class="form-control input-sm" data-campo-id="@@140@@" data-nome="QS_Tempo que Reside no Atual Municipio	" id="ddlTempoNoMunicipio"></select></div>
+</div>
+
+<div class="col-sm-12 col-md-4">
+<div class="form-group"><label class="control-label">Acesso a Servi&ccedil;os <i class="fa fa-info-circle tooltips"> <span class="tooltiptext">Informa&ccedil;&otilde;es de como deve ser preenchido esse campo.</span> </i> <span class="textoDeObrigatorio"> (Obrigat&oacute;rio)</span> </label>
+
+<div class="mt-checkbox-list" data-campo-id="@@132@@" id="campo132"><label class="mt-checkbox mt-checkbox-outline"> <input data-nome="QS_Acesso a Serviços" data-valor="" id="chkListServicos" name="QS - Acesso a Serviços" type="checkbox" /> <label data-texto="">Peixes</label> <span></span> </label></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--Anexos-->
+
+<div class="tab-pane slide" id="tab4" style="display: none">
+<h4 class="bs-glyphicon-class cabecalho" id="cabecalho-documentacao">Documenta&ccedil;&atilde;o</h4>
+
+<div class="container-de-cadastro" id="menu-documentacao">
+<div class="row">
+<div class="col-sm-12 col-md-6" id="div-uploadArquivos">
+<div class="col-sm-12 col-md-12">
+<div class="form-group"><label class="control-label">CPF ou documento que contenha n&uacute;mero de CPF</label> <i class="fa fa-check font-green-jungle fa-2x" style="display: none" title="Documento enviado!"></i> <input accept="image/png,image/jpeg, image/jpg" class="formulario-upload fa upload-file" data-arquivo-nome="" data-nome="CPF ou Documento que contenha número de CPF" data-placement="bottom" data-tipo-anexo-id="2" data-toggle="tooltip" id="uploadCpf" max-size-mb="5" title="Insira a imagem nítida ou scan de documento oficial que contenha o seu número de CPF." type="file" />
+<h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-12">
+<div class="form-group"><label class="control-label">Documento com identifica&ccedil;&atilde;o com foto</label> <i class="fa fa-check font-green-jungle fa-2x" style="display: none" title="Documento enviado!"></i> <input accept="image/png, image/jpeg, image/jpg" class="formulario-upload fa upload-file" data-arquivo-nome="" data-nome="Documento com identificação com foto" data-placement="bottom" data-tipo-anexo-id="3" data-toggle="tooltip" id="uploadRg" max-size-mb="5" title="Insira a imagem nítida ou scan de documento oficial que contenha suas informações pessoais e foto." type="file" />
+<h6 class="help-block">(RG,CNH)</h6>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-12">
+<div class="form-group"><label class="control-label"> Comprovante de resid&ecirc;ncia ou declara&ccedil;&atilde;o de resid&ecirc;ncia </label> <i class="fa fa-check font-green-jungle fa-2x" style="display: none" title="Documento enviado!"></i> <input accept="image/png, image/jpeg, image/jpg" class="formulario-upload fa upload-file" data-arquivo-nome="" data-nome="Comprovante de Residência ou Declaração de Residência" data-placement="bottom" data-tipo-anexo-id="4" data-toggle="tooltip" id="uploadComprovanteResidencia" max-size-mb="5" title="Insira a imagem nítida ou scan de documento oficial que contenha suas informações de endereço de residência. (Ex: Contas de água, luz, telefone ou declaração registrada de residência." type="file" />
+<h6 class="help-block">Com endere&ccedil;o completo n&iacute;tido e limpo</h6>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-12">
+<div class="form-group"><label class="control-label">Foto 3x4 n&iacute;tida</label> <i class="fa fa-check font-green-jungle fa-2x" style="display: none" title="Documento enviado!"></i> <input accept="image/png, image/jpeg, image/jpg" class="formulario-upload fa upload-file" data-arquivo-nome="" data-nome="Foto 3x4 nítida" data-placement="bottom" data-tipo-anexo-id="5" data-toggle="tooltip" id="uploadFoto" max-size-mb="5" title="Insira a imagem nítida ou scan de foto padrão 3x4 para documentos ou utilize as ferramentas do sistema para recortar a foto da imagem ou scan de documento com foto." type="file" />
+<h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-12">
+<div class="form-group"><label class="control-label">PIS/PASEP/NIT/NIS</label> <i class="fa fa-check font-green-jungle fa-2x" style="display: none" title="Documento enviado!"></i> <input accept="image/png, image/jpeg, image/jpg" class="formulario-upload fa upload-file" data-arquivo-nome="" data-nome="Documento PIS/PASEP/NIT/NIS" data-placement="bottom" data-tipo-anexo-id="6" data-toggle="tooltip" id="uploadPis" max-size-mb="5" title="Insira a imagem nítida ou scan de documento oficial que contenha a numeração de algum dos documentos indicados." type="file" />
+<h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-12">
+<div class="form-group" style="display: none"><label class="control-label">T&iacute;tulo de Eleitor</label> <i class="fa fa-check font-green-jungle fa-2x" style="display: none" title="Documento enviado!"></i> <input accept="image/png, image/jpeg, image/jpg" class="formulario-upload fa upload-file" data-arquivo-nome="" data-nome="Documento Título de Eleitor" data-placement="bottom" data-tipo-anexo-id="37" data-toggle="tooltip" id="uploadTituloEleitor" max-size-mb="5" title="Insira a imagem nítida ou scan de documento oficial que contenha a numeração do título de eleitor." type="file" />
+<h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-12">
+<div class="form-group" style="display: none"><label class="control-label">Carteira de Trabalho</label> <i class="fa fa-check font-green-jungle fa-2x" style="display: none" title="Documento enviado!"></i> <input accept="image/png, image/jpeg, image/jpg" class="formulario-upload fa upload-file" data-arquivo-nome="" data-nome="Carteira de trabalho" data-placement="bottom" data-tipo-anexo-id="7" data-toggle="tooltip" id="uploadCtps" max-size-mb="5" title="Insira o scan da declaração de filiado a entidade representativa devidamente preenchida e assinada. Declaração pode ser encontrada  na Instrução Normativa referente ao registro de pescador profissional." type="file" />
+<h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-12">
+<div class="form-group" style="display: none"><label class="control-label">Passaporte</label> <i class="fa fa-check font-green-jungle fa-2x" style="display: none" title="Documento enviado!"></i> <input accept="image/png, image/jpeg, image/jpg" class="formulario-upload fa upload-file" data-arquivo-nome="" data-nome="Passaporte" data-placement="bottom" data-tipo-anexo-id="8" data-toggle="tooltip" id="uploadPassaporte" max-size-mb="5" title="Insira a imagem nítida ou scan do protocolo recebido referente a entrega da documentação de registro de pescador profissional realizada anteriormente." type="file" />
+<h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-12">
+<div class="form-group" style="display: none"><label class="control-label">Autoriza&ccedil;&atilde;o de Trabalho</label> <i class="fa fa-check font-green-jungle fa-2x" style="display: none" title="Documento enviado!"></i> <input accept="image/png, image/jpeg, image/jpg" class="formulario-upload fa upload-file" data-arquivo-nome="" data-nome="Autorização de Trabalho" data-tipo-anexo-id="9" id="uploadAutorizacaoTrabalho" max-size-mb="5" type="file" />
+<h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-12">
+<div class="form-group" id="divFiliado" style="display: none"><label class="control-label">Comprovante Filia&ccedil;&atilde;o</label> <i class="fa fa-check font-green-jungle fa-2x" style="display: none" title="Documento enviado!"></i> <input accept="image/png, image/jpeg, image/jpg" class="formulario-upload fa upload-file" data-arquivo-nome="" data-nome="Comprovante Filiação Entidade" data-tipo-anexo-id="24" id="uploadComprovanteFiliacao" max-size-mb="5" type="file" />
+<h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-12">
+<div class="form-group" id="divAprendizAutorizacaoResponsavel" style="display: none"><label class="control-label">Autoriza&ccedil;&atilde;o dos Pais ou Respons&aacute;vel</label> <i class="fa fa-check font-green-jungle fa-2x" style="display: none" title="Documento enviado!"></i> <input accept="image/png, image/jpeg, image/jpg" class="formulario-upload fa upload-file" data-arquivo-nome="" data-nome="Autorização dos Pais ou Responsável" data-tipo-anexo-id="25" id="uploadAutorizacaoResponsavelAprendiz" max-size-mb="5" type="file" />
+<h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-12">
+<div class="form-group" id="divAprendizAutorizacaoJudicial" style="display: none"><label class="control-label">Autoriza&ccedil;&atilde;o Judicial a Pescador Aprendiz Embarcado</label> <i class="fa fa-check font-green-jungle fa-2x" style="display: none" title="Documento enviado!"></i> <input accept="image/png, image/jpeg, image/jpg" class="formulario-upload fa upload-file" data-arquivo-nome="" data-nome="Autorização Judicial a Pescador Aprendiz Embarcado" data-tipo-anexo-id="26" id="uploadAutorizacaoJudicialAprendiz" max-size-mb="5" type="file" />
+<h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-12">
+<div class="form-group" id="divProtocoloRegistroAnterior" style="display: none"><label class="control-label">Protocolo de Registro Anterior</label> <i class="fa fa-check font-green-jungle fa-2x" style="display: none" title="Documento enviado!"></i> <input accept="image/png, image/jpeg, image/jpg" class="formulario-upload fa upload-file" data-arquivo-nome="" data-nome="Protocolo de Registro Anterior" data-tipo-anexo-id="36" id="uploadProtocoloRegistroAnterior" max-size-mb="5" type="file" />
+<h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-12">
+<div class="form-group" id="divInformacoesAdicionais"><label class="control-label">Informa&ccedil;&otilde;es Adicionais</label> <i class="fa fa-check font-green-jungle fa-2x" style="display: none" title="Documento enviado!"></i> <input accept="image/png, image/jpeg, image/jpg" class="formulario-upload fa upload-file" data-arquivo-nome="" data-nome="Informações Adicionais" data-placement="bottom" data-tipo-anexo-id="27" data-toggle="tooltip" id="uploadInformacoesAdicionais" max-size-mb="5" title="Anexo voltado a inserção de documentação complementar de comprovação da realização da atividade de pesca." type="file" />
+<h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+</div>
+</div>
+<!--Lista dos anexos inseridos-->
+
+<div class="form-group">
+<div class="col-sm-12 col-md-12" id="listGroupDocumentos" style="display: none">
+<ul class="list-group" id="ulDocumentos">
+</ul>
+</div>
+</div>
+<!--Lista dos anexos inseridos--></div>
+
+<div class="col-md-6" id="div-UploadVisualizacao"><i class="fa fa-spinner fa-spin font-blue" id="fileUploadSpinner" style="display: none"></i>
+
+<div class="col-sm-12 col-l-12" id="divMenuCrop" style="display: none">
+<div>
+<div class="row"><label class="btn btn-xs blue" id="btnCrop"> <i class="fa fa-cut"></i> Recortar </label> <label class="btn btn-xs blue" id="btnRotate"> <i class="fa fa-rotate-right"></i> Rotacionar </label> <label class="btn btn-xs blue" id="btnReset"> <i class="fa fa-remove"></i> Restaurar original </label> <label class="btn btn-xs green" id="btnSalvarCrop"> <i class="fa fa-floppy-o"></i> Salvar </label></div>
+</div>
+</div>
+
+<div class="col-sm-12 col-md-12 container-zoom" id="views" style="display: none; margin-bottom: 2px"><canvas height="400" id="canvasCrop" width="600"></canvas></div>
+
+<div class="container-zoom" id="zoomAnexo" style="padding-top: 80px; display: none"><img id="imgZoomAnexo" src="" style="display: none" /></div>
+</div>
+</div>
+</div>
+</div>
+<!--Informações Adicionais-->
+
+<div class="tab-pane slide" id="tab5" style="display: none">
+<h4 class="bs-glyphicon-class cabecalho" id="cabecalho-Informacoes-Adicionais">Informa&ccedil;&otilde;es adicionais</h4>
+
+<div class="col-md-12" id="informacoesAdicionais">
+<div class="note note-success bold text-justify" role="alert">Declaro, sob responsabilidade civil e penal, que as informa&ccedil;&otilde;es declaradas no &ldquo;Formul&aacute;rio de Requerimento de Licen&ccedil;a de Pescador Profissional&rdquo; s&atilde;o verdadeiras e que estou ciente que a informa&ccedil;&otilde;es n&atilde;o ver&iacute;dicas declaradas, implicar&atilde;o em penalidades previstas no Artigo 299 do C&oacute;digo Penal (Falsidade ideol&oacute;gica), al&eacute;m de san&ccedil;&otilde;es civis e administrativas cab&iacute;veis.<br />
+<br />
+Declaro tamb&eacute;m estar plenamente ciente da legisla&ccedil;&atilde;o (Lei N&deg; 10.779, de 25 de novembro de 2003 e Decreto N&deg; 8.424, de 31 de mar&ccedil;o de 2015) e obrigatoriedades relacionadas &agrave; solicita&ccedil;&atilde;o do benef&iacute;cio do Seguro Defeso, e que caso o solicite sem cumprir os crit&eacute;rios m&iacute;nimos obrigat&oacute;rios, estarei pass&iacute;vel a responder civilmente e penalmente caso seja comprovado dolo ou culpa.<br />
+<br />
+&ldquo;Art. 299 do C&oacute;digo Penal Brasileiro - Omitir, em documento p&uacute;blico ou particular, declara&ccedil;&atilde;o que dele devia constar, ou nele inserir ou fazer inserir declara&ccedil;&atilde;o falsa ou diversa da que devia ser escrita, com fim de prejudicar direito, criar obriga&ccedil;&atilde;o ou alterar a verdade sobre fato juridicamente relevante:<br />
+<br />
+Pena - reclus&atilde;o, de um a cinco anos, e multa, se o documento &eacute; p&uacute;blico, e reclus&atilde;o de 1 a 3 anos, e multa, se o documento &eacute; particular. &rdquo;<br />
+<br />
+Declaro tamb&eacute;m estar ciente que caso tenha declarado ser filiado a alguma entidade colaboradora, autorizo a entidade colaboradora em quest&atilde;o a ter acesso a meus dados de registro, bem como a me representar perante aos &oacute;rg&atilde;os competentes da pesca.</div>
+
+<div class="row col-md-12">
+<div class="md-checkbox"><input class="md-check" data-campo-id="@@69@@" data-nome="Declaração" id="cbxDeclaracao" required="required" type="checkbox" /> <label for="cbxDeclaracao"> <span class="inc"></span> <span class="check"></span> <span class="box"></span> Declaro que li e concordo com as informa&ccedil;&otilde;es acima. </label></div>
+</div>
+</div>
+
+<div class="col-md-12" style="text-align: right"><asp:linkbutton class="btn btn-circle default btn-sm fa font-red-thunderbird" id="lbtDeclaracao" runat="server"> <i class="fa fa-download"></i> Impress&atilde;o de protocolo </asp:linkbutton> <a download="" hidden="" href="" id="linkProtocolo" target="_blank"></a></div>
+</div>
+<!--Botões-->
+
+<div class="div-buttons-acoes"><a class="btn default button-previous btn-xs" href="javascript:;" style="display: inline-block"><i class="fa fa-angle-left"></i> Voltar </a> <a class="btn btn-outline blue button-next btn-xs" href="javascript:;"> Avan&ccedil;ar <i class="fa fa-angle-right"></i> </a></div>
+</div>
+</form>
+</div>
+<script>
+        DocumentoVisualizacaoForm.camposCarregados(function () {
+            // Valida se o usuário tem permissão ou não para editar o documento na etapada de "Enviado".
+            Ecm.bloquearElemento(".botoes");
+            Ecm.bloquearElemento("#bodyMapaBordoOnlineNovoRPG");
+
+            if (Ecm.retornaUsuario().gruposId.split(',').includes('171')) {
+                $('.cancelar').trigger('click');
+
+                let campos = DocumentoVisualizacaoForm.retornaCampos();
+                $.each(campos, (index, element) => {
+                    $(element).attr('disabled', 'disabled');
+                })
+
+                $('.botoes .editar').remove();
+            }
+
+            Ecm.desbloquearElemento("#bodyMapaBordoOnlineNovoRPG");
+            Ecm.desbloquearElemento(".botoes");
+
+            setTimeout(function () {
+                if ((DocumentoVisualizacaoForm.retornaDocumento().novo) && (Ecm.retornaUsuario().grupos.includes("RGP - Solicitação"))) {
+                    var usuario = Ecm.retornaUsuario();
+                    if (
+                        usuario.cpfCnpj.replace('.', '').replace('.', '').replace('-', '')
+                    ) {
+                        //Se pescador, preenche os dados iniciais com seus dados de usuário.
+                        if ($('#txtCpf').val() == "" || $('#txtCpf').val() == null || $('#txtCpf').val() == undefined) {
+                            $('#txtCpf').val(usuario.cpfCnpj).trigger('change');
+                        }
+                        $('#txtDataNasc').val(usuario.dataNasc);
+                        $('#txtEmail').val(usuario.email);
+
+                        setTimeout(() => {
+                            if ($('#ddlTipoRegistro').val() == null && $('#txtNomeMae').val() === "") {
+                                $('#ddlTipoRegistro').val('RECADASTRAMENTO');
+                            }
+                        }, 1800)
+
+                    }
+
+                    $('#txtDataPrimeiroRegistro').val(new Date().format('dd/MM/yyyy'));
+                } else { // Se precisar especificar os grupos que devem entrar na condição do else, esses são os grupos: Administrador, Gestor SAP, Técnico completo.
+                    $('#txtCpf').removeAttr('disabled');
+                }
+            }, 1000);
+
+            //Sets iniciais
+            var abaAtual = 1;
+            var ultimoAnexoIdTemporario = 0;
+            var ultimoTipoAnexoIdTemporario = 0;
+            var crop_max_width = 600;
+            var crop_max_height = 400;
+            var listaAnexos = DocumentoVisualizacaoForm.retornaListaAnexosDocumento();
+            var listaCamposObrigatorios = [];
+            var existeEmbarcacao = false;
+            var existeEntidade = false;
+            var menorAprendiz = false;
+            var qntVezesQueEntrouNaAba3 = 0;
+
+            $('#tabs').hide();
+            $('#div-acoes-ao-publicar').hide();
+
+            $("a[id^='transicao-id-']").prop('disabled', true);
+            $("a[id^='transicao-id-']").attr('readonly', 'readonly').attr('disabled', 'disabled');
+            $("a[id^='transicao-id-']").attr('title', 'Existem pendências');
+
+            setTimeout(function () {
+                atualizarAnexosAba();
+            }, 1000);
+
+            $('#ddlEstado').trigger('change');
+            $('#ddlEstadoLocalPesca').trigger('change');
+
+            var edicao = DocumentoVisualizacaoForm.estouEditando();
+
+            if (!edicao) {
+                $('#ddlCidade').attr('disabled', 'disabled');
+                $('#ddlCidadeLocalPesca').attr('disabled', 'disabled');
+            }
+
+            validarFormaAtuacao();
+            validarRenda();
+            verificarTituloEleitor($('#txtTituloEleitor'));
+
+            var entidadeCheckada = _.filter($('[name="opcao_34"]'), { checked: true });
+
+            validarEntidade($(entidadeCheckada));
+
+            $('#txtNumeroRGP').removeAttr('required');
+            $('#txtNomeEmbarcacao').removeAttr('required');
+            $('#txtNumeroTie').removeAttr('required');
+            $('#uploadTituloEleitor').removeAttr('required');
+
+            var $declaracao = $('#cbxDeclaracao');
+            if ($declaracao.is(':checked')) {
+                validarCamposObrigatorios();
+            }
+
+            let camposObrigatoriosObj = [];
+            let camposObrigatoriosFinalList = [];
+
+            let camposObrigatorios = DocumentoVisualizacaoForm.retornaCampos();
+
+            $.each(camposObrigatorios, (index, element) => {
+                if (element.obrigatorio == 1) {
+                    camposObrigatoriosObj.push(element);
+                }
+            });
+
+            $.each(camposObrigatoriosObj, (index, element) => {
+                $(`[data-campo-id="@@${element.id}@@"]`).attr('required', 'required');
+                document.querySelector(`[data-campo-id="@@${element.id}@@"]`).setAttribute('required', 'required');
+            });
+
+            let idGrid = parseInt($(".grid").attr("data-campo-id").replace("@@", "").replace("@@", ""));
+
+            //Início Eventos
+
+            checkboxObrigatorio('#campo27');
+            checkboxObrigatorio('#campo28');
+            checkboxObrigatorio('#campo132');
+
+            function checkboxObrigatorio(seletor) {
+                $(`${seletor} label span`).css('borderColor', 'red');
+
+                Ecm.registraEvento('change', seletor, event => {
+                    $(seletor).children().each((i, e) => {
+                        if (!$(e).children()[0].checked) {
+                            $(`${seletor} label span`).css('borderColor', 'red');
+                        } else {
+                            $(`${seletor} label span`).css('borderColor', '#d9d9d9');
+                            return false;
+                        }
+                    })
+                })
+            }
+
+
+            $('#campo28').children().each((i, e) => {
+                if ($(e).index() == 4) {
+                    $(e).attr('id', 'areapescachk')
+                    $('#areapescachk').append('<div id="areaContainer" class="form-group row">');
+                }
+            })
+
+            Ecm.registraEvento('keyup', '.validaCaracteres', function (i, e) {
+                if (!$(e).val() == "") {
+                    if (!$(e).is(':valid')) {
+                        $(e).val($(e).val().replace(i.key, ''))
+                    }
+                }
+            })
+
+            Ecm.registraEvento('change', '#areapescachk', event => {
+                $('#campo28').children().each((i, e) => {
+                    if ($(e).index() == 4) {
+                        let div = '';
+                        if ($(e).children()[0].checked && $('#areaContainer').html().length !== 655) { // IMPORTANTE! 637 é o resultado de "$('#areaContainer').html().length", código usado para verificar se já existe ou não um input de espeficifique, atualizar valor caso mexa nessa função.
+                            div += `<div class="col-sm-12">
+                                        <label class="control-label withoutPadding" style="margin-top: 7px; font-size: 13px;">
+                                            Especifique <i class="fa fa-info-circle tooltips"> <span class="tooltiptext">Informa&ccedil;&otilde;es de como deve ser preenchido esse campo.</span> </i>
+                                        </label>
+                                    </div>`
+
+                            div += `<div class="col-md-12">
+                                        <input class="form-control input-sm" id="especifiqueLabel" required="required"/>
+                                    </div>`
+
+                            $('#areaContainer').append(div)
+                        }
+                        if (!$(e).children()[0].checked) {
+                            $('#areaContainer').empty();
+                        }
+                    }
+                })
+            })
+
+            Ecm.registraEvento('change', '#especifiqueLabel', event => {
+                $('#txtEspecifique').val($('#especifiqueLabel').val());
+            })
+
+            Ecm.registraEvento('hover', '.button-next', event => {
+                if ($('#txtNomePai').val() === "") {
+                    $('#txtNomePai').val("Ignorado");
+                }
+                habilitarProximaEtapa();
+                if (abaAtual == 2) {
+                    habilitarProximaEtapaRadioCheckbox(abaAtual);
+                }
+                if (abaAtual == 3) {
+                    habilitarProximaEtapaRadioCheckbox(abaAtual);
+                }
+            })
+
+            Ecm.registraEvento('change', '#txtCpf', function (event) {
+                var cpfValido = validarCampoCpf();
+
+                if (cpfValido) {
+                    DocumentoVisualizacaoForm.executaScriptExterno(1, null, function (campos, formulario, objeto) {
+                        console.log(campos[1].valor);
+                        if (campos[1].valor !== "" && campos[1].valor !== null && campos[1].valor !== undefined) {
+                            setTimeout(function () {
+                                $('#ddlTipoRegistro').val('RECADASTRAMENTO');
+                                $('#ddlTipoRegistro').val('RECADASTRAMENTO');
+                                $('#ddlTipoRegistro').val('RECADASTRAMENTO');
+                                $('#ddlTipoRegistro').attr('disabled', 'disabled');
+                                console.log(`Usuário portador do CPF ${campos[0]} consta na base de dados.`);
+                            }, 1200);
+                        } else {
+                            setTimeout(function () {
+                                $("#ddlTipoRegistro option[value='RECADASTRAMENTO']").remove();
+                                $('#ddlTipoRegistro').removeAttr('disabled');
+                                console.log(`Usuário portador do CPF ${campos[0]} NÃO consta na base de dados.`);
+                            }, 1200);
+                        }
+                    });
+                }
+                habilitarProximaEtapa();
+            });
+
+            // Correção na obrigatoriedade dos campos de 'Nome Embarcação', 'Nº TIE' e 'Nº RGP Embarcação'
+            // de acordo com a opção selecionada no campo 'Categoria' na tab2 do formaulário de RGP.
+            Ecm.registraEvento('change', '#ddlCategoria', () => {
+                if ($('#ddlCategoria option:selected').text() == 'Artesanal' ||
+                    $('#ddlCategoria option:selected').text() == 'Aprendiz') {
+
+                    $('#txtNumeroRGP').removeAttr('required');
+
+                    $('#txtNumeroTie').removeAttr('disabled').attr('required', 'required');
+                    $('#txtNomeEmbarcacao').removeAttr('disabled').attr('required', 'required');
+                }
+
+                if ($('#ddlCategoria option:selected').text() == 'Industrial') {
+                    $('#txtNumeroRGP').attr('required', 'required');
+
+                    $('#txtNumeroTie').attr('disabled', true);
+                    $('#txtNomeEmbarcacao').attr('disabled', true);
+                }
+            });
+
+            Ecm.registraEvento('click', '#cabecalhoIdentificacao', function (element) {
+                $('#menuIdentificacao').slideToggle('fast', function () { });
+            });
+
+            Ecm.registraEvento('click', '#cabecalhoEmbarcacao', function (element) {
+                $('#menuEmbarcacao').slideToggle('fast', function () { });
+            });
+
+            Ecm.registraEvento('change', '#ddlNacionalidade', function () {
+                validarNacionalidade();
+            });
+
+            Ecm.registraEvento('change', '#ddlFormaAtuacao', function () {
+                validarFormaAtuacao();
+            });
+
+            Ecm.registraEvento('change', '#chkListEntidade', function (evento, elemento) {
+                validarEntidade($(elemento));
+            });
+
+            Ecm.registraEvento('change', '#ddlPossuiRenda', function () {
+                validarRenda();
+            });
+
+            Ecm.registraEvento('change', '#ddlOrigemRenda', function () {
+                validarOrigem();
+            });
+
+            Ecm.registraEvento('change', '#ddlPossuiOutraAtividade', function () {
+                validarOutraAtividade();
+            });
+
+            Ecm.registraEvento('change', '#ddlRecebeOutroAuxilio', function () {
+                validarOutroAuxilio();
+            });
+
+            Ecm.registraEvento('change', '#txtCnpjEntidade', function () {
+                consultarEntidade();
+            });
+
+            Ecm.registraEvento('change', '#txtTituloEleitor', function (evento, elemento) {
+                verificarTituloEleitor(elemento);
+            });
+
+            Ecm.registraEvento('focusout', '#txtNumeroRGP', function (evento, elemento) {
+                pesquisarEmbarcacao();
+
+                if ($(elemento).val()) {
+                    $(elemento).removeAttr('required');
+                } else {
+                    $(elemento).attr('required', 'required');
+                }
+            });
+
+            Ecm.registraEvento('click', '#lbtDeclaracao', function (element) {
+                retornarDeclaracao();
+            });
+
+            Ecm.registraEvento('change', '#ddlEstado', function (element) {
+                $('#ddlEstadoDeclaracao').val($('#ddlEstado option:selected').text());
+            });
+
+            Ecm.registraEvento('change', '#ddlCidade', function (element) {
+                $('#ddlMunicipioDeclaracao').val($('#ddlCidade option:selected').text());
+            });
+
+            Ecm.registraEvento('change', '#ddlTipoRegistro', function (element) {
+                validarTipoRegistro();
+                validarProtocoloAnterior();
+                $('#txtTipoRegistroDeclaracao').val($('#ddlTipoRegistro option:selected').text());
+            });
+
+            Ecm.registraEvento('change', '#cbxDeclaracao', function () {
+                if ($('#cbxDeclaracao').is(':checked')) {
+                    validarCamposObrigatorios();
+                    $('#step5').addClass('done').removeClass('active');
+                } else {
+                    $("a[id^='transicao-id-']").prop('disabled', true);
+                    $("a[id^='transicao-id-']").attr('readonly', 'readonly').attr('disabled', 'disabled');
+                    $("a[id^='transicao-id-']").attr('title', 'Existem pendências');
+                    $('#step5').removeClass('done').addClass('active');
+                }
+            });
+
+            DocumentoVisualizacaoForm.onUploadAnexo(
+                function (anexoId) {
+                    ultimoAnexoIdTemporario = anexoId;
+                    visualizarAnexo(anexoId);
+                },
+                function () { }
+            );
+
+            Ecm.registraEvento('change', '#txtCep', function (elemento) {
+                var cep = $(elemento.currentTarget).val().replace('-', '').replace('.', ''),
+                    urlRetornarEnderecoCep = `endereco/cep/${cep}`;
+
+                if (cep) {
+                    Ecm.Api2.Get(urlRetornarEnderecoCep)
+                        .done(function (retorno) {
+                            retorno = JSON.parse(retorno);
+                            retorno.endereco = JSON.parse(retorno.endereco);
+                            if (retorno.endereco.length > 0) {
+                                document.getElementById('txtBairro').value = retorno.endereco[0].bairro;
+                                document.getElementById('txtLogradouro').value = retorno.endereco[0].rua;
+
+                                var chaveEstado = $('#ddlEstado option')
+                                    .filter(function () {
+                                        return $(this).html().trim() == retorno.endereco[0].estado;
+                                    })
+                                    .val();
+
+                                $('#ddlEstado').val(chaveEstado).trigger('change');
+
+                                setTimeout(function () {
+                                    document.getElementById('txtNumero').focus();
+                                }, 100);
+
+                                $(document).bind('ajaxComplete', function () {
+                                    var chaveCidade = $('#ddlCidade option')
+                                        .filter(function () {
+                                            return $(this).html().trim() == retorno.endereco[0].cidade;
+                                        })
+                                        .val();
+
+                                    if (typeof chaveCidade !== 'undefined') {
+                                        $('#ddlCidade').val(chaveCidade).trigger('change');
+                                        $(document).unbind('ajaxComplete');
+                                    }
+                                });
+                            } else {
+                                $('#txtLogradouro').val('');
+                                $('#txtNumero').val('');
+                                $('#txtComplemento').val('');
+                                $('#txtBairro').val('');
+                                $('#ddlEstado').val(0).trigger('change');
+                                $('#ddlCidade').val(0).trigger('change');
+                            }
+                        })
+                        .fail(function (erro) {
+                            console.log(erro);
+                        });
+                } else {
+                    $('#txtLogradouro').val('');
+                    $('#txtNumero').val('');
+                    $('#txtComplemento').val('');
+                    $('#txtBairro').val('');
+                    $('#ddlEstado').val(0).trigger('change');
+                    $('#ddlCidade').val(0).trigger('change');
+                }
+            });
+
+            Ecm.registraEvento('click', '.btn-remover', function (elemento) {
+                excluirAnexo($(elemento.target).attr('anexoId'), function (anexoId) {
+                    $('#tab' + abaAtual + ' input:visible').attr('required', true); //Seta todos os anexos como obrigatórios.
+                    elemento.target.closest('li').remove();
+                    if ($('#ulDocumentos').find('li').length == 0) {
+                        $('#ulDocumentos').hide();
+                    }
+
+                    var $inputUploadAnexo = $('#div-uploadArquivos .upload-file').filter(function () {
+                        return $(this).attr('data-tipo-anexo-id') == $(elemento.target).attr('tipoAnexoId');
+                    });
+
+                    $inputUploadAnexo.val('');
+                    $inputUploadAnexo.show().removeClass('font-green-jungle');
+                    $inputUploadAnexo.closest('div').removeClass('fa-check font-green-jungle');
+                    $inputUploadAnexo.siblings('p').show();
+                    $inputUploadAnexo.siblings('.fa-check').hide();
+
+                    $('#menu-documentacao input:invalid')
+                        .filter('[required]:visible[data-tipo-anexo-id="27"]')
+                        .attr('required', false);
+
+                    if ($('#ddlCategoria option:selected').text() == 'Industrial') {
+                        $('#txtNomeEmbarcacao').removeAttr('disabled');
+                        $('#txtNumeroTie').removeAttr('disabled');
+                        $('#menu-documentacao input:invalid')
+                            .filter('[required]:visible[data-tipo-anexo-id="3"]')
+                            .attr('required', false);
+                    }
+                });
+            });
+
+            Ecm.registraEvento('change', '.upload-file', function (elemento) {
+                $('#div-UploadVisualizacao').show();
+                Ecm.bloquearElemento('#div-UploadVisualizacao');
+                Ecm.bloquearElemento('#div-uploadArquivos');
+
+                $('#' + $(elemento.currentTarget).attr('id')).addClass('fa font-red-thunderbird');
+                $('#' + $(elemento.currentTarget).attr('id'))
+                    .siblings('.fa-spin')
+                    .show();
+                ultimoTipoAnexoIdTemporario = $(elemento.currentTarget).data('tipoAnexoId');
+                Ecm.desbloquearElemento('#div-UploadVisualizacao');
+                Ecm.desbloquearElemento('#div-uploadArquivos');
+
+                setTimeout(function () {
+                    habilitarProximaEtapa();
+                }, 3000);
+            });
+
+            //Eventos de apoio
+            Ecm.registraEvento('keypress', '.campoNome', function (event) {
+                var keycode = event.which;
+                if (
+                    event.shiftKey == false &&
+                    (keycode == 46 ||
+                        keycode == 8 ||
+                        keycode == 37 ||
+                        keycode == 39 ||
+                        (keycode >= 48 && keycode <= 57))
+                ) {
+                    event.preventDefault();
+                }
+            });
+
+            Ecm.registraEvento('keypress', '.campoNumero', function (event) {
+                var keycode = event.which;
+                if (!(keycode >= 48 && keycode <= 57)) {
+                    event.preventDefault();
+                }
+            });
+
+            Ecm.registraEvento('change', '#txtRg', function (evento, elemento) {
+                var todosNumerosIguais = validarNumerosIguais($(elemento).val());
+                var classeValidacao = $('#RGInvalido');
+
+                if (!todosNumerosIguais) {
+                    $(elemento).closest('.form-group').removeClass('has-error').addClass('has-success');
+                    $(elemento).siblings('.tooltips').removeClass('fa-exclamation').addClass('fa-check').show();
+                    $(classeValidacao).hide();
+                    $(elemento).removeAttr('required', 'required');
+                } else {
+                    $(elemento).closest('.form-group').removeClass('has-success').addClass('has-error');
+                    $(elemento).siblings('.tooltips').removeClass('fa-check').addClass('fa-exclamation').show();
+                    if (elemento.val().length > 0) {
+                        $(classeValidacao).show();
+                        $(classeValidacao).text('RG inválido');
+                        $(elemento).attr('required', 'required');
+                    }
+                }
+                habilitarProximaEtapa();
+            });
+
+            Ecm.registraEvento('change', '#txtPis', function (evento, elemento) {
+                var todosNumerosIguais = validarNumerosIguais($(elemento).val());
+                var classeValidacao = $('#PisInvalido');
+
+                if (!todosNumerosIguais) {
+                    var pisPasepValido = validarPisPasep($(elemento).val());
+
+                    if (pisPasepValido) {
+                        $(elemento).closest('.form-group').removeClass('has-error').addClass('has-success');
+                        $(elemento).siblings('.tooltips').removeClass('fa-exclamation').addClass('fa-check').show();
+                        $(classeValidacao).hide();
+
+                        $(elemento).removeAttr('required');
+                    } else {
+                        $(elemento).closest('.form-group').removeClass('has-success').addClass('has-error');
+                        $(elemento).siblings('.tooltips').removeClass('fa-check').addClass('fa-exclamation').show();
+
+                        $(classeValidacao).show();
+                        $(classeValidacao).text('Número do Documento inválido');
+
+                        $(elemento).attr('required', 'required');
+                    }
+                } else {
+                    $(elemento).closest('.form-group').removeClass('has-success').addClass('has-error');
+                    $(elemento).siblings('.tooltips').removeClass('fa-check').addClass('fa-exclamation').show();
+                    if (elemento.val().length > 0) {
+                        $(classeValidacao).show();
+                        $(classeValidacao).text('Número do Documento inválido');
+                        $(elemento).attr('required', 'required');
+                    }
+                }
+                habilitarProximaEtapa();
+            });
+
+            //Fim Eventos de apoio
+            //Fim Eventos
+
+            //Início Functions
+            //Crop
+
+            function habilitarProximaEtapa() {
+                //Check list e radio desabilitados temporariamente.
+                var camposPreenchidos = true;
+
+                var elementos = $(
+                    '#tab' +
+                    abaAtual +
+                    ' input:visible:not([type=checkbox]):not([type=radio]), #tab' +
+                    abaAtual +
+                    ' select:visible'
+                ).filter('[required]');
+
+                for (let indice = 0; indice < elementos.length; indice++) {
+                    const elemento = elementos[indice];
+
+                    if ($(elemento).val() === "" || $(elemento).val() === null || $(elemento).val() === undefined || validarDataNascimento() === false) {
+                        camposPreenchidos = false;
+                        break;
+                    } else {
+                        camposPreenchidos = true;
+                    }
+                }
+
+                if (camposPreenchidos == true) {
+                    $('#mensagemAlerta').hide();
+                    $('.button-next').prop('disabled', false);
+                    $('.button-next').removeAttr('disabled').removeAttr('readonly');
+                    $('.button-next').attr('title', 'Preencha todos os campos obrigatórios');
+                } else {
+                    $('#mensagemAlerta').text('');
+                    $('#mensagemAlerta').text('Campos obrigatórios com preenchimento inválido ou sem preenchimento. ');
+                    $('#mensagemAlerta').show();
+                    $('.button-next').prop('disabled', true);
+                    $('.button-next').attr('disabled', 'disabled').attr('readonly', 'readonly');
+                    $('.button-next').attr('title', 'Preencha todos os campos obrigatórios');
+                    if (validarDataNascimento() === false) {
+                        Ecm.alertWarning('Pescador com menos de 14 (quatorze) anos de idade. Idade não permitida para pescadores profissionais.');
+                    }
+                }
+
+                return camposPreenchidos;
+            }
+
+
+            function habilitarProximaEtapaRadioCheckbox(aba) {
+                //Check list e radio desabilitados temporariamente.
+                var camposPreenchidos = false;
+
+                // Função de validar campos obrigatórios para checkbox;
+                function validaCheckbox(id) {
+                    let result = false;
+                    $(id).children().each((i, e) => {
+                        if ($(e).children()[0].checked) {
+                            result = true;
+                            return false;
+                        } else {
+                            result = false;
+                        }
+                    });
+                    return result;
+                }
+
+                function validaRadio(id) {
+                    let validado = false;
+                    $('#radioEntidade label').each((i, e) => {
+                        if ($(e).children()[0].checked) {
+                            validado = true;
+                            return false;
+                        }
+                    });
+                    return validado;
+                }
+                if (aba == 2) {
+                    if (validaRadio('#radioEntidade') && validaCheckbox('#campo27') && validaCheckbox('#campo28')) {
+                        camposPreenchidos = true;
+                    }
+                }
+
+                if (aba == 3) {
+                    if (validaCheckbox('#campo132')) {
+                        camposPreenchidos = true;
+                    }
+                }
+
+                if (camposPreenchidos == true) {
+                    $('#mensagemAlerta').hide();
+                    $('.button-next').prop('disabled', false);
+                    $('.button-next').removeAttr('disabled').removeAttr('readonly');
+                    $('.button-next').attr('title', 'Preencha todos os campos obrigatórios');
+                } else {
+                    $('#mensagemAlerta').text('');
+                    $('#mensagemAlerta').text('Campos obrigatórios com preenchimento inválido ou sem preenchimento.');
+                    $('#mensagemAlerta').show();
+                    $('.button-next').prop('disabled', true);
+                    $('.button-next').attr('disabled', 'disabled').attr('readonly', 'readonly');
+                    $('.button-next').attr('title', 'Preencha todos os campos obrigatórios');
+                }
+
+                return camposPreenchidos;
+            }
+
+            function validarNumerosIguais(valor) {
+                var r1 = valor % 10;
+
+                while (valor > 0) {
+                    var r2 = valor % 10;
+                    if (r2 !== r1) return false;
+                    valor = Math.floor(valor / 10);
+                }
+                return true; // Passo 4.
+            }
+
+            function validarPisPasep(valor) {
+                var ftap = '3298765432';
+                var total = 0;
+                var i;
+                var resto = 0;
+                var numPIS = 0;
+                var strResto = '';
+
+                numPIS = valor;
+
+                if (numPIS == '' || numPIS == null) {
+                    return false;
+                }
+
+                for (i = 0; i <= 9; i++) {
+                    resultado = numPIS.slice(i, i + 1) * ftap.slice(i, i + 1);
+                    total = total + resultado;
+                }
+
+                resto = total % 11;
+
+                if (resto != 0) {
+                    resto = 11 - resto;
+                }
+
+                if (resto == 10 || resto == 11) {
+                    strResto = resto + '';
+                    resto = strResto.slice(1, 2);
+                }
+
+                if (resto != numPIS.slice(10, 11)) {
+                    return false;
+                }
+
+                return true;
+            }
+
+            function validarTituloEleitor(inscricao) {
+                inscricao = inscricao.replace('.', '').replace('-', '').replace(' ', '');
+
+                if (inscricao.length == 0) return false;
+
+                var paddedInsc = inscricao;
+                var dig1 = 0;
+                var dig2 = 0;
+
+                var tam = paddedInsc.length;
+                var digitos = paddedInsc.substr(tam - 2, 2);
+                var estado = paddedInsc.substr(tam - 4, 2);
+                var titulo = paddedInsc.substr(0, tam - 2);
+                var exce = estado == '01' || estado == '02';
+                dig1 =
+                    (titulo.charCodeAt(0) - 48) * 9 +
+                    (titulo.charCodeAt(1) - 48) * 8 +
+                    (titulo.charCodeAt(2) - 48) * 7 +
+                    (titulo.charCodeAt(3) - 48) * 6 +
+                    (titulo.charCodeAt(4) - 48) * 5 +
+                    (titulo.charCodeAt(5) - 48) * 4 +
+                    (titulo.charCodeAt(6) - 48) * 3 +
+                    (titulo.charCodeAt(7) - 48) * 2;
+                var resto = dig1 % 11;
+
+                if (resto == 0) {
+                    if (exce) {
+                        dig1 = 1;
+                    } else {
+                        dig1 = 0;
+                    }
+                } else {
+                    if (resto == 1) {
+                        dig1 = 0;
+                    } else {
+                        dig1 = 11 - resto;
+                    }
+                }
+
+                dig2 = (titulo.charCodeAt(8) - 48) * 4 + (titulo.charCodeAt(9) - 48) * 3 + dig1 * 2;
+                resto = dig2 % 11;
+
+                if (resto == 0) {
+                    if (exce) {
+                        dig2 = 1;
+                    } else {
+                        dig2 = 0;
+                    }
+                } else {
+                    if (resto == 1) {
+                        dig2 = 0;
+                    } else {
+                        dig2 = 11 - resto;
+                    }
+                }
+
+                if (digitos.charCodeAt(0) - 48 == dig1 && digitos.charCodeAt(1) - 48 == dig2) {
+                    return true; // Titulo valido
+                } else {
+                    return false;
+                }
+            }
+
+            function loadImage() {
+                setTimeout(() => {
+                    var canvasCrop = document.getElementById('canvasCrop');
+                    var ctx = canvasCrop.getContext('2d');
+                    var img = document.getElementById('imgZoomAnexo');
+
+                    context = canvasCrop.getContext('2d');
+                    image = new Image();
+                    console.log('imagem a ser carregada: ' + $(img).attr('src'));
+                    image.src = $(img).attr('src');
+                    imageNaturalWidth = image.naturalWidth;
+                    imageNaturalHeight = image.naturalHeight;
+
+                    ctx.drawImage(
+                        img,
+                        0,
+                        0,
+                        imageNaturalWidth,
+                        imageNaturalHeight,
+                        0,
+                        0,
+                        crop_max_width,
+                        crop_max_height
+                    );
+                    ctx.rotate((360 * Math.PI) / 180);
+
+                    $('#canvasCrop').Jcrop(
+                        {
+                            onSelect: selectcanvas,
+                            onRelease: clearcanvas,
+                            boxWidth: crop_max_width,
+                            boxHeight: crop_max_height
+                        },
+                        function () {
+                            jcrop_api = this;
+                        }
+                    );
+
+                    canvas = $('#canvasCrop')[0];
+                    clearcanvas();
+                    restartJcrop();
+                    Ecm.desbloquearElemento('#div-UploadVisualizacao');
+                    Ecm.desbloquearElemento('#div-uploadArquivos');
+                }, 1000);
+            }
+
+            function validateImage() {
+                if (canvas != null) {
+                    image = new Image();
+                    image.onload = restartJcrop;
+                    image.src = canvas.toDataURL('image/png');
+                } else restartJcrop();
+            }
+
+            function selectcanvas(coords) {
+                prefsize = {
+                    x: Math.round(coords.x),
+                    y: Math.round(coords.y),
+                    w: Math.round(coords.w),
+                    h: Math.round(coords.h)
+                };
+
+                $('#btnCrop').prop('disabled', false);
+            }
+
+            function clearcanvas() {
+                prefsize = {
+                    x: 0,
+                    y: 0,
+                    w: canvas.width,
+                    h: canvas.height
+                };
+
+                statusCrop = false;
+            }
+
+            function applyCrop() {
+                if (!statusCrop) {
+                    statusCrop = true;
+                    canvas.width = prefsize.w;
+                    canvas.height = prefsize.h;
+                    context.drawImage(
+                        image,
+                        prefsize.x,
+                        prefsize.y,
+                        prefsize.w,
+                        prefsize.h,
+                        0,
+                        0,
+                        canvas.width,
+                        canvas.height
+                    );
+                    validateImage();
+                }
+            }
+
+            function applyRotate(degrees) {
+                $('#btnReset').prop('disabled', false);
+
+                canvas.width = image.height;
+                canvas.height = image.width;
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.translate(image.height / 2, image.width / 2);
+                context.rotate((degrees * Math.PI) / 180);
+                context.drawImage(image, -image.width / 2, -image.height / 2);
+                validateImage();
+            }
+
+            function restartJcrop() {
+                if (jcrop_api != null) {
+                    jcrop_api.destroy();
+                }
+                $('#views').empty();
+                $('#views').append('<canvas id="canvasCrop">');
+                canvas = $('#canvasCrop')[0];
+                context = canvas.getContext('2d');
+                canvas.width = image.width;
+                canvas.height = image.height;
+                context.drawImage(image, 0, 0);
+                $('#canvasCrop').Jcrop(
+                    {
+                        onSelect: selectcanvas,
+                        onRelease: clearcanvas,
+                        boxWidth: crop_max_width,
+                        boxHeight: crop_max_height
+                    },
+                    function () {
+                        jcrop_api = this;
+                    }
+                );
+                clearcanvas();
+            }
+
+            function AplicarAtributosGrid() {
+                $.each($("[data-campo-id='@@" + idGrid + "@@'] [data-corpo-linha-container] [data-grid-elemento]"), function (index, elemento) {
+                    $(elemento).attr('required', 'required');
+                });
+            }
+
+            Ecm.registraEvento("click", ".grid [data-botao-adicionar]", function () {
+                AplicarAtributosGrid();
+            });
+
+            Ecm.registraEvento('click', '#btnCrop', function () {
+                event.preventDefault();
+                event.stopPropagation();
+                $('#btnReset').prop('disabled', false);
+                $('#btnCrop').prop('disabled', true);
+                if (!statusCrop) {
+                    applyCrop();
+                }
+            });
+
+            Ecm.registraEvento('click', '#btnSalvarCrop', function () {
+                Ecm.bloquearElemento('#div-UploadVisualizacao');
+
+                var canvas = document.getElementById('canvasCrop'),
+                    ctx = canvas.getContext('2d'),
+                    arquivo = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+                //Salva a imagem editada no objeto html.
+                var myImage = canvas.toDataURL('image/png'),
+                    imageElement = document.getElementById('imgZoomAnexo');
+
+                imageElement.src = myImage;
+
+                var base64 = myImage
+                    .replace('data:image/png;base64,', '')
+                    .replace('data:image/jpeg;base64,', '')
+                    .replace('data:application/pdf;base64,', '');
+
+                var url = $('#canvasCrop')[0].toDataURL(),
+                    urlSubstituirArquivo = `anexos/substituir/${parseInt(ultimoAnexoIdTemporario)}`,
+                    parametros = JSON.stringify(base64),
+                    config = {
+                        headers: {
+                            Authorization: 'Bearer ' + Ecm.token,
+                            'Content-Type': 'application/json; charset=utf-8'
+                        }
+                    };
+
+                Ecm.Api2.Put(
+                    urlSubstituirArquivo,
+                    parametros,
+                    function (data) {
+                        Ecm.desbloquearElemento('#div-UploadVisualizacao');
+                        console.log('Anexo alterado: ' + ultimoAnexoIdTemporario);
+                        $('#divMenuCrop').hide();
+                        $('#views').hide();
+                    },
+                    function (erro) {
+                        Ecm.desbloquearElemento('#div-UploadVisualizacao');
+                        Ecm.desbloquearElemento('#div-uploadArquivos');
+                        console.trace('[erro]:: ', erro);
+                    },
+                    config
+                );
+            });
+
+            Ecm.registraEvento('click', '#btnRotate', function () {
+                applyRotate(90);
+            });
+
+            Ecm.registraEvento('click', '#btnReset', function () {
+                statusCrop = false;
+                $('#btnReset').prop('disabled', true);
+
+                var canvasCrop = document.getElementById('canvasCrop');
+                var ctx = canvasCrop.getContext('2d');
+                var img = document.getElementById('imgZoomAnexo');
+
+                context = canvasCrop.getContext('2d');
+                image = new Image();
+                image.src = $(img).attr('src');
+
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(
+                    img,
+                    0,
+                    0,
+                    imageNaturalWidth,
+                    imageNaturalHeight,
+                    0,
+                    0,
+                    crop_max_width,
+                    crop_max_height
+                );
+
+                $('#canvasCrop').Jcrop(
+                    {
+                        onSelect: selectcanvas,
+                        onRelease: clearcanvas,
+                        boxWidth: crop_max_width,
+                        boxHeight: crop_max_height
+                    },
+                    function () {
+                        jcrop_api = this;
+                    }
+                );
+
+                canvas = $('#canvasCrop')[0];
+                clearcanvas();
+                restartJcrop();
+            });
+            //Crop
+
+            function verificarTituloEleitor($elemento) {
+                if ($elemento && $($elemento).val()) {
+                    var todosNumerosIguais = validarNumerosIguais($($elemento).val());
+                    var classeValidacao = $('#TituloEleitorInvalido');
+
+                    if (!todosNumerosIguais) {
+                        var tituloValido = validarTituloEleitor($($elemento).val());
+
+                        if (tituloValido) {
+                            $($elemento).closest('.form-group').removeClass('has-error').addClass('has-success');
+                            $($elemento)
+                                .siblings('.tooltips')
+                                .removeClass('fa-exclamation')
+                                .addClass('fa-check')
+                                .show();
+                            $(classeValidacao).hide();
+
+                            $('#uploadTituloEleitor').closest('.form-group').show();
+                            $('#uploadTituloEleitor').attr('required', 'required');
+
+                            $($elemento).removeAttr('required');
+                        } else {
+                            $($elemento).closest('.form-group').removeClass('has-success').addClass('has-error');
+                            $($elemento)
+                                .siblings('.tooltips')
+                                .removeClass('fa-check')
+                                .addClass('fa-exclamation')
+                                .show();
+
+                            $(classeValidacao).show();
+                            $(classeValidacao).text('Título de Eleitor inválido');
+
+                            $('#uploadTituloEleitor').closest('.form-group').hide();
+                            $('#uploadTituloEleitor').removeAttr('required');
+                            $($elemento).attr('required', 'required');
+                        }
+                    } else {
+                        $($elemento).closest('.form-group').removeClass('has-success').addClass('has-error');
+                        $($elemento)
+                            .siblings('.tooltips')
+                            .removeClass('fa-check')
+                            .addClass('fa-exclamation')
+                            .show();
+                        $(classeValidacao).show();
+                        $(classeValidacao).text('Título de Eleitor inválido');
+                        $($elemento).attr('required', 'required');
+                    }
+                    habilitarProximaEtapa();
+                }
+            }
+
+            function verificarAnexoInserido(tipo_Anexo_Id) {
+                var retornoNomeTipoAnexo;
+
+                switch (tipo_Anexo_Id) {
+                    case 1:
+                        retornoNomeTipoAnexo = 'Anexo Padrão';
+                        break;
+                    case 2:
+                        retornoNomeTipoAnexo = 'CPF';
+                        break;
+                    case 3:
+                        retornoNomeTipoAnexo = 'Documento de identificação';
+                        break;
+                    case 4:
+                        retornoNomeTipoAnexo = 'Comprovante de residência';
+                        break;
+                    case 5:
+                        retornoNomeTipoAnexo = 'Foto';
+                        break;
+                    case 6:
+                        retornoNomeTipoAnexo = 'PIS/PASEP/NIT/NIS';
+                        break;
+                    case 7:
+                        retornoNomeTipoAnexo = 'Carteira de Trabalho CTPS (Profissional Industrial)';
+                        break;
+                    case 8:
+                        retornoNomeTipoAnexo = 'Passaporte (Profissional Estrangeiro)';
+                        break;
+                    case 9:
+                        retornoNomeTipoAnexo = 'Autorização de Trabalho (Profissional Estrangeiro)';
+                        break;
+                    case 24:
+                        retornoNomeTipoAnexo = 'Comprovante de Filiação a Entidade';
+                        break;
+                    case 25:
+                        retornoNomeTipoAnexo = 'Autorização dos Pais ou Responsável';
+                        break;
+                    case 26:
+                        retornoNomeTipoAnexo = 'Autorização Judicial a Pescador Aprendiz Embarcado';
+                        break;
+                    case 27:
+                        retornoNomeTipoAnexo = 'Anexo Informações Adicionais';
+                        break;
+                    case 36:
+                        retornoNomeTipoAnexo = 'Protocolo';
+                        break;
+                    case 37:
+                        retornoNomeTipoAnexo = 'Título de Eleitor';
+                        break;
+                    case 56:
+                        retornoNomeTipoAnexo = 'Declaração de responsabilidade';
+                        break;
+                }
+                return retornoNomeTipoAnexo;
+            }
+
+            function retornarAnexo(anexoId, callback) {
+                var urlRetornarAnexo = `anexo/${anexoId}/path`;
+
+                Ecm.Api2.Get(urlRetornarAnexo)
+                    .done(function (retorno) {
+                        if (retorno) {
+                            var xhr = new XMLHttpRequest();
+                            xhr.open('GET', retorno.urlFile, true);
+                            xhr.responseType = 'blob';
+                            xhr.onload = function (e) {
+                                var resp = this;
+                                if (this.status == 200) {
+                                    var urlCreator = window.URL || window.webkitURL;
+                                    var imageUrl = urlCreator.createObjectURL(this.response);
+
+                                    if (typeof callback === 'function') callback({ imageUrl: imageUrl }, resp);
+                                }
+                            };
+                            xhr.send();
+                        }
+                    })
+                    .fail(function (erro) {
+                        if (typeof callbackErro === 'function') {
+                            console.log('Ocorreu um erro ao carregar o anexo.');
+                            Ecm.desbloquearElemento('#div-UploadVisualizacao');
+                            Ecm.desbloquearElemento('#div-uploadArquivos');
+
+                            callbackErro(erro);
+                        }
+                    });
+            }
+
+            function visualizarAnexo(anexoId) {
+                setTimeout(function () {
+                    //Mostrar anexos padrões pois é um pdf convertido para imagem
+
+                    ultimoAnexoIdTemporario = anexoId;
+
+                    var $anexo = $('.listagemAnexos .arquivo').filter(function () {
+                        return this.id == 'anexo-' + anexoId;
+                    });
+
+                    $('#divMenuCrop').show();
+                    $('#btnCrop').prop('disabled', true);
+                    $('#btnReset').prop('disabled', true);
+                    $('#views').show();
+
+                    retornarAnexo(ultimoAnexoIdTemporario, function (retorno) {
+                        var $imgZoomAnexo = $('#imgZoomAnexo');
+                        $imgZoomAnexo.attr('src', retorno.imageUrl);
+
+                        loadImage();
+
+                        if (ultimoTipoAnexoIdTemporario != '') {
+                            ultimoTipoAnexoIdTemporario = parseInt(ultimoTipoAnexoIdTemporario);
+                        }
+
+                        $('#listGroupDocumentos').show();
+                        var elementoLink =
+                            "<li class='list-group-item row'><a href='#' class='btn btn-link thumb' anexoId='" +
+                            ultimoAnexoIdTemporario +
+                            "' tipoAnexoId='" +
+                            ultimoTipoAnexoIdTemporario +
+                            "' >" +
+                            verificarAnexoInserido(ultimoTipoAnexoIdTemporario) +
+                            "</a><button anexoId='" +
+                            ultimoAnexoIdTemporario +
+                            "' tipoAnexoId='" +
+                            ultimoTipoAnexoIdTemporario +
+                            "' class='btn btn-danger btn-remover btn-xs'>Remover</button></li>";
+                        $('#listGroupDocumentos').append(elementoLink);
+
+                        var $inputUploadAnexo = $('#div-uploadArquivos .upload-file').filter(function () {
+                            return $(this).attr('data-tipo-anexo-id') == ultimoTipoAnexoIdTemporario;
+                        });
+
+                        $inputUploadAnexo.hide();
+                        $inputUploadAnexo.siblings('.help-block').hide();
+                        $inputUploadAnexo.siblings('.fa-check').show();
+                        $inputUploadAnexo.closest('.form-group').removeClass('has-error');
+                        // aqui
+                    });
+                }, 1000);
+            }
+
+            function excluirAnexo(anexoId, callback) {
+                var urlExcluirAnexo = `anexos/${anexoId}`;
+
+                Ecm.Api2.Delete(urlExcluirAnexo)
+                    .done(function () {
+                        var documentoId = DocumentoVisualizacaoForm.documentoId(),
+                            versaoId = DocumentoVisualizacaoForm.versaoId();
+
+                        DocumentoVisualizacaoForm.carregarAnexosWs(documentoId, versaoId);
+
+                        console.log('Anexo excluido: ' + anexoId);
+
+                        if (typeof callback === 'function') callback(anexoId);
+                    })
+                    .fail(function (erro) {
+                        console.log(erro);
+                    });
+            }
+
+            function validaListasCheckRadio(seletor, validado) {
+                if (validado) {
+                    $(seletor).parent('div').prev().removeClass('listaInvalida').addClass('listaValida');
+                } else {
+                    $(seletor).parent('div').prev().removeClass('listaValida').addClass('listaInvalida');
+                }
+            }
+
+            function validarTipoRegistro() {
+                if ($('#ddlTipoRegistro').val() == 'REGISTRO-COM-PROTOCOLO') {
+                    //$("#divProtocolo").show('fast');
+                    $('#txtDataProtocolo').closest('.form-group').show('fast');
+                    $('#txtDataProtocolo').attr('required', 'required');
+
+                    $('#txtProtocoloPescador').closest('.form-group').show('fast');
+                } else {
+                    //$("#divProtocolo").hide('fast');
+                    $('#txtDataProtocolo').closest('.form-group').hide('fast');
+                    $('#txtDataProtocolo').attr('required', false);
+
+                    $('#txtProtocoloPescador').closest('.form-group').hide('fast');
+                    $('#txtProtocoloPescador').attr('required', false);
+                }
+            }
+
+            function validarNacionalidade() {
+                if ($('#ddlNacionalidade option:selected').text() == 'Estrangeira') {
+                    $('#divValidadeVisto').show('fast');
+                    $('#divValidadeVisto input').attr('required', 'required');
+                } else {
+                    $('#divValidadeVisto').hide('fast');
+                    $('#divValidadeVisto input').attr('required', false);
+                }
+            }
+
+            function validarFormaAtuacao() {
+                if ($('#ddlFormaAtuacao option:selected').text() == 'Embarcado') {
+                    $('#divRgp').show('fast');
+                    $('#divRgp input').attr('required', 'required');
+                    $('#divDadosEmbarcacao').show('fast');
+                    $('#divDadosEmbarcacao input').attr('required', 'required');
+                    $('#txtNumeroCIR').removeAttr('required'); //Este campo é opcional
+                    if ($('#ddlCategoria option:selected').text() == 'Artesanal') {
+                        $('#txtNumeroRGP').removeAttr('required');
+                    }
+                    if (menorAprendiz) {
+                        $('#divAprendizAutorizacaoJudicial').show();
+                        $('#divAprendizAutorizacaoJudicial').find('input').attr('required', 'required');
+                    }
+                } else {
+                    $('#divRgp').hide('fast');
+                    $('#divRgp input').removeAttr('required');
+                    $('#divRgp input').val('');
+                    $('#divDadosEmbarcacao').hide('fast');
+                    $('#divDadosEmbarcacao input').removeAttr('required');
+                    $('#divDadosEmbarcacao input').val('');
+                    $('#divAprendizAutorizacaoJudicial').hide();
+                    $('#divAprendizAutorizacaoJudicial').find('input').removeAttr('required');
+                }
+            }
+
+            function validarEntidade(elemento) {
+                var entidade;
+
+                if (elemento) {
+                    entidade = $(elemento).val();
+                }
+
+                if (entidade) {
+                    if (entidade == 'Sim') {
+                        $('#divEntidade').show('fast');
+                        $('#uploadComprovanteFiliacao').closest('.form-group').show();
+                        $('#uploadComprovanteFiliacao').attr('required', true);
+
+                        if (!$('#txtCnpjEntidade').val()) {
+                            $('#txtCnpjEntidade').attr('required', 'required').attr('disabled', false);
+                            $('#txtNomeEntidade').attr('required', 'required');
+                            $('#ddlUfEntidade').attr('required', 'required');
+                        }
+                    } else {
+                        $('#divEntidade').hide('fast');
+                        $('#uploadComprovanteFiliacao').closest('.form-group').hide();
+                        $('#uploadComprovanteFiliacao').attr('required', false);
+                        $('#txtCnpjEntidade').removeAttr('required').attr('disabled', 'disabled');
+                        $('#txtNomeEntidade').removeAttr('required');
+                        $('#ddlUfEntidade').removeAttr('required');
+                        $('#txtCnpjEntidade').val('');
+                        $('#txtNomeEntidade').val('');
+                        $('#ddlUfEntidade').val(0).trigger('change');
+                    }
+                }
+            }
+
+            function validarRenda() {
+                if ($('#ddlPossuiRenda').val() == 'Sim') {
+                    $('#divRenda').show('fast');
+                    $('#ddlOrigemRenda').attr('required', 'required');
+                    $('#txtOrigemRenda').closest('div').hide();
+                } else {
+                    $('#divRenda').hide('fast');
+                    $('#ddlOrigemRenda').attr('required', false);
+                    $("#ddlOrigemRenda option[value='NAO-SE-APLICA']").show();
+                    $("#ddlOrigemRenda option[value='NAO-SE-APLICA']").attr('selected', true);
+                }
+            }
+
+            function validarOrigem() {
+                if ($('#ddlOrigemRenda').val() == 'OUTROS') {
+                    $('#txtOrigemRenda').closest('div').show('fast');
+                    $('#txtOrigemRenda').attr('required', 'required');
+                } else {
+                    $('#txtOrigemRenda').closest('div').hide('fast');
+                    $('#txtOrigemRenda').attr('required', false);
+                }
+            }
+
+            function validarOutraAtividade() {
+                if ($('#ddlPossuiOutraAtividade').val() == 'Sim') {
+                    $('#ddlTempoDeProfissao').closest('div').show('fast');
+                    $('#txtQualAtividade').closest('div').show('fast');
+                    $('#ddlTempoDeProfissao').attr('required', 'required');
+                    $('#txtQualAtividade').attr('required', 'required');
+                } else {
+                    $('#txtQualAtividade').closest('div').hide('fast');
+                    $('#ddlTempoDeProfissao').closest('div').hide('fast');
+                    $('#txtQualAtividade').attr('required', false);
+                    $('#ddlTempoDeProfissao').attr('required', false);
+                }
+            }
+
+            function validarOutroAuxilio() {
+                if ($('#ddlRecebeOutroAuxilio').val() == 'Sim') {
+                    $('#txtQual').closest('div').show('fast');
+                    $('#txtQual').attr('required', 'required');
+                } else {
+                    $('#txtQual').closest('div').hide('fast');
+                    $('#txtQual').attr('required', false);
+                }
+            }
+
+            function validarDataNascimento() {
+                var idade;
+                var dataNascimento = $('#txtDataNasc').val();
+                var dataConvertida = moment(dataNascimento, 'DDMMYYYY');
+                let maiorDe14 = true;
+
+                if (dataConvertida.isValid()) {
+                    idade = moment().diff(dataConvertida, 'years');
+
+                    if (idade < 14) {
+                        maiorDe14 = false;
+                    }
+
+                    if (idade >= 14 && idade < 18) {
+                        $('#ddlCategoria').val('APRENDIZ');
+                        $('#ddlCategoria').prop('disabled', true);
+                        $("#ddlCategoria option[value='APRENDIZ']").show();
+                        $('#divAprendizAutorizacaoResponsavel').show();
+                        $('#divAprendizAutorizacaoResponsavel').find('input').attr('required', 'required');
+                        menorAprendiz = true;
+                    } else {
+                        if ($('#ddlCategoria').val() == 'APRENDIZ') {
+                            $('#ddlCategoria').val('');
+                        }
+                        $('#ddlCategoria').prop('disabled', false);
+                        $("#ddlCategoria option[value='APRENDIZ']").hide();
+                        $('#divAprendizAutorizacaoResponsavel').hide();
+                        $('#divAprendizAutorizacaoResponsavel').find('input').removeAttr('required');
+                        $('#divAprendizAutorizacaoJudicial').hide();
+                        $('#divAprendizAutorizacaoJudicial').find('input').removeAttr('required');
+                        menorAprendiz = false;
+                    }
+                }
+                return maiorDe14;
+            }
+
+            function pesquisarEmbarcacao() {
+                Ecm.bloquearElemento('#divDadosEmbarcacao');
+
+                var tipoDocumentalId = 12,
+                    totalDocumentosPorPagina = 10,
+                    retornarAnexos = false,
+                    config = {
+                        headers: {
+                            Authorization: 'Bearer ' + Ecm.token,
+                            'Content-Type': 'application/json'
+                        }
+                    };
+
+                var parametros = JSON.stringify([
+                    {
+                        Id: 27,
+                        TipoDocumentalId: 12,
+                        Nome: 'NOME-EMBARCACAO',
+                        ColunaTipo: 'C',
+                        Valor: $('#txtNumeroRGP').val(),
+                        Comparacao: 3
+                    }
+                ]);
+
+                var urlPesquisarDocumento = `documentos/pesquisar/${tipoDocumentalId}/quantidade/${totalDocumentosPorPagina}/retornarAnexos/${retornarAnexos}`;
+
+                Ecm.Api2.Post(
+                    urlPesquisarDocumento,
+                    parametros,
+                    function (retorno) {
+                        Ecm.desbloquearElemento('#divDadosEmbarcacao');
+
+                        if (retorno !== false && retorno !== undefined && retorno.length > 0) {
+                            $('#txtNomeEmbarcacao').val(retorno[0].camposValor[13].valor);
+                            $('#txtNumeroTie').val(retorno[0].camposValor[14].valor);
+                            $('#txtNumeroRGP').removeAttr('required');
+                            $('#txtNomeEmbarcacao').removeAttr('required');
+                            $('#txtNumeroTie').removeAttr('required');
+                            $('#divDadosEmbarcacao').show('fast');
+                            existeEmbarcacao = true;
+                        } else {
+                            $('#txtNomeEmbarcacao').val('');
+                            $('#txtNumeroTie').val('');
+                            $('#txtNomeEmbarcacao').attr('required', 'required');
+                            $('#txtNumeroTie').attr('required', 'required');
+                            existeEmbarcacao = false;
+                            Ecm.alertErro('Embarcação não encontrada ou não possui RAEP ativa.');
+                        }
+                    },
+                    function (erro) {
+                        console.log(erro);
+                    },
+                    config
+                );
+            }
+
+            // Funções para ordenar selects por id;
+            function ordenaSelect(a, b) {
+                return ($(a).children().context.dataset.listaItemId > $(b).children().context.dataset.listaItemId) ? 1 : -1;
+            };
+
+            function ordenarSelect(id) {
+                $(`${id} option`).sort(ordenaSelect).appendTo(id);
+            }
+
+            //Funções de exibição das abas
+            Ecm.registraEvento('click', '.button-previous', function () {
+                exibeAba(abaAtual - 1);
+            });
+
+            Ecm.registraEvento('click', '.button-next', function () {
+                if (abaAtual == 2) {
+                    habilitarProximaEtapaRadioCheckbox(abaAtual);
+                }
+                if (abaAtual == 3) {
+                    habilitarProximaEtapaRadioCheckbox(abaAtual);
+                }
+
+                if (habilitarProximaEtapa()) {
+                    exibeAba(abaAtual + 1);
+                }
+            });
+
+            function exibeAba(aba) {
+                switch (aba) {
+                    case 1:
+                        exibeAba1();
+                        break;
+                    case 2:
+                        exibeAba2();
+                        break;
+                    case 3:
+                        exibeAba3();
+                        break;
+                    case 4:
+                        exibeAba4();
+                        break;
+                    case 5:
+                        exibeAba5();
+                        break;
+                }
+            }
+
+            function exibeAba1() {
+                $('#step1').addClass('active').removeClass('done');
+                $('#step2').removeClass('active done');
+                $('#step3').removeClass('active done');
+                $('#step4').removeClass('active done');
+                $('#step5').removeClass('active done');
+
+                $('#tab1').show();
+
+                $('#tab2').hide();
+                $('#tab3').hide();
+                $('#tab4').hide();
+                $('#tab5').hide();
+
+                $('#tab2').removeClass('active');
+
+                $('#tab1').addClass('active');
+                $('.button-previous').attr('disabled', 'disabled');
+                $('.button-next').show();
+                $('.button-next').removeAttr('disabled').text('Avançar');
+                abaAtual = 1;
+            }
+
+            function exibeAba2() {
+                $('#step1').removeClass('active').addClass('done');
+                $('#step3').removeClass('active done');
+                $('#step4').removeClass('active done');
+                $('#step5').removeClass('active done');
+
+                $('#tab2').show();
+
+                $('#tab1').hide();
+                $('#tab3').hide();
+                $('#tab4').hide();
+                $('#tab5').hide();
+
+                $('#tab1').removeClass('active');
+
+                $('#step2').removeClass('done').addClass('active');
+                $('.button-next').show();
+                $('.button-next').removeAttr('disabled').text('Avançar');
+                $('.button-previous').removeAttr('disabled');
+
+                var entidadeCheckada = _.filter($('[name="opcao_34"]'), { checked: true });
+
+                validarEntidade($(entidadeCheckada));
+                abaAtual = 2;
+            }
+
+            function exibeAba3() {
+                qntVezesQueEntrouNaAba3++;
+                $('#step2').removeClass('active').addClass('done');
+                $('#step4').removeClass('active done');
+                $('#step5').removeClass('active done');
+
+                $('#tab3').show();
+
+                $('#tab1').hide();
+                $('#tab2').hide();
+                $('#tab4').hide();
+                $('#tab5').hide();
+
+                $('#tab1').removeClass('active');
+
+                $('#step3').removeClass('done').addClass('active');
+                $('.button-next').show();
+                $('.button-next').removeAttr('disabled').text('Avançar');
+                $('.button-previous').removeAttr('disabled');
+
+                var linhasGrid = DocumentoVisualizacaoForm.retornaValorDosGrids()
+                if (linhasGrid[0].Linhas.length == 0) {
+                    $('.grid [data-botao-adicionar]').trigger('click')
+                    $('.red-sunglo').remove();
+                }
+                AplicarAtributosGrid();
+
+                // Ordenando selects a partir do id e não por ordem alfabética.
+
+                if (qntVezesQueEntrouNaAba3 === 1) {
+                    ordenarSelect('#ddlRendaFamiliar');
+                    ordenarSelect('#ddlRendaPescador');
+                    ordenarSelect('#ddlTempoNoMunicipio');
+
+                    $('#ddlRendaFamiliar').val('');
+                    $('#ddlRendaPescador').val('');
+                    $('#ddlTempoNoMunicipio').val('');
+                }
+
+                abaAtual = 3;
+            }
+
+            function exibeAba4() {
+                $('#step3').addClass('done').removeClass('active');
+                $('#step4').addClass('active').removeClass('done');
+                $('#step5').removeClass('active done');
+
+                $('#tab4').show();
+
+                $('#tab1').hide();
+                $('#tab2').hide();
+                $('#tab3').hide();
+                $('#tab5').hide();
+
+                $('.button-next').show();
+                $('.button-next').attr('disabled', false).text('Avançar');
+                $('.button-previous').attr('disabled', false);
+
+                abaAtual = 4;
+                $('#tab' + abaAtual + ' input:visible').attr('required', true); //Seta todos os anexos como obrigatórios.
+                $('#tab' + abaAtual + ' input:visible')
+                    .closest('.form-group')
+                    .addClass('has-error');
+
+                $('#menu-documentacao input:invalid')
+                    .filter('[required]:visible[data-tipo-anexo-id="27"]')
+                    .attr('required', false);
+
+                if ($('#ddlCategoria option:selected').text() == 'Industrial') {
+                    $('#menu-documentacao input:invalid')
+                        .filter('[required]:visible[data-tipo-anexo-id="3"]')
+                        .attr('required', false);
+                }
+
+                $('#tab' + abaAtual + ' input:required:invalid').each(function (i, elm) {
+                    if (
+                        $('#menu-documentacao input:invalid').filter('[required]:visible[data-tipo-anexo-id!="27"]')
+                    ) {
+                        if ($('#ddlCategoria option:selected').text() == 'Industrial') {
+                            $('#menu-documentacao input:invalid')
+                                .filter('[required]:visible[data-tipo-anexo-id="3"]')
+                                .closest('.form-group')
+                                .css('color', 'black');
+                            $('#menu-documentacao input:invalid')
+                                .filter('[required]:visible[data-tipo-anexo-id="3"]')
+                                .css('border', 'none');
+                        }
+                    }
+                });
+            }
+
+            function exibeAba5() {
+                $('#step1').addClass('done').removeClass('active');
+                $('#step2').addClass('done').removeClass('active');
+                $('#step3').addClass('done').removeClass('active');
+                $('#step4').addClass('done').removeClass('active');
+                $('#step5').removeClass('done').addClass('active');
+
+                $('#tab5').show();
+
+                $('#tab1').hide();
+                $('#tab2').hide();
+                $('#tab3').hide();
+                $('#tab4').hide();
+
+                $('.button-next').hide();
+                $('.button-previous').attr('disabled', false);
+                $('#txtDataDeclaracao').val(moment().format('DD-MM-YYYY'));
+
+                var $declaracao = $('#cbxDeclaracao');
+                if ($declaracao.is(':checked')) {
+                    $('#mensagemAlerta').hide();
+                    validarCamposObrigatorios();
+                }
+                if (!$declaracao.is(':checked')) {
+                    $('#mensagemAlerta').text('');
+                    $('#mensagemAlerta').text('A confirmação de leitura das informações adicionais deve ser feita antes do envio da solicitação.');
+                    $('#mensagemAlerta').show();
+                }
+
+                abaAtual = 5;
+            }
+
+            function consultarEntidade() {
+                if (Ecm.validaCNPJ($('#txtCnpjEntidade').val())) {
+                    Ecm.bloquearElemento($('#txtNomeEntidade').closest('div'));
+                    Ecm.bloquearElemento('#div-Cnpj-Entidade');
+
+                    var tipoDocumentalId = 19,
+                        totalDocumentosPorPagina = 10,
+                        retornarAnexos = false,
+                        config = {
+                            headers: {
+                                Authorization: 'Bearer ' + Ecm.token,
+                                'Content-Type': 'application/json'
+                            }
+                        };
+
+                    var parametros = JSON.stringify([
+                        {
+                            Id: 1,
+                            TipoDocumentalId: 19,
+                            Nome: 'CPF/CNPJ',
+                            ColunaTipo: 'C',
+                            Valor: $('#txtCnpjEntidade').val(),
+                            Comparacao: 3
+                        }
+                    ]);
+
+                    var urlPesquisarDocumento = `documentos/pesquisar/${tipoDocumentalId}/quantidade/${totalDocumentosPorPagina}/retornarAnexos/${retornarAnexos}`;
+
+                    Ecm.Api2.Post(
+                        urlPesquisarDocumento,
+                        parametros,
+                        function (retorno) {
+                            Ecm.desbloquearElemento($('#txtNomeEntidade').closest('div'));
+                            Ecm.desbloquearElemento('#div-Cnpj-Entidade');
+
+                            if (retorno !== false && retorno !== undefined && retorno.length > 0) {
+                                $('#txtCnpjEntidade').removeAttr('required');
+                                $('#txtNomeEntidade').val(retorno[0].camposValor[1].valor);
+                                $('#txtNomeEntidade').attr('title', retorno[0].camposValor[1].valor);
+                                $('#ddlUfEntidade').val(retornaUf(retorno[0].camposValor[10].valor));
+                                $('#txtNomeEntidade').removeAttr('disabled');
+                                $('#txtNomeEntidade').removeAttr('required');
+                                $('#ddlUfEntidade').removeAttr('disabled');
+                                $('#ddlUfEntidade').removeAttr('required');
+                                $('#txtNomeEntidade').closest('.form-group').show('fast');
+                                $('#ddlUfEntidade').closest('.form-group').show('fast');
+
+                                $('#divCnpjEntidade input,#divCnpjEntidade select').attr('required', true); //Seta todos inputs como obrigatório
+                                $('#divEntidadeFiliada input, #divEntidadeFiliada select').attr('required', true); //Seta todos inputs como obrigatório
+
+                                existeEntidade = true;
+                            } else {
+                                $('#txtNomeEntidade').val('');
+                                $('#txtNomeEntidade').attr('title', '');
+                                $('#ddlUfEntidade').val('');
+                                $('#txtNomeEntidade').removeAttr('disabled');
+                                $('#ddlUfEntidade').removeAttr('disabled');
+
+                                $('#divCnpjEntidade input, #divCnpjEntidade select').attr('required', false); //Seta todos inputs como obrigatório
+                                $('#divEntidadeFiliada input, #divEntidadeFiliada select').attr('required', false); //Seta todos inputs como obrigatório
+                                toastr.error('Entidade não cadastrada no sistema');
+                                existeEntidade = false;
+                            }
+                        },
+                        function (erro) {
+                            toastr.error(erro);
+                        },
+                        config
+                    );
+                } else {
+                    var cnpj = $('#txtCnpjEntidade').val();
+                    cnpj = cnpj.replace(/[^0-9]+/g, '');
+
+                    if (cnpj.length == 14) toastr.error('CNPJ invalido!');
+
+                    $('#txtNomeEntidade').val('');
+                    $('#txtNomeEntidade').attr('title', '');
+                    $('#ddlUfEntidade').val('');
+                }
+            }
+
+            function validarProtocoloAnterior() {
+                if ($('#ddlTipoRegistro').val() == 'REGISTRO-COM-PROTOCOLO') {
+                    $('#divProtocoloRegistroAnterior').show();
+                    $('#uploadProtocoloRegistroAnterior').attr('required', 'required');
+                } else {
+                    $('#divProtocoloRegistroAnterior').hide();
+                    $('#uploadProtocoloRegistroAnterior').attr('required', false);
+                }
+            }
+
+            var retornaUf = function (nomeEstado) {
+                var uf = '';
+                switch (nomeEstado) {
+                    case 'Acre':
+                        uf = 'AC';
+                        break;
+                    case 'Alagoas':
+                        uf = 'AL';
+                        break;
+                    case 'Amapá':
+                        uf = 'AP';
+                        break;
+                    case 'Amazonas':
+                        uf = 'AM';
+                        break;
+                    case 'Bahia':
+                        uf = 'BA';
+                        break;
+                    case 'Ceará':
+                        uf = 'CE';
+                        break;
+                    case 'Distrito Federal':
+                        uf = 'DF';
+                        break;
+                    case 'Espírito Santo':
+                        uf = 'ES';
+                        break;
+                    case 'Exterior':
+                        uf = 'EX';
+                        break;
+                    case 'Goiás':
+                        uf = 'GO';
+                        break;
+                    case 'Maranhão':
+                        uf = 'MA';
+                        break;
+                    case 'Mato Grosso':
+                        uf = 'MT';
+                        break;
+                    case 'Mato Grosso do Sul':
+                        uf = 'MS';
+                        break;
+                    case 'Minas Gerais':
+                        uf = 'MG';
+                        break;
+                    case 'Pará':
+                        uf = 'PA';
+                        break;
+                    case 'Paraíba':
+                        uf = 'PB';
+                        break;
+                    case 'Paraná':
+                        uf = 'PR';
+                        break;
+                    case 'Pernambuco':
+                        uf = 'PE';
+                        break;
+                    case 'Piauí':
+                        uf = 'PI';
+                        break;
+                    case 'Rio de Janeiro':
+                        uf = 'RJ';
+                        break;
+                    case 'Rio Grande do Norte':
+                        uf = 'RN';
+                        break;
+                    case 'Rio Grande do Sul':
+                        uf = 'RS';
+                        break;
+                    case 'Rondônia':
+                        uf = 'RO';
+                        break;
+                    case 'Roraima':
+                        uf = 'RR';
+                        break;
+                    case 'Santa Catarina':
+                        uf = 'SC';
+                        break;
+                    case 'São Paulo':
+                        uf = 'SP';
+                        break;
+                    case 'Sergipe':
+                        uf = 'SE';
+                        break;
+                    case 'Tocantins':
+                        uf = 'TO';
+                        break;
+                }
+                return uf;
+            };
+
+            function validarCampoCpf() {
+                var valido = false;
+
+                if (Ecm.validaCPF($('#txtCpf').val().split('.').join('').replace('-', '')) == true) {
+                    $('#txtCpf').closest('.form-group').removeClass('has-error').addClass('has-success');
+                    $('#txtCpf').siblings('.tooltips').removeClass('fa-exclamation').addClass('fa-check').show();
+                    $('#txtCpf').removeAttr('required');
+                    $('#CPFInvalido').hide();
+
+                    valido = true;
+                } else {
+                    $('#txtCpf').closest('.form-group').removeClass('has-success').addClass('has-error');
+                    $('#txtCpf').siblings('.tooltips').removeClass('fa-check').addClass('fa-exclamation').show();
+
+                    $('#CPFInvalido').show();
+                    $('#CPFInvalido').text('CPF inválido');
+                    $('#txtCpf').attr('required', 'required');
+
+                    valido = false;
+                }
+                return valido;
+            }
+
+            function atualizarAnexosAba() {
+                $('#listGroupDocumentos').html('');
+                $.each(listaAnexos, function (i, val) {
+                    var anexoId = val.id,
+                        anexoTipoId = val.anexoTipoId;
+
+                    $('#listGroupDocumentos').show();
+                    var elementoLink =
+                        "<li class='list-group-item row'><a href='#' class='btn btn-link thumb' anexoId='" +
+                        anexoId +
+                        "' tipoAnexoId='" +
+                        anexoTipoId +
+                        "' >" +
+                        verificarAnexoInserido(anexoTipoId) +
+                        "</a><button anexoId='" +
+                        anexoId +
+                        "' tipoAnexoId='" +
+                        anexoTipoId +
+                        "' class='btn btn-danger btn-remover btn-xs'>Remover</button></li>";
+                    $('#listGroupDocumentos').append(elementoLink);
+
+                    var $inputUploadAnexo = $('#div-uploadArquivos [data-tipo-anexo-id=' + anexoTipoId + ']');
+                    $inputUploadAnexo.hide();
+                    $inputUploadAnexo.siblings('p').hide();
+                    $inputUploadAnexo.siblings('.fa-check').show();
+                });
+            }
+
+            function validarCamposObrigatorios() {
+                var mensagem = '';
+                //Check list e radio desabilitados temporariamente.
+                var camposPreenchidos = true;
+                $('#body-rgp :not([type=checkbox]):not([type=radio]),#body-rgp select:visible')
+                    .filter('[required]')
+                    .each(function () {
+                        if ($(this).is('input:required:invalid,select:required:invalid')) {
+                            camposPreenchidos = false;
+                            mensagem += $(this).attr('data-nome') + ', é obrigatório! ';
+                            toastr.error($(this).attr('data-nome') + ', é obrigatório! ');
+                            return;
+                        }
+                    });
+
+                //Tratando validação para as listas de radio/check pois o padrão do sistema não suporta a validação dos campos em abas.
+                campo27 = false;
+                campo28 = false;
+                rgpEmbarcacao = false;
+                cnpjEntidade = false;
+
+                $('[data-campo-id="@@' + 27 + '@@"]')
+                    .find('input')
+                    .each(function () {
+                        if ($(this).prop('checked')) {
+                            campo27 = true;
+                        }
+                    });
+                validaListasCheckRadio('[data-campo-id="@@' + 27 + '@@"]', campo27);
+
+                $('[data-campo-id="@@' + 28 + '@@"]')
+                    .find('input')
+                    .each(function () {
+                        if ($(this).prop('checked')) {
+                            campo28 = true;
+                        }
+                    });
+                validaListasCheckRadio('[data-campo-id="@@' + 28 + '@@"]', campo28);
+
+                if ($('#ddlFormaAtuacao').val() == 'Embarcado') {
+                    if (
+                        $('#txtNumeroRGP').val() != '' &&
+                        $('#txtNomeEmbarcacao').val() != '' &&
+                        $('#txtAb').val != ''
+                    ) {
+                        rgpEmbarcacao = true;
+                    }
+                } else {
+                    rgpEmbarcacao = true;
+                }
+                if ($('#ddlEntidade option:selected').text() == 'Sim') {
+                    if (
+                        Ecm.validaCNPJ($('#txtCnpjEntidade').val()) &&
+                        $('#ddlUfEntidade').val() != '' &&
+                        $('#txtNomeEntidade').val != ''
+                    ) {
+                        cnpjEntidade = true;
+                    }
+                } else {
+                    cnpjEntidade = true;
+                }
+
+                if (campo27 == false || campo28 == false || cnpjEntidade == false || rgpEmbarcacao == false) {
+                    camposPreenchidos = false;
+                }
+
+                if (camposPreenchidos == true) {
+                    $("a[id^='transicao-id-']").prop('disabled', false);
+                    $("a[id^='transicao-id-']").removeAttr('readonly').removeAttr('disabled');
+                    $("a[id^='transicao-id-']").attr('title', '');
+                    $('.button-next').attr('title', 'Preencha todos os campos obrigatórios');
+                } else if (abaAtual == 4) {
+                    $("a[id^='transicao-id-']").prop('disabled', true);
+                    $("a[id^='transicao-id-']").attr('readonly', 'readonly').attr('disabled', 'disabled');
+                    $("a[id^='transicao-id-']").attr('title', 'Existem pendências');
+                    $('.button-next').attr('title', 'Preencha todos os campos obrigatórios');
+                    console.log(mensagem);
+                }
+            }
+
+            function retornarDeclaracao() {
+                $('#lbtDeclaracao').find('i').removeClass('fa-download').addClass('fa-spinner fa-spin');
+                $('#lbtDeclaracao').attr('disabled', true);
+
+                var parametros = JSON.stringify({
+                    chave: 'DECLARACAO',
+                    docVersaoId: $('.modal-body').data('versao-id'),
+                    listaCampos: DocumentoVisualizacaoForm.retornarCamposComValoresTela(),
+                    tipoAnexoId: 36,
+                    pdf: true,
+                    excluirArquivoOrigem: false
+                });
+                Ecm.ajax(
+                    '../WS/Ecm.asmx/AnexarTemplateCamposTela',
+                    parametros,
+                    function (data) {
+                        $('#lbtDeclaracao').find('i').removeClass('fa-spinner fa-spin').addClass('fa-download');
+                        $('#lbtDeclaracao').attr('disabled', false);
+
+                        console.log(data);
+                        data = JSON.parse(data);
+                        $('a#linkProtocolo').attr({
+                            href: data.DiretorioArquivo
+                        });
+
+                        $('a#linkProtocolo')[0].click();
+                    },
+                    function () { }
+                );
+            }
+
+            //Fim Functions
+
+            var ImpressaoCarteirinha = (function () {
+                var $button = null;
+                var $carteirinha = null;
+
+                function init() {
+                    configurarModal(function () {
+                        registerHandlers();
+                        var documentoForm = DocumentoVisualizacaoForm.retornaDocumento();
+
+                        if (DocumentoVisualizacaoForm.estouEditando() && !documentoForm.rascunho)
+                            renderButtonImpressao();
+                    });
+                }
+
+                function configurarModal(callback) {
+                    $carteirinha = $(window.document).find('#js-modalCarteirinhaModel').clone();
+
+                    $(window.document).find('#js-modalCarteirinhaModel').remove();
+                    $(window.document).find('#js-modalCarteirinha').remove();
+
+                    $carteirinha.attr('id', 'js-modalCarteirinha');
+                    $(window.document).find('body').append($carteirinha);
+
+                    setTimeout(callback, 500);
+                }
+
+                function registerHandlers() {
+                    $carteirinha.on('shown.bs.modal', onShownModal);
+                    $carteirinha.on('hidden.bs.modal', onHiddenModal);
+                }
+
+                function renderButtonImpressao() {
+                    var $anchor = $('<a/>');
+                    $anchor.addClass('btn btn-sm blue js-exibirModalCarteirinha');
+                    $anchor.html('Imprimir Carteirinha');
+                    $anchor.attr('href', 'javascript:;');
+
+                    $(window.document).find('.botoes').find('.js-exibirModalCarteirinha').remove();
+                    $(window.document).find('.botoes').append($anchor);
+
+                    $anchor.on('click', imprimirCarteirinha);
+                }
+
+                function imprimirCarteirinha(event) {
+                    $button = $(this);
+
+                    var urlApiAuth = '';
+                    var origem = window.location.origin;
+                    var partesUrl = window.location.href.split('/');
+                    urlApiAuth = origem + '/' + partesUrl[3] + '/api/auth/';
+
+                    EcmApi.init(urlApiAuth);
+
+                    var anexoId,
+                        versaoId = DocumentoVisualizacaoForm.versaoId(),
+                        tipoAnexoId = 5,
+                        urlAnexoId = `anexos/ultimoAnexoInserido/idVersaoDocumento/${versaoId}/idTipoAnexo/${tipoAnexoId}`;
+
+                    Ecm.Api2.Get(urlAnexoId).done(function (retorno) {
+                        if (retorno) {
+                            anexoId = retorno.objeto;
+
+                            var anexos = $(document.body).find('.listagemAnexos .arquivo'),
+                                $arquivo = _.head(_.filter(anexos, { id: `anexo-${anexoId}` }));
+
+                            if (!$arquivo) {
+                                return;
+                            }
+
+                            if (anexoId) {
+                                $button.attr('disabled', true);
+                                carregarDadosCarteirinha();
+
+                                retornarAnexo(anexoId, function (imagem, retorno) {
+                                    var params = {
+                                        'numero-rgp': $carteirinha.find('#ddlCategoria').text(),
+                                        nome: $carteirinha.find('#txtNome').val(),
+                                        'primeiro-numero-rgp': $carteirinha.find('.js-numeroPrimeiroRGP').text(),
+                                        'primeiro-registro': $carteirinha.find('.js-dataPrimeiroRegistro').text(),
+                                        cpf: $carteirinha.find('#txtCpf').val()
+                                    };
+
+                                    gerarQrCode($carteirinha, params, function () {
+                                        var reader = new FileReader();
+                                        reader.readAsDataURL(retorno.response);
+
+                                        reader.onloadend = function () {
+                                            base64data = reader.result;
+
+                                            $carteirinha.find('.js-imageFoto').attr('src', base64data);
+
+                                            setTimeout(function () {
+                                                exibirModoPrint($button);
+                                            }, 1000);
+                                        };
+                                    });
+                                });
+                            }
+                        }
+                    });
+                }
+
+                function gerarQrCode($container, dadosCarteirinha, callback) {
+                    EcmApi.postCriptografarTexto(
+                        dadosCarteirinha,
+                        function (dados) {
+                            var origem = window.location.origin;
+                            var partesUrl = window.location.href.split('/');
+
+                            var urlEcmAsmx = origem + '/' + partesUrl[3] + '/ws/ecm.asmx/GerarQrCode';
+
+                            var dadosJson = JSON.stringify({ parametros: dados.texto });
+
+                            Ecm.ajax(
+                                urlEcmAsmx,
+                                dadosJson,
+                                function (response) {
+                                    if (!Array.isArray(response)) {
+                                        callback();
+                                        return;
+                                    }
+
+                                    var base64 = arrayBufferToBase64(response);
+                                    base64 = 'data:image/png;base64,' + base64;
+
+                                    $container.find('.js-imageQrCode').attr('src', base64);
+                                    callback();
+                                },
+                                function () {
+                                    $button.attr('disabled', false);
+                                    toastr.error('Não foi possível gerar a carteirinha!');
+                                }
+                            );
+                        },
+                        function () {
+                            $button.attr('disabled', false);
+                            toastr.error('Não foi possível gerar a carteirinha!');
+                        }
+                    );
+                }
+
+                function exibirModoPrint($this) {
+                    var $style = $(window.document).find('style[css-print-carteirinha]').clone();
+                    $style.append('@media print { @page { size: landscape; } }');
+
+                    $('<iframe>', { name: 'printcarteirinha', class: 'printcarteirinha' })
+                        .appendTo('body')
+                        .contents()
+                        .find('body')
+                        .append($carteirinha.find('#js-formularioPescaImpressao').clone())
+                        .closest('html')
+                        .find('head')
+                        .append($style);
+
+                    window.frames['printcarteirinha'].focus();
+                    window.frames['printcarteirinha'].print();
+                    $this.attr('disabled', false);
+
+                    setTimeout(function () {
+                        $('.printcarteirinha').remove();
+                    }, 1000);
+                }
+
+                function carregarDadosCarteirinha() {
+                    setValueHtml('.js-numeroRGP', [83]);
+                    setValueHtml('.js-categoria', [22]);
+                    setValueHtml('.js-nome', [2]);
+                    setValueHtml('.js-documentoIdentidade', [6]);
+                    setValueHtml('.js-orgaoEmissorUF', [7, 42]);
+                    setValueHtml('.js-dataNascimento', [9]);
+                    setValueHtml('.js-numeroPrimeiroRGP', [84]);
+                    setValueHtml('.js-orgaoEmissor', [85]);
+                    setValueHtml('.js-dataPrimeiroRegistro', [71]);
+                    setValueHtml('.js-filiacao', [12, 11]);
+                    setValueHtml('.js-entidadeRepresentativa', [36]);
+                    setValueHtml('.js-uf', [38]);
+                    setValueHtml('.js-cpf', [1]);
+                    setValueHtml('.js-pisPasep', [91]);
+                    setValueHtml('.js-dataExpedicao');
+                }
+
+                function setValueHtml(target, camposIds) {
+                    var value = '';
+                    for (var index in camposIds) {
+                        var $input = $(window.document).find('[data-campo-id="@@' + campoId + '@@"]');
+
+                        var campoId = camposIds[index];
+                        var _value = '';
+
+                        if ($input.length) _value = $input.val();
+
+                        if (value && _value) value += '/';
+
+                        value += _value;
+                    }
+                    $carteirinha.find(target).html(value);
+                }
+
+                function onShownModal(event) {
+                    var $this = $(this);
+                    var zIndex = parseInt($this.css('z-index')) || 0;
+
+                    if ($('.modal-backdrop').length > 1) {
+                        $('.modal-backdrop')
+                            .not(':first')
+                            .css('z-index', zIndex + 1);
+                    }
+
+                    $this.css('z-index', zIndex + 2);
+                }
+
+                function onHiddenModal(event) {
+                    var $this = $(this);
+                    var zIndex = parseInt($this.css('z-index'));
+                    $this.css('z-index', zIndex - 2);
+                }
+
+                function arrayBufferToBase64(buffer) {
+                    var binary = '';
+                    var bytes = new Uint8Array(buffer);
+                    var len = bytes.byteLength;
+
+                    for (var i = 0; i < len; i++) {
+                        binary += String.fromCharCode(bytes[i]);
+                    }
+
+                    return window.btoa(binary);
+                }
+
+                return {
+                    init: init
+                };
+            })();
+
+            ImpressaoCarteirinha.init();
+
+            window.ImpressaoCarteirinha = ImpressaoCarteirinha;
+        });
+    </script></body>
+</html>

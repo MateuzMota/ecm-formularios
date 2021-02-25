@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style type="text/css">
+        .container--form {
+            width: 100%;
+        }
+
+        .container--header {
+            font-size: medium;
+            font-weight: 500 !important;
+            background: #8cdad5 !important;
+            padding: 5px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+        }
+
+        .container--body {
+            border: solid 1px #d8e4e3;
+            padding: 25px 140px 25px 70px;
+            font-size: small;
+            -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+        }
+
+        .ui-autocomplete {
+            z-index: 2147483647 !important;
+        }
+
+        .obrigatorio {
+            color: red;
+            font-weight: 400;
+        }
+
+        .borda-obrigatorio {
+            border: solid 1px red;
+        }
+
+        .headerTitle {
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .headerSubTitle {
+            margin-top: -5px;
+            margin-bottom: 13px;
+        }
+
+    </style>
+</head>
+
+<body class="vsc-initialized">
+    <div id="body-reap">
+        <form action="#" class="horizontal-form">
+            <div class="row">
+                <div class="caption bold bs-glyphicon-class font-blue-oleo col-md-12">
+                    <h3 class="headerTitle">REAP - Relat&oacute;rio de Exerc&iacute;cio de Atividade Pesqueira&nbsp;</h3>
+                    <h3 class="headerSubTitle">Pescador Profissional Artesanal</h3>
+                </div>
+                <input data-campo-id="@@2@@" type="hidden" id="idUser"/> 
+                <input data-campo-id="@@29@@" type="hidden" />
+            </div>
+
+            <div class="form-body">
+                <div class="container--form">
+                    <h4 class="bs-glyphicon-class container--header" id="cabecalhoIdentificacao">
+                        Identifica&ccedil;&atilde;o do Pescador</h4>
+
+                    <div class="container--body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="mesReferencia">Mês Referência</label> <input
+                                        class="form-control input-sm" data-campo-id="@@4@@" id="mesReferencia"
+                                        placeholder="Mês Referência" type="number" /></div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="anoReferencia">Ano Referência</label> <input
+                                        class="form-control input-sm" data-campo-id="@@3@@" id="anoReferencia"
+                                        placeholder="Ano Referência" type="number" /></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="anoExecucao">Ano Execu&ccedil;&atilde;o</label>
+                                    <input class="form-control input-sm" data-campo-id="@@7@@" id="anoExecucao"
+                                        placeholder="Ano Execução" type="text" disabled /></div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="mesExecucao">M&ecirc;s
+                                        Execu&ccedil;&atilde;o</label> <input class="form-control input-sm"
+                                        data-campo-id="@@8@@" id="mesExecucao" placeholder="Mês Execução" type="text" disabled />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="txtCpf">CPF</label> <input
+                                        class="form-control input-sm" data-campo-id="@@1@@" id="txtCpf"
+                                        placeholder="999.999.999-99" type="text" /> <span class="obrigatorio"
+                                        id="cpfInvalido" style="display: none"></span></div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="txtNome">Nome</label> <input
+                                        class="form-control input-sm" data-campo-id="@@10@@" id="txtNome"
+                                        placeholder="Nome" type="text" /></div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="dataNascimento">Data Nascimento</label> <input
+                                        class="form-control input-sm" data-campo-id="@@9@@" id="dataNascimento"
+                                        placeholder="__/__/____" type="text" /></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="numeroRGP">N&uacute;mero do RGP</label> <input
+                                        class="form-control input-sm" data-campo-id="@@11@@" id="numeroRGP"
+                                        maxlength="13" placeholder="RGP Pescador" type="text" /></div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="estadoResidencia">Estado de Resid&ecirc;ncia</label>
+                                    <select class="form-control input-sm" data-campo-id="@@13@@"
+                                        id="estadoResidencia"></select></div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="municipioResidencia">Munic&iacute;pio de
+                                        Resid&ecirc;ncia</label> <select class="form-control input-sm"
+                                        data-campo-id="@@12@@" data-campo-pai-id="13" id="municipioResidencia"></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="pisPasepNitNis">PIS/PASEP/NIT/NIS</label> <select
+                                        class="form-control input-sm" data-campo-id="@@14@@"
+                                        id="pisPasepNitNis"></select></div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="numeroDocumento">N&uacute;mero do Documento</label>
+                                    <input class="form-control input-sm" data-campo-id="@@15@@" id="numeroDocumento"
+                                        maxlength="14" type="text" /> <span class="obrigatorio" id="pisInvalido"
+                                        style="display: none"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="container--form">
+                    <h4 class="bs-glyphicon-class container--header" id="cabecalhoFormaAtuacao">Forma de Atuação na Atividade de Pesca no Período</h4>
+                        <div class="container--body">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="form-group"><label for="relacaoTrabalho">Rela&ccedil;&atilde;o de
+                                            Trabalho</label> <select class="form-control input-sm" data-campo-id="@@16@@"
+                                            id="relacaoTrabalho"></select></div>
+                                </div>
+    
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="form-group"><label for="principalEstadoOndePraticaPesca">Principal Estado
+                                            onde pratica a pesca</label> <select class="form-control input-sm"
+                                            data-campo-id="@@19@@" id="principalEstadoOndePraticaPesca"></select></div>
+                                </div>
+    
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="form-group"><label for="municipioMaisProximoLocalPesca">Munic&iacute;pio
+                                            mais pr&oacute;ximo ao local da pesca</label> <select
+                                            class="form-control input-sm" data-campo-id="@@20@@" data-campo-pai-id="19"
+                                            id="municipioMaisProximoLocalPesca"></select></div>
+                                </div>
+                            </div>
+    
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group"><label>M&eacute;todo/Petrecho de Pesca</label>
+    
+                                        <div class="mt-checkbox-list" data-campo-id="@@17@@" id="petrechoDePesca"><label
+                                                class="mt-checkbox mt-checkbox-outline col-md-4"> <input class="col-md-2"
+                                                    data-nome="Método/Petrecho de Pesca" data-valor=""
+                                                    name="metodoPetrechoPesca" type="checkbox" /> <label
+                                                    data-texto=""></label> <span></span> </label></div>
+                                    </div>
+                                </div>
+    
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group"><label>Local onde pratica a pesca</label>
+    
+                                        <div class="mt-checkbox-list" data-campo-id="@@18@@" id="localPraticaPesca"><label
+                                                class="mt-checkbox mt-checkbox-outline col-md-4"> <input class="col-md-2"
+                                                    data-nome="Local onde pratica a pesca" data-valor=""
+                                                    name="localOndePraticaPesca" type="checkbox" /> <label
+                                                    data-texto=""></label> <span></span> </label></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+                <hr />
+                
+                <div class="container--form">
+                    <h4 class="bs-glyphicon-class container--header" id="cabecalhoOperacaoPesca">Resultado da Operação de Pesca</h4>
+
+                    <div class="container--body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="dropHouvePescaDurantePeriodo">Houve Pesca Durante o
+                                        Per&iacute;odo ? </label> <select class="form-control input-sm"
+                                        data-campo-id="@@30@@" id="dropHouvePescaDurantePeriodo"></select></div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-4 js-containerMotivo" style="display: none">
+                                <div class="form-group"><label for="dropMotivo">Motivo</label> <select
+                                        class="form-control input-sm" data-campo-id="@@31@@" id="dropMotivo"></select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-4 js-containerDescrevaMotivo" style="display: none">
+                                <div class="form-group"><label for="txtDescrevaMotivo">Descreva o Motivo</label> <input
+                                        class="form-control input-sm" data-campo-id="@@32@@" id="txtDescrevaMotivo" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <div class="form-group" id="divGrupoAlvoPescaria"><label>Qual(is) grupo(s) alvo da
+                                        pescaria</label>
+
+                                    <div class="mt-checkbox-list" data-campo-id="@@21@@" id="grupoAlvoPescaria"><label
+                                            class="mt-checkbox mt-checkbox-outline col-md-4"> <input class="col-md-2"
+                                                data-nome="Qual(is) grupo(s) alvo da pescaria" data-valor=""
+                                                name="qualGrupoAlvoPescaria" type="checkbox" /> <label data-texto="">
+                                            </label> <span></span> </label></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 js-containerEspecifiqueAlvoPesca" style="display: none">
+                                <div class="form-group"><label for="especifiqueAlvoPesca">Especifique o alvo da
+                                        pesca</label> <input class="form-control input-sm" data-campo-id="@@22@@"
+                                        id="especifiqueAlvoPesca" placeholder="Especifique o alvo da pesca"
+                                        type="text" /></div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="quantidadePescaPorAno">Quantidade de pesca por ano
+                                        (kg)</label> <input class="form-control input-sm" data-campo-id="@@24@@"
+                                        id="quantidadePescaPorAno" placeholder="Quantidade de pesca por ano (kg)"
+                                        required="" type="number" /></div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="quantosDiasMediaPescouMes">Quantos dias em
+                                        m&eacute;dia pescou por m&ecirc;s</label> <input
+                                        class="form-control input-sm campoNumero" data-campo-id="@@25@@"
+                                        id="quantosDiasMediaPescouMes" max="31" min="0"
+                                        placeholder="Quantos dias em média pescou por mês" required="" type="number" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-4">
+                                <div class="form-group"><label for="ufComercializacao">UF da
+                                        comercializa&ccedil;&atilde;o</label> <select class="form-control input-sm"
+                                        data-campo-id="@@26@@" id="ufComercializacao" required=""></select></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12">
+                                <div class="form-group"><label id="compradorProducao">Informar Comprador(es) da
+                                        Produ&ccedil;&atilde;o</label>
+
+                                    <div class="mt-checkbox-list" data-campo-id="@@27@@" id="divCompradorProducao">
+                                        <label class="mt-checkbox mt-checkbox-outline col-md-4"> <input class="col-md-2"
+                                                data-nome="Informar Comprador(es) da Produção" data-valor=""
+                                                name="infoCompradorProducao" type="checkbox" /> <label
+                                                data-texto=""></label> <span></span> </label></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h5 id="nomeEspeciePescado">Nome da Esp&eacute;cie do Pescado</h5>
+
+                                <div class="table-responsive grid" data-campo-id="@@28@@" id="divNomeEspeciePescado">
+                                    <table class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr data-cabecalho-container="">
+                                                <th data-cabecalho-celula-container=""
+                                                    data-cabecalho-celula-container-template=""><span
+                                                        data-cabecalho-celula-texto="">Campo 1</span></th>
+                                                <th data-cabecalho-celula-container="" data-remover=""><span
+                                                        data-cabecalho-celula-texto="">Campo 2</span></th>
+                                                <th data-cabecalho-celula-container="" data-remover=""><span
+                                                        data-cabecalho-celula-texto="">Campo N</span></th>
+                                                <th data-cabecalho-celula-acoes="" style="text-align: center">
+                                                    <span>A&ccedil;&otilde;es</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody data-corpo-container="">
+                                            <tr data-corpo-linha-container="">
+                                                <td data-corpo-celula-container=""
+                                                    data-corpo-celula-container-template="">
+                                                    <div data-corpo-celula-elemento-container=""><input
+                                                            class="form-control input-sm" type="text" />
+                                                        <div>&nbsp;</div>
+                                                    </div>
+                                                </td>
+                                                <td data-corpo-celula-container="" data-remover="">
+                                                    <div data-corpo-celula-elemento-container=""><input
+                                                            class="form-control input-sm" type="text" />
+                                                        <div>&nbsp;</div>
+                                                    </div>
+                                                </td>
+                                                <td data-corpo-celula-container="" data-remover="">
+                                                    <div data-corpo-celula-elemento-container=""><input
+                                                            class="form-control input-sm" type="text" />
+                                                        <div>&nbsp;</div>
+                                                    </div>
+                                                </td>
+                                                <td data-corpo-celula-acoes="" style="text-align: center"><button
+                                                        class="btn default btn-xs" data-botao-editar=""
+                                                        style="display: none"><i class="fa fa-edit"></i></button><button
+                                                        class="btn red-sunglo btn-xs" data-botao-remover=""><i
+                                                            class="fa fa-remove"></i></button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <button class="btn blue btn-xs pull-right" data-botao-adicionar=""><i
+                                            class="fa fa-plus"></i> Novo item</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        DocumentoVisualizacaoForm.camposCarregados(function(){
+            var appFormulario = (function () {
+                var store = {
+                    formularioId: 64,
+                    dropHouvePescaDurantePeriodo: ''
+                };
+                debugger
+                $('#idUser').val(Ecm.retornaUsuario().id)
+                var $qualGrupoAlvoPescaria = null;
+
+                var controles = {
+                    grupoAlvoPescaria: '#grupoAlvoPescaria',
+                    divGrupoAlvoPescaria: '#divGrupoAlvoPescaria',
+                    quantidadePescaPorAno: '#quantidadePescaPorAno',
+                    quantosDiasMediaPescouMes: '#quantosDiasMediaPescouMes',
+                    ufComercializacao: '#ufComercializacao',
+                    mesesQuePescou: '#mesesQuePescou',
+                    divMesesQuePescou: '#divMesesQuePescou',
+                    compradorProducao: '#compradorProducao',
+                    divCompradorProducao: '#divCompradorProducao',
+                    nomeEspeciePescado: '#nomeEspeciePescado',
+                    divNomeEspeciePescado: '#divNomeEspeciePescado',
+                    dropMotivo: '#dropMotivo'
+                };
+
+                const requiredCheckBox = $(`div`).filter('[data-tipo-fisico="LCK"]').filter('[required]');
+
+                // Checkboxes
+                function validateRequiredCheckbox(selector) {
+                    let validated = false;
+
+                    if ($(selector).length != 0) {
+                        if ($(selector).val() !== "" || $(selector).val() !== null) {
+                            $(selector).children().each((i, e) => {
+                                if ($(e).children()[0].checked) {
+                                    validated = true;
+                                    return false;
+                                } else {
+                                    validated = false;
+                                }
+                            });
+                        } else {
+                            validated = true;
+                        }
+                    } else {
+                        validated = undefined;
+                    }
+                    return validated;
+                }
+                    
+                $.each(requiredCheckBox, (index, element) => {
+                    if (!validateRequiredCheckbox($(element).eq(index - 1))) {
+                        labelName = $(element).closest('div').attr('data-nome-fisico');
+
+                        Ecm.alertErro(`O CAMPO [ ${labelName} ] É DE PREENCHIMENTO OBRIGATÓRIO!`);
+                    }
+                });
+
+                function registrarEventos() {
+                    $('#transicao-id-5').hide();
+
+                    $qualGrupoAlvoPescaria = $(window.document).find(
+                        'input[name="qualGrupoAlvoPescaria"][value="Outros"]'
+                    );
+
+                    $qualGrupoAlvoPescaria.on('change', grupoAlvoPescaria);
+
+                    Ecm.registraEvento('change', controles.dropMotivo, function (evento, elemento) {
+                        if ($(elemento).val()) {
+                            $(elemento).removeAttr('required');
+                        }
+                    });
+
+                    Ecm.registraEvento('change', 'input[data-campo-id="@@' + 10 + '@@"]', alterarNome);
+
+                    Ecm.registraEvento('change', 'input[data-campo-id="@@' + 11 + '@@"]', alterarNumeroRGP);
+
+                    Ecm.registraEvento('change', 'select[data-campo-id="@@' + 30 + '@@"]', houvePescaDurantePeriodo);
+
+                    Ecm.registraEvento('change', 'select[data-campo-id="@@' + 31 + '@@"]', alterarMotivo);
+
+                    Ecm.registraEvento(
+                        'change',
+                        'div[data-campo-id="@@' + 21 + '@@"] input:checkbox',
+                        alterarQualGrupoAlvoPescaria
+                    );
+
+                    Ecm.registraEvento('change', controles.quantidadePescaPorAno, alterarQuantidadePescaPorAno);
+
+                    Ecm.registraEvento('change', controles.quantosDiasMediaPescouMes, alterarQuantosDiasMediaPescouMes);
+
+                    Ecm.registraEvento('change', controles.ufComercializacao, alterarUfComercializacao);
+
+                    Ecm.registraEvento('change', controles.divMesesQuePescou, alterarMesesQuePescou);
+
+                    Ecm.registraEvento('change', controles.divCompradorProducao, alterarCompradorProducao);
+
+                    Ecm.registraEvento('click', 'button[data-botao-adicionar]', alterarNomeEspeciePescado);
+
+                    Ecm.registraEvento('keypress', '.campoNumero', function (event) {
+                        var keycode = event.which;
+                        if (!(keycode >= 48 && keycode <= 57)) {
+                            event.preventDefault();
+                        }
+                    });
+
+                    Ecm.registraEvento('keyup', '.nomeEspecie', function (eve, elm) {
+                        var nome = $(elm).val();
+                        var especies = retornarEspecie(nome, elm);
+                    });
+
+                    Ecm.registraEvento('click', '[data-apply]', function () {
+                        setTimeout(function () {
+                            configurarAtributosGrid();
+                        }, 500);
+                    });
+
+                    Ecm.registraEvento('change', '#txtCpf', function () {
+                        var cpf = $('#txtCpf').val();
+
+                        var valido = validarCampoCpf();
+
+                        if (!valido) {
+                            Ecm.alertErro('Favor informar um CPF Valido.');
+                        }
+                    });
+
+                    Ecm.registraEvento('keypress', '#txtNome', function (e) {
+                        var valor = e.keyCode;
+                        if (valor >= 48 && valor <= 57) {
+                            Ecm.alertInfo('Favor informar somente texto.');
+                        }
+                    });
+
+                    Ecm.registraEvento('keypress', '#numeroRGP', function () {
+                        var valor = $('#numeroRGP').val();
+                        if (valor.length < 14) {
+                            $('#numeroRGP').val(valor);
+                        }
+                    });
+
+                    Ecm.registraEvento('change', '#numeroDocumento', function (evento, elemento) {
+                        var todosNumerosIguais = validarNumerosIguais($(elemento).val());
+                        var classeValidacao = $('#pisInvalido');
+
+                        if (!todosNumerosIguais) {
+                            var pisPasepValido = validarPisPasep($(elemento).val());
+
+                            if (pisPasepValido) {
+                                $(elemento).closest('.form-group').removeClass('has-error').addClass('has-success');
+                                $(elemento)
+                                    .siblings('.tooltips')
+                                    .removeClass('fa-exclamation')
+                                    .addClass('fa-check')
+                                    .show();
+                                $(classeValidacao).hide();
+
+                                $(elemento).removeAttr('required');
+                            } else {
+                                $(elemento).closest('.form-group').removeClass('has-success').addClass('has-error');
+                                $(elemento)
+                                    .siblings('.tooltips')
+                                    .removeClass('fa-check')
+                                    .addClass('fa-exclamation')
+                                    .show();
+
+                                $(classeValidacao).show();
+                                $(classeValidacao).text('Número do Documento inválido');
+
+                                $(elemento).attr('required', 'required');
+                            }
+                        } else {
+                            $(elemento).closest('.form-group').removeClass('has-success').addClass('has-error');
+                            $(elemento).siblings('.tooltips').removeClass('fa-check').addClass('fa-exclamation').show();
+                            if (elemento.val().length > 0) {
+                                $(classeValidacao).show();
+                                $(classeValidacao).text('Número do Documento inválido');
+                                $(elemento).attr('required', 'required');
+                            }
+                        }
+                    });
+
+                    Ecm.registraEvento('keypress', '#numeroDocumento', function (e) {
+                        var charCode = e.charCode ? e.charCode : e.keyCode;
+
+                        if (charCode != 8 && charCode != 9) {
+                            // charCode 48 equivale a 0
+                            // charCode 57 equivale a 9
+                            if (charCode < 48 || charCode > 57) {
+                                Ecm.alertInfo('Favor informar somente número.');
+                                $('#numeroDocumento').val('');
+                            }
+                        }
+                    });
+
+                    var data = new Date();
+
+                    if ($('#anoExecucao').val() == 'Selecione' || $('#anoExecucao').val() == '') {
+                        $('#anoExecucao').val(data.getFullYear());
+                    }
+                    if ($('#mesExecucao').val() == 'Selecione' || $('#mesExecucao').val() == '') {
+                        $('#mesExecucao').val(data.getMonth() + 1);
+                    }
+                
+                    // Sets Iniciais //
+                    const campos = DocumentoVisualizacaoForm.retornaCampos();
+                    const checkboxList = $('div').filter('[data-tipo-fisico="LCK"]');
+                    const gridId = parseInt($(".grid").attr("data-campo-id").replace("@@", "").replace("@@", ""));
+
+                    // Excluindo abas de anexos e versões anteriores.
+                    $('[data-tab-name="versao-anterior"]').remove();
+                    $('[data-tab-name="anexo"]').remove();
+
+                    // Obrigatoriedade dos campos
+                    $.each(campos, (index, element) => {
+                        element.obrigatorio == true ? $(`[data-campo-id="@@${element.id}@@"]`).attr('required', true) : null
+                    })
+
+                    requiredCheckBox('#petrechoDePesca')
+                    requiredCheckBox('#localPraticaPesca');
+
+                    Ecm.registraEvento('change', '#dropHouvePescaDurantePeriodo', function(event, element) {
+                        if ($('#dropHouvePescaDurantePeriodo').val() === 'Sim') {
+                            requiredCheckBox('#grupoAlvoPescaria');
+                            requiredCheckBox('#divCompradorProducao');
+                        } else if($('#dropHouvePescaDurantePeriodo').val() === 'Nao') {
+                            $(`#grupoAlvoPescaria label span`).css('borderColor', '#d9d9d9');
+                            $(`#divCompradorProducao label span`).css('borderColor', '#d9d9d9');
+                        }
+                    })
+
+                    changeCheckbox('#grupoAlvoPescaria');
+                    changeCheckbox('#divCompradorProducao');
+
+                    function changeCheckbox(selector) {
+                        Ecm.registraEvento('change', selector, event => {
+                            if($('#dropHouvePescaDurantePeriodo').val() === 'Nao') {
+                                $(`${selector} label span`).css('borderColor', '#d9d9d9');
+                            }
+                            if(validateRequiredCheckbox(selector) === true) {
+                                $(`${selector} label span`).css('borderColor', '#d9d9d9');
+                            }
+                        })
+                    }
+
+                    function requiredCheckBox(selector) {
+                        $(`${selector} label span`).css('borderColor', 'red');
+
+                        Ecm.registraEvento('change', selector, event => {
+                            $(selector).children().each((i, e) => {
+                                if (!$(e).children()[0].checked) {
+                                    $(`${selector} label span`).css('borderColor', 'red');
+                                    if($('#dropHouvePescaDurantePeriodo').val() === 'Nao') {
+                                        $(`${selector} label span`).css('borderColor', '#d9d9d9');
+                                        return false;
+                                    }
+                                } else {
+                                    $(`${selector} label span`).css('borderColor', '#d9d9d9');
+                                    return false;
+                                }
+                            })
+                        })
+                    }
+                }
+
+                setTimeout(() => { clonarBotoes()}, 1500 );
+
+                function clonarBotoes() {
+                    clonarTransicoes('#transicao-id-5', 'click', function() {   
+                        if(validarCamposObrigatoriosPreenchidos()) {
+                            $('#transicao-id-5').trigger('click');
+                        } else {
+                            Ecm.alertErro('Preencha todos os campos OBRIGATÓRIOS antes de prosseguir.')
+                        }
+                    })
+                }
+
+                function clonarTransicoes(selector, event, callback) {
+                    $(selector).hide().clone().off().removeClass("processo-acao").addClass("btnAuxiliar").insertAfter(selector);
+                    $('.btnAuxiliar').show().html('Enviar');
+                    $('.btnAuxiliar').off().on(event, callback);
+                }
+
+                function validarCamposObrigatoriosPreenchidos() {
+                    //Check list e radio desabilitados temporariamente.
+                    var camposPreenchidos = true;
+
+                    var elementos = _.filter($('#body-reap').find('input, select'), { required: true });
+
+                    if(validateRequiredCheckbox('#petrechoDePesca') === false ||
+                    validateRequiredCheckbox('#localPraticaPesca') === false) {
+                            camposPreenchidos = false;
+                            return false;
+                    }
+
+                    if($('#dropHouvePescaDurantePeriodo').val() === 'Sim') {
+                        if(validateRequiredCheckbox('#grupoAlvoPescaria') === false ||
+                        validateRequiredCheckbox('#divCompradorProducao') === false) {
+                            camposPreenchidos = false;
+                            return false;
+                        }
+                    }
+
+                    for (let indice = 0; indice < elementos.length; indice++) {
+                        const elemento = elementos[indice];
+
+                        if($(elemento).val() === '' || $(elemento).val() === null) {
+                            camposPreenchidos = false;
+                            return false;
+                        }
+                    }
+
+                    return camposPreenchidos;
+                }
+
+                function validarNumerosIguais(valor) {
+                    var r1 = valor % 10;
+
+                    while (valor > 0) {
+                        var r2 = valor % 10;
+                        if (r2 !== r1) return false;
+                        valor = Math.floor(valor / 10);
+                    }
+                    return true; // Passo 4.
+                }
+
+                function validarPisPasep(valor) {
+                    var ftap = '3298765432';
+                    var total = 0;
+                    var i;
+                    var resto = 0;
+                    var numPIS = 0;
+                    var strResto = '';
+
+                    numPIS = valor;
+
+                    if (numPIS == '' || numPIS == null) {
+                        return false;
+                    }
+
+                    for (i = 0; i <= 9; i++) {
+                        resultado = numPIS.slice(i, i + 1) * ftap.slice(i, i + 1);
+                        total = total + resultado;
+                    }
+
+                    resto = total % 11;
+
+                    if (resto != 0) {
+                        resto = 11 - resto;
+                    }
+
+                    if (resto == 10 || resto == 11) {
+                        strResto = resto + '';
+                        resto = strResto.slice(1, 2);
+                    }
+
+                    if (resto != numPIS.slice(10, 11)) {
+                        return false;
+                    }
+
+                    return true;
+                }
+
+                function validarCampoCpf() {
+                    var valido = false;
+
+                    if ($('#txtCpf').val()) {
+                        if (Ecm.validaCPF($('#txtCpf').val().split('.').join('').replace('-', '')) == true) {
+                            $('#txtCpf').closest('.form-group').removeClass('has-error').addClass('has-success');
+                            $('#txtCpf')
+                                .siblings('.tooltips')
+                                .removeClass('fa-exclamation')
+                                .addClass('fa-check')
+                                .show();
+                            $('#txtCpf').removeAttr('required');
+                            $('#cpfInvalido').hide();
+
+                            valido = true;
+                        } else {
+                            $('#txtCpf').closest('.form-group').removeClass('has-success').addClass('has-error');
+                            $('#txtCpf')
+                                .siblings('.tooltips')
+                                .removeClass('fa-check')
+                                .addClass('fa-exclamation')
+                                .show();
+
+                            $('#cpfInvalido').show();
+                            $('#cpfInvalido').text('CPF inválido');
+                            $('#txtCpf').attr('required', 'required');
+
+                            valido = false;
+                        }
+                    }
+
+                    return valido;
+                }
+
+                function retornarEspecie(nome, elm) {
+                    var tipoDocumentalId = 22,
+                        totalDocumentosPorPagina = 10,
+                        retornarAnexos = false,
+                        config = {
+                            headers: {
+                                Authorization: 'Bearer ' + Ecm.token,
+                                'Content-Type': 'application/json'
+                            }
+                        },
+                        parametros = JSON.stringify([
+                            {
+                                Id: 1,
+                                TipoDocumentalId: 22,
+                                Nome: 'Nome Espécie',
+                                ColunaTipo: 'LST',
+                                Valor: nome,
+                                Comparacao: 6
+                            }
+                        ]),
+                        urlPesquisarDocumento = `documentos/pesquisar/${tipoDocumentalId}/quantidade/${totalDocumentosPorPagina}/retornarAnexos/${retornarAnexos}`;
+
+                    if (nome.length >= 3) {
+                        Ecm.Api2.Post(
+                            urlPesquisarDocumento,
+                            parametros,
+                            function (retorno) {
+                                if (retorno) {
+                                    listaEspecies = [];
+
+                                    for (var index in retorno) {
+                                        listaEspecies.push(retorno[index].nome);
+                                    }
+
+                                    $(elm).autocomplete({
+                                        source: listaEspecies
+                                    });
+                                }
+                            },
+                            function (erro) {
+                                var $toast = toastr['error'](' ', "<i class='fa '></i>" + erro.mensagem);
+                            },
+                            config
+                        );
+                    }
+                }
+
+                function alterarNomeEspecie(evento, elemento) {
+                    var $elemento = evento.target;
+                    var valor = evento.target.value;
+
+                    if (valor) {
+                        $($elemento).removeClass('borda-obrigatorio');
+                        $($elemento).removeAttr('required');
+                    } else {
+                        $($elemento).addClass('borda-obrigatorio');
+                        $($elemento).attr('required', 'required');
+                    }
+                }
+
+                function alterarQuantidade(evento, elemento) {
+                    var $elemento = evento.target;
+                    var valor = evento.target.value;
+
+                    if (valor) {
+                        $($elemento).removeClass('borda-obrigatorio');
+                        $($elemento).removeAttr('required');
+                    } else {
+                        $($elemento).addClass('borda-obrigatorio');
+                        $($elemento).attr('required', 'required');
+                    }
+                }
+
+                function alterarPrecoKg(evento, elemento) {
+                    var $elemento = evento.target;
+                    var valor = evento.target.value;
+
+                    if (valor) {
+                        $($elemento).removeClass('borda-obrigatorio');
+                        $($elemento).removeAttr('required');
+                    } else {
+                        $($elemento).addClass('borda-obrigatorio');
+                        $($elemento).attr('required', 'required');
+                    }
+                }
+
+                function configurarAtributosGrid() {
+                    var cabecalhoIdEspecie = "[data-campo-id='@@28@@'] [data-cabecalho-celula-container]";
+                    var corpoIdEspecie = "[data-campo-id='@@28@@'] [data-corpo-celula-container]";
+                    var celulasEspecies = '[data-grid-elemento]';
+                    var $linhasEspecies = $("[data-campo-id='@@28@@'] [data-corpo-linha-container]");
+                    if ($linhasEspecies != undefined) {
+                        $linhasEspecies.each(function (i) {
+                            var $linhaEspecie = $(this);
+                            var $nomeEspecie = $linhaEspecie.find(celulasEspecies + ':eq(0)');
+                            var $quantidade = $linhaEspecie.find(celulasEspecies + ':eq(1)');
+                            var $precoKg = $linhaEspecie.find(celulasEspecies + ':eq(2)');
+
+                            $nomeEspecie.on('change', alterarNomeEspecie);
+                            $quantidade.on('change', alterarQuantidade);
+                            $precoKg.on('change', alterarPrecoKg);
+
+                            $linhaEspecie.find(celulasEspecies + ':eq(0)').attr('id-campo-nome-especie', '');
+                            $linhaEspecie.find(celulasEspecies + ':eq(0)').addClass('nomeEspecie');
+                            $linhaEspecie.find(celulasEspecies + ':eq(0)').attr('id', 'nomeEspecie' + i);
+                            $linhaEspecie.find(celulasEspecies + ':eq(1)').attr('id', 'quantidade' + i);
+                            $linhaEspecie.find(celulasEspecies + ':eq(2)').attr('id', 'precoKg' + i);
+
+                            if (!DocumentoVisualizacaoForm.estouEditando()) {
+                                $linhaEspecie.find(celulasEspecies).attr('disabled', 'disabled');
+                                $('button[data-botao-editar]').attr('disabled', 'disabled');
+                                $('button[data-botao-remover]').attr('disabled', 'disabled');
+                                $('button[data-botao-adicionar]').attr('disabled', 'disabled');
+                            } else {
+                                $linhaEspecie.find(celulasEspecies).removeAttr('disabled');
+                                $('button[data-botao-editar]').removeAttr('disabled');
+                                $('button[data-botao-remover]').removeAttr('disabled');
+                                $('button[data-botao-adicionar]').removeAttr('disabled');
+                            }
+
+                            if ($nomeEspecie.val() == '' || $quantidade.val() == '' || $precoKg.val() == '') {
+                                $nomeEspecie.attr('required', 'required');
+                                $nomeEspecie.addClass('borda-obrigatorio');
+                                $quantidade.attr('required', 'required');
+                                $quantidade.addClass('borda-obrigatorio');
+                                $precoKg.attr('required', 'required');
+                                $precoKg.addClass('borda-obrigatorio');
+                            } else {
+                                $nomeEspecie.removeClass('borda-obrigatorio');
+                                $quantidade.removeClass('borda-obrigatorio');
+                                $precoKg.removeClass('borda-obrigatorio');
+                            }
+                        });
+                    }
+                }
+
+                function grupoAlvoPescaria(event) {
+                    var $this = $('input[name="qualGrupoAlvoPescaria"][value="Outros"]');
+                    var isChecked = $this.is(':checked');
+
+                    $('.js-containerEspecifiqueAlvoPesca').slideToggle(isChecked);
+                }
+
+                function alterarNome(event, $element) {
+                    var value = event.target.value;
+                    value = value.replace(/[0-9]+/g, ' ');
+                    $element.val(value);
+                }
+
+                function alterarNumeroRGP(event, $element) {
+                    var value = event.target.value;
+                    if (value.length > 13) $element.val(value.substring(0, 13));
+                }
+
+                function houvePescaDurantePeriodo(event, $element) {
+                    var value = event.target.value;
+                    var $containerMotivo = $(document.body).find('.js-containerMotivo');
+                    var $containerDescrevaMotivo = $(document.body).find('.js-containerDescrevaMotivo');
+
+                    if (value.toLowerCase() === 'nao') {
+                        $containerMotivo.slideDown();
+                        $containerMotivo.find('select').attr('required', 'required').val(null);
+                        store.dropHouvePescaDurantePeriodo = value.toLowerCase();
+                        $(controles.divGrupoAlvoPescaria).find('label:First').removeClass('obrigatorio');
+                        $(controles.grupoAlvoPescaria).removeAttr('required');
+                        $(controles.quantidadePescaPorAno).removeClass('borda-obrigatorio');
+                        $(controles.quantidadePescaPorAno).removeAttr('required');
+                        $(controles.quantosDiasMediaPescouMes).removeClass('borda-obrigatorio');
+                        $(controles.quantosDiasMediaPescouMes).removeAttr('required');
+                        $(controles.ufComercializacao).removeClass('borda-obrigatorio');
+                        $(controles.ufComercializacao).removeAttr('required');
+                        $(controles.mesesQuePescou).removeClass('obrigatorio');
+                        $(controles.divMesesQuePescou).removeAttr('required');
+                        $(controles.compradorProducao).removeClass('obrigatorio');
+                        $(controles.divCompradorProducao).removeAttr('required');
+                        $(controles.nomeEspeciePescado).removeClass('obrigatorio');
+                        $(controles.divNomeEspeciePescado).removeAttr('required');
+                    } else if (value.toLowerCase() === 'sim') {
+                        $containerMotivo.slideUp();
+                        $containerDescrevaMotivo.slideUp();
+                        $containerMotivo.find('select').removeAttr('required');
+                        store.dropHouvePescaDurantePeriodo = value.toLowerCase();
+                        $(controles.divGrupoAlvoPescaria).find('label:First').addClass('obrigatorio');
+                        $(controles.grupoAlvoPescaria).attr('required', 'required');
+                        $(controles.quantidadePescaPorAno).addClass('borda-obrigatorio');
+                        $(controles.quantidadePescaPorAno).attr('required', 'required');
+                        $(controles.quantosDiasMediaPescouMes).addClass('borda-obrigatorio');
+                        $(controles.quantosDiasMediaPescouMes).attr('required', 'required');
+                        $(controles.ufComercializacao).addClass('borda-obrigatorio');
+                        $(controles.ufComercializacao).attr('required', 'required');
+                        $(controles.mesesQuePescou).addClass('obrigatorio');
+                        $(controles.divMesesQuePescou).attr('required', 'required');
+                        $(controles.compradorProducao).addClass('obrigatorio');
+                        $(controles.divCompradorProducao).attr('required', 'required');
+                        $(controles.nomeEspeciePescado).addClass('obrigatorio');
+                        $(controles.divNomeEspeciePescado).attr('required', 'required');
+                    } else {
+                        store.dropHouvePescaDurantePeriodo = '';
+                    }
+                }
+
+                function alterarQuantidadePescaPorAno(evento, elemento) {
+                    var valor = evento.target.value;
+
+                    if (valor) {
+                        $(controles.quantidadePescaPorAno).removeClass('borda-obrigatorio');
+                        $(controles.quantidadePescaPorAno).removeAttr('required');
+                    } else {
+                        $(controles.quantidadePescaPorAno).addClass('borda-obrigatorio');
+                        $(controles.quantidadePescaPorAno).attr('required', 'required');
+                    }
+                }
+
+                function alterarQuantosDiasMediaPescouMes(evento, elemento) {
+                    var valor = parseInt(evento.target.value);
+
+                    if (valor) {
+                        $(controles.quantosDiasMediaPescouMes).removeClass('borda-obrigatorio');
+                        $(controles.quantosDiasMediaPescouMes).removeAttr('required');
+                    } else {
+                        $(controles.quantosDiasMediaPescouMes).addClass('borda-obrigatorio');
+                        $(controles.quantosDiasMediaPescouMes).attr('required', 'required');
+                    }
+                }
+
+                function alterarUfComercializacao(evento, elemento) {
+                    var valor = evento.target.value;
+
+                    if (valor) {
+                        $(controles.ufComercializacao).removeClass('borda-obrigatorio');
+                        $(controles.ufComercializacao).removeAttr('required');
+                    } else {
+                        $(controles.ufComercializacao).addClass('borda-obrigatorio');
+                        $(controles.ufComercializacao).attr('required', 'required');
+                    }
+                }
+
+                function alterarMesesQuePescou() {
+                    var $mesesEmQuePescou = $(controles.divMesesQuePescou).find('input');
+                    var selecionado = 0;
+
+                    $mesesEmQuePescou.each(function (indice, elemento) {
+                        if ($(elemento).is(':checked')) {
+                            selecionado++;
+                        }
+                    });
+
+                    if (selecionado > 0) {
+                        $(controles.mesesQuePescou).removeClass('obrigatorio');
+                    } else {
+                        $(controles.mesesQuePescou).addClass('obrigatorio');
+                    }
+                }
+
+                function alterarCompradorProducao() {
+                    var $compradorProducao = $(controles.divCompradorProducao).find('input');
+                    var selecionado = 0;
+
+                    $compradorProducao.each(function (indice, elemento) {
+                        if ($(elemento).is(':checked')) {
+                            selecionado++;
+                        }
+                    });
+
+                    if (selecionado > 0) {
+                        $(controles.compradorProducao).removeClass('obrigatorio');
+                    } else {
+                        $(controles.compradorProducao).addClass('obrigatorio');
+                    }
+                }
+
+                function alterarNomeEspeciePescado() {
+                    var quantLinhasGridEspeciePescado = DocumentoVisualizacaoForm.retornaValorDosGrids()[0].Linhas
+                        .length;
+
+                    if (quantLinhasGridEspeciePescado > 0) {
+                        configurarAtributosGrid();
+                        $(controles.nomeEspeciePescado).removeClass('obrigatorio');
+                    } else {
+                        $(controles.nomeEspeciePescado).addClass('obrigatorio');
+                    }
+                }
+
+                function alterarMotivo(event, $element) {
+                    var value = event.target.value;
+                    $containerDescrevaMotivo = $(window.document).find('.js-containerDescrevaMotivo');
+
+                    if (value && value === 'OUTRO-MOTIVO') {
+                        $containerDescrevaMotivo.slideDown();
+                        $containerDescrevaMotivo.find('input').attr('required', 'required').val(null);
+                    } else {
+                        $containerDescrevaMotivo.slideUp();
+                        $containerDescrevaMotivo.find('input').attr('required', false).val(null);
+                    }
+                }
+
+                function alterarQualGrupoAlvoPescaria(event, $element) {
+                    var value = event.target.value;
+                    var selected = event.target.checked;
+                    var $alvoPescaria = $(controles.grupoAlvoPescaria).find('input');
+                    var selecionado = 0;
+
+                    var $containerEspecifiqueAlvoPesca = $(window.document).find('.js-containerEspecifiqueAlvoPesca');
+
+                    if (selected && value && value.toLowerCase() === 'outros') {
+                        $containerEspecifiqueAlvoPesca.slideDown();
+                        $containerEspecifiqueAlvoPesca.find('input').attr('required', 'required').val(null);
+                    } else {
+                        $containerEspecifiqueAlvoPesca.slideUp();
+                        $containerEspecifiqueAlvoPesca.find('input').attr('required', false).val(null);
+                    }
+
+                    $alvoPescaria.each(function (indice, elemento) {
+                        if ($(elemento).is(':checked')) {
+                            selecionado++;
+                        }
+                    });
+
+                    if (selecionado > 0) {
+                        $(controles.divGrupoAlvoPescaria).find('label:First').removeClass('obrigatorio');
+                    } else {
+                        $(controles.divGrupoAlvoPescaria).find('label:First').addClass('obrigatorio');
+                    }
+                }
+
+                setTimeout(function () {
+                    if ($('#dataNascimento').val() === 'Invalid date') {
+                        $('#dataNascimento').val('');
+                    }
+
+                    if ($('#txtNome').val() == 'Selecione') {
+                        $('#txtNome').val('');
+                    }
+                    if ($('#numeroRGP').val() == 'Selecione') {
+                        $('#numeroRGP').val('');
+                    }
+                }, 3000);
+
+                registrarEventos();
+                configurarAtributosGrid();
+                
+
+                return {
+                    init: init,
+                    store: store
+                };
+            })();
+        })
+    </script>
+</body>
+
+</html>

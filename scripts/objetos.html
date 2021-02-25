@@ -1,0 +1,200 @@
+<!--Style padrão-->
+<style type="text/css">
+    .form-section,
+    .control-label {
+        font-weight: bold;
+    }
+
+    .form-body {
+        margin: 20px;
+    }
+
+    hr.titulo {
+        border-top: 1px solid #0088cc;
+    }
+
+    h4.titulo {
+        border-bottom: 1px solid #0088cc;
+        margin-top: 40px;
+        padding-bottom: 5px;
+        margin-bottom: 20px;
+    }
+
+    .row {
+        margin-bottom: 15px;
+    }
+
+    .tooltips {
+        color: #ccc;
+    }
+
+    .tooltips {
+        position: relative;
+        display: inline-block;
+    }
+
+    .grid-titulo {
+        background-color: #8AB2EF;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    /* Tooltip text */
+    .tooltips .tooltiptext {
+        visibility: hidden;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 5px;
+        border-radius: 6px;
+        bottom: 140%;
+        left: 50%;
+        margin-left: -10px;
+        /* Use half of the width (120/2 = 60), to center the tooltip */
+        white-space: nowrap;
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltips:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .tooltips .tooltiptext::after {
+        content: " ";
+        position: absolute;
+        top: 100%;
+        /* At the bottom of the tooltip */
+        left: 10px;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: black transparent transparent transparent;
+    }
+
+    .help-block {
+        font-size: 12px;
+    }
+</style>
+<!--BODY FORM -->
+<form action="#" class="horizontal-form">
+    <div class="form-body">
+        <!--Titulo da Section-->
+        <h4 class="form-section titulo">Objetos</h4>
+        <!--Uma Linha de Input-->
+        <div class="row">
+            <div class="col-md-6">
+                <!--Div para Inputs Dentro do Sistema-->
+                <div class="form-group">
+                    <label class="control-label col-md-3">
+                        Nome do input:
+                        <!--Icone de Dica de Preenchimento-->
+                        <i class="fa fa-info-circle tooltips">
+                            <span class="tooltiptext"></span>
+                        </i>
+                    </label>
+                    
+                    <div class="col-md-6">
+                        <input class="form-control input-sm" data-campo-id="@@??@@"/>
+                        <select class="form-control input-sm" data-campo-id="@@??@@"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Tabela para Grid-->
+        <div class="table-responsive" data-campo-id="@@24@@" id="gridSubUnidade">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr data-cabecalho-container="">
+                        <th data-cabecalho-celula-container="" data-cabecalho-celula-container-template=""><span
+                                data-cabecalho-celula-texto="">Campo 1</span></th>
+                        <th data-cabecalho-celula-container="" data-remover=""><span
+                                data-cabecalho-celula-texto="">Campo 2</span></th>
+                        <th data-cabecalho-celula-container="" data-remover=""><span
+                                data-cabecalho-celula-texto="">Campo N</span></th>
+                        <th data-cabecalho-celula-acoes="" style="text-align:center;">
+                            <span>A&ccedil;&otilde;es</span></th>
+                    </tr>
+                </thead>
+                <tbody data-corpo-container="">
+                    <tr data-corpo-linha-container="">
+                        <td data-corpo-celula-container="" data-corpo-celula-container-template="">
+                            <div data-corpo-celula-elemento-container=""><input class="form-control input-sm"
+                                    type="text" />
+                                <div>&nbsp;</div>
+                            </div>
+                        </td>
+                        <td data-corpo-celula-container="" data-remover="">
+                            <div data-corpo-celula-elemento-container=""><input class="form-control input-sm"
+                                    type="text" />
+                                <div>&nbsp;</div>
+                            </div>
+                        </td>
+                        <td data-corpo-celula-container="" data-remover="">
+                            <div data-corpo-celula-elemento-container=""><input class="form-control input-sm"
+                                    type="text" />
+                                <div>&nbsp;</div>
+                            </div>
+                        </td>
+                        <td data-corpo-celula-acoes="" style="text-align:center;"><a
+                                class="btn default btn-xs green" data-botao-salvar="" style="display: none;"> <i
+                                    class="fa fa-check"></i> </a> <a class="btn default btn-xs"
+                                data-botao-editar=""> <i class="fa fa-edit"></i> </a><button
+                                class="btn red-sunglo btn-xs" data-botao-remover=""><i
+                                    class="fa fa-remove"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn blue btn-xs pull-right" data-botao-adicionar=""><i class="fa fa-plus"></i>Novo
+                item</button>
+        </div>
+        <!-- Input para Anexos -->
+        <div class="row">
+            <input 
+            accept="image/png, image/jpeg, image/jpg" 
+            class="formulario-upload fa upload-file" 
+            data-arquivo-nome="" 
+            data-nome="Anexo" 
+            data-placement="bottom" 
+            data-tipo-anexo-id="1" 
+            id="uploadComprovanteResidencia" 
+            max-size-mb="5" 
+            title="Insira a imagem nítida." 
+            type="file" />
+        </div>
+    </div>
+</form>
+<script>
+    //Função para quando os campos estiverem todos carregados
+    DocumentoVisualizacaoForm.CamposCarregados(function(){})
+    //Função para quando um upload é feito
+    DocumentoVisualizacaoForm.onUploadAnexo(function(anexoId){},function(anexoId){})
+    //Função para vincular um evento a um elemento
+    Ecm.registraEvento('evento','seletor',function(documento,elemento){})
+    //Função para excluir anexo pelo ID
+    function excluirAnexo(anexoId) {
+                 var parametros = JSON.stringify({
+                     versaoId: DocumentoVisualizacaoForm.versaoId(),
+                     anexoId: anexoId,
+                     usuarioId: Ecm.retornaUsuario().id
+                 });
+                 Ecm.ajax(
+                     "../WS/Ecm.asmx/ExcluirAnexo",
+                     parametros,
+                     function (data) {
+                         DocumentoVisualizacaoForm.carregarAnexosWs(
+                             DocumentoVisualizacaoForm.documentoId(),
+                             DocumentoVisualizacaoForm.versaoId()
+                         );
+                         console.log("Anexo excluido: " + anexoId);
+                     },
+                     function () { }
+                 );
+             };
+
+</script>

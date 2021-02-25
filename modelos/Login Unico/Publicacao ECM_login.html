@@ -1,0 +1,230 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>SisRGP</title>
+
+  <!-- Bootstrap core CSS -->
+  <!-- <link href="Autenticado/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<style>
+  .custom-logo {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
+    max-height: 150px;
+  }
+
+  .login-content {
+    margin: 15vh auto 10vh auto;
+    width: 450px;
+    padding: 0 15px;
+  }
+
+  .msg-content {
+    width: 450px !important;
+    margin-top: 90px !important;
+    margin: auto;
+  }
+
+  .aviso-content {
+    width: 450px !important;
+    padding: 5px;
+    margin-top: 20px;
+  }
+
+  .aviso-msg {
+    font-size: 17px;
+  }
+
+  .lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+
+  .dropdown-menu .divider.margin--reset {
+    margin: 0;
+  }
+
+  .lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #000;
+    border-color: #000 transparent #000 transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+<body class="text-center" cz-shortcut-listen="true">
+
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <main role="main" class="inner cover">
+      <div class="row">
+        <div class="col-md-6">
+          <img id="ImgLogo" src="Imagens/aparencia/customizado/ImageFundoLogin.jpg" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+          <form class="login-content">
+            <img id="ImgLogo" class="custom-logo" src="Imagens/aparencia/customizado/LogoEllos.png" alt=""
+              max-width="100%" max-height="150px">
+            <hr />
+            <a class="btn btn-lg btn-primary btn-block"
+              href="https://sso.staging.acesso.gov.br/authorize?response_type=code&client_id=homolog.agricultura.gov.br/sap-sistainha&scope=openid+email+phone+profile+govbr_empresa+govbr_confiabilidades&redirect_uri=http://homolog.agricultura.gov.br/sap-sistainha/login.html&nonce=1029384756&state=1029384756">Acessar
+              com o Gov.br</a>
+
+            <div class="col-md-12">
+              <span class="alerta"></span>
+            </div>
+          </form>
+          <div class="row alert msg-content">
+            <div class="card mb-4 box-shadow d-inline-block w-50 msg-content" style="margin-top: 20px;">
+              <div class="card-header">
+                <h4 class="my-0 font-weight-bold">Aviso!</h4>
+              </div>
+              <div class="card-body" style="padding: 2px !important;">
+                <p class="card-title pricing-card-title aviso-msg">Usuários que possuíam login e senha anteriormente no
+                  sistema
+                  SisRGP 4.0, devem efetuar o seu novo acesso através da autenticação de usuários na plataforma GOV.BR.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p>SisRGP 4.0 Copyright 2020, MAPA - Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </div>
+  <script src="Scripts/jquery-1.9.1.min.js"></script>
+  <script src="Autenticado/assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> -->
+
+  <script type="text/javascript">
+    const alertText = `
+      <h4 style="padding-top: 10px;">
+        ATENÇÃO
+      </h4>
+      <h5 style="font-size: 18px;">
+        Para acessar as funcionalidades do sistema SisRGP 4.0, você cidadão, necessita efetuar a execução da PROVA DE VIDA por meio dos aplicativos <a target="_blank" href="https://www.gov.br/pt-br/apps/meu-gov.br">MEU GOV.BR</a> e <a target="_blank" href="https://meu.inss.gov.br/">MEU INSS</a>.
+      </h5>
+    `;
+
+    $(document).ready(function () {
+      var urlParams = new URLSearchParams(window.location.search);
+      var code = urlParams.get('code');
+      debugger;
+      console.log(code)
+      var state = urlParams.get('state');
+      console.log(state)
+      var erro = valorCookie();
+      console.log(erro)
+
+      if (code != null && state != null) {
+        var node = document.createElement("div");
+        var h1 = document.createElement("h1");
+        var divLoader = document.createElement("div");
+        $(divLoader).addClass("lds-dual-ring");
+        $(node).prepend(divLoader);
+        h1.innerText = "Aguarde enquanto você está sendo direcionado para o SISRgp 4.0 ...";
+        $(h1).css("margin-top", "15%");
+        $(node).prepend(h1);
+        node.id = "divBloquear";
+        node.setAttribute("style", "width: 100%;min-height: 100%;z-index: 999999;background-color: white;position: fixed;text-align:center;");
+        $("body").prepend(node);
+
+        //Chamar api de integracao
+        var settings = {
+          "url": window.location.origin + "/integracao-login-unico/LoginUnico/Token",
+          "method": "POST",
+          "timeout": 0,
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "data": JSON.stringify({ "code": code }),
+        };
+
+        $.ajax(settings).done(function (response) {
+          console.log(response);
+          if (response.codigo == 1) {
+            window.location.href = window.location.href.replace(window.location.search, "").replace("login.html", "") + "Default.aspx" + "?IntegracaoGovbr=" + response.encryptResult;
+          } else {
+            document.cookie = `errorApi=${response.codigo}`
+            window.location.href = 'https://sso.staging.acesso.gov.br/logout?post_logout_redirect_uri=' + location.href.split("/")[0] + "//" + location.href.split("/")[1] + location.href.split("/")[2] + "/" + location.href.split("/")[3] + "/login.html"
+          }
+        });
+      } else {
+        //usuario está acessando sem logar
+      }
+      if (erro != null) {
+        var errorMesage
+        switch (erro) {
+          case '-1':
+            errorMesage = "Sua Prova de Vida está vencida. Para renová-la, siga as instruções abaixo...";
+            break;
+          case '-2':
+            errorMesage = "Você precisa realizar a Prova de Vida antes de prosseguir. Leia as instruções abaixo...";
+            break;
+          case '-3':
+            errorMesage = "Erro ao logar no SisRgp 4.0, tente novamente mais tarde.";
+            break;
+          case '-4':
+            errorMesage = "Erro no sistema, reinicie seu navegador e tente novamente.";
+            break;
+        }
+        $('.alert').show()
+        $('.alerta').attr('style', 'color:red;')
+        $('.alerta').html(errorMesage + alertText)
+        $('.msg-content').attr('style', 'margin-top: 0px !important;')
+      }
+      function valorCookie() {
+        var error = null;
+        var allCookies = document.cookie.split(';')
+        allCookies.forEach(function (e) {
+          e = e.split('=')
+          if (e[0].includes('errorApi')) {
+            error = e[1]
+            var data = new Date(2010, 0, 01);
+            data = data.toGMTString()
+            document.cookie = "errorApi=;expires=" + data;
+          }
+        })
+        return error
+      }
+    });
+  </script>
+
+</body>
+
+</html>

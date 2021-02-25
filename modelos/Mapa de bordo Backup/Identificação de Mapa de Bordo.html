@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script src="assets/global/plugins/jquery-mask/jquery.mask.min.js"></script>
+    <style type="text/css">
+        .input-icon.right>i {
+            right: 20px;
+        }
+
+        input[type="date"] {
+            padding-right: 0;
+        }
+
+        .menu-superior {
+            margin-bottom: 5px;
+        }
+
+        .form-group>label {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        h4 {
+            cursor: pointer;
+        }
+
+        .cabecalho {
+            font-size: medium;
+            font-weight: 500 !important;
+            background: #8cdad5 !important;
+            padding: 5px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+        }
+
+        .container-de-cadastro {
+            border: solid 1px #d8e4e3;
+            padding: 25px 140px 25px 70px;
+            font-size: small;
+            -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+        }
+
+        .container-de-cadastro hr {
+            margin: 10px 0;
+        }
+
+        .container-de-cadastro .form-group {
+            margin-bottom: 5px;
+        }
+
+        .tabbable-line>.tab-content {
+            padding: 0 !important;
+        }
+
+        .mt-element-step {
+            margin-bottom: 25px;
+            transition: transform 1s ease-in-out;
+        }
+
+        .mt-element-step .step-line .mt-step-col {
+            padding: 0 !important;
+            transition: transform 1s ease-in-out;
+        }
+
+        .mt-element-step .step-line .mt-step-number>i {
+            top: 15px !important;
+            /* cursor: pointer; */
+        }
+
+        #body-saida-embarcacao .portlet-body {
+            padding: 0 !important;
+        }
+
+        .mt-element-step .step-line .mt-step-title:before {
+            top: -13px !important;
+        }
+
+        .mt-element-step .step-line .mt-step-number {
+            padding: 3px;
+        }
+
+        .text-align-reverse {
+            text-align: -webkit-right;
+            text-align: -moz-right;
+            text-align: -o-right;
+            text-align: -ms-right;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .color-red {
+            color: red;
+        }
+
+        .disabled {
+            background-color: #eef1f5;
+        }
+
+        .invalido {
+            border: 1px solid red;
+        }
+
+        @media (max-width: 767.98px) {
+            .container-de-cadastro {
+                padding: 25px 0px 0px 0px;
+            }
+
+            .form-group>label {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            img {
+                margin: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bodyIdentificacaoMapaBordo">
+        <div class="row">
+            <div class="profile-userpic col-md-3"><img alt="" class="img-responsive"
+                    src="../Imagens/aparencia/customizado/LogoEllosP.png" /></div>
+
+            <div class="caption bold bs-glyphicon-class font-blue-oleo col-md-6">
+                <h3 id="txtTituloFormulario">Identifica&ccedil;&atilde;o de Embarca&ccedil;&atilde;o</h3>
+            </div>
+        </div>
+
+        <div class="mt-element-step">
+            <div class="form-body">
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->
+                    <form action="#" class="form-horizontal">
+                        <div class="alert alert-danger bold" id="MensagemAlerta" role="alert" style="display:none;">
+                            Preencha todos os campos obrigat&oacute;rios antes de prosseguir.</div>
+
+                        <div class="tab-pane active" id="tab1">
+                            <h4 class="bs-glyphicon-class cabecalho" id="cabecalho-embarcacao">Mapa de bordo</h4>
+
+                            <div class="container-de-cadastro" id="menuFrotaArmadilha">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Protocolo:</label>
+
+                                            <div class="col-md-6 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@109@@" data-nome="Protocolo" disabled="disabled"
+                                                    id="txtProtocolo" required="required" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">N&uacute;mero TIE
+                                                da embarca&ccedil;&atilde;o:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@1@@" data-nome="Número TIE da embarcação"
+                                                    disabled="disabled" id="txtNumeroTie" required="required" /></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Nome da
+                                                embarca&ccedil;&atilde;o:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@2@@" data-nome="Nome da embarcação"
+                                                    disabled="disabled" id="txtNomeEmbarcacao" required="required" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Mapa de
+                                                Bordo:</label>
+
+                                            <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                    data-campo-id="@@35@@" data-nome="Mapa de Bordo"
+                                                    id="ddlMapaBordo"></select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        DocumentoVisualizacaoForm.camposCarregados(function () {
+            $('[data-tab-name="anexo"]').remove()
+            $('#versoes').remove()
+            var confirmarMapaExistente = jQuery.grep(DocumentoVisualizacaoForm.retornaCampos(), function (n, i) {
+                return (n.id == 2);
+            })[0].valor;
+
+            if (confirmarMapaExistente === "EXISTE") {
+                var topModal = $("#ajax-modal-rascunho").css("top");
+                var zIndexModal = $("#ajax-modal-rascunho").css("z-index");
+                $("#ajax-modal-rascunho").css("top", "175px");
+                $("#ajax-modal-rascunho").css("z-index", "-1");
+
+                if (location.href.includes("DashboardProcessos")) {
+                    alert("Você já possui um mapa de bordo pendente!");
+                }
+                else {
+                    toastr["error"](" ", "<i class='fa '></i>Você já possui um mapa de bordo pendente! <br/> ");
+                    $("#rascunho-confirmacao-cancelar").trigger("click");
+                }
+
+                setTimeout(function () {
+                    $("#ajax-modal-rascunho").css("top", topModal);
+                    $("#ajax-modal-rascunho").css("z-index", zIndexModal);
+                }, 2000);
+            }
+
+            dadosUsuario = Ecm.retornaUsuario();
+            $('#txtNomeEmbarcacao').val(dadosUsuario.nome);
+            $("#txtNumeroTie").val(dadosUsuario.login.replace('MB', ''));
+            if (DocumentoVisualizacaoForm.retornaDocumento().novo && $("#txtProtocolo").val() == "") {
+                $("#txtProtocolo").val("MB" + (new Date().format("ddMMyyyyHHmmssffff")));
+            }
+        });
+    </script>
+</body>
+
+</html>

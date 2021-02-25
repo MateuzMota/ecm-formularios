@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script src="assets/global/plugins/jquery-mask/jquery.mask.min.js"></script>
+    <link href="assets/global/plugins/jcrop/css/jquery.Jcrop.css" rel="stylesheet" type="text/css" />
+    <script src="assets/global/plugins/jcrop/js/jquery.Jcrop.js"></script>
+    <style type="text/css">
+        .input-icon.right>i {
+            right: 20px;
+        }
+
+        input[type="date"] {
+            padding-right: 0;
+        }
+
+        .menu-superior {
+            margin-bottom: 5px;
+        }
+
+        .form-group>label {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        h4 {
+            cursor: pointer;
+        }
+
+        .cabecalho {
+            font-size: medium;
+            font-weight: 500 !important;
+            background: #8cdad5 !important;
+            padding: 5px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+        }
+
+        .containerCadastro {
+            border: solid 1px #d8e4e3;
+            padding: 25px 140px 25px 70px;
+            font-size: small;
+            -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+        }
+
+        .containerCadastro hr {
+            margin: 10px 0;
+        }
+
+        .containerCadastro .form-group {
+            margin-bottom: 5px;
+        }
+
+        .tabbable-line>.tab-content {
+            padding: 0 !important;
+        }
+
+        .mt-element-step {
+            margin-bottom: 25px;
+            transition: transform 1s ease-in-out;
+        }
+
+        .mt-element-step .step-line .mt-step-col {
+            padding: 0 !important;
+            transition: transform 1s ease-in-out;
+        }
+
+        .mt-element-step .step-line .mt-step-number>i {
+            top: 15px !important;
+            /* cursor: pointer; */
+        }
+
+        #body-saida-embarcacao .portlet-body {
+            padding: 0 !important;
+        }
+
+        .mt-element-step .step-line .mt-step-title:before {
+            top: -13px !important;
+        }
+
+        .mt-element-step .step-line .mt-step-number {
+            padding: 3px;
+        }
+
+        .text-align-reverse {
+            text-align: -webkit-right;
+            text-align: -moz-right;
+            text-align: -o-right;
+            text-align: -ms-right;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .color-red {
+            color: red;
+        }
+
+        .disabled {
+            background-color: #eef1f5;
+        }
+
+        .invalido {
+            border: 1px solid red;
+        }
+
+        @media (max-width: 767.98px) {
+            .containerCadastro {
+                padding: 25px 0px 0px 0px;
+            }
+
+            .form-group>label {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            img {
+                margin: auto;
+            }
+        }
+
+        .ui-autocomplete {
+            z-index: 2147483647 !important;
+        }
+
+        #transicao-id-7,
+        #transicao-id-12 {
+            display: none;
+        }
+    </style>
+    <link href="chrome-extension://nffaoalbilbmmfgbnbgppjihopabppdk/inject.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="vsc-initialized">
+    <div id="bodyValidarEmbarcacao">
+        <div class="row">
+            <div class="profile-userpic col-md-3"><img alt="" class="img-responsive"
+                    src="../Imagens/aparencia/customizado/LogoEllosP.png" /></div>
+
+            <div class="caption bold bs-glyphicon-class font-blue-oleo col-md-6">
+                <h3 id="txtTituloFormulario">Formul&aacute;rio de Mapa de Bordo Online</h3>
+            </div>
+        </div>
+
+        <div class="mt-element-step">
+            <div class="row step-line">
+                <div class="col-xs-6 col-sm-6 col-md-6 mt-step-col first active" id="step1">
+                    <div class="mt-step-number bg-white" id="circle-tab1" title="Dados Profissionais"><i
+                            class="fa fa-anchor"></i></div>
+
+                    <div class="mt-step-title uppercase font-grey-cascade">&nbsp;</div>
+
+                    <div class="mt-step-content font-grey-cascade">&nbsp;</div>
+                </div>
+
+                <div class="col-xs-6 col-sm-6 col-md-6 mt-step-col last" id="step2">
+                    <div class="mt-step-number bg-white" id="circle-tab2" title="Documentação"><i
+                            class="fa fa-file"></i></div>
+
+                    <div class="mt-step-title uppercase font-grey-cascade">&nbsp;</div>
+
+                    <div class="mt-step-content font-grey-cascade">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-body">
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form action="#" class="form-horizontal">
+                    <div class="alert alert-danger bold" id="MensagemAlerta" role="alert" style="display:none;">Preencha
+                        todos os campos obrigat&oacute;rios antes de prosseguir.</div>
+
+                    <div class="tab-pane active" id="tab1">
+                        <h4 class="bs-glyphicon-class cabecalho" id="cabecalhoEmbarcacao">Dados da
+                            Embarca&ccedil;&atilde;o</h4>
+
+                        <div class="containerCadastro" id="menuRegistroEmbarcacao">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Nome da
+                                            embarca&ccedil;&atilde;o:</label>
+
+                                        <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                data-campo-id="@@2@@" data-nome="Nome da embarcação"
+                                                id="txtNomeEmbarcacao" placeholder="Nome completo" type="text" /></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">N&uacute;mero TIE da
+                                            embarca&ccedil;&atilde;o:</label>
+
+                                        <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                data-campo-id="@@1@@" data-nome="Número TIE da embarcação"
+                                                id="txtNumeroTie" placeholder="Número TIE da embarcação" type="text" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">RGP da
+                                            embarca&ccedil;&atilde;o:</label>
+
+                                        <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                data-campo-id="@@3@@" data-nome="RGP da embarcação" id="txtRgp"
+                                                placeholder="RGP da embarcação" type="text" /></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">A
+                                            Embarca&ccedil;&atilde;o &eacute; Arrendada?</label>
+
+                                        <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                data-campo-id="@@61@@" data-nome="Emarcação arrendada"
+                                                id="ddlEmarcacaoArrendada"> </select></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Origem
+                                            Embarca&ccedil;&atilde;o:</label>
+
+                                        <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                data-campo-id="@@62@@" data-nome="Origem Embarcação"
+                                                id="ddlOrigemEmbarcacao"> </select></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label
+                                            class="control-label col-md-4">Empresa/armador:</label>
+
+                                        <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                data-campo-id="@@11@@" data-nome="Empresa/armador"
+                                                id="txtEmpresaArmador" placeholder="Empresa/armador" type="text" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">UF de
+                                            Inscri&ccedil;&atilde;o da Embarca&ccedil;&atilde;o:</label>
+
+                                        <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                data-campo-id="@@60@@" data-nome="UF de Inscrição da Embarcação"
+                                                id="ddlUfEmbarcacao"> </select></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Capacidade do
+                                            por&atilde;o:</label>
+
+                                        <div class="col-md-8 input-icon right"><input class="form-control input-sm peso"
+                                                data-campo-id="@@12@@" data-nome="Capacidade do porão"
+                                                id="txtCapacidadePorao" placeholder="Capacidade do porão" type="text" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Pa&iacute;s de
+                                            Origem:</label>
+
+                                        <div class="col-md-8 input-icon right"><select
+                                                class="form-control input-sm peso" data-campo-id="@@63@@"
+                                                data-nome="País de Origem" id="ddlPaisOrigem"> </select></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Ano
+                                            fabrica&ccedil;&atilde;o:</label>
+
+                                        <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                data-campo-id="@@64@@" data-nome="Ano fabricação" id="txtAnoFabricacao"
+                                                placeholder="Ano fabricação" type="text" /></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label
+                                            class="control-label col-md-4">Propuls&atilde;o:</label>
+
+                                        <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                data-campo-id="@@65@@" data-nome="Propulsão" id="ddlPropulsao">
+                                            </select></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Pot&ecirc;ncia
+                                            (HP):</label>
+
+                                        <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                data-campo-id="@@66@@" data-nome="Potência (HP)" id="txtPotencia"
+                                                placeholder="Potência (HP)" type="text" /></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label
+                                            class="control-label col-md-4">Combust&iacute;vel:</label>
+
+                                        <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                data-campo-id="@@67@@" data-nome="Combustível" id="ddlCombustivel"
+                                                placeholder="Combustível"> </select></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Capacidade do Tanque
+                                            de Combust&iacute;vel (Tancagem) em Litros:</label>
+
+                                        <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                data-campo-id="@@68@@"
+                                                data-nome="Capacidade do Tanque de Combustível (Tancagem) em Litros"
+                                                id="txtCapacidadeTanque"
+                                                placeholder="Capacidade do Tanque de Combustível (Tancagem) em Litros"
+                                                type="text" /></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Comprimento
+                                            (m):</label>
+
+                                        <div class="col-md-8 input-icon right"><input
+                                                class="form-control input-sm metros" data-campo-id="@@69@@"
+                                                data-nome="Comprimento (m)" id="txtComprimento"
+                                                placeholder="Comprimento (m)" type="text" /></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Material
+                                            Casco:</label>
+
+                                        <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                data-campo-id="@@70@@" data-nome="Material Casco" id="txtMaterialCasco"
+                                                placeholder="Material Casco"> </select></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label
+                                            class="control-label col-md-4">Arquea&ccedil;&atilde;o Bruta - AB:</label>
+
+                                        <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                data-campo-id="@@71@@" data-nome="Arqueação Bruta - AB"
+                                                id="txtArqueacaoBruta" maxlength="3" placeholder="Arqueação Bruta - AB"
+                                                type="text" /></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">PREPS Ativo?</label>
+
+                                        <div class="col-md-8 input-icon right"><select
+                                                class="form-control input-sm date-picker" data-campo-id="@@72@@"
+                                                data-nome="PREPS Ativo" id="ddlPrepsAtivo" placeholder="PREPS Ativo"
+                                                type="text"> </select></div>
+                                    </div>
+                                </div>
+
+                                <div id="divDesativacaoPreps">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Data de
+                                                desativa&ccedil;&atilde;o:</label>
+
+                                            <div class="col-md-8 input-icon right"><input
+                                                    class="form-control input-sm date-picker" data-campo-id="@@73@@"
+                                                    data-nome="Data de desativação" id="txtDataDesativacao"
+                                                    placeholder="Data de desativação" type="text" /></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Motivo da
+                                                desativa&ccedil;&atilde;o:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@74@@" data-nome="Motivo da desativação"
+                                                    id="txtMotivoDesativacao" placeholder="Motivo da desativação"
+                                                    type="text" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Equipamentos de
+                                            comunica&ccedil;&atilde;o:</label>
+
+                                        <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                data-campo-id="@@76@@" data-nome="Equipamentos de comunicação"
+                                                id="ddlEquipamentoComunicacao"> </select></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Canal ou
+                                            Frequ&ecirc;ncia para contato por r&aacute;dio:</label>
+
+                                        <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                data-campo-id="@@77@@"
+                                                data-nome="Canal ou Frequência para contato por rádio"
+                                                id="txtCodigoRadio"
+                                                placeholder="Canal ou Frequência para contato por rádio" type="text" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Metodo de pesca
+                                            utilizado pela embarca&ccedil;&atilde;o:</label>
+
+                                        <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                data-campo-id="@@78@@"
+                                                data-nome="Metodo de pesca utilizado pela embarcação"
+                                                id="ddlMetodoPesca"> </select></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Esp&eacute;cie alvo da
+                                            embarca&ccedil;&atilde;o:</label>
+
+                                        <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                data-campo-id="@@79@@" data-nome="Espécie alvo da embarcação"
+                                                id="txtEspecieAlvo" /></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">&Aacute;rea de
+                                            pesca:</label>
+
+                                        <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                data-campo-id="@@80@@" data-nome="Área de pesca" id="ddlAreaPesca">
+                                            </select></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Zona de
+                                            opera&ccedil;&atilde;o:</label>
+
+                                        <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                data-campo-id="@@81@@" data-nome="Zona de operação"
+                                                id="ddlZonaOperacao"> </select></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">A
+                                            embarca&ccedil;&atilde;o participa do programa de subven&ccedil;&atilde;o do
+                                            &oacute;leo diesel ?:</label>
+
+                                        <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                data-campo-id="@@75@@"
+                                                data-nome="A embarcação participa do programa de subvenção do óleo diesel ?"
+                                                id="ddlOleoDiesel"> </select></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">A
+                                            Embarca&ccedil;&atilde;o &eacute; filiada &aacute; alguma entidade
+                                            colaboradora ?</label>
+
+                                        <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                data-campo-id="@@90@@"
+                                                data-nome="A Embarcação é filiada á alguma entidade colaboradora ?"
+                                                id="ddlEntidadeColaboradora"> </select></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Respons&aacute;vel
+                                            pelo preenchimento do mapa de bordo digital</label>
+
+                                        <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                data-campo-id="@@104@@"
+                                                data-nome="Responsável pelo preenchimento do mapa de bordo digital"
+                                                id="ddlResponsavelPreenchimento"> </select></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="divDadosResponsavelPreenchimento" style="display: none;">
+                            <h4 class="bs-glyphicon-class cabecalho" id="cabecalhoEntidade">Dados do Respons&aacute;vel
+                                pelo preenchimento do mapa de bordo digital</h4>
+
+                            <div class="note note-warning" id="msgAlertaResponsavelPreenchimento">
+                                <p>O mapa de bordo da embarca&ccedil;&atilde;o somente poder&aacute; ser preenchido e
+                                    enviado pelo representante legal ou seu preposto legal, devidamente munido de
+                                    procura&ccedil;&atilde;o.</p>
+                            </div>
+
+                            <div class="containerCadastro" id="menu-entidade">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Nome ou
+                                                Raz&atilde;o Social do Respons&aacute;vel:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@105@@"
+                                                    data-nome="Nome ou Razão Social do Responsável"
+                                                    id="txtNomeRazaoSocial"
+                                                    placeholder="Nome ou Razão Social do Responsável" type="text" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">CPF/ CNPJ:</label>
+
+                                            <div class="col-md-8 input-icon right"><i class="fa fa-exclamation tooltips"
+                                                    data-container="body"
+                                                    data-original-title="informe um CPF/CNPJ válido"
+                                                    style="display:none"></i> <input
+                                                    class="form-control input-sm campoNumero" data-campo-id="@@106@@"
+                                                    data-nome="CPF/ CNPJ" id="txtCpfResponsavelPreenchimento"
+                                                    placeholder="CPF/ CNPJ" type="text" /> <span class="color-red"
+                                                    id="CPFinvalido" style="display: none;"></span></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Telefone</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@107@@" data-nome="Telefone"
+                                                    id="txtTelefoneResponsavel" placeholder="Telefone" type="text" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">E-mail:</label>
+
+                                            <div class="col-md-8 input-icon right"><input
+                                                    class="form-control input-sm email" data-campo-id="@@108@@"
+                                                    data-nome="E-mail" id="txtEmailResponsavel" placeholder="E-mail"
+                                                    type="text" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="divDadosEntidade" style="display: none;">
+                            <!--Dados Entidade-->
+                            <h4 class="bs-glyphicon-class cabecalho" id="cabecalhoEntidade">Dados da Entidade Filiada
+                            </h4>
+
+                            <div class="containerCadastro" id="menu-entidade">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">CNPJ
+                                                Entidade:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@91@@" data-nome="CNPJ Entidade"
+                                                    id="txtCnpjEntidade" placeholder="CNPJ Entidade" type="text" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Nome
+                                                Entidade:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@92@@" data-nome="Nome Entidade"
+                                                    id="txtNomeEntidade" placeholder="Nome Entidade" type="text" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">UF da
+                                                Entidade</label>
+
+                                            <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                    data-campo-id="@@93@@" data-nome="UF da Entidade"
+                                                    id="ddlUfEntidade"> </select></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Telefone da
+                                                Entidade:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@94@@" data-nome="Telefone da Entidade"
+                                                    id="txtTelefoneEntidade" placeholder="Telefone da Entidade"
+                                                    type="text" /></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Telefone
+                                                2:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@89@@" data-nome="Telefone 2"
+                                                    id="txtTelefoneCelular2" placeholder="Telefone 2" type="text" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">E-mail da
+                                                Entidade:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@95@@" data-nome="E-mail da Entidade"
+                                                    id="txtEmailEntidade" placeholder="E-mail da Entidade"
+                                                    type="text" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Dados do proprietario  -->
+
+                        <div id="divDadosProprietario">
+                            <h4 class="bs-glyphicon-class cabecalho" id="cabecalhoDadosProprietario">Dados do
+                                propriet&aacute;rio</h4>
+
+                            <div class="containerCadastro" id="menuDadosProprietario">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Nome/Raz&atilde;o
+                                                Social do propriet&aacute;rio:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@82@@" data-nome="Nome/Razão Social do proprietario"
+                                                    id="txtNomeRazaoProprietario"
+                                                    placeholder="Nome/Razão Social do proprietario" type="text" /></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">CPF:</label>
+
+                                            <div class="col-md-8 input-icon right"><i class="fa fa-exclamation tooltips"
+                                                    data-container="body"
+                                                    data-original-title="informe um CPF/CNPJ válido"
+                                                    style="display:none"></i> <input
+                                                    class="form-control input-sm campoNumero" data-campo-id="@@96@@"
+                                                    data-nome="CPF/CNPJ do responsável"
+                                                    id="txtCpfResponsavelPreenchimento" maxlength="18"
+                                                    placeholder="CPF/CNPJ do responsável" type="text" /> <span
+                                                    class="color-red" id="CPFinvalido" style="display: none;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">CEP
+                                                Propriet&aacute;rio:</label>
+
+                                            <div class="col-md-8 input-icon right"><i class="fa fa-exclamation tooltips"
+                                                    data-container="body" data-original-title="informe um CEP válido"
+                                                    style="display:none"></i> <input class="form-control input-sm"
+                                                    data-campo-id="@@84@@" data-nome="CEP Proprietario"
+                                                    id="txtCepProprietario" placeholder="CEP Proprietario"
+                                                    type="text" /></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Endere&ccedil;o do
+                                                propriet&aacute;rio:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@85@@" data-nome="Endereço do proprietário"
+                                                    id="txtEnderecoProprietario" placeholder="Endereço do proprietário"
+                                                    type="text" /></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Bairro:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@86@@" data-nome="Bairro" id="txtBairroProprietario"
+                                                    placeholder="Bairro" type="text" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Estado:</label>
+
+                                            <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                    data-campo-id="@@88@@" data-nome="Estado"
+                                                    id="ddlEstadoProprietario"> </select></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label
+                                                class="control-label col-md-4">Munic&iacute;pio:</label>
+
+                                            <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                    data-campo-id="@@87@@" data-nome="Município"
+                                                    id="ddlMunicipioProprietario"> </select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab2" style="display:none">
+                        <h4 class="bs-glyphicon-class cabecalho" id="cabecalhoDocumentacao">Documenta&ccedil;&atilde;o
+                        </h4>
+
+                        <div class="containerCadastro" id="menuDocumentacao" style="height: 65vh;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <!--Lista dos anexos inseridos-->
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12" id="listGroupDocumentos" style="display:none;">
+                                            <ul class="list-group" id="ulDocumentos">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--Lista dos anexos inseridos-->
+
+                                    <div class="col-md-12">
+                                        <div class="form-group"><label class="control-label col-md-1">Mapa de
+                                                Bordo:</label>
+
+                                            <div class="col-md-11 input-icon right"><select
+                                                    class="form-control input-sm" data-campo-id="@@35@@"
+                                                    data-nome="Mapa de Bordo" id="ddlMapaBordo"></select></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12" id="divJustificativa" style="display: none;">
+                                        <div class="form-group"><label
+                                                class="control-label col-md-1">Justificativa:</label>
+
+                                            <div class="col-md-11 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@97@@" data-nome="Justificativa reprovação"
+                                                    id="txtJustificativaReprovacao"
+                                                    placeholder="Justificativa reprovação" type="text" /></div>
+                                        </div>
+                                    </div>
+                                    <!--Lista fake para o sistema reconhecer o campo-->
+
+                                    <div style="display: none;">
+                                        <div class="col-md-8 divAprovarDocumento" id="divAprovarCpf"
+                                            style="display: none;">
+                                            <div class="form-group"><label
+                                                    class="control-label col-md-4">Aprovar:</label>
+
+                                                <div class="col-md-8 input-icon right"><select
+                                                        class="form-control input-sm" data-campo-id="@@98@@"
+                                                        data-nome="Anexo Cpf" id="ddlAprovarCpf"></select></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-8 divAprovarDocumento" id="divAprovarCnpj"
+                                            style="display: none;">
+                                            <div class="form-group"><label
+                                                    class="control-label col-md-4">Aprovar:</label>
+
+                                                <div class="col-md-8 input-icon right"><select
+                                                        class="form-control input-sm" data-campo-id="@@99@@"
+                                                        data-nome="Anexo Cnpj" id="ddlAprovarCnpj"></select></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-8 divAprovarDocumento" id="divAprovarComprovanteResidencia"
+                                            style="display: none;">
+                                            <div class="form-group"><label
+                                                    class="control-label col-md-4">Aprovar:</label>
+
+                                                <div class="col-md-8 input-icon right"><select
+                                                        class="form-control input-sm" data-campo-id="@@100@@"
+                                                        data-nome="Anexo Comprovante de Residencia"
+                                                        id="ddlAprovarComprovanteResidencia"></select></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-8 divAprovarDocumento" id="divAprovarTie"
+                                            style="display: none;">
+                                            <div class="form-group"><label
+                                                    class="control-label col-md-4">Aprovar:</label>
+
+                                                <div class="col-md-8 input-icon right"><select
+                                                        class="form-control input-sm" data-campo-id="@@101@@"
+                                                        data-nome="Anexo TIE" id="ddlAprovarTie"></select></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-8 divAprovarDocumento" id="divAprovarRaep"
+                                            style="display: none;">
+                                            <div class="form-group"><label
+                                                    class="control-label col-md-4">Aprovar:</label>
+
+                                                <div class="col-md-8 input-icon right"><select
+                                                        class="form-control input-sm" data-campo-id="@@102@@"
+                                                        data-nome="Anexo RAEP" id="ddlAprovarRaep"></select></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-8 divAprovarDocumento" id="divAprovarProcuracaoAutenticada"
+                                            style="display: none;">
+                                            <div class="form-group"><label
+                                                    class="control-label col-md-4">Aprovar:</label>
+
+                                                <div class="col-md-8 input-icon right"><select
+                                                        class="form-control input-sm" data-campo-id="@@115@@"
+                                                        data-nome="Anexo Procuração Autenticada de Representante"
+                                                        id="ddlAprovarProcuracaoAutenticada"></select></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div id="visualizacao">
+                                        <div class="col-md-12" id="divIframe"><iframe class="framesVisualizacao"
+                                                height="600px" id="frameVisualizacao1" width="100%"></iframe></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="div-buttons-acoes text-center" style="padding-top: 5px;"><a
+                            class="btn default button-previous btn-xs" href="javascript:;"
+                            style="display: inline-block;"><i class="fa fa-angle-left"></i> Voltar </a> <a
+                            class="btn btn-outline blue button-next btn-xs" href="javascript:;"> Avan&ccedil;ar <i
+                                class="fa fa-angle-right"></i> </a></div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+    </div>
+    <script>
+        Ecm.bloquearElemento(".botoes");
+        Ecm.bloquearElemento("#bodyValidarEmbarcacao");
+        DocumentoVisualizacaoForm.camposCarregados(function () {
+
+            if (DocumentoVisualizacaoForm.retornaDocumento().atividadeId == "11")//Enviados
+            {
+                if ((Ecm.retornaUsuario().gruposId.split(",").includes("152") ||
+                    Ecm.retornaUsuario().gruposId.split(",").includes("1")) == false) {
+                    $(".botoes .editar").remove();//Remove botao de editar caso nao esteja no grupo especificado.
+                    $(".menu-superior").remove();
+                    $(".div-buttons-acoes").remove();
+                    $('#versoes').remove()
+                }
+            }
+
+
+            //Removendo options que ainda nao estao disponiveis para utilizacao
+            $("#ddlMapaBordo option").each(function (index, elemento) {
+                if ($(elemento).val() != "ANEXO-VIII-ARMADILHA"
+                    && $(elemento).val() != "ANEXO-V-REDE-DE-CERCO-SARDINHA"
+                    && $(elemento).val() != "ANEXO-XVI-CARDUME-ASSOCIADO"
+                    && $(elemento).val() != "ANEXO-XV-VARA-E-ISCA-VIVA"
+                    && $(elemento).val() != "ANEXO-XIV-ISCADOR-AUTOMATICO"
+                    && $(elemento).val() != "ANEXO-IX-ESPINHEL-VERTICAL-(N/NE)") {
+                    $(elemento).remove();
+                }
+            });
+
+            setTimeout(function () {
+            }, 1000);
+
+            Ecm.desbloquearElemento("#bodyValidarEmbarcacao");
+            Ecm.desbloquearElemento(".botoes");
+
+            /*----------------------------------------------------------------Sets Iniciais----------------------------------------------------------------*/
+            var dadosUsuario = Ecm.retornaUsuario();
+            var abaAtual = 1;
+            var ultimoAnexoIdTemporario = 0;
+            var ultimoTipoAnexoIdTemporario = 0;
+            var crop_max_width = 600;
+            var crop_max_height = 400;
+            var listaEspecies = [];
+            var listaAnexos = DocumentoVisualizacaoForm.retornaListaAnexosDocumento();
+
+            $("#btnPrint").hide();
+            $(".info-extra").hide();
+
+            if ($("#ddlResponsavelPreenchimento").val() == "REPRESENTANTE-COM-PROCURACAO") {
+                $("#divDadosResponsavelPreenchimento").show('fast');
+                $('#uploadProcuracaoRepresentante').closest('.form-group').closest('div').show();
+                $('#uploadProcuracaoRepresentante').attr('required', true);
+                $("#divDadosResponsavelPreenchimento input,#divDadosResponsavelPreenchimento select").attr("required", true);
+            }
+            else {
+                $("#divDadosResponsavelPreenchimento").hide('fast');
+                $('#uploadProcuracaoRepresentante').closest('.form-group').closest('div').hide();
+                $('#uploadProcuracaoRepresentante').attr('required', false);
+            }
+            //Configurando variáveis iniciais
+            $("#txtTituloFormulario").text("Formulário de Mapa de Bordo Online - Validar Embarcação");//Título
+            $("#cabecalhoEmbarcacao").text("Dados da Embarcação");
+
+            /*----------------------------------------------------------------Eventos Início----------------------------------------------------------------*/
+
+            Ecm.registraEvento("change", "#ddlPrepsAtivo", function (elemento) {
+                if ($("#ddlPrepsAtivo").val() == "Nao") {
+                    $("#divDesativacaoPreps").show("fast");
+                }
+                else {
+                    $("#divDesativacaoPreps").hide("fast");
+                }
+            });
+
+            Ecm.registraEvento("change", "#ddlEntidadeColaboradora", function (elemento) {
+                if ($("#ddlEntidadeColaboradora").val() == "Sim") {
+                    $("#divDadosEntidade").show('fast');
+                }
+                else {
+                    $("#divDadosEntidade").hide('fast');
+                }
+            });
+
+            Ecm.registraEvento("click", ".button-previous", function () {
+                exibeAba(abaAtual - 1);
+            });
+
+            Ecm.registraEvento("click", ".button-next", function () {
+                exibeAba(abaAtual + 1);
+            });
+
+            Ecm.registraEvento('click', '.thumb', function (elemento) {
+                $("#frameVisualizacao1").attr("src", "");
+
+                var anexoId = $($(elemento)[0].target).attr("anexoId");
+                var tipoAnexoId = $($(elemento)[0].target).attr("tipoAnexoId");
+
+                $(".listagemAnexos .arquivo[id='anexo-" + anexoId + "']").trigger("click");
+                Ecm.bloquearElemento("#frameVisualizacao1");
+
+                $($(elemento)[0].target).closest('div').siblings('.divAprovarDocumento').show('fast');//Obriga a visualizar a imagem antes de aprovar.
+                $($(elemento)[0].target).closest('div').siblings('.divAprovarDocumento').find("select").attr("required", "required");
+            });
+
+            Ecm.registraEvento("change", "#listGroupDocumentos select", function () {
+                var existeDocInvalido = false;
+                var qtdeAvaliados = 0;
+                $("#listGroupDocumentos select").each(function () {
+                    if ($(this).val() == "Nao") {
+                        existeDocInvalido = true;
+                        qtdeAvaliados++;
+                    }
+                    if ($(this).val() == "Sim") {
+                        qtdeAvaliados++;
+                    }
+                });
+
+                if (existeDocInvalido) {
+                    $("#divJustificativa").show('fast');
+                    $("#txtJustificativaReprovacao").attr("required", "required");
+                }
+                else {
+                    $("#divJustificativa").hide('fast');
+                    $("#txtJustificativaReprovacao").attr("required", false);
+                }
+
+                if (qtdeAvaliados == $("#listGroupDocumentos select").length) {
+                    if (existeDocInvalido) {
+                        $("#transicao-id-12").show('fast');
+                        $("#transicao-id-7").hide('fast');
+                    }
+                    else {
+                        $("#transicao-id-7").show('fast');
+                        $("#transicao-id-12").hide('fast');
+                    }
+                }
+                else {
+                    $("#transicao-id-7").hide('fast');
+                    $("#transicao-id-12").hide('fast');
+                }
+            });
+
+            /*----------------------------------------------------------------Eventos Fim----------------------------------------------------------------*/
+
+            /*----------------------------------------------------------------Functions Início----------------------------------------------------------------*/
+            var chamaCallback = function (callback, parametros) {
+                if (typeof callback === "function") {
+                    callback(parametros);
+                }
+            };
+
+            function AtualizaListaAnexos() {
+                listaAnexoId = [];
+                $(".listagemAnexos .arquivo [data-tipo-anexo-id=1]").each(function () {
+                    var anexoid = $(this)
+                        .closest(".arquivo")
+                        .attr("id");
+                    if (anexoid != "") {
+                        ultimoAnexoIdTemporario = anexoid.replace("anexo-", "");
+                        listaAnexoId.push(anexoid.replace("anexo-", ""));
+                    }
+                });
+
+                listaAnexoId.sort();
+            };
+
+            function AtualizarAnexosAba() {
+                $("#listGroupDocumentos").html('');
+                $.each(listaAnexos, function (i, val) {
+                    var anexoid = val.id;
+                    var anexoTipoId = val.anexoTipoId;
+                    $("#listGroupDocumentos").show();
+                    var elementoLink =
+                        "<li class='list-group-item row'><div class='col-md-4'><a style='float:left;' href='#' class='btn btn-link thumb' anexoId='" +
+                        anexoid +
+                        "' tipoAnexoId='" +
+                        anexoTipoId +
+                        "' >" +
+                        verificaAnexoInserido(anexoTipoId) +
+                        "</a></div>" + RetornarListaAprovacao(anexoTipoId) + "</li>";
+
+                    $("#listGroupDocumentos").append(elementoLink);
+
+                    var $inputUploadAnexo = $(
+                        "#divUploadArquivos [data-tipo-anexo-id=" + anexoTipoId + "]"
+                    );
+                    $inputUploadAnexo.hide();
+                    $inputUploadAnexo.siblings("p").hide();
+                    $inputUploadAnexo.siblings(".fa-check").show();
+                    $inputUploadAnexo.attr('required', false);
+                });
+            };
+
+            function RetornarListaAprovacao(tipo_Anexo_Id) {
+                var dataId = "";
+                switch (tipo_Anexo_Id) {
+                    case 1:
+                        dataNome = "Anexo Padrão";
+                        break;
+                    case 2:
+                        dataId = "divAprovarCpf";
+                        break;
+                    case 35:
+                        dataId = "divAprovarCnpj";
+                        break;
+                    case 4:
+                        dataId = "divAprovarComprovanteResidencia";
+                        break;
+                    case 38:
+                        dataId = "divAprovarTie";
+                        break;
+                    case 54:
+                        dataId = "divAprovarRaep";
+                        break;
+                    case 65:
+                        dataId = "divAprovarProcuracaoAutenticada";
+                        break;
+                }
+
+                var htmlLista = $("#" + dataId)[0].outerHTML;
+                return htmlLista;
+            };
+            function verificaAnexoInserido(tipo_Anexo_Id) {
+                var retornoNomeTipoAnexo;
+
+                switch (tipo_Anexo_Id) {
+                    case 1:
+                        retornoNomeTipoAnexo = "Anexo Padrão";
+                        break;
+                    case 2:
+                        retornoNomeTipoAnexo = "CPF";
+                        break;
+                    case 4:
+                        retornoNomeTipoAnexo = "Comprovante de residência";
+                        break;
+                    case 35:
+                        retornoNomeTipoAnexo = "CNPJ";
+                        break;
+                    case 38:
+                        retornoNomeTipoAnexo = "TIE";
+                        break;
+                    case 54:
+                        retornoNomeTipoAnexo = "RAEP";
+                        break;
+                    case 65:
+                        retornoNomeTipoAnexo = "Procuração Autenticada de Representante de Envio de Mapa de Bordo Digital";
+                        break;
+                }
+                return retornoNomeTipoAnexo;
+            }
+
+            function exibeAba(aba) {
+                switch (aba) {
+                    case 1:
+                        exibeAba1();
+                        break;
+                    case 2:
+                        exibeAba2();
+                        break;
+                }
+            };
+
+            function exibeAba1() {
+
+                $("#step2").removeClass("active done");
+                $("#tab2").hide();
+
+                $("#tab2").removeClass("active");
+
+                $("#tab1").show();
+                $("#tab1").addClass("active");
+                $(".button-previous").attr("disabled", "disabled");
+                $(".button-next").show();
+                $(".button-next").removeAttr("disabled").text("Avançar");
+                abaAtual = 1;
+            };
+
+            function exibeAba2() {
+
+                $("#step1")
+                    .removeClass("active")
+                    .addClass("done");
+
+                $("#tab1").hide();
+                $("#tab1").removeClass("active");
+
+                $("#tab2").show();
+                $("#step2").removeClass("done").addClass("active");
+                $(".button-next").show();
+                $(".button-next").removeAttr("disabled").text("Avançar");
+                $(".button-previous").removeAttr("disabled");
+
+                $("#txtCpfResponsavelPreenchimento").trigger('focusout');
+                $("#uploadComprovanteResidencia").attr("required", true);
+                $("#uploadTie").attr("required", true);
+                $("#uploadRaep").attr("required", true);
+                abaAtual = 2;
+                AtualizarAnexosAba();
+            };
+
+            function mensagemAlerta(texto) {
+                $("#MensagemAlerta").show();
+
+                if (texto === undefined) {
+                    $("#MensagemAlerta").text(
+                        "Preencha todos os campos obrigatórios antes de prosseguir"
+                    );
+                } else {
+                    $("#MensagemAlerta").text(texto);
+                }
+            };
+            function TodosOsCamposObrigatoriosEstaoPreenchidos() {
+                var camposNaoPreenchidos = $("#tab1 input:invalid, select:invalid").filter('[required]:visible');
+
+                if (camposNaoPreenchidos.length == 0) {
+                    $("#MensagemAlerta").hide();
+                } else {
+                    mensagemAlerta();
+                    return false;
+                }
+                return true;
+            };
+
+            /*----------------------------------------------------------------Functions Fim----------------------------------------------------------------*/
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1177 @@
+<html>
+
+<head>
+    <title></title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            outline: 0;
+            border: 0;
+            list-style-type: none;
+        }
+
+        form label {
+            font-size: 1.4rem;
+            color: #7a869a;
+            font-weight: 400;
+            z-index: 2;
+            transition: 0.2s ease all;
+            display: block;
+            padding-bottom: 6px;
+            text-align: left;
+        }
+
+        form textarea {
+            width: 100%;
+            height: 284px;
+            resize: none;
+            border: 1px solid #7a869a;
+        }
+
+        .modal-body {
+            min-height: 600px;
+        }
+
+        #campos {
+            min-height: 556px;
+        }
+
+        #formulario {
+            min-height: 534px;
+        }
+
+        .header-label {
+            position: relative;
+            top: -2px;
+            font-size: 1.2rem;
+        }
+
+        .borda-cabecalho {
+            border-right: 1px solid #dfe1e5;
+        }
+
+        .alinhaTexto {
+            position: relative;
+            top: -12px;
+            left: -10px;
+        }
+
+        .linhaSeparadoraCabecalho {
+            border-top: 1px solid #e6eaee;
+            display: flex;
+            padding: 15px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        #txtNomeCompleto {
+            font-size: 2.2rem;
+            font-weight: 600;
+            display: block;
+            padding-left: 0px;
+        }
+
+        #txtNomeCompleto,
+        #txtCpf,
+        #txtTelefone,
+        #txtEmail {
+            border: none;
+            background: none;
+        }
+
+        #informacoesCadastrais {
+            margin-top: 2vh;
+        }
+
+        .lblDocumentos {
+            text-align: center;
+        }
+
+        .linkDocumentos {
+            border: 1px solid #7a869a;
+        }
+
+        #h3TermoResponsabilidade {
+            color: #7a869a;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 400;
+            display: block;
+        }
+
+        #pTermoResponsabilidade {
+            color: #7a869a;
+            text-indent: 1.5em;
+            text-align: justify;
+            text-justify: inter-word;
+            font-weight: 400;
+            font-size: 16px;
+            letter-spacing: 0.02em;
+            margin-bottom: 0;
+            z-index: 2;
+            transition: 0.2s ease all;
+            display: block;
+            padding-bottom: 6px;
+        }
+
+        .espaco-topo {
+            margin-top: 20px;
+        }
+
+        @media screen and (max-width: 991px) {
+            .alinhaTexto {
+                position: relative;
+                top: -12px;
+                left: -12px;
+            }
+
+            #txtLocalPesca {
+                width: 52.5vw;
+            }
+        }
+    </style>
+    <link href="chrome-extension://nffaoalbilbmmfgbnbgppjihopabppdk/inject.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="vsc-initialized">
+    <section>
+        <div class="content" id="idContent"><button aria-hidden="true" class="close" data-dismiss="modal"
+                type="button"></button>
+            <div id="cabecalho">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-12"><input class="form-control" data-campo-id="@@2@@"
+                                data-nome="Nome completo" id="txtNomeCompleto" type="text" value="" /></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 borda-cabecalho"><label
+                            class="col-md-3 control-label header-label">CPF/CNPJ</label>
+
+                        <div class="col-md-9"><input class="form-control alinhaTexto" data-campo-id="@@1@@"
+                                data-nome="CPF/CNPJ" id="txtCpf" size="14" type="text" value="" /></div>
+                    </div>
+
+                    <div class="col-md-3 borda-cabecalho"><label class="col-md-3 control-label header-label">Telefone
+                            para Contato</label>
+
+                        <div class="col-md-9"><input class="form-control alinhaTexto" data-campo-id="@@20@@"
+                                data-nome="Telefone" id="txtTelefone" maxlength="15" type="text" value="" /></div>
+                    </div>
+
+                    <div class="col-md-6"><label class="col-md-2 control-label header-label">E-mail</label>
+
+                        <div class="col-md-10"><input class="form-control alinhaTexto" data-campo-id="@@21@@"
+                                data-nome="E-mail" id="txtEmail" size="14" type="text" value="" /></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row tabbable tabbable-tabdrop linhaSeparadoraCabecalho" id="informacoesCadastrais">
+                <div class="form-group">
+                    <nav id="navegacao">
+                        <ul class="nav nav-pills">
+                            <li class="dropdown tabdrop active"><a class="tab-item" data-toggle="tab" href="#"
+                                    id="tab-item-identificacaoPescador"
+                                    idform="#identificacaoPescador">Identifica&ccedil;&atilde;o do Pescador</a></li>
+                            <li class="dropdown tabdrop"><a class="tab-item" data-toggle="tab" href="#"
+                                    id="tab-item-enderecoRequerimento"
+                                    idform="#enderecoRequerimento">Endere&ccedil;o</a></li>
+                            <li class="dropdown tabdrop"><a class="tab-item" data-toggle="tab" href="#"
+                                    id="tab-item-dadosAtividadePescador" idform="#dadosAtividadePescador">Dados da
+                                    Atividade do Pescador</a></li>
+                            <li class="dropdown tabdrop"><a class="tab-item" data-toggle="tab" href="#"
+                                    id="tab-item-Documentacao" idform="#formDocumentacao">Documenta&ccedil;&atilde;o</a>
+                            </li>
+                            <li class="dropdown tabdrop"><a class="tab-item" data-toggle="tab" href="#"
+                                    id="tab-item-socioeconomico" idform="#formSocioeconomico">Question&aacute;rio
+                                    Socioecon&ocirc;mico</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="row form-inputs" id="identificacaoPescador">
+                <div class="col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">Tipo Registro</label> <select
+                                class="form-control" data-campo-id="@@95@@"></select></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">Voc&ecirc; se Considera</label> <select
+                                class="form-control" data-campo-id="@@33@@"></select></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">Escolaridade</label> <select
+                                class="form-control" data-campo-id="@@32@@"></select></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">Sexo</label> <select class="form-control"
+                                data-campo-id="@@10@@"></select></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">Data Nascimento</label> <input
+                                class="form-control date-picker" data-campo-id="@@9@@" id="" type="text" value="" />
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">Nome M&atilde;e</label> <input
+                                class="form-control" data-campo-id="@@12@@" type="text" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">Nome Pai</label> <input
+                                class="form-control" data-campo-id="@@11@@" type="text" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">RG</label> <input class="form-control"
+                                data-campo-id="@@6@@" type="text" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">&Oacute;rg&atilde;o emissor</label> <select
+                                class="form-control" data-campo-id="@@7@@"></select></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">UF</label> <select class="form-control"
+                                data-campo-id="@@42@@"></select></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">Data emiss&atilde;o</label> <input
+                                class="form-control date-picker" data-campo-id="@@8@@" id="" type="text" value="" />
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">N&ordm; T&iacute;tulo de Eleitor</label>
+                            <input class="form-control" data-campo-id="@@92@@" id="" type="text" value="" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">PIS/PASEP/NIT/NIS</label> <select
+                                class="form-control" data-campo-id="@@91@@"></select></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">N&uacute;mero do Documento</label> <input
+                                class="form-control" data-campo-id="@@14@@" id="" type="text" value="" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">Nacionalidade</label> <select
+                                class="form-control" data-campo-id="@@4@@"></select></div>
+                    </div>
+
+                    <div class="col-md-12" style="display: none"><span class="h-card" data-campo-altura="10"
+                            data-campo-classe="" data-campo-estilo="" data-campo-largura="200"
+                            style="display: block"><span class="form-md-line-input"><input class="form-control"
+                                    data-campo-id="@@94@@" id="@@94@@" placeholder="94 - IdUsuarioPescador"
+                                    style="width: 200px" type="text" /></span></span></div>
+                </div>
+            </div>
+
+            <div class="row form-inputs" id="enderecoRequerimento" style="display: none">
+                <div class="col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">CEP</label> <input class="form-control"
+                                data-campo-id="@@16@@" type="text" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label" for="lblAprovado">Endere&ccedil;o</label>
+                            <input class="form-control" data-campo-id="@@15@@" id="txtRG" type="text" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label" for="lblAprovado">N&uacute;mero</label>
+                            <input class="form-control" data-campo-id="@@44@@" type="text" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label" for="lblAprovado">Bairro</label> <input
+                                class="form-control" data-campo-id="@@19@@" type="text" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label" for="lblAprovado">Complemento</label>
+                            <input class="form-control" data-campo-id="@@45@@" type="text" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">Estado</label> <select class="form-control"
+                                data-campo-id="@@18@@" id="ddlEstado"></select></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">Munic&iacute;pio</label> <select
+                                class="form-control" data-campo-id="@@17@@" id="ddlCidade"></select></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label" for="lblAprovado">Celular</label> <input
+                                class="form-control" data-campo-id="@@46@@" type="text" /></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-inputs" id="dadosAtividadePescador" style="display: none">
+                <div class="col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label"> Categoria</label> <select
+                                class="form-control" data-campo-id="@@22@@"></select></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label"> Forma de Atua&ccedil;&atilde;o</label>
+                            <select class="form-control" data-campo-id="@@23@@"></select></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">N&ordm; RGP
+                                Embarca&ccedil;&atilde;o</label> <input class="form-control" data-campo-id="@@25@@"
+                                data-nome="Nº RGP Embarcação" id="txtNumeroRGP" placeholder="Nº RGP Embarcação" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">Nome Embarca&ccedil;&atilde;o</label>
+                            <input class="form-control" data-campo-id="@@24@@" data-nome="Nome Embarcação"
+                                id="txtNomeEmbarcacao" placeholder="Nome" type="text" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">N&ordm; TIE ou TIEM</label> <input
+                                class="form-control" data-campo-id="@@93@@" data-nome="Nº TIE" id="txtNumeroTie"
+                                placeholder="Nº TIE ou TIEM" type="text" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">N&ordm; CIR</label> <input
+                                class="form-control" data-campo-id="@@101@@" data-nome="Nº CIR" id="txtNumeroCIR"
+                                maxlength="20" placeholder="Nº CIR" type="text" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group"><label class="control-label">Grupo Alvo de Pesca Pretendido</label>
+
+                            <div class="mt-checkbox-list" data-campo-id="@@27@@">
+                                <div class="col-md-2"><label class="mt-checkbox mt-checkbox-outline"> <input
+                                            data-valor="" id="chkListProdutosPesca" name="Produtos
+                                                    de pesca
+                                                    pretendidos" type="checkbox" /> <label data-texto="">Peixes</label>
+                                        <span></span> </label></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group"><label class="control-label">&Aacute;rea que Pretende Realizar a
+                                Pesca</label>
+
+                            <div class="mt-checkbox-list" data-campo-id="@@28@@" id="campo28">
+                                <div class="col-md-2"><label class="mt-checkbox mt-checkbox-outline"> <input
+                                            data-valor="" id="chkListAreaPesca" name="Área que
+                                                    pretende
+                                                    realizar a
+                                                    pesca" type="checkbox" /> <label data-texto="">Peixes</label>
+                                        <span></span> </label></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label" for="lblAprovado">Estado do Local da
+                                Pesca</label> <select class="form-control" data-campo-id="@@97@@"
+                                id="ddlEstadoLocalPesca"></select></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">Munic&iacute;pio mais pr&oacute;ximo do
+                                local da pesca</label> <select class="form-control" data-campo-id="@@98@@"
+                                id="ddlCidadeLocalPesca"></select></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group"><label class="control-label">Filiado a Entidade Colaboradora?</label>
+                            <span data-campo-id="@@34@@" data-id="34" data-nome="Filiado a Entidade Representativa"
+                                data-nome-fisico="Filiado a Entidade Representativa" data-tipo-fisico="RDB"
+                                required="required" style="display: block"> <label> <input data-valor=""
+                                        id="chkListEntidade" name="opcao_34" type="radio" /> <span
+                                        data-texto="">Op&ccedil;&atilde;o 1</span> </label> </span></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">CNPJ Entidade</label> <input
+                                class="form-control" data-campo-id="@@37@@" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">Nome da Entidade Colaboradora</label>
+                            <input class="form-control" data-campo-id="@@36@@" /></div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <div class="form-group"><label class="control-label">UF da Entidade Colaboradora</label> <select
+                                class="form-control" data-campo-id="@@38@@"></select></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-inputs" id="formDocumentacao" style="display: none">
+                <div class="col-md-12" id="documentos">
+                    <div id="listaDocumentos">
+                        <div class="col-md-6">
+                            <h4 for="lblDocumentos" id="lblDocumentos">Documentos</h4>
+
+                            <div id="listGroupDocumentosInseridos">
+                                <ul class="list-group col-md-12" id="ulDocumentosInseridos">
+                                </ul>
+
+                                <div id="divJus" style="display: block;">
+                                    <div class="form-group" style="margin: 0 auto"><label class="control-label col-md-6"
+                                            style="font-size: 20px">Justificativa de reprova&ccedil;&atilde;o dos
+                                            anexos: </label><textarea class="form-control" data-campo-id="@@119@@"
+                                            data-lista-id="" data-lista-pai-id="0" data-nome="Justificativa"
+                                            data-tipo-fisico="M" data-valor-chave="" id="txtJustificativa"
+                                            required="required" rows="5" type="text"></textarea></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div id="visualizacao">
+                            <div class="col-md-12" id="divIframe"><iframe class="framesVisualizacao"
+                                    id="frameVisualizacao1" style="height: 90vh" width="100%"></iframe></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="divDataDeclaracao" style="display: none"><input class="form-control date-picker"
+                        data-campo-id="@@81@@" id="txtDataDeclaracao" name="txtDataDeclaracao" type="text" /></div>
+            </div>
+
+            <div class="row form-inputs" id="formSocioeconomico" style="display: none">
+                <div class="col-md-12" id="socioecon" style="padding: 0 30px;">
+                    <div class="form-group">
+                        <div class="table-responsive grid" data-campo-id="@@143@@">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr data-cabecalho-container="">
+                                        <th data-cabecalho-celula-container=""
+                                            data-cabecalho-celula-container-template=""><span
+                                                data-cabecalho-celula-texto="">Campo 1</span></th>
+                                        <th data-cabecalho-celula-container="" data-remover=""><span
+                                                data-cabecalho-celula-texto="">Campo 2</span></th>
+                                        <th data-cabecalho-celula-container="" data-remover=""><span
+                                                data-cabecalho-celula-texto="">Campo N</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody data-corpo-container="">
+                                    <tr data-corpo-linha-container="">
+                                        <td data-corpo-celula-container="" data-corpo-celula-container-template="">
+                                            <div data-corpo-celula-elemento-container=""><input
+                                                    class="form-control input-sm" type="text" />
+                                                <div>&nbsp;</div>
+                                            </div>
+                                        </td>
+                                        <td data-corpo-celula-container="" data-remover="">
+                                            <div data-corpo-celula-elemento-container=""><input
+                                                    class="form-control input-sm" type="text" />
+                                                <div>&nbsp;</div>
+                                            </div>
+                                        </td>
+                                        <td data-corpo-celula-container="" data-remover="">
+                                            <div data-corpo-celula-elemento-container=""><input
+                                                    class="form-control input-sm" type="text" />
+                                                <div>&nbsp;</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Possui Outra
+                                    Atividade/Ocupa&ccedil;&atilde;o Al&eacute;m da Pesca? </label> <select
+                                    class="form-control input-sm" data-campo-id="@@133@@"
+                                    data-nome="QS_Possui Outra Atividade Além da Pesca"
+                                    id="ddlPossuiOutraAtividade"></select></div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Se Sim, Qual Atividade?</label> <input
+                                    class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@134@@"
+                                    data-nome="QS_Se Sim Qual" id="txtQualAtividade"
+                                    pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+"
+                                    placeholder="Qual Atividade?" type="text" /></div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Tempo de Profiss&atilde;o </label>
+                                <select class="form-control input-sm" data-campo-id="@@141@@"
+                                    data-nome="QS_Tempo de Profissão" id="ddlTempoDeProfissao"></select></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Possui Renda N&atilde;o Originada da
+                                    Pesca?</label> <select class="form-control input-sm" data-campo-id="@@87@@"
+                                    data-nome="Possui Renda Não Originada da Pesca" data-placement="bottom"
+                                    data-toggle="tooltip" id="ddlPossuiRenda" title="Informe se possui qualquer renda não originada da atividade
+                                        pesqueira. (Ex: Bolsa Família, Aposentadoria, Pensão, etc.)"></select></div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Qual a Origem?</label> <select
+                                    class="form-control input-sm" data-campo-id="@@89@@" data-nome="Qual a Origem"
+                                    id="ddlOrigemRenda"></select></div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Origem da Renda</label> <input
+                                    class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@88@@"
+                                    data-nome="Origem da Renda" id="txtOrigemRenda"
+                                    pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+"
+                                    placeholder="Origem da Renda" type="text" /></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Recebe Bolsa Fam&iacute;lia? </label>
+                                <select class="form-control input-sm" data-campo-id="@@137@@"
+                                    data-nome="QS_Recebe Bolsa Familia" id="ddlRecebeBolsaFamilia"></select></div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Recebe Outro Aux&iacute;lio? </label>
+                                <select class="form-control input-sm" data-campo-id="@@138@@"
+                                    data-nome="QS_Recebe Outro Auxilio" id="ddlRecebeOutroAuxilio"></select></div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Qual?</label> <input
+                                    class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@139@@"
+                                    data-nome="QS_Qual Auxilio" id="txtQual"
+                                    pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+" placeholder="Qual?"
+                                    type="text" /></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Renda Total do Pescador (Mensal)
+                                </label> <select class="form-control input-sm" data-campo-id="@@135@@"
+                                    data-nome="QS_Renda Total Pescador" id="ddlRendaPescador"></select></div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Renda Total Familiar (Mensal) </label>
+                                <select class="form-control input-sm" data-campo-id="@@136@@"
+                                    data-nome="QS_Renda Familiar Total" id="ddlRendaFamiliar"></select></div>
+                        </div>
+                    </div>
+                    &nbsp;
+
+                    <h4>Informa&ccedil;&otilde;es socioecon&ocirc;micas.</h4>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Possui Computador em Casa? </label>
+                                <select class="form-control input-sm" data-campo-id="@@128@@"
+                                    data-nome="QS_Possui Computador em Casa" id="ddlPossuiComputador"></select></div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Tem Acesso a Internet? </label> <select
+                                    class="form-control input-sm" data-campo-id="@@129@@"
+                                    data-nome="QS_Tem Acesso a Internet" id="ddlTemAcessoAInternet"></select></div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Tem Aparelho Celular em Casa? </label>
+                                <select class="form-control input-sm" data-campo-id="@@130@@"
+                                    data-nome="	QS_Tem Aparelho Celular em Casa" id="ddlTemCelular"></select></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">A Casa Onde Mora &eacute;: </label>
+                                <select class="form-control input-sm" data-campo-id="@@131@@"
+                                    data-nome="QS_A Casa Onde Mora é" id="ddlCasaOndeMora"></select></div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Possui Curso de
+                                    Capacita&ccedil;&atilde;o Profissional? </label> <select
+                                    class="form-control input-sm" data-campo-id="@@142@@" data-nome="QS_Possui curso"
+                                    id="ddlPossuiCurso"></select></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Tempo que Reside no Munic&iacute;pio
+                                    Atual </label> <select class="form-control input-sm" data-campo-id="@@140@@"
+                                    data-nome="QS_Tempo que Reside no Atual Municipio	"
+                                    id="ddlTempoNoMunicipio"></select></div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <div class="form-group"><label class="control-label">Acesso a Servi&ccedil;os<span
+                                        class="textoDeObrigatorio"> (Obrigat&oacute;rio)</span> </label>
+
+                                <div class="mt-checkbox-list" data-campo-id="@@132@@" id="campo132"><label
+                                        class="mt-checkbox mt-checkbox-outline"> <input data-nome="QS_Acesso a Serviços"
+                                            data-valor="" id="chkListServicos" name="QS - Acesso a Serviços"
+                                            type="checkbox" /> <label data-texto="">Peixes</label> <span></span>
+                                    </label></div>
+                            </div>
+                            <input class="form-control input-sm col-sm-3" data-campo-id="@@123@@" id="especifiqueLabel"
+                                placeholder="Outros" style="display: none;" />
+                        </div>
+                    </div>
+
+                    <div><input class="form-control input-sm" data-campo-id="@@152@@" id="QtdVezesIndeferido"
+                            style="display: none;" /></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        Ecm.bloquearElemento('.modal-body');
+        var listaAnexoId = [];
+        var valido;
+        var ultimoAnexoIdTemporario = 0;
+        var ultimoTipoAnexoIdTemporario = 0;
+        var listaAnexos = DocumentoVisualizacaoForm.retornaListaAnexosDocumento();
+        var elementoLinkInseridos = '';
+        var elementoDocumentoDeclaracao = '';
+        var documentoId = parseInt(DocumentoVisualizacaoForm.retornaDocumento().id);
+        var docVersaoId = parseInt(DocumentoVisualizacaoForm.versaoId());
+        var usuarioId = parseInt(Ecm.retornaUsuario().id);
+
+        let idGrid = parseInt($(".grid").attr("data-campo-id").replace("@@", "").replace("@@", ""));
+
+        function validaBotoes(id, status) {
+            if (status) {
+                $(`a[id^='transicao-id-${id}']`).prop('disabled', false);
+                $(`a[id^='transicao-id-${id}']`).attr('readonly', false).attr('disabled', false);
+                $(`a[id^='transicao-id-${id}']`).attr('title', '');
+            } else {
+                $(`a[id^='transicao-id-${id}']`).prop('disabled', true);
+                $(`a[id^='transicao-id-${id}']`).attr('readonly', true).attr('disabled', true);
+                $(`a[id^='transicao-id-${id}']`).attr('title', 'Existem pendências!');
+            }
+        }
+
+        function verificarAnexoInserido(tipo_Anexo_Id) {
+            switch (tipo_Anexo_Id) {
+                case 1:
+                    return 'Anexo Padrão';
+                case 2:
+                    return 'CPF';
+                case 3:
+                    return 'Documento de identificação oficial com foto e CPF (RG, CNH)';
+                case 4:
+                    return 'Comprovante de residência';
+                case 6:
+                    return 'PIS/PASEP/NIT/NIS';
+                case 7:
+                    return 'Carteira de Trabalho CTPS (Profissional Industrial)';
+                case 8:
+                    return 'Passaporte (Profissional Estrangeiro)';
+                case 9:
+                    return 'Autorização de Trabalho (Profissional Estrangeiro)';
+                case 24:
+                    return 'Declaração de Filiado ou Não Filiado';
+                case 25:
+                    return 'Autorização responsável legal aprendiz';
+                case 26:
+                    return 'Autorização judicial do aprendiz';
+                case 27:
+                    return 'Anexo Informações adicionais';
+                case 26:
+                    return 'Protocolo';
+                case 5:
+                    return 'Foto';
+                case 36:
+                    return 'Protocolo';
+                case 37:
+                    return 'Título de Eleitor';
+                case 56:
+                    return 'Declaração de Responsabilidade';
+                case 66:
+                    return 'Documento Adicional - Solicitação';
+                case 67:
+                    return 'Documento Adicional - Recurso Cancelamento';
+                case 68:
+                    return 'Documento Adicional - Solicitação Cancelamento';
+                case 69:
+                    return 'Documento Adicional - Solicitação Susp./Canc. ADM';
+                case 70:
+                    return 'Documento Adicional - Análise de Recurso';
+                default:
+                    return 'Tipo anexo não identificado';
+            }
+        }
+
+        function AplicarAtributosGrid() {
+            $.each($("[data-campo-id='@@" + idGrid + "@@'] [data-corpo-linha-container] [data-grid-elemento]"), function (index, elemento) {
+                $(elemento).attr('disabled', true);
+            });
+        }
+
+        function retornaDataCampoId(tipo_Anexo_Id) {
+            var retornoDataCampoId;
+
+            switch (tipo_Anexo_Id) {
+                case 1:
+                    return '@@120@@';
+                case 2:
+                    return '@@105@@';
+                case 3:
+                    return '@@106@@';
+                case 4:
+                    return '@@107@@';
+                case 6:
+                    return '@@108@@';
+                case 7:
+                    return '@@109@@';
+                case 8:
+                    return '@@110@@';
+                case 9:
+                    return '@@111@@';
+                case 24:
+                    return '@@112@@';
+                case 25:
+                    return '@@113@@';
+                case 26:
+                    return '@@114@@';
+                case 27:
+                    return '@@115@@';
+                case 26:
+                    return '@@116@@';
+                case 5:
+                    return '@@117@@';
+                case 37:
+                    return '@@118@@';
+            }
+        }
+
+        debugger
+        $.each(listaAnexos, function (i, val) {
+            $('#listGroupDocumentosInseridos').show();
+            if (val.anexoTipoId != '1' && val.anexoTipoId != '36' && val.anexoTipoId != '56') {
+                elementoLinkInseridos =
+                    '<li class="list-group-item">' +
+                    '<div class="row">' +
+                    '<div class="col-md-12">' +
+                    '<div class="form-group">' +
+                    '<a class="btn btn-link thumb linkDocumentos" anexoId="' +
+                    val.id +
+                    '" tipoAnexoId="' +
+                    val.anexoTipoId +
+                    '" >' +
+                    verificarAnexoInserido(val.anexoTipoId) +
+                    '</a>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="row">' +
+                    '<div class="col-md-12">' +
+                    '<div class="form-group col-md-6">' +
+                    '<label class="control-label text-align-reverse" for="lblAprovado">Documento aprovado?</label>' +
+                    '</div>' +
+                    '<div class="col-md-6">' +
+                    '<select class="form-control documento-aprovado" data-campo-id="' +
+                    retornaDataCampoId(val.anexoTipoId) +
+                    '" tabindex="-98"></select>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</li>';
+                $('#ulDocumentosInseridos').append(elementoLinkInseridos);
+            }
+            debugger
+            if (val.anexoTipoId == '56') {
+                $('#listDocumentoDeclaracao').show();
+                elementoDocumentoDeclaracao =
+                    "<li class='list-group-item row'>" +
+                    "<a href='#' class='btn btn-link thumb' anexoId='" +
+                    val.id +
+                    "'" +
+                    "tipoAnexoId='" +
+                    val.anexoTipoId +
+                    "' >" +
+                    verificarAnexoInserido(val.anexoTipoId) +
+                    '' +
+                    "</a><button anexoId='" +
+                    val.id +
+                    "' tipoAnexoId='" +
+                    val.anexoTipoId +
+                    "'" +
+                    "class='btn btn-danger btn-remover btn-xs'>Remover</button></li>";
+                $('#ulDocumentoDeclaracao').append(elementoDocumentoDeclaracao);
+
+                var $inputUploadAnexo = $('#div-uploadArquivos [data-tipo-anexo-id=' + val.anexoTipoId + ']');
+                $inputUploadAnexo.hide();
+                $inputUploadAnexo.siblings('p').hide();
+                $inputUploadAnexo.siblings('.fa-check').show();
+            }
+        });
+
+        DocumentoVisualizacaoForm.camposCarregados(function () {
+            if (!Ecm.retornaUsuario().gruposId.split(',').includes('1')) {
+                $('#versoes').remove();
+            }
+
+            if ($('#QtdVezesIndeferido').val() == "") {
+                $('#QtdVezesIndeferido').val("0")
+            }
+            AplicarAtributosGrid();
+
+            let campos = DocumentoVisualizacaoForm.retornaCampos();
+            $.each(campos, (index, element) => {
+                $(element).attr('disabled', true);
+            })
+
+            if (Ecm.retornaUsuario().gruposId.split(',').includes('171')) {
+                $('.cancelar').trigger('click');
+                let campos = DocumentoVisualizacaoForm.retornaCampos();
+                $.each(campos, (index, element) => {
+                    $(element).attr('disabled', 'disabled');
+                })
+                $('.editar').remove();
+                $('.js-exibirModalCarteirinha').show();
+            }
+
+            $('#divJus').hide();
+            $('#transicao-id-71').prop('disabled', true);
+            $('#transicao-id-71').attr('disabled', 'disabled').attr('readonly', 'readonly');
+            $('#transicao-id-71').attr('title', 'Existem Pendências');
+            $('#transicao-id-58').prop('disabled', true);
+            $('#transicao-id-58').attr('disabled', 'disabled').attr('readonly', 'readonly');
+            $('#transicao-id-58').attr('title', 'Existem Pendências');
+
+            $('#justificativa').removeAttr('required');
+            $('#lbtDeclaracao').attr('disabled', true);
+
+            var estouEditando = DocumentoVisualizacaoForm.estouEditando();
+
+            var anexoDeclaracao = _.filter(listaAnexos, { anexoTipoId: 56 });
+
+            $('#campo28').children().each((i, e) => {
+                if ($(e).index() == 4) {
+                    $(e).attr('id', 'areapescachk')
+                    $('#areapescachk').append('<div id="areaContainer" class="form-group row">');
+
+                    let div = '';
+                    div += `<input class="form-control input-sm col-sm-3" id="campoEspecifique" placeholder="Outros" disabled />`
+
+                    $('#areaContainer').append(div)
+
+                }
+            })
+
+            $('#campoEspecifique').val($('#especifiqueLabel').val())
+
+            validardocumentosAprovados();
+
+            if (estouEditando) {
+                $('#idContent').find('input:file').attr('disabled', false);
+                $('#lbtDeclaracao').attr('disabled', false);
+            } else {
+                $('#idContent').find('input:file').attr('disabled', true);
+            }
+
+            $('#navegacao ').click(function (e) {
+                $('.form-inputs').hide();
+                $(e.srcElement.attributes.idform.value).show();
+            });
+
+            Ecm.registraEvento('click', '#lbtDeclaracao', function (element) {
+                retornarDeclaracao();
+            });
+
+            Ecm.registraEvento('click', '.thumb', function (elemento) {
+                $('#frameVisualizacao1').attr('src', '');
+
+                var anexoId = $($(elemento)[0].target).attr('anexoId');
+                var tipoAnexoId = $($(elemento)[0].target).attr('tipoAnexoId');
+
+                Ecm.bloquearElemento('#frameVisualizacao1');
+
+                retornarAnexo(anexoId, function (retorno) {
+                    $('#frameVisualizacao1').attr('src', retorno.imageUrl);
+                    Ecm.desbloquearElemento('#frameVisualizacao1');
+                });
+            });
+
+            Ecm.registraEvento('change', '.documento-aprovado', function (elemento) {
+                validardocumentosAprovados();
+            });
+
+            Ecm.registraEvento('change', '.upload-file', function (elemento) {
+                $('#' + $(elemento.currentTarget).attr('id')).addClass('fa font-red-thunderbird');
+
+                ultimoTipoAnexoIdTemporario = $(elemento.currentTarget).attr('data-tipo-anexo-id');
+
+                $('#listDocumentoDeclaracao').show();
+                elementoDocumentoDeclaracao =
+                    "<li class='list-group-item row'>" +
+                    "<a href='#' class='btn btn-link thumb' anexoId='" +
+                    ultimoAnexoIdTemporario +
+                    "'" +
+                    "tipoAnexoId='" +
+                    ultimoTipoAnexoIdTemporario +
+                    "' >" +
+                    verificarAnexoInserido(parseInt(ultimoTipoAnexoIdTemporario)) +
+                    '' +
+                    "</a><button anexoId='" +
+                    ultimoAnexoIdTemporario +
+                    "' tipoAnexoId='" +
+                    ultimoTipoAnexoIdTemporario +
+                    "'" +
+                    "class='btn btn-danger btn-remover btn-xs'>Remover</button></li>";
+                $('#ulDocumentoDeclaracao').append(elementoDocumentoDeclaracao);
+                $('#ulDocumentoDeclaracao').show();
+
+                var $inputUploadAnexo = $(
+                    '#div-uploadArquivos [data-tipo-anexo-id=' + ultimoTipoAnexoIdTemporario + ']'
+                );
+                $inputUploadAnexo.hide();
+                $inputUploadAnexo.siblings('p').hide();
+                $inputUploadAnexo.siblings('.fa-check').show();
+
+                $('#transicao-id-71').prop('disabled', false);
+                $('#transicao-id-71').removeAttr('disabled').removeAttr('readonly');
+                $('#transicao-id-71').attr('title', '');
+            });
+
+            Ecm.registraEvento('click', '.btn-remover', function (elemento) {
+                excluirAnexo($(elemento.target).attr('anexoId'));
+                elemento.target.closest('li').remove();
+                if ($('#ulDocumentoDeclaracao')[0].childElementCount == 0) {
+                    $('#ulDocumentoDeclaracao').hide();
+                }
+
+                var $inputUploadAnexo = $('#div-uploadArquivos .upload-file').filter(function () {
+                    return $(this).attr('data-tipo-anexo-id') == $(elemento.target).attr('tipoAnexoId');
+                });
+
+                $inputUploadAnexo.val('');
+                $inputUploadAnexo.show().removeClass('font-green-jungle');
+                $inputUploadAnexo.closest('div').removeClass('fa-check font-green-jungle');
+                $inputUploadAnexo.siblings('p').show();
+                $inputUploadAnexo.siblings('.fa-check').hide();
+
+                $('#transicao-id-71').prop('disabled', true);
+                $('#transicao-id-71').attr('disabled', 'disabled').attr('readonly', 'readonly');
+                $('#transicao-id-71').attr('title', 'Existem Pendências');
+            });
+
+            Ecm.registraEvento('keyup change', '#txtJustificativa', function () {
+                validardocumentosAprovados();
+            });
+
+            function validardocumentosAprovados() {
+                validaBotoes(58, false);
+                validaBotoes(71, false);
+
+                $.each($('.documento-aprovado'), function (index, element) {
+                    if ($(element).val() === "Nao") {
+                        validaBotoes(71, false);
+
+                        $('#divJus').show('fast').prop('required', true);
+
+                        if ($('#divJus textarea').val() === '') {
+                            validaBotoes(58, false);
+                        } else {
+                            validaBotoes(58, true);
+                        }
+                        return false;
+                    }
+                    if ($(element).val() === "Sim") {
+                        validaBotoes(71, true);
+
+                        $('#divJus').hide('fast').prop('required', false);
+                    }
+                    if ($(element).val() === "") {
+                        validaBotoes(58, false);
+                        validaBotoes(71, false);
+
+                        $('#divJus').hide('fast').prop('required', false);
+                    }
+                });
+            }
+
+            function excluirAnexo(anexoId) {
+                var urlExcluirAnexo = `anexos/${anexoId}`;
+
+                Ecm.Api2.Delete(urlExcluirAnexo)
+                    .done(function () {
+                        var documentoId = DocumentoVisualizacaoForm.documentoId(),
+                            versaoId = DocumentoVisualizacaoForm.versaoId();
+
+                        DocumentoVisualizacaoForm.carregarAnexosWs(documentoId, versaoId);
+                    })
+                    .fail(function (erro) {
+                        console.log(erro);
+                    });
+            }
+
+            function retornarAnexoDeclaracao(docVersaoId, tipoAnexoId, callback) {
+                var urlRetornarAnexoPorTipoAnexo = `anexos/ultimoAnexoInserido/idVersaoDocumento/${docVersaoId}/idTipoAnexo/${tipoAnexoId}`;
+
+                Ecm.Api2.Get(urlRetornarAnexoPorTipoAnexo)
+                    .done(function (retorno) {
+                        if (typeof callback === 'function') {
+                            if (retorno.objeto) return callback(retorno.objeto);
+                        }
+                    })
+                    .fail(function (erro) {
+                        console.log(erro);
+                    });
+            }
+
+            function retornarDeclaracao() {
+                var listaCampos = DocumentoVisualizacaoForm.retornarCamposComValoresTela(),
+                    itensAreaPesca = DocumentoVisualizacaoForm.retornaCampos().find(x => x.id == 28).valorComoArray,
+                    itensProdutosPescaPretendidos = DocumentoVisualizacaoForm.retornaCampos().find(x => x.id == 27)
+                        .valorComoArray,
+                    areaPescaSelecionados = '',
+                    produtosPescaPretendidosSelecionados = '';
+
+                $.each(itensAreaPesca, function (indice, elemento) {
+                    if (indice == itensAreaPesca.length - 1) {
+                        areaPescaSelecionados = areaPescaSelecionados + elemento;
+                    } else {
+                        areaPescaSelecionados = areaPescaSelecionados + elemento + ' ' + '-' + ' ';
+                    }
+                });
+
+                $.each(itensProdutosPescaPretendidos, function (indice, elemento) {
+                    if (indice == itensProdutosPescaPretendidos.length - 1) {
+                        produtosPescaPretendidosSelecionados = produtosPescaPretendidosSelecionados + elemento;
+                    } else {
+                        produtosPescaPretendidosSelecionados =
+                            produtosPescaPretendidosSelecionados + elemento + ' ' + '-' + ' ';
+                    }
+                });
+
+                listaCampos.push({
+                    Id: '1010',
+                    TipoDocumentalId: '2',
+                    Nome: 'Área de pesca',
+                    ColunaTipo: 'SPAN',
+                    Valor: areaPescaSelecionados
+                });
+
+                listaCampos.push({
+                    Id: '1011',
+                    TipoDocumentalId: '2',
+                    Nome: 'Produtos de Pesca Pretendidos',
+                    ColunaTipo: 'SPAN',
+                    Valor: produtosPescaPretendidosSelecionados
+                });
+
+                listaCampos.push({
+                    Id: '1012',
+                    TipoDocumentalId: '2',
+                    Nome: 'Data Atual',
+                    ColunaTipo: 'SPAN',
+                    Valor: moment().format('DD/MM/YYYY')
+                });
+
+                $('#lbtDeclaracao').find('i').removeClass('fa-download').addClass('fa-spinner fa-spin');
+
+                $('#lbtDeclaracao').attr('disabled', true);
+
+                var parametros = JSON.stringify({
+                    chave: 'DECLARACAO-RESPONSABILIDADE',
+                    docVersaoId: $('.modal-body').data('versao-id'),
+                    listaCampos: listaCampos,
+                    tipoAnexoId: 56,
+                    pdf: true,
+                    excluirArquivoOrigem: false
+                });
+
+                Ecm.ajax(
+                    '../WS/Ecm.asmx/AnexarTemplateCamposTela',
+                    parametros,
+                    function (data) {
+                        var tipoAnexoId = 56;
+
+                        $('#lbtDeclaracao').find('i').removeClass('fa-spinner fa-spin').addClass('fa-download');
+
+                        $('#lbtDeclaracao').attr('disabled', false);
+
+                        $('#lbtDeclaracao').find('i').removeClass('fa-spinner fa-spin').addClass('fa-download');
+
+                        $('#lbtDeclaracao').attr('disabled', false);
+
+                        data = JSON.parse(data);
+                        $('a#linkDeclaracao').attr({
+                            href: data.DiretorioArquivo
+                        });
+
+                        $('a#linkDeclaracao')[0].click();
+
+                        retornarAnexoDeclaracao(docVersaoId, tipoAnexoId, function (anexoId) {
+                            excluirAnexo(anexoId);
+                        });
+                    },
+                    function () { }
+                );
+            }
+
+            function retornarAnexo(anexoId, callback) {
+                var urlRetornarAnexo = `anexo/${anexoId}/path`;
+
+                Ecm.Api2.Get(urlRetornarAnexo)
+                    .done(function (retorno) {
+                        if (retorno) {
+                            var xhr = new XMLHttpRequest();
+                            xhr.open('GET', retorno.urlFile, true);
+                            xhr.responseType = 'blob';
+                            xhr.onload = function (e) {
+                                var resp = this;
+                                if (this.status == 200) {
+                                    var urlCreator = window.URL || window.webkitURL;
+                                    var imageUrl = urlCreator.createObjectURL(this.response);
+
+                                    if (typeof callback === 'function') callback({ imageUrl: imageUrl });
+                                }
+                            };
+                            xhr.send();
+                        }
+                    })
+                    .fail(function (erro) {
+                        console.log('Ocorreu um erro ao carregar o anexo.');
+                        Ecm.desbloquearElemento('#views');
+                        callback(erro);
+                    });
+            }
+            Ecm.desbloquearElemento('.modal-body')
+        });
+    </script>
+</body>
+
+</html>

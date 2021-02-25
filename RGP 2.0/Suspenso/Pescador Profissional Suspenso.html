@@ -1,0 +1,2913 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="assets/global/plugins/jcrop/css/jquery.Jcrop.css" rel="stylesheet" type="text/css" />
+    <style data-filename="style.01.css" type="text/css">
+        body .tooltip-inner {
+            background-color: black;
+            min-width: 500px;
+        }
+
+        .div-buttons-acoes {
+            display: flex;
+            justify-content: center;
+            padding: 8px 0px 8px 8px;
+        }
+
+        .div-buttons-acoes>a {
+            margin-right: 3px;
+        }
+
+        .input-icon.right>i {
+            right: 20px;
+        }
+
+        .cabecalho {
+            font-size: medium;
+            font-weight: 500 !important;
+            background: #8cdad5 !important;
+            padding: 5px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+        }
+
+        .light-box {
+            border: solid 1px #d8e4e3;
+            padding: 25px 100px 25px 100px;
+            font-size: small;
+            -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+        }
+
+        .light-box .form-group {
+            margin-bottom: 5px;
+        }
+
+        .mt-element-step .step-line .mt-step-col {
+            padding: 0 !important;
+            transition: transform 1s ease-in-out;
+        }
+
+        .mt-element-step .step-line .mt-step-number>i {
+            top: 16px !important;
+        }
+
+        #body-rgp .portlet-body {
+            padding: 0 !important;
+        }
+
+        #campos {
+            background-color: #fff !important;
+            padding: 0 !important;
+        }
+
+        .color-red {
+            color: red;
+        }
+
+        .mt-element-step .step-line .mt-step-title:before {
+            top: -13px !important;
+            width: 51% !important;
+        }
+
+        .mt-element-step .step-line .mt-step-number {
+            padding: 3px;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .modal-header {
+            border: none;
+        }
+
+        .help-block {
+            color: black !important;
+        }
+
+        .tooltips {
+            color: #ccc;
+        }
+
+        .tooltips {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Tooltip text */
+        .tooltips .tooltiptext {
+            visibility: hidden;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 5px 5px;
+            border-radius: 6px;
+            bottom: 140%;
+            left: 50%;
+            margin-left: -10px;
+            white-space: nowrap;
+            position: absolute;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        .tooltips:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltips .tooltiptext::after {
+            content: " ";
+            position: absolute;
+            top: 100%;
+            /* At the bottom of the tooltip */
+            left: 10px;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: black transparent transparent transparent;
+        }
+
+        .help-block {
+            font-size: 12px;
+        }
+
+        .withoutPadding {
+            padding: 0 !important;
+        }
+
+        #areapescachk {
+            padding-left: 0px;
+        }
+
+        #areapescachk label {
+            padding-left: 30px;
+        }
+
+        .textoDeObrigatorio {
+            color: red;
+            font-size: 12px;
+            display: none;
+        }
+
+        .hideFields {
+            display: none;
+        }
+
+        .boldTitle {
+            font-weight: 600;
+        }
+
+        /* Configuração de responsividade */
+        @media (min-width: 1px) and (max-width: 767px) {
+            .light-box {
+                padding: 8px 15px 8px 15px !important;
+            }
+
+            .div-buttons-acoes {
+                width: 100% !important;
+                margin-left: 0 !important;
+            }
+
+            .div-buttons-acoes a {
+                width: 47% !important;
+                margin-left: 2% !important;
+            }
+        }
+
+        @media (max-width: 892px) {
+            .light-box {
+                border: solid 1px #d8e4e3;
+                padding: 25px 30px 25px 30px;
+                font-size: small;
+                -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+                -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+                box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            }
+        }
+    </style>
+</head>
+
+<body class="vsc-initialized">
+    <div id="container">
+        <form action="" class="horizontal-form">
+            <!-- Cabeçalho -->
+            <div class="row">
+                <div class="profile-userpic col-md-2"><img alt="" class="img-responsive"
+                        src="../Imagens/aparencia/customizado/LogoEllosP.png" style="width: 100%" /></div>
+
+                <div class="caption bold bs-glyphicon-class font-blue-oleo col-md-8">
+                    <h2 titulocabecalho="">&nbsp;</h2>
+                </div>
+
+                <div class="col-md-2" id="divProtocolo">
+                    <div class="form-group"><label class="control-label bold">Protocolo</label> <input
+                            class="form-control input-sm bold" data-campo-id="@@3@@" data-nome="Protocolo"
+                            disabled="disabled" id="txtProtocolo" type="text" /></div>
+                </div>
+            </div>
+
+            <!-- Ícones de Progresso do Cabeçalho -->
+            <div class="mt-element-step">
+                <div class="row step-line" id="icones-cabecalho"
+                    style="display: flex; justify-content: center; margin-top: 20px;">
+                    <div class="col-xs-2 col-sm-2 col-md-2 mt-step-col first active" id="step_1">
+                        <div class="mt-step-number bg-white" id="circle-tab1" title="Dados Pessoais do Pescador"><i
+                                class="fa fa-user"></i></div>
+
+                        <div class="mt-step-title uppercase font-grey-cascade">&nbsp;</div>
+
+                        <div class="mt-step-content font-grey-cascade">&nbsp;</div>
+                    </div>
+
+                    <div class="col-xs-2 col-sm-2 col-md-2 mt-step-col" id="step_2">
+                        <div class="mt-step-number bg-white" title="Dados Profissionais"><i class="fa fa-anchor"></i>
+                        </div>
+
+                        <div class="mt-step-title uppercase font-grey-cascade">&nbsp;</div>
+
+                        <div class="mt-step-content font-grey-cascade">&nbsp;</div>
+                    </div>
+
+                    <div class="col-xs-2 col-sm-2 col-md-2 mt-step-col" id="step_3">
+                        <div class="mt-step-number bg-white" title="Questionário Socioeconomico"><i
+                                class="fa fa-usd"></i></div>
+
+                        <div class="mt-step-title uppercase font-grey-cascade">&nbsp;</div>
+
+                        <div class="mt-step-content font-grey-cascade">&nbsp;</div>
+                    </div>
+
+                    <div class="col-xs-2 col-sm-2 col-md-2 mt-step-col" id="step_4">
+                        <div class="mt-step-number bg-white" title="Documentação"><i class="fa fa-file"></i></div>
+
+                        <div class="mt-step-title uppercase font-grey-cascade">&nbsp;</div>
+
+                        <div class="mt-step-content font-grey-cascade">&nbsp;</div>
+                    </div>
+
+                    <div class="col-xs-2 col-sm-2 col-md-2 mt-step-col last" id="step_5">
+                        <div class="mt-step-number bg-white" title="Declaração"><i class="fa fa-check"></i></div>
+
+                        <div class="mt-step-title uppercase font-grey-cascade">&nbsp;</div>
+
+                        <div class="mt-step-content font-grey-cascade">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Container do formulário (Onde ficam as abas)-->
+            <!-- Mensagem de Alerta (Campos obrigatórios não preenchidos) -->
+
+            <div id="form-container">
+                <div class="alert alert-danger bold d-none" mensagemalerta="" role="alert">&nbsp;</div>
+                <!-- ---- -->
+                <!-- ABAS -->
+                <!-- ---- -->
+                <!-- [ABA] - Menu Identificação -->
+
+                <div id="listPages">
+                    <div class="tab-pane active d-none" id="aba_1">
+                        <!-- Box de Dados Pessoais do Pescador -->
+                        <h4 class="bs-glyphicon-class cabecalho" titulolightboxdadospessoais="">&nbsp;</h4>
+
+                        <div class="light-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tipo
+                                        Registro</label> <select class="form-control input-sm" data-campo-id="@@95@@"
+                                        data-nome="Tipo Registro" data-placement="bottom" data-toggle="tooltip"
+                                        id="ddlTipoRegistro"
+                                        title="Selecione o tipo do registro de acordo com seu perfil, caso seja um pescador já registrado com Nº de RGP selecione “Recadastramento”, caso seja um pescador apenas com protocolo de registro selecione “Registro com Protocolo” caso seja a primeira vez que irá se registrar selecione “Registro Inicial”.!">
+                                    </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
+                                        class="control-label">Data Protocolo</label> <input
+                                        class="form-control input-sm date-picker" data-campo-id="@@96@@"
+                                        data-nome="Data Protocolo" data-placement="bottom" data-toggle="tooltip"
+                                        id="txtDataProtocolo" maxlength="10" placeholder="dd/mm/aaaa"
+                                        title="Insira nesse campo a data informada no protocolo de entrega de documentação que possui.!"
+                                        type="text" /></div>
+
+                                <div class="col-sm-12 col-md-4 hideFields" style="display: none;"><label
+                                        class="control-label">N&uacute;mero de Protocolo (NUP/SEI)</label> <input
+                                        class="form-control input-sm campoNumero" data-campo-id="@@100@@"
+                                        data-nome="Protocolo Pescador" data-placement="bottom" data-toggle="tooltip"
+                                        id="txtProtocoloPescador" maxlength="20" placeholder="Protocolo Pescador"
+                                        title="Insira neste campo o número do protocolo de entrega de documentação, caso haja."
+                                        type="tel" /></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label"> CPF </label>
+                                    <input class="form-control input-sm" data-campo-id="@@1@@" data-nome="CPF"
+                                        id="txtCpf" placeholder="999.999.999-99" type="text" /> <span
+                                        class="color-red d-none" id="CPFInvalido"></span>
+                                </div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label"> Nome </label>
+                                    <input class="form-control input-sm" data-campo-id="@@2@@" data-nome="Nome"
+                                        id="txtNome" placeholder="Nome Completo" type="text" />
+                                </div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label"> Apelido
+                                    </label> <input class="form-control input-sm" data-campo-id="@@13@@"
+                                        data-nome="Apelido" id="txtApelido" type="text" /></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Data
+                                        Nascimento</label> <input class="form-control input-sm date-picker"
+                                        data-campo-id="@@9@@" data-nome="Data de Nascimento" id="txtDataNasc"
+                                        maxlength="10" placeholder="dd/mm/aaaa" type="text" /></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Sexo</label>
+                                    <select class="form-control input-sm" data-campo-id="@@10@@" data-nome="Sexo"
+                                        id="ddlSexo"> </select>
+                                </div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Voc&ecirc; se
+                                        Considera</label> <select class="form-control input-sm" data-campo-id="@@33@@"
+                                        data-nome="Você se Considera" id="ddlNivelAlfabetizacao"> </select></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Nome
+                                        M&atilde;e</label> <input class="form-control input-sm campoNome"
+                                        data-campo-id="@@12@@" data-nome="Nome Mãe" id="txtNomeMae"
+                                        placeholder="Nome completo" type="text" /></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Nome Pai</label>
+                                    <input class="form-control input-sm campoNome" data-campo-id="@@11@@"
+                                        data-nome="Nome Pai" id="txtNomePai" placeholder="Nome completo" type="text" />
+                                </div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label
+                                        class="control-label">Escolaridade</label> <select class="form-control input-sm"
+                                        data-campo-id="@@32@@" data-nome="Escolaridade" id="ddlEscolaridade"> </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Box de Documentação -->
+
+                        <h4 class="bs-glyphicon-class cabecalho" titulolightboxdocumentacao="">&nbsp;</h4>
+
+                        <div class="light-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">RG</label>
+                                    <input class="form-control input-sm campoNumero" data-campo-id="@@6@@"
+                                        data-nome="RG" id="txtRg" maxlength="14" placeholder="RG" type="tel" /> <span
+                                        class="color-red" id="RGInvalido" style="display: none"></span>
+                                </div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label
+                                        class="control-label">&Oacute;rg&atilde;o emissor</label> <select
+                                        class="form-control input-sm" data-campo-id="@@7@@" data-lista-id="17"
+                                        data-nome="Órgão Emissor" id="ddlOrgaoEmissor"> </select></div>
+
+                                <div class="col-sm-12 col-md-2 form-group"><label class="control-label">UF</label>
+                                    <select class="form-control input-sm" data-campo-id="@@42@@"
+                                        data-nome="UF Orgão Emissor" id="txtUfOrgaoEmissor"> </select>
+                                </div>
+
+                                <div class="col-sm-12 col-md-2 form-group"><label class="control-label">Data
+                                        emiss&atilde;o</label> <input class="form-control input-sm date-picker"
+                                        data-campo-id="@@8@@" data-nome="Data Emissão Órgão Emissor" id="txtDataEmissao"
+                                        maxlength="10" placeholder="dd/mm/aaaa" type="text" /></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">N&ordm;
+                                        T&iacute;tulo de Eleitor</label> <input
+                                        class="form-control input-sm campoNumero" data-campo-id="@@92@@"
+                                        data-nome="Nº Título de Eleitor" id="txtTituloEleitor" maxlength="14"
+                                        placeholder="Nº Título de Eleitor" type="text" /> <span class="color-red"
+                                        id="TituloEleitorInvalido" style="display: none"></span></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label
+                                        class="control-label">PIS/PASEP/NIT/NIS</label> <select
+                                        class="form-control input-sm" data-campo-id="@@91@@" data-lista-id="59"
+                                        data-nome="PIS/PASEP/NIT/NIS" id="ddlTipoDocumento"> </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">N&uacute;mero do
+                                        Documento</label> <input class="form-control input-sm campoNumero"
+                                        data-campo-id="@@14@@" data-nome="Nº do Documento" id="txtPis" maxlength="14"
+                                        placeholder="Número do Documento" type="tel" /> <span class="color-red"
+                                        id="PisInvalido" style="display: none"></span></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label
+                                        class="control-label">Nacionalidade</label> <select
+                                        class="form-control input-sm" data-campo-id="@@4@@" data-nome="Nacionalidade"
+                                        id="ddlNacionalidade"> </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
+                                        class="control-label">N&uacute;mero do Passaporte</label> <input
+                                        class="form-control input-sm" data-nome="Nº do Passaporte"
+                                        id="txtNumeroPassaporte" placeholder="Número do Passaporte" type="text" /></div>
+
+                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
+                                        class="control-label">Data Validade do Visto</label> <input
+                                        class="form-control input-sm date-picker" data-campo-id="@@43@@"
+                                        data-nome="Data Validade do Visto" id="txtValidadeVisto" maxlength="10"
+                                        placeholder="dd/mm/aaaa" type="text" /></div>
+                            </div>
+                        </div>
+                        <!-- Box de Endereço -->
+
+                        <h4 class="bs-glyphicon-class cabecalho" titulolightboxendereco="">&nbsp;</h4>
+
+                        <div class="light-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">CEP</label>
+                                    <input class="form-control input-sm cep" data-campo-id="@@16@@" data-nome="CEP"
+                                        id="txtCep" placeholder="11111-111" type="text" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label
+                                        class="control-label">Endere&ccedil;o</label> <input
+                                        class="form-control input-sm" data-campo-id="@@15@@" data-nome="Endereço"
+                                        id="txtLogradouro" placeholder="Endereço Completo (Rua, Avenida,etc.)"
+                                        type="text" /></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label
+                                        class="control-label">N&uacute;mero</label> <input class="form-control input-sm"
+                                        data-campo-id="@@44@@" data-nome="Número" id="txtNumero" maxlength="5"
+                                        placeholder="ex: 1234" type="tel" /></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label
+                                        class="control-label">Complemento</label> <input class="form-control input-sm"
+                                        data-campo-id="@@45@@" data-nome="Complemento" id="txtComplemento"
+                                        placeholder="ex: casa,apartamento 200" type="text" /></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">E-mail</label>
+                                    <input class="form-control input-sm" data-campo-id="@@21@@" data-nome="E-mail"
+                                        id="txtEmail" placeholder="exemplo@exemplo.com.br" type="text" />
+                                </div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Celular</label>
+                                    <input class="form-control input-sm tel" data-campo-id="@@46@@" data-nome="Celular"
+                                        id="txtCelular" placeholder="(99) 99999-9999" type="tel" />
+                                </div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Telefone para
+                                        Contato</label> <input class="form-control input-sm tel" data-campo-id="@@20@@"
+                                        data-nome="Telefone" id="txtTelefone" placeholder="3333-3333" type="tel" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Bairro</label>
+                                    <input class="form-control input-sm" data-campo-id="@@19@@" data-nome="Bairro"
+                                        id="txtBairro" placeholder="Bairro" type="text" />
+                                </div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Estado</label>
+                                    <select class="form-control input-sm" data-campo-id="@@18@@" data-lista-id="15"
+                                        data-nome="Estado" data-tipo-fisico="LST" id="ddlEstado" name="ddlEstado">
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label
+                                        class="control-label">Munic&iacute;pio</label> <select
+                                        class="form-control input-sm" data-campo-id="@@17@@" data-campo-pai-id="18"
+                                        data-lista-id="16" data-lista-pai-id="15" data-nome="Município" id="ddlCidade"
+                                        name="ddlCidade"> </select></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ABA] - Menu Embarcação -->
+
+                    <div class="tab-pane d-none" id="aba_2">
+                        <!-- Box de Dados da Atividade do Pescador -->
+                        <h4 class="bs-glyphicon-class cabecalho" titulolightboxdadosdaatividadedopescador="">&nbsp;</h4>
+
+                        <div class="light-box">
+                            <h4>Dados de Pesca</h4>
+
+                            <div class="row dadosdepesca">
+                                <div class="col-sm-12 col-md-4 form-group"><label
+                                        class="control-label">Categoria</label> <select class="form-control input-sm"
+                                        data-campo-id="@@22@@" data-nome="Categoria" id="ddlCategoria"> </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Forma de
+                                        Atua&ccedil;&atilde;o <i class="fa fa-info-circle tooltips"> <span
+                                                class="tooltiptext">Caso o pescador utilize uma embarcação para realizar
+                                                a pesca, selecionar a opção ‘EMBARCADO’</span> </i> </label> <select
+                                        class="form-control input-sm" data-campo-id="@@23@@"
+                                        data-nome="Forma de Atuação" id="ddlFormaAtuacao"> </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
+                                        class="control-label">N&ordm; RGP Embarca&ccedil;&atilde;o</label> <input
+                                        class="form-control input-sm" data-campo-id="@@25@@"
+                                        data-nome="Nº RGP Embarcação" data-placement="bottom" data-toggle="tooltip"
+                                        id="txtNumeroRGP" placeholder="Nº RGP Embarcação"
+                                        title="Insira o número de RGP da embarcação em que estará embarcado durante a atividade de pesca, sem traços e sem espaços, somente com letras e números."
+                                        type="tel" /></div>
+                            </div>
+
+                            <div class="row hideFields" id="divDadosEmbarcacao" style="display: none;">
+                                <div class="col-sm-12 col-md-4"><label class="control-label">Nome
+                                        Embarca&ccedil;&atilde;o</label> <input class="form-control input-sm"
+                                        data-campo-id="@@24@@" data-nome="Nome Embarcação" id="txtNomeEmbarcacao"
+                                        placeholder="Nome" type="text" /></div>
+
+                                <div class="col-sm-12 col-md-4"><label class="control-label">N&ordm; TIE/TIEM</label>
+                                    <input class="form-control input-sm" data-campo-id="@@93@@" data-nome="Nº TIE"
+                                        id="txtNumeroTie" maxlength="10" placeholder="Nº TIE/TIEM" type="text" />
+                                </div>
+
+                                <div class="col-sm-12 col-md-4"><label class="control-label">N&ordm; CIR</label> <input
+                                        class="form-control input-sm" data-campo-id="@@101@@" data-nome="Nº CIR"
+                                        id="txtNumeroCIR" maxlength="20" placeholder="Nº CIR" type="text" /></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group" style="margin-top: 20px;"><label
+                                        class="control-label">Grupo Alvo de Pesca Pretendido <i
+                                            class="fa fa-info-circle tooltips"> <span class="tooltiptext">Selecionar
+                                                todo(s) o(s) tipo(s) de produto(s) pescado(s).</span> </i> </label>
+
+                                    <div class="mt-checkbox-list" data-campo-id="@@27@@" id="campo27"><label
+                                            class="mt-checkbox mt-checkbox-outline"> <input
+                                                data-nome="Grupo Alvo de Pesca Pretendido" data-valor=""
+                                                id="chkListProdutosPesca" name="Produtos de pesca pretendidos"
+                                                type="checkbox" /> <label data-texto=""></label> <span></span> </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 col-md-4 form-group" style="margin-top: 20px;"><label
+                                        class="control-label">&Aacute;rea que Pretende Realizar a Pesca <i
+                                            class="fa fa-info-circle tooltips"> <span class="tooltiptext">Selecionar
+                                                todo(s) o(s) tipo(s) de área(s) em que realiza a atividade de
+                                                pesca.</span> </i> </label>
+
+                                    <div class="mt-checkbox-list" data-campo-id="@@28@@" id="campo28"><label
+                                            class="mt-checkbox mt-checkbox-outline"> <input
+                                                data-nome="Área que Pretende Realizar a Pesca" data-valor=""
+                                                id="chkListAreaPesca" name="Área que pretende realizar a pesca"
+                                                type="checkbox" /> <label data-texto=""></label> <span></span> </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Estado do Local
+                                        da Pesca</label> <select class="form-control input-sm" data-campo-id="@@97@@"
+                                        data-lista-id="15" data-nome="Estado do Local da Pesca" data-placement="bottom"
+                                        data-tipo-fisico="LST" data-toggle="tooltip" id="ddlEstadoLocalPesca"
+                                        name="ddlEstadoLocalPesca"
+                                        title="Informe o estado principal em que realiza a atividade de pesca.">
+                                    </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Munic&iacute;pio
+                                        mais pr&oacute;ximo do local da pesca</label> <select
+                                        class="form-control input-sm" data-campo-id="@@98@@" data-campo-pai-id="97"
+                                        data-lista-id="16" data-lista-pai-id="15"
+                                        data-nome="Município mais próximo do Local da Pesca" data-placement="bottom"
+                                        data-toggle="tooltip" id="ddlCidadeLocalPesca" name="ddlCidadeLocalPesca"
+                                        title="Informe o município mais próximo em que realiza a atividade depesca.">
+                                    </select></div>
+                            </div>
+
+                            <hr />
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Filiado a
+                                        Entidade Colaboradora?</label> <span data-campo-id="@@34@@" id="radioEntidade"
+                                        style="display: block"> <label> <input
+                                                data-nome="Filiado a Entidade Colaboradora?" data-placement="bottom"
+                                                data-toggle="tooltip" data-valor="" id="chkListEntidade" name="opcao_34"
+                                                title="Informe se é um pescador filiado a alguma entidade colaboradora."
+                                                type="radio" /> <span data-texto="">Op&ccedil;&atilde;o 1</span>
+                                        </label> </span></div>
+                            </div>
+
+                            <div class="row hideFields" id="divEntidade" style="display: none;">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">CNPJ
+                                        Entidade</label> <input class="form-control input-sm cnpj"
+                                        data-campo-id="@@37@@" data-nome="CNPJ Entidade" data-placement="bottom"
+                                        data-toggle="tooltip" id="txtCnpjEntidade" placeholder="11.111.111/1111-11"
+                                        title="Insira o CNPJ da entidade a qual é filiado. A entidade deve ser cadastrada no sistema atual de registro."
+                                        type="text" /><span class="color-red" id="CnpjInvalido"
+                                        style="display: none;">CNPJ invalido</span></div>
+
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Nome da Entidade
+                                        Colaboradora</label> <input class="form-control input-sm" data-campo-id="@@36@@"
+                                        data-nome="Nome da Entidade Colaboradora" id="txtNomeEntidade"
+                                        placeholder="Nome da Entidade Colaboradora" /></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">UF da Entidade
+                                        Colaboradora</label> <select class="form-control input-sm"
+                                        data-campo-id="@@38@@" data-nome="UF da Entidade Colaboradora"
+                                        id="ddlUfEntidade"> </select></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ABA] - Questionário socioeconômico -->
+
+                    <div class="tab-pane d-none" id="aba_3">
+                        <h4 class="bs-glyphicon-class cabecalho" titulolightboxquestionariosocioeconomico="">&nbsp;</h4>
+
+                        <div class="light-box">
+                            <!-- GRID -->
+                            <h4 class="boldTitle" titulogridsocioeconomico="">&nbsp;</h4>
+
+                            <div class="table-responsive grid form-group" data-campo-id="@@143@@">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr data-cabecalho-container="">
+                                            <th data-cabecalho-celula-container=""
+                                                data-cabecalho-celula-container-template=""><span
+                                                    data-cabecalho-celula-texto="">Campo 1</span></th>
+                                            <th data-cabecalho-celula-container="" data-remover=""><span
+                                                    data-cabecalho-celula-texto="">Campo 2</span></th>
+                                            <th data-cabecalho-celula-container="" data-remover=""><span
+                                                    data-cabecalho-celula-texto="">Campo N</span></th>
+                                            <th data-cabecalho-celula-acoes="" style="text-align:center;">
+                                                <span>A&ccedil;&otilde;es</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody data-corpo-container="">
+                                        <tr data-corpo-linha-container="">
+                                            <td data-corpo-celula-container="" data-corpo-celula-container-template="">
+                                                <div data-corpo-celula-elemento-container=""><input
+                                                        class="form-control input-sm" type="text" />
+                                                    <div>&nbsp;</div>
+                                                </div>
+                                            </td>
+                                            <td data-corpo-celula-container="" data-remover="">
+                                                <div data-corpo-celula-elemento-container=""><input
+                                                        class="form-control input-sm" type="text" />
+                                                    <div>&nbsp;</div>
+                                                </div>
+                                            </td>
+                                            <td data-corpo-celula-container="" data-remover="">
+                                                <div data-corpo-celula-elemento-container=""><input
+                                                        class="form-control input-sm" type="text" />
+                                                    <div>&nbsp;</div>
+                                                </div>
+                                            </td>
+                                            <td data-corpo-celula-acoes="" style="text-align:center;"><button
+                                                    class="btn default btn-xs" data-botao-editar=""
+                                                    style="display:none;"><i class="fa fa-edit"></i></button><button
+                                                    class="btn default btn-xs" data-botao-linkar=""
+                                                    style="display: none;"><i class="fa fa-link"></i></button><button
+                                                    class="btn red-sunglo btn-xs" data-botao-remover=""><i
+                                                        class="fa fa-remove"></i></button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button class="btn blue btn-xs pull-right" data-botao-adicionar=""><i
+                                        class="fa fa-plus"></i> Novo item</button>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label"> Possui Outra
+                                        Atividade/Ocupa&ccedil;&atilde;o Al&eacute;m da Pesca? </label> <select
+                                        class="form-control input-sm" data-campo-id="@@133@@"
+                                        data-nome="QS_Possui Outra Atividade Além da Pesca"
+                                        id="ddlPossuiOutraAtividade"> </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
+                                        class="control-label">Se Sim, Qual Atividade?</label> <input
+                                        class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@134@@"
+                                        data-nome="QS_Se Sim Qual" id="txtQualAtividade"
+                                        pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+"
+                                        placeholder="Qual Atividade?" type="text" /></div>
+
+                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
+                                        class="control-label">Tempo de Profiss&atilde;o</label> <select
+                                        class="form-control input-sm" data-campo-id="@@141@@"
+                                        data-nome="QS_Tempo de Profissão" id="ddlTempoDeProfissao"> </select></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui Renda
+                                        N&atilde;o Originada da Pesca?</label> <select class="form-control input-sm"
+                                        data-campo-id="@@87@@" data-nome="Possui Renda Não Originada da Pesca"
+                                        data-placement="bottom" data-toggle="tooltip" id="ddlPossuiRenda"
+                                        title="Informe se possui qualquer renda não originada da atividade pesqueira. (Ex: Bolsa Família, Aposentadoria, Pensão, etc.)">
+                                    </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none"><label
+                                        class="control-label">Qual a Origem?</label> <select
+                                        class="form-control input-sm" data-campo-id="@@89@@" data-nome="Qual a Origem"
+                                        id="ddlOrigemRenda"> </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group secondHideField" style="display: none"><label
+                                        class="control-label">Origem da Renda</label> <input
+                                        class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@88@@"
+                                        data-nome="Origem da Renda" id="txtOrigemRenda"
+                                        pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+"
+                                        placeholder="Origem da Renda" type="text" /></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Recebe Bolsa
+                                        Fam&iacute;lia?</label> <select class="form-control input-sm"
+                                        data-campo-id="@@137@@" data-nome="QS_Recebe Bolsa Familia"
+                                        id="ddlRecebeBolsaFamilia"> </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Recebe Outro
+                                        Aux&iacute;lio?</label> <select class="form-control input-sm"
+                                        data-campo-id="@@138@@" data-nome="QS_Recebe Outro Auxilio"
+                                        id="ddlRecebeOutroAuxilio"> </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
+                                        class="control-label">Qual?</label> <input
+                                        class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@139@@"
+                                        data-nome="QS_Qual Auxilio" id="txtQual"
+                                        pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+" placeholder="Qual?"
+                                        type="text" /></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Renda Total do
+                                        Pescador (Mensal)</label> <select class="form-control input-sm"
+                                        data-campo-id="@@135@@" data-nome="QS_Renda Total Pescador"
+                                        id="ddlRendaPescador"> </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Renda Total
+                                        Familiar (Mensal)</label> <select class="form-control input-sm"
+                                        data-campo-id="@@136@@" data-nome="QS_Renda Familiar Total"
+                                        id="ddlRendaFamiliar"> </select></div>
+                            </div>
+
+                            <h4 class="boldTitle" tituloligthboxinformacoessocioeconomicas="">&nbsp;</h4>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui
+                                        Computador em Casa?</label> <select class="form-control input-sm"
+                                        data-campo-id="@@128@@" data-nome="QS_Possui Computador em Casa"
+                                        id="ddlPossuiComputador"> </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tem Acesso a
+                                        Internet?</label> <select class="form-control input-sm" data-campo-id="@@129@@"
+                                        data-nome="QS_Tem Acesso a Internet" id="ddlTemAcessoAInternet"> </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tem Aparelho
+                                        Celular em Casa?</label> <select class="form-control input-sm"
+                                        data-campo-id="@@130@@" data-nome="	QS_Tem Aparelho Celular em Casa"
+                                        id="ddlTemCelular"> </select></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">A Casa Onde Mora
+                                        &eacute;:</label> <select class="form-control input-sm" data-campo-id="@@131@@"
+                                        data-nome="QS_A Casa Onde Mora é" id="ddlCasaOndeMora"> </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui Curso de
+                                        Capacita&ccedil;&atilde;o Profissional?</label> <select
+                                        class="form-control input-sm" data-campo-id="@@142@@"
+                                        data-nome="QS_Possui curso" id="ddlPossuiCurso"> </select></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tempo que Reside
+                                        no Munic&iacute;pio Atual</label> <select class="form-control input-sm"
+                                        data-campo-id="@@140@@" data-nome="QS_Tempo que Reside no Atual Municipio"
+                                        id="ddlTempoNoMunicipio"> </select></div>
+
+                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Acesso a
+                                        Servi&ccedil;os <i class="fa fa-info-circle tooltips"> <span
+                                                class="tooltiptext"> Identificar os serviços a que possui acesso no
+                                                município em que reside.</span> </i> </label>
+
+                                    <div class="mt-checkbox-list" data-campo-id="@@132@@" id="campo132"><label
+                                            class="mt-checkbox mt-checkbox-outline"> <input
+                                                data-nome="QS_Acesso a Serviços" data-valor="" id="chkListServicos"
+                                                name="QS - Acesso a Serviços" type="checkbox" /> <label
+                                                data-texto=""></label> <span></span> </label></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ABA] - Anexos -->
+
+                    <div class="tab-pane d-none" id="aba_4">
+                        <div class="light-box">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4" id="anexosContainer">
+                                    <div class="col-sm-12 col-md-12" id="anexoCpf">
+                                        <div class="form-group"><label class="control-label">CPF ou documento que
+                                                contenha o n&uacute;mero de CPF</label> <i
+                                                class="fa fa-check font-green-jungle fa-2x" style="display: none"
+                                                title="Documento enviado!"> </i> <input
+                                                accept="image/png, image/jpeg, image/jpg"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="CPF ou Documento que contenha número de CPF"
+                                                data-placement="bottom" data-tipo-anexo-id="2" data-toggle="tooltip"
+                                                id="uploadCpf" max-size-mb="3"
+                                                title="Insira a imagem nítida ou scan de documento oficial que contenha o seu número de CPF."
+                                                type="file" />
+                                            <h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12" id="anexoRg">
+                                        <div class="form-group"><label class="control-label">Documento com
+                                                identifica&ccedil;&atilde;o com foto</label> <i
+                                                class="fa fa-check font-green-jungle fa-2x" style="display: none"
+                                                title="Documento enviado!"> </i> <input
+                                                accept="image/png, image/jpeg, image/jpg"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="Documento com identificação com foto" data-placement="bottom"
+                                                data-tipo-anexo-id="3" data-toggle="tooltip" id="uploadRg"
+                                                max-size-mb="3"
+                                                title="Insira a imagem nítida ou scan de documento oficial que contenha suas informações pessoais e foto."
+                                                type="file" />
+                                            <h6 class="help-block">(RG,CNH)</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12" id="anexoComprovanteResidencia">
+                                        <div class="form-group"><label class="control-label">Comprovante de
+                                                resid&ecirc;ncia ou declara&ccedil;&atilde;o de resid&ecirc;ncia</label>
+                                            <i class="fa fa-check font-green-jungle fa-2x" style="display: none"
+                                                title="Documento enviado!"> </i> <input
+                                                accept="image/png, image/jpeg, image/jpg, application/pdf"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="Comprovante de Residência ou Declaração de Residência"
+                                                data-placement="bottom" data-tipo-anexo-id="4" data-toggle="tooltip"
+                                                id="uploadComprovanteResidencia" max-size-mb="3"
+                                                title="Insira a imagem nítida ou scan de documento oficial que contenha suas informações de endereço de residência. (Ex: Contas de água, luz, telefone ou declaração registrada de residência."
+                                                type="file" />
+                                            <h6 class="help-block">Com endere&ccedil;o completo n&iacute;tido e limpo
+                                            </h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12" id="anexoFoto">
+                                        <div class="form-group"><label class="control-label">Foto 3x4
+                                                N&iacute;tida</label> <i class="fa fa-check font-green-jungle fa-2x"
+                                                style="display: none" title="Documento enviado!"> </i> <input
+                                                accept="image/png, image/jpeg, image/jpg, application/pdf"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="Foto 3x4 nítida" data-placement="bottom"
+                                                data-tipo-anexo-id="5" data-toggle="tooltip" id="uploadFoto"
+                                                max-size-mb="3"
+                                                title="Insira a imagem nítida ou scan de foto padrão 3x4 para documentos ou utilize as ferramentas do sistema para recortar a foto da imagem ou scan de documento com foto."
+                                                type="file" />
+                                            <h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12" id="anexoPis">
+                                        <div class="form-group"><label class="control-label">PIS/PASEP/NIT/NIS</label>
+                                            <i class="fa fa-check font-green-jungle fa-2x" style="display: none"
+                                                title="Documento enviado!"> </i> <input
+                                                accept="image/png, image/jpeg, image/jpg, application/pdf"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="Documento PIS/PASEP/NIT/NIS" data-placement="bottom"
+                                                data-tipo-anexo-id="6" data-toggle="tooltip" id="uploadPis"
+                                                max-size-mb="3"
+                                                title="Insira a imagem nítida ou scan de documento oficial que contenha a numeração de algum dos documentos indicados."
+                                                type="file" />
+                                            <h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12" id="anexoTituloEleitor">
+                                        <div class="form-group"><label class="control-label">T&iacute;tulo de
+                                                Eleitor</label> <i class="fa fa-check font-green-jungle fa-2x"
+                                                style="display: none" title="Documento enviado!"> </i> <input
+                                                accept="image/png, image/jpeg, image/jpg, application/pdf"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="Documento Título de Eleitor" data-placement="bottom"
+                                                data-tipo-anexo-id="37" data-toggle="tooltip" id="uploadTituloEleitor"
+                                                max-size-mb="3"
+                                                title="Insira a imagem nítida ou scan de documento oficial que contenha a numeração do título de eleitor."
+                                                type="file" />
+                                            <h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12" id="anexoCarteiraTrabalho">
+                                        <div class="form-group"><label class="control-label">Carteira de
+                                                Trabalho</label> <i class="fa fa-check font-green-jungle fa-2x"
+                                                style="display: none" title="Documento enviado!"> </i> <input
+                                                accept="image/png, image/jpeg, image/jpg, application/pdf"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="Carteira de trabalho" data-placement="bottom"
+                                                data-tipo-anexo-id="7" data-toggle="tooltip" id="uploadCtps"
+                                                max-size-mb="3"
+                                                title="Insira o scan da declaração de filiado a entidade representativa devidamente preenchida e assinada. Declaração pode ser encontrada  na Instrução Normativa referente ao registro de pescador profissional."
+                                                type="file" />
+                                            <h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12" id="anexoPassaporte">
+                                        <div class="form-group"><label class="control-label">Passaporte</label> <i
+                                                class="fa fa-check font-green-jungle fa-2x" style="display: none"
+                                                title="Documento enviado!"> </i> <input
+                                                accept="image/png, image/jpeg, image/jpg, application/pdf"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="Passaporte" data-placement="bottom" data-tipo-anexo-id="8"
+                                                data-toggle="tooltip" id="uploadPassaporte" max-size-mb="3"
+                                                title="Insira a imagem nítida ou scan do protocolo recebido referente a entrega da documentação de registro de pescador profissional realizada anteriormente."
+                                                type="file" />
+                                            <h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12" id="anexoAutorizacaoTrabalho">
+                                        <div class="form-group"><label class="control-label">Autoriza&ccedil;&atilde;o
+                                                de Trabalho</label> <i class="fa fa-check font-green-jungle fa-2x"
+                                                style="display: none" title="Documento enviado!"> </i> <input
+                                                accept="image/png, image/jpeg, image/jpg, application/pdf"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="Autorização de Trabalho" data-placement="bottom"
+                                                data-tipo-anexo-id="9" data-toggle="tooltip"
+                                                id="uploadAutorizacaoTrabalho" max-size-mb="3" type="file" />
+                                            <h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12" id="anexoComprovanteFiliacao">
+                                        <div class="form-group"><label class="control-label">Comprovante
+                                                Filia&ccedil;&atilde;o</label> <i
+                                                class="fa fa-check font-green-jungle fa-2x" style="display: none"
+                                                title="Documento enviado!"> </i> <input
+                                                accept="image/png, image/jpeg, image/jpg, application/pdf"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="Comprovante Filiação Entidade" data-placement="bottom"
+                                                data-tipo-anexo-id="24" data-toggle="tooltip"
+                                                id="uploadComprovanteFiliacao" max-size-mb="3" type="file" />
+                                            <h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12" id="anexoAutorizacaoResponsavel">
+                                        <div class="form-group" id="divAprendizAutorizacaoResponsavel"><label
+                                                class="control-label">Autoriza&ccedil;&atilde;o
+                                                dos Pais ou Respons&aacute;vel</label> <i
+                                                class="fa fa-check font-green-jungle fa-2x" style="display: none"
+                                                title="Documento enviado!"> </i> <input
+                                                accept="image/png, image/jpeg, image/jpg, application/pdf"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="Autorização dos Pais ou Responsável" data-placement="bottom"
+                                                data-tipo-anexo-id="25" data-toggle="tooltip"
+                                                id="uploadAutorizacaoResponsavelAprendiz" max-size-mb="3" type="file" />
+                                            <h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12" id="anexoAutorizacaoJudicial">
+                                        <div class="form-group" id="divAprendizAutorizacaoJudicial"><label
+                                                class="control-label">Autoriza&ccedil;&atilde;o
+                                                Judicial a Pescador Aprendiz Embarcado</label> <i
+                                                class="fa fa-check font-green-jungle fa-2x" style="display: none"
+                                                title="Documento enviado!"> </i> <input
+                                                accept="image/png, image/jpeg, image/jpg, application/pdf"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="Autorização Judicial a Pescador Aprendiz Embarcado"
+                                                data-placement="bottom" data-tipo-anexo-id="26" data-toggle="tooltip"
+                                                id="uploadAutorizacaoJudicialAprendiz" max-size-mb="3" type="file" />
+                                            <h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12" id="anexoProtocolo">
+                                        <div class="form-group" id="divProtocoloRegistroAnterior">
+                                            <label class="control-label">Protocolo de Registro Anterior</label> <i
+                                                class="fa fa-check font-green-jungle fa-2x" style="display: none"
+                                                title="Documento enviado!"> </i> <input
+                                                accept="image/png, image/jpeg, image/jpg, application/pdf"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="Protocolo de Registro Anterior" data-placement="bottom"
+                                                data-tipo-anexo-id="36" data-toggle="tooltip"
+                                                id="uploadProtocoloRegistroAnterior" max-size-mb="3" type="file" />
+                                            <h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-md-12" id=anexoInformacoesAdicionais>
+                                        <div class="form-group"><label class="control-label">Informa&ccedil;&otilde;es
+                                                Adicionais</label> <i class="fa fa-check font-green-jungle fa-2x"
+                                                style="display: none" title="Documento enviado!"> </i> <input
+                                                accept="image/png, image/jpeg, image/jpg, application/pdf"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="Informações Adicionais" data-placement="bottom"
+                                                data-tipo-anexo-id="27" data-toggle="tooltip"
+                                                id="uploadInformacoesAdicionais" max-size-mb="3" type="file" />
+                                            <h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+                                        </div>
+                                    </div>
+                                    <!--Lista dos anexos inseridos-->
+
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12" id="listGroupDocumentos" style="display: none">
+                                            <ul class="list-group" id="ulDocumentos">
+                                                <!-- Botões com anexos inseridos e botão de remover serão gerados aqui de forma dinâmica -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 col-md-8" id="anexosVisualizar">&nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- [ABA] - Informações Adicionais -->
+
+                    <div class="tab-pane d-none" id="aba_5">
+                        <!--Solicitação de Suspensão/Cancelamento-->
+                        <h4 class="bs-glyphicon-class cabecalho" id="cabecalho-ssc">&nbsp;</h4>
+
+                        <!-- SSC - Usuário -->
+                        <div class="col-md-12" id="ssc-usuario" style="display: none; padding: 20px;">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group"><label class="control-label">Objetivo</label> <span
+                                            data-campo-id="@@163@@" id="radioObjetivo" style="display: block"> <label>
+                                                <input data-nome="163 - Cancelamento Objetivo"
+                                                    data-placement="bottom" data-toggle="tooltip" data-valor=""
+                                                    id="chkListObjetivo" type="radio" /> <span
+                                                    data-texto="">Op&ccedil;&atilde;o 1</span> </label></span></div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4">
+                                    <div class="form-group"><label class="control-label"> Motivo da
+                                            Solicita&ccedil;&atilde;o</label><textarea
+                                            class="form-control input-sm campoNome validaCaracteres"
+                                            data-campo-id="@@145@@" data-nome="145 - Texto Suspensão/Cancelamento"
+                                            id="txtMotivoSolicitacao"
+                                            pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+" rows="5"
+                                            type="text"></textarea></div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group" id="divDocumentoAdicional2"><label
+                                            class="control-label">Documento Adicional</label> <i
+                                            class="fa fa-check font-green-jungle fa-2x" style="display: none"
+                                            title="Documento enviado!"></i> <input
+                                            accept="image/png, image/jpeg, image/jpg"
+                                            class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                            data-nome="Documento Adicionais" data-placement="bottom"
+                                            data-tipo-anexo-id="66" data-toggle="tooltip" id="uploadDocumentoAdicional"
+                                            max-size-mb="5"
+                                            title="Anexo de documentação adicional para solicitação de SUSPENSÃO ou CANCELAMENTO."
+                                            type="file" />
+                                        <h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SSC - Administradores -->
+                        <div class="col-md-12" id="ssc-administradores"
+                            style="display: none; padding: 25px 35px 35px 35px;">
+                            <div class="row">
+                                <div><label>Selecione a op&ccedil;&atilde;o desejada</label>
+
+                                    <div class="mt-radio-list" data-campo-id="@@149@@" id="CAMPO_149"
+                                        style="display: flex;"><label class="mt-radio"><input
+                                                data-nome="149 - Suspensao ou Cancelamento Radio" data-valor=""
+                                                name="149 - Suspensao ou Cancelamento Radio" type="radio" /><label
+                                                data-texto=""></label><span></span></label></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 form-group" style="display: none;"><label
+                                            for="CAMPO_147">Motivo de Cancelamento</label><select
+                                            class="form-control date-picker" data-campo-id="@@147@@"
+                                            data-nome="147 - Motivo Cancelamento" data-tipo-documental-id="2"
+                                            id="CAMPO_147"></select></div>
+
+                                    <div class="col-sm-12 col-md-6 form-group" style="display: none;"><label
+                                            for="CAMPO_148">Motivo de Suspens&atilde;o</label><select
+                                            class="form-control date-picker" data-campo-id="@@148@@"
+                                            data-nome="148 - Motivos de Suspensão" data-tipo-documental-id="2"
+                                            id="CAMPO_148"></select></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group"><label
+                                                class="control-label">Justificativa</label><textarea
+                                                class="form-control input-sm campoNome validaCaracteres"
+                                                data-campo-id="@@150@@" data-nome="150 - Justificativa Cancelamento ADM"
+                                                id="txtJustificativaCancelamento"
+                                                pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+"
+                                                placeholder="Informe o motivo pelo qual deseja cancelar/suspender esse registro"
+                                                rows="5"></textarea></div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group" id="divDocumentoAdicional2"><label
+                                                class="control-label">Documento Adicional</label> <i
+                                                class="fa fa-check font-green-jungle fa-2x" style="display: none"
+                                                title="Documento enviado!"></i> <input
+                                                accept="image/png, image/jpeg, image/jpg"
+                                                class="formulario-upload fa upload-file" data-arquivo-nome=""
+                                                data-nome="Documento Adicionais" data-placement="bottom"
+                                                data-tipo-anexo-id="66" data-toggle="tooltip"
+                                                id="uploadDocumentoAdicional" max-size-mb="5"
+                                                title="Anexo de documentação adicional para solicitação de SUSPENSÃO ou CANCELAMENTO."
+                                                type="file" />
+                                            <h6 class="help-block">Com foco n&iacute;tido e limpo</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Aba renderizada em tela -->
+
+                <div id="abaAtual">
+                    <!-- Conteúdo atribuido dinamicamente -->
+                </div>
+                <!-- Inputs que servem como variáveis / Ocultos -->
+
+                <div id="camposOcultos" style="display: none;">
+                    <!-- Especifique -->
+                    <input class="form-control input-sm" data-campo-id="@@123@@"
+                        data-nome="Especificação de Área de Pesca" id="txtEspecifique" />
+                    <!-- ID do Usuário -->
+                    <input class="form-control" data-campo-id="@@94@@" data-nome="Usuário" id="campo94" type="text" />
+                    <!-- JSON -->
+                    <input class="form-control" data-campo-id="@@151@@" data-nome="JSON" id="json" type="text" />
+                    <!-- Natureza Ocupação -->
+                    <input class="form-control" data-campo-id="@@153@@" data-nome="NaturezaOcupação"
+                        id="naturezaOcupação" type="text" />
+                    <!-- Nome Natureza Ocupacao -->
+                    <input class="form-control" data-campo-id="@@154@@" data-nome="NomeNaturezaOcupacao"
+                        id="nomeNaturezaOcupacao" type="text" />
+                    <!-- Ocupacao Principal -->
+                    <input class="form-control" data-campo-id="@@155@@" data-nome="ocupacaoPrincipal"
+                        id="ocupacaoPrincipal" type="text" />
+                    <!-- nomeOcupacaoPrincipal -->
+                    <input class="form-control" data-campo-id="@@156@@" data-nome="nomeOcupacaoPrincipal"
+                        id="nomeOcupacaoPrincipal" type="text" />
+                    <!-- exercicioOcupacao -->
+                    <input class="form-control" data-campo-id="@@157@@" data-nome="exercicioOcupacao"
+                        id="exercicioOcupacao" type="text" />
+                    <!-- anoObito -->
+                    <input class="form-control" data-campo-id="@@158@@" data-nome="anoObito" id="anoObito"
+                        type="text" />
+                    <!-- dataAtualizacao -->
+                    <input class="form-control" data-campo-id="@@159@@" data-nome="dataAtualizacao" id="dataAtualizacao"
+                        type="text" />
+                    <!-- dataInscricao -->
+                    <input class="form-control" data-campo-id="@@160@@" data-nome="dataInscricao" id="dataInscricao"
+                        type="text" />
+                    <!-- Data vencimento REAP -->
+                    <input class="form-control" data-campo-id="@@161@@" data-nome="dataVencimento" id="dataVencimento"
+                        type="text" />
+                    <!-- Data Atividade -->
+                    <input class="form-control" data-campo-id="@@162@@" data-nome="dataAtividade" id="dataAtividade"
+                        type="text" />
+                </div>
+                <!-- Botões de avançar e voltar -->
+
+                <div class="div-buttons-acoes"><a class="btn default button-previous btn-xs" href="javascript:;"
+                        id="prev-button"><i class="fa fa-angle-left"></i> Voltar </a> <a
+                        class="btn btn-outline blue button-next btn-xs" href="javascript:;" id="next-button">
+                        Avan&ccedil;ar <i class="fa fa-angle-right"></i> </a></div>
+            </div>
+        </form>
+    </div>
+    <!-- Variáveis Globais -->
+    <script>
+        $('[tituloCabecalho]').html('Cadastro de Pescador Profissional'); // Título do Cabecalho.
+        $('[mensagemAlerta]').html('Preencha todos os campos obrigat&oacute;rios antes de prosseguir.'); // Mensagem de Alerta.
+        $('[tituloLightBoxDadosPessoais ]').html('Dados Pessoais do Pescador'); // Título da aba Menu Identificação.
+        $('[tituloLightBoxDocumentacao ]').html('Documentação'); // Título da aba Menu Identificação.
+        $('[tituloLightBoxEndereco]').html('Endereço') // Título da aba Endereço.
+        $('[tituloLightBoxDadosDaAtividadeDoPescador]').html('Dados da Atividade do Pescador') // Título da aba Dados da Atividade do Pescador.
+        $('[tituloLightBoxQuestionarioSocioeconomico ]').html('Questionário Socioeconômico') // Título da aba Questionário Socioeconômico.
+        $('[tituloGridSocioeconomico]').html('Componentes da família: identificar todas as pessoas que moram na mesma casa, incluindo o interessado.'); // Título do GRID da aba de Questionário Socioeconômico.
+        $('[tituloLigthBoxInformacoesSocioeconomicas]').html('Informações Socioeconômicas') // Título da aba Informações Socioeconômicas.
+        $('[tituloLightBoxInformacoesAdicionais]').html('Informações Adicionais'); // Título da aba Informações Adicionais.
+    </script><!-- Sets, Eventos e Funções Globais-->
+    <script>
+        Ecm.bloquearElemento('#modal-form');
+        // Eventos Iniciais //
+        DocumentoVisualizacaoForm.camposCarregados(() => {
+
+            // Sets Iniciais //
+            const campos = DocumentoVisualizacaoForm.retornaCampos();
+            const checkboxList = $('div').filter('[data-tipo-fisico="LCK"]');
+            const gridId = parseInt($(".grid").attr("data-campo-id").replace("@@", "").replace("@@", ""));
+
+            $('#versoes').remove();
+
+            var menorAprendiz = false;
+
+            $('#form-container input:visible').filter('[type=file]').attr('required', true); //Seta todos os anexos como obrigatórios.
+            $('#form-container input:visible').filter('[type=file]').closest('.form-group').addClass('has-error');
+
+            $('#radioObjetivo').children().first().css('marginRight', '20px')
+            $('#divDocumentoAdicional2').css('marginBottom', '0px')
+
+            //Ordenando os select
+            order('campo27');
+            order('campo28');
+
+            //Dando change nas listas pais para que as listas filhas sejam carregadas
+            $('#ddlEstado').trigger('change');
+            $('#ddlEstadoLocalPesca').trigger('change');
+
+            // Auto preenchimento de campos necessários para o cpf light/CBC funcionar.
+            if (DocumentoVisualizacaoForm.retornaDocumento().atividadeId == 2) {
+                const user = Ecm.retornaUsuario();
+                let json, result;
+                $('#txtCpf').prop('disabled', true)
+                if ($('#txtCpf').val() == '') {
+                    $('#txtCpf').val(user.cpfCnpj);
+                }
+                // Executando script externo (CPFLight / CBC)
+
+                if ($('#json').val() === '') {
+                    $('#campo94').val(Ecm.retornaUsuario().id)
+                    DocumentoVisualizacaoForm.executaScriptExterno(19, [], function () { });
+                } else {
+                    json = $("#json").val();
+                    json = JSON.parse(json);
+                    result = json.cpfResult[0];
+                    console.log(json);
+
+                    if (json.cod === 1) {
+                        setTimeout(function () {
+                            //Nome, depois desabilitando o campo
+                            $('#txtNome').val(result.Nome).prop('disabled', true);
+                            //Nome da mãe, depois desabilitando o campo
+                            $('#txtNomeMae').val(result.NomeMae).prop('disabled', true);
+                            //Decisão do preenchimento do sexo do usuario, depois desabilitando o campo
+                            if (result.Sexo === 1) {
+                                $('#ddlSexo').val('Masculino');
+                            } else if (result.Sexo === 2) {
+                                $('#ddlSexo').val('Feminino');
+                            } else {
+                                $('#ddlSexo').val('OUTROS');
+                            }
+                            $('#ddlSexo').prop('disabled', true);
+                            //Formatando a data de nascimento, depois desabilitando o campo
+                            $('#txtDataNasc').val(dateConvert(result.DataNascimento)).prop('disabled', true);
+                            //Preechendo o celular com o DDD
+                            $('#txtCelular').val(result.DDD + result.Telefone);
+                            //Prrenchendo a nacionalidade, depois desabilitando o campo
+                            if (result.NomePaisNacionalidade !== 'BRASIL') {
+                                $('#ddlNacionalidade').val('Naturalizado');
+                            } else if (result.Estrangeiro == 'S') {
+                                $('#ddlNacionalidade').val('Estrangeira');
+                            } else {
+                                $('#ddlNacionalidade').val('Brasileira');
+                            }
+                            $('#ddlNacionalidade').prop('disabled', true).trigger('change');
+                            //Endereço
+                            $('#txtCep').val(result.Cep);
+                            $('#txtLogradouro').val(result.Logradouro)
+                            $('#txtBairro').val(result.Bairro);
+                            $('#txtComplemento').val(result.Complemento);
+                            $('#ddlEstado').val(result.UF).trigger('change');
+                            $('#ddlCidade').val(result.Municipio)
+                            //Campos ocultos
+                            $('#naturezaOcupação').val(result.NaturezaOcupacao)
+                            $('#nomeNaturezaOcupacao').val(result.NomeNaturezaOcupacao)
+                            $('#ocupacaoPrincipal').val(result.OcupacaoPrincipal)
+                            $('#nomeOcupacaoPrincipal').val(result.NomeOcupacaoPrincipal)
+                            $('#exercicioOcupacao').val(result.ExercicioOcupacao)
+                            $('#anoObito').val(result.AnoObito)
+                            $('#dataAtualizacao').val(dateConvert(result.DataAtualizacao))
+                            $('#dataInscricao').val(dateConvert(result.DataInscricao))
+                        }, 1000);
+                    } else {
+                        $('#txtCpf').attr('disabled', true);
+                        Ecm.alertWarning(result.mensagem);
+                    }
+                }
+            }
+
+            Ecm.registraEvento('keypress', '.campoNome', function (event) {
+                var keycode = event.which;
+                if (
+                    event.shiftKey == false &&
+                    (keycode == 46 ||
+                        keycode == 8 ||
+                        keycode == 37 ||
+                        keycode == 39 ||
+                        (keycode >= 48 && keycode <= 57))
+                ) {
+                    event.preventDefault();
+                }
+            });
+
+            Ecm.registraEvento('keypress', '.campoNumero', function (event) {
+                var keycode = event.which;
+                if (!(keycode >= 48 && keycode <= 57)) {
+                    event.preventDefault();
+                }
+            });
+
+            // Gerando campo especifique outros.
+            $('#campo28').children().each((i, e) => {
+                if ($(e).children('label').html() == 'Outros') {
+                    $(e).attr('id', 'areapescachk')
+                    $('#areapescachk').append('<div id="areaContainer" class="form-group row">');
+                }
+            })
+
+            Ecm.registraEvento('keyup', '.validaCaracteres', function (i, e) {
+                if (!$(e).val() == "") {
+                    if (!$(e).is(':valid')) {
+                        $(e).val($(e).val().replace(i.key, ''))
+                    }
+                }
+            })
+
+            Ecm.registraEvento('change', '#areapescachk', event => {
+                $('#campo28').children().each((i, e) => {
+                    if ($(e).children('label').html() == 'Outros') {
+                        let div = '';
+                        if ($(e).children()[0].checked && $('#areaContainer').children().length == 0) {
+                            div += `<div class="col-sm-12">
+                                            <label class="control-label withoutPadding" style="margin-top: 7px; font-size: 13px;">
+                                                Especifique <i class="fa fa-info-circle tooltips"> <span class="tooltiptext">Qualquer outra área não descrita nas opções anteriores.</span> </i>
+                                            </label>
+                                        </div>`
+
+                            div += `<div class="col-md-12">
+                                            <input class="form-control input-sm" id="especifiqueLabel" required="required"/>
+                                        </div>`
+
+                            $('#areaContainer').append(div)
+                        }
+                        if (!$(e).children()[0].checked) {
+                            $('#areaContainer').empty();
+                        }
+                    }
+                })
+            })
+
+            Ecm.registraEvento('change', '#especifiqueLabel', event => {
+                $('#txtEspecifique').val($('#especifiqueLabel').val());
+            })
+
+            // Validando Entidade
+            var entidadeCheckada = _.filter($('[name="opcao_34"]'), { checked: true });
+
+            function validarEntidade(elemento) {
+                var entidade;
+
+                if (elemento) {
+                    entidade = $(elemento).val();
+                }
+
+                if (entidade) {
+                    if (entidade == 'Sim') {
+                        $('#divEntidade').show('fast');
+                        $('#uploadComprovanteFiliacao').closest('.form-group').show();
+                        $('#uploadComprovanteFiliacao').attr('required', true);
+
+                        if (!$('#txtCnpjEntidade').val()) {
+                            $('#txtCnpjEntidade').attr('required', 'required').attr('disabled', false);
+                            $('#txtNomeEntidade').attr('required', 'required');
+                            $('#ddlUfEntidade').attr('required', 'required');
+                        }
+                    } else {
+                        $('#divEntidade').hide('fast');
+                        $('#uploadComprovanteFiliacao').closest('.form-group').hide();
+                        $('#uploadComprovanteFiliacao').attr('required', false);
+                        $('#txtCnpjEntidade').removeAttr('required').attr('disabled', 'disabled');
+                        $('#txtNomeEntidade').removeAttr('required');
+                        $('#ddlUfEntidade').removeAttr('required');
+                        $('#txtCnpjEntidade').val('');
+                        $('#txtNomeEntidade').val('');
+                        $('#ddlUfEntidade').val(0).trigger('change');
+                    }
+                }
+            }
+
+            Ecm.registraEvento('change', '#chkListEntidade', function (evento, elemento) {
+                validarEntidade($(elemento));
+            });
+
+            // Iniciando funções
+
+            validarEntidade($(entidadeCheckada));
+
+            // Iniciando função de ocultar ou mostrar campos de acordo com o input selecionado.
+            handleChange('#ddlNacionalidade', true, 'Estrangeira');
+            handleChange('#ddlTipoRegistro', true, 'REGISTRO-COM-PROTOCOLO');
+            handleChange('#ddlPossuiOutraAtividade', true, 'Sim');
+            handleChange('#ddlPossuiRenda', true, 'Sim');
+            handleChange('#ddlRecebeOutroAuxilio', true, 'Sim');
+
+
+            function handleChange(selector, required, ...value) {
+                Ecm.registraEvento('change', selector, event => {
+                    if ($(selector).val() == value[0] ||
+                        $(selector).val() == value[1] ||
+                        $(selector).val() == value[2]
+                    ) {
+                        $(selector).parent().parent().children('.hideFields').show('fast');
+                        if (required) {
+                            $(selector).parent().parent().children('.hideFields').children('input').attr('required', 'required');
+                            $(selector).parent().parent().children('.hideFields').children('select').attr('required', 'required');
+                        }
+
+                        if ($(selector).attr('id') === 'ddlTipoRegistro') {
+                            $('#txtProtocoloPescador').removeAttr('required');
+                        }
+
+                        return false;
+                    } else {
+                        $(selector).parent().parent().children('.hideFields').hide('fast');
+                        $(selector).parent().parent().children('.hideFields').children('input').removeAttr('required');
+                        $(selector).parent().parent().children('.hideFields').children('select').removeAttr('required');
+                    }
+                })
+            }
+
+            Ecm.registraEvento('change', '#ddlFormaAtuacao', function () {
+                validateDadosPescaFields();
+                if (menorAprendiz) {
+                    $('#divAprendizAutorizacaoJudicial').show();
+                    $('#divAprendizAutorizacaoJudicial').find('input').attr('required', 'required');
+                }
+            })
+
+            Ecm.registraEvento('change', '#ddlCategoria', function () {
+                validateDadosPescaFields();
+            })
+
+            // Ocultar botões de Formulário, Anexos e Versões Anteriores.
+            $('#tabs').hide();
+
+            // Executar somente em edição.
+            if (DocumentoVisualizacaoForm.estouEditando()) {
+
+                // Obrigatoriedade dos campos
+                $.each(campos, (index, element) => {
+                    element.obrigatorio == true ? $(`[data-campo-id="@@${element.id}@@"]`).attr('required', true) : null
+                })
+
+                $.each(checkboxList, (_, element) => {
+                    requiredCheckBox(`#${$(element).attr('id')}`);
+                })
+
+                // Configuração de GRID
+                requiredGridFields();
+
+                function requiredGridFields() {
+                    $.each($("[data-campo-id='@@" + gridId + "@@'] [data-corpo-linha-container] [data-grid-elemento]"), function (index, elemento) {
+                        $(elemento).attr('required', 'required');
+                    })
+                }
+
+                Ecm.registraEvento("click", ".grid [data-botao-adicionar]", () => {
+                    requiredGridFields();
+                });
+
+                let grid = $("[data-campo-id='@@" + gridId + "@@']");
+                let linhas = $(grid).find('[data-corpo-linha-container]').find('select');
+                $(linhas[0]).val('INTERESSADO(A)').attr('disabled', true);
+                $('[data-botao-remover]').remove();
+
+                $('#txtCpf').prop('disabled', true);
+                $('#txtNome').prop('disabled', true);
+                $('#txtDataNasc').prop('disabled', true);
+                $('#ddlSexo').prop('disabled', true);
+                $('#txtNomeMae').prop('disabled', true);
+                $('#ddlTipoRegistro').prop('disabled', true);
+
+                $('#radioObjetivo').children().eq(0).trigger('click');
+                $('#radioObjetivo input').prop('disabled', true);
+                $('#txtMotivoSolicitacao').prop('required', true);
+                $('#ddlEstado').trigger('change');
+                $('#ddlEstadoLocalPesca').trigger('change');
+            } else {
+                $('[data-botao-remover]').remove();
+                $('[data-botao-adicionar]').remove();
+                $('#ddlEstado').trigger('change');
+                $('#ddlCidade').prop('disabled', true);
+                $('#ddlEstadoLocalPesca').trigger('change');
+                $('#ddlCidadeLocalPesca').prop('disabled', true);
+            }
+
+            // Quando for usuário do sistema.
+            if (validaUsuario() == 1) {
+                $("a[id^='transicao-id-']").prop('disabled', true);
+                $("a[id^='transicao-id-']").attr('readonly', 'readonly').attr('disabled', 'disabled');
+                $("a[id^='transicao-id-']").attr('title', 'Existem pendências');
+
+                $("a[id^='transicao-id-50'").prop('disabled', false);
+                $("a[id^='transicao-id-50'").attr('readonly', false).attr('disabled', false);
+                $("a[id^='transicao-id-50'").attr('title', '');
+
+
+                $('#cabecalho-ssc').html('Solicitação de Cancelamento de Registro.');
+                $('#ssc-administradores').remove();
+                $('#ssc-usuario').show();
+            }
+
+            // Quando for "administrador".
+            if (validaUsuario() == 2) {
+
+                $("a[id^='transicao-id-29']").hide();
+                $("a[id^='transicao-id-50']").hide();
+
+                $('#cabecalho-ssc').html('Suspensão/Cancelamento de Registro.');
+                $('#ssc-usuario').remove();
+                $('#ssc-administradores').show();
+
+                $('#CAMPO_149 label').each((i, e) => {
+                    $(e).css('marginRight', '15px');
+                })
+            }
+
+            // Configurações de Anexos
+            var lastTempTypeAnnexId = 0;
+            var lastTempAnnexId = 0;
+            var listaAnexos = DocumentoVisualizacaoForm.retornaListaAnexosDocumento();
+
+            const anexosViewerClone = $('.js-confirmation-container-view').clone();
+
+            $(anexosViewerClone).removeAttr('class').attr('class', 'col-md-12 visualizacao js-confirmation-container-view');
+            $('#anexosVisualizar').append(anexosViewerClone);
+
+            $('#abaAtual input:visible').filter('[type=file]').attr('required', true); // Seta obrigatoriedade dos anexos.
+
+            Ecm.registraEvento('click', '#listGroupDocumentos a', (event) => {
+                div = event.currentTarget
+                $('#anexosVisualizar iframe').attr('src', `CarregaAnexo.aspx?u=4992&a=${$(div).attr('anexoid')}`)
+            })
+
+            DocumentoVisualizacaoForm.onUploadAnexo(
+                function (anexoId) {
+                    lastTempAnnexId = anexoId;
+                    visualizarAnexo(anexoId);
+                },
+                function () { }
+            );
+
+            setTimeout(function () {
+                atualizarAnexosAba();
+            }, 1000);
+
+            function retornarAnexo(anexoId, callback) {
+                var urlRetornarAnexo = `anexo/${anexoId}/path`;
+
+                Ecm.Api2.Get(urlRetornarAnexo)
+                    .done(function (retorno) {
+                        if (retorno) {
+                            var xhr = new XMLHttpRequest();
+                            xhr.open('GET', retorno.urlFile, true);
+                            xhr.responseType = 'blob';
+                            xhr.onload = function (e) {
+                                var resp = this;
+                                if (this.status == 200) {
+                                    var urlCreator = window.URL || window.webkitURL;
+                                    var imageUrl = urlCreator.createObjectURL(this.response);
+
+                                    if (typeof callback === 'function') callback({ imageUrl: imageUrl }, resp);
+                                }
+                            };
+                            xhr.send();
+                        }
+                    })
+                    .fail(function (erro) {
+                        if (typeof callbackErro === 'function') {
+                            console.log('Ocorreu um erro ao carregar o anexo.');
+                            Ecm.desbloquearElemento('#anexosViewer');
+                            Ecm.desbloquearElemento('#anexosContainer');
+
+                            callbackErro(erro);
+                        }
+                    });
+            }
+
+            function visualizarAnexo(anexoId) {
+                setTimeout(function () {
+                    lastTempAnnexId = anexoId;
+                    Ecm.bloquearElemento('#anexosContainer');
+
+                    var $anexo = $('.listagemAnexos .arquivo').filter(function () {
+                        return this.id == 'anexo-' + anexoId;
+                    });
+
+                    retornarAnexo(lastTempAnnexId, function (retorno) {
+                        var $imgZoomAnexo = $('#imgZoomAnexo');
+                        $imgZoomAnexo.attr('src', retorno.imageUrl);
+
+                        if (lastTempTypeAnnexId != '') {
+                            lastTempTypeAnnexId = parseInt(lastTempTypeAnnexId);
+                        }
+
+                        $('#listGroupDocumentos').show();
+                        var elementoLink =
+                            "<li class='list-group-item row'><a href='#' class='btn btn-link thumb' anexoId='" +
+                            lastTempAnnexId +
+                            "' tipoAnexoId='" +
+                            lastTempTypeAnnexId +
+                            "' >" +
+                            verificarAnexoInserido(lastTempTypeAnnexId) +
+                            "</a><button anexoId='" +
+                            lastTempAnnexId +
+                            "' tipoAnexoId='" +
+                            lastTempTypeAnnexId +
+                            "' class='btn btn-danger btn-remover btn-xs'>Remover</button></li>";
+                        $('#listGroupDocumentos').append(elementoLink);
+
+                        var $inputUploadAnexo = $('#anexosContainer .upload-file').filter(function () {
+                            return $(this).attr('data-tipo-anexo-id') == lastTempTypeAnnexId;
+                        });
+
+                        $inputUploadAnexo.hide();
+                        $inputUploadAnexo.siblings('.help-block').hide();
+                        $inputUploadAnexo.siblings('.fa-check').show();
+                        $inputUploadAnexo.closest('.form-group').removeClass('has-error');
+
+                        Ecm.desbloquearElemento('#anexosContainer');
+                    });
+                }, 1000);
+            }
+
+            function verificarAnexoInserido(tipo_Anexo_Id) {
+                let retornoNomeTipoAnexo;
+
+                switch (tipo_Anexo_Id) {
+                    case 1:
+                        retornoNomeTipoAnexo = 'Anexo Padrão';
+                        break;
+                    case 2:
+                        retornoNomeTipoAnexo = 'CPF';
+                        break;
+                    case 3:
+                        retornoNomeTipoAnexo = 'Documento de identificação';
+                        break;
+                    case 4:
+                        retornoNomeTipoAnexo = 'Comprovante de residência';
+                        break;
+                    case 5:
+                        retornoNomeTipoAnexo = 'Foto';
+                        break;
+                    case 6:
+                        retornoNomeTipoAnexo = 'PIS/PASEP/NIT/NIS';
+                        break;
+                    case 7:
+                        retornoNomeTipoAnexo = 'Carteira de Trabalho CTPS (Profissional Industrial)';
+                        break;
+                    case 8:
+                        retornoNomeTipoAnexo = 'Passaporte (Profissional Estrangeiro)';
+                        break;
+                    case 9:
+                        retornoNomeTipoAnexo = 'Autorização de Trabalho (Profissional Estrangeiro)';
+                        break;
+                    case 24:
+                        retornoNomeTipoAnexo = 'Comprovante de Filiação a Entidade';
+                        break;
+                    case 25:
+                        retornoNomeTipoAnexo = 'Autorização dos Pais ou Responsável';
+                        break;
+                    case 26:
+                        retornoNomeTipoAnexo = 'Autorização Judicial a Pescador Aprendiz Embarcado';
+                        break;
+                    case 27:
+                        retornoNomeTipoAnexo = 'Anexo Informações Adicionais';
+                        break;
+                    case 36:
+                        retornoNomeTipoAnexo = 'Protocolo';
+                        break;
+                    case 37:
+                        retornoNomeTipoAnexo = 'Título de Eleitor';
+                        break;
+                    case 56:
+                        retornoNomeTipoAnexo = 'Declaração de responsabilidade';
+                        break;
+                }
+                return retornoNomeTipoAnexo;
+            }
+
+            function atualizarAnexosAba() {
+                $('#listGroupDocumentos').html('');
+                $.each(listaAnexos, function (i, val) {
+                    var anexoId = val.id,
+                        anexoTipoId = val.anexoTipoId;
+
+                    $('#listGroupDocumentos').show();
+                    var elementoLink =
+                        "<li class='list-group-item row'><a href='#' class='btn btn-link thumb' anexoId='" +
+                        anexoId +
+                        "' tipoAnexoId='" +
+                        anexoTipoId +
+                        "' >" +
+                        verificarAnexoInserido(anexoTipoId) +
+                        "</a><button anexoId='" +
+                        anexoId +
+                        "' tipoAnexoId='" +
+                        anexoTipoId +
+                        "' class='btn btn-danger btn-remover btn-xs'>Remover</button></li>";
+                    $('#listGroupDocumentos').append(elementoLink);
+
+                    var $inputUploadAnexo = $('#div-uploadArquivos [data-tipo-anexo-id=' + anexoTipoId + ']');
+                    $inputUploadAnexo.hide();
+                    $inputUploadAnexo.siblings('p').hide();
+                    $inputUploadAnexo.siblings('.fa-check').show();
+                });
+            }
+
+            function excluirAnexo(anexoId, callback) {
+                var urlExcluirAnexo = `anexos/${anexoId}`;
+
+                Ecm.Api2.Delete(urlExcluirAnexo)
+                    .done(function () {
+                        var documentoId = DocumentoVisualizacaoForm.documentoId(),
+                            versaoId = DocumentoVisualizacaoForm.versaoId();
+
+                        DocumentoVisualizacaoForm.carregarAnexosWs(documentoId, versaoId);
+
+                        console.log('Anexo excluido: ' + anexoId);
+
+                        if (typeof callback === 'function') callback(anexoId);
+                    })
+                    .fail(function (erro) {
+                        console.log(erro);
+                    });
+            }
+
+            Ecm.registraEvento('change', '.upload-file', function (elemento) {
+                $('#anexosViewer').show();
+                Ecm.bloquearElemento('#anexosViewer');
+                Ecm.bloquearElemento('#anexosContainer');
+
+                $('#' + $(elemento.currentTarget).attr('id')).addClass('fa font-red-thunderbird');
+                $('#' + $(elemento.currentTarget).attr('id'))
+                    .siblings('.fa-spin')
+                    .show();
+                lastTempTypeAnnexId = $(elemento.currentTarget).data('tipoAnexoId');
+                Ecm.desbloquearElemento('#anexosViewer');
+                Ecm.desbloquearElemento('#anexosContainer');
+            });
+
+            Ecm.registraEvento('click', '.btn-remover', function (elemento) {
+                excluirAnexo($(elemento.target).attr('anexoId'), function (anexoId) {
+                    $('#abaAtual input:visible').filter('[type=file]').attr('required', true); //Seta todos os anexos como obrigatórios.
+                    elemento.target.closest('li').remove();
+                    if ($('#ulDocumentos').find('li').length == 0) {
+                        $('#ulDocumentos').hide();
+                    }
+
+                    var $inputUploadAnexo = $('#anexosContainer .upload-file').filter(function () {
+                        return $(this).attr('data-tipo-anexo-id') == $(elemento.target).attr('tipoAnexoId');
+                    });
+
+                    $inputUploadAnexo.val('');
+                    $inputUploadAnexo.show().removeClass('font-green-jungle');
+                    $inputUploadAnexo.closest('div').removeClass('fa-check font-green-jungle');
+                    $inputUploadAnexo.siblings('p').show();
+                    $inputUploadAnexo.siblings('.fa-check').hide();
+
+                    $('#menu-documentacao input:invalid')
+                        .filter('[required]:visible[data-tipo-anexo-id="27"]')
+                        .attr('required', false);
+
+                    if ($('#ddlCategoria option:selected').text() == 'Industrial') {
+                        $('#txtNomeEmbarcacao').removeAttr('disabled');
+                        $('#txtNumeroTie').removeAttr('disabled');
+                        $('#menu-documentacao input:invalid')
+                            .filter('[required]:visible[data-tipo-anexo-id="3"]')
+                            .attr('required', false);
+                    }
+                });
+            });
+
+            Ecm.desbloquearElemento('#modal-form');
+        })
+
+        // Registra Evento
+
+        Ecm.registraEvento('change', '#txtJustificativaCancelamento', function () {
+            validateRequiredInputsAll();
+        })
+
+        Ecm.registraEvento('change', '#txtMotivoSolicitacao', function() {
+            validateRequiredInputsAll();
+        })
+
+        Ecm.registraEvento('change', '#CAMPO_149', event => {
+            $('#CAMPO_149 label.mt-radio').each((i, e) => {
+                if (!$(e).children()[0].checked) {
+                    $('#CAMPO_148').closest('div').hide('fast');
+                    $('#CAMPO_147').closest('div').show('fast');
+                    $('#CAMPO_147').attr('required', 'required');
+                    $('#CAMPO_148').removeAttr('required');
+                }
+                if ($(e).children()[0].checked) {
+                    $('#CAMPO_147').closest('div').hide('fast');
+                    $('#CAMPO_148').closest('div').show('fast');
+                    $('#CAMPO_148').attr('required', 'required');
+                    $('#CAMPO_147').removeAttr('required');
+                }
+
+            })
+        })
+
+        Ecm.registraEvento('hover', '#next-button', () => {
+            if (enabledNextStep('#abaAtual', '#radioEntidade', '#campo27', '#campo28', '#campo132')) {
+                $('#next-button').attr('disabled', false);
+                validateRequiredResult('#abaAtual', true);
+            }
+        })
+
+        Ecm.registraEvento('change', '#txtCnpjEntidade', function () {
+            consultarEntidade();
+        });
+
+        Ecm.registraEvento('focusout', '#txtNumeroRGP', function (evento, elemento) {
+            pesquisarEmbarcacao();
+        });
+
+        Ecm.registraEvento('change', '#ddlEstado', function (event, element) {
+            if ($(element).val() == 'EX') {
+                $('#ddlCidade').removeAttr('required').hide()
+            } else {
+                $('#ddlCidade').attr('required', true).show()
+            }
+        })
+
+        Ecm.registraEvento('change', '#ddlEstadoLocalPesca', function (event, element) {
+            if ($(element).val() == 'EX') {
+                $('#ddlCidadeLocalPesca').removeAttr('required').hide()
+            } else {
+                $('#ddlCidadeLocalPesca').attr('required', true).show()
+            }
+        })
+
+        Ecm.registraEvento('change', '#txtCep', function (elemento) {
+            var cep = $(elemento.currentTarget).val().replace('-', '').replace('.', ''),
+                urlRetornarEnderecoCep = `endereco/cep/${cep}`;
+
+            if (cep) {
+                Ecm.Api2.Get(urlRetornarEnderecoCep)
+                    .done(function (retorno) {
+                        retorno = JSON.parse(retorno);
+                        retorno.endereco = JSON.parse(retorno.endereco);
+                        if (retorno.endereco.length > 0) {
+                            document.getElementById('txtBairro').value = retorno.endereco[0].bairro;
+                            document.getElementById('txtLogradouro').value = retorno.endereco[0].rua;
+
+                            var chaveEstado = $('#ddlEstado option')
+                                .filter(function () {
+                                    return $(this).html().trim() == retorno.endereco[0].estado;
+                                })
+                                .val();
+
+                            $('#ddlEstado').val(chaveEstado).trigger('change');
+
+                            setTimeout(function () {
+                                document.getElementById('txtNumero').focus();
+                            }, 100);
+
+                            $(document).bind('ajaxComplete', function () {
+                                var chaveCidade = $('#ddlCidade option')
+                                    .filter(function () {
+                                        return $(this).html().trim() == retorno.endereco[0].cidade;
+                                    })
+                                    .val();
+
+                                if (typeof chaveCidade !== 'undefined') {
+                                    $('#ddlCidade').val(chaveCidade).trigger('change');
+                                    $(document).unbind('ajaxComplete');
+                                }
+                            });
+                        } else {
+                            $('#txtLogradouro').val('');
+                            $('#txtNumero').val('');
+                            $('#txtComplemento').val('');
+                            $('#txtBairro').val('');
+                            $('#ddlEstado').val(0).trigger('change');
+                            $('#ddlCidade').val(0).trigger('change');
+                        }
+                    })
+                    .fail(function (erro) {
+                        console.log(erro);
+                    });
+            } else {
+                $('#txtLogradouro').val('');
+                $('#txtNumero').val('');
+                $('#txtComplemento').val('');
+                $('#txtBairro').val('');
+                $('#ddlEstado').val(0).trigger('change');
+                $('#ddlCidade').val(0).trigger('change');
+            }
+        });
+
+        Ecm.registraEvento('change', '#ddlTipoRegistro', function (element) {
+            validarProtocoloAnterior();
+            $('#txtTipoRegistroDeclaracao').val($('#ddlTipoRegistro option:selected').text());
+        });
+
+        Ecm.registraEvento('change', '#txtTituloEleitor', function (evento, elemento) {
+            verificarTituloEleitor(elemento);
+        });
+
+        Ecm.registraEvento('click', '#lbtDeclaracao', function (element) {
+            retornarDeclaracao();
+        });
+
+        Ecm.registraEvento('change', '#txtPis', function (evento, elemento) {
+            var todosNumerosIguais = validarNumerosIguais($(elemento).val());
+            var classeValidacao = $('#PisInvalido');
+
+            if (!todosNumerosIguais) {
+                var pisPasepValido = validarPisPasep($(elemento).val());
+
+                if (pisPasepValido) {
+                    $(elemento).closest('.form-group').removeClass('has-error').addClass('has-success');
+                    $(elemento).siblings('.tooltips').removeClass('fa-exclamation').addClass('fa-check').show();
+                    $(classeValidacao).hide();
+
+                    $(elemento).removeAttr('required');
+                } else {
+                    $(elemento).closest('.form-group').removeClass('has-success').addClass('has-error');
+                    $(elemento).siblings('.tooltips').removeClass('fa-check').addClass('fa-exclamation').show();
+
+                    $(classeValidacao).show();
+                    $(classeValidacao).text('Número do Documento inválido');
+
+                    $(elemento).attr('required', 'required');
+                }
+            } else {
+                $(elemento).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(elemento).siblings('.tooltips').removeClass('fa-check').addClass('fa-exclamation').show();
+                if (elemento.val().length > 0) {
+                    $(classeValidacao).show();
+                    $(classeValidacao).text('Número do Documento inválido');
+                    $(elemento).attr('required', 'required');
+                }
+            }
+        });
+
+        Ecm.registraEvento('change', '#txtRg', function (evento, elemento) {
+            var todosNumerosIguais = validarNumerosIguais($(elemento).val());
+            var classeValidacao = $('#RGInvalido');
+
+            if (!todosNumerosIguais) {
+                $(elemento).closest('.form-group').removeClass('has-error').addClass('has-success');
+                $(elemento).siblings('.tooltips').removeClass('fa-exclamation').addClass('fa-check').show();
+                $(classeValidacao).hide();
+                $(elemento).removeAttr('required', 'required');
+            } else {
+                $(elemento).closest('.form-group').removeClass('has-success').addClass('has-error');
+                $(elemento).siblings('.tooltips').removeClass('fa-check').addClass('fa-exclamation').show();
+                if (elemento.val().length > 0) {
+                    $(classeValidacao).show();
+                    $(classeValidacao).text('RG inválido');
+                    $(elemento).attr('required', 'required');
+                }
+            }
+        });
+
+        Ecm.registraEvento('change', '#abaAtual', function (evento, elemento) {
+            if (enabledNextStep('#form-container', '#radioEntidade', '#campo27', '#campo28', '#campo132') && (validateRequiredInputsAll()) && (validaUsuario() === 1)) {
+                validaBotoes(29, true);
+            } else {
+                validaBotoes(29, false);
+            }
+        })
+
+        Ecm.registraEvento('focusout', '#txtDataNasc', function (evento, elemento) {
+            if (!validarDataNascimento()) {
+                validateRequiredResult(false);
+            }
+        });
+
+        Ecm.registraEvento('change', '#ddlOrigemRenda', function (evento, elemento) {
+            if ($(elemento).val() === 'OUTROS') {
+                $('.secondHideField').show('fast').find('input').prop('required', true);
+            } else {
+                $('.secondHideField').hide('fast').find('input').removeAttr('required');
+            }
+        })
+        // Funções Globais
+        function validaUsuario() {
+            controle = 0;
+            grupo = Ecm.retornaUsuario().gruposId.split(',');
+            $.each(grupo, (i, e) => {
+                if (e == 66) { //grupos de users
+                    controle = 1;
+                    return false;
+
+                } else if (e == 1 || e == 169 || e == 170 || (e >= 29 && e <= 55)) { //grupos de adms
+                    controle = 2;
+                }
+            })
+            return controle
+        }
+
+        function validaBotoes(id, status) {
+            if (status === true) {
+                $(`a[id^='transicao-id-${id}']`).prop('disabled', false);
+                $(`a[id^='transicao-id-${id}']`).attr('readonly', false).attr('disabled', false);
+                $(`a[id^='transicao-id-${id}']`).attr('title', '');
+            } else {
+                $(`a[id^='transicao-id-${id}']`).prop('disabled', true);
+                $(`a[id^='transicao-id-${id}']`).attr('readonly', true).attr('disabled', true);
+                $(`a[id^='transicao-id-${id}']`).attr('title', 'Existem pendências!');
+            }
+        }
+
+        function validarCampoCpf() {
+            var valido = false;
+
+            if (Ecm.validaCPF($('#txtCpf').val().split('.').join('').replace('-', '')) == true) {
+                $('#txtCpf').closest('.form-group').removeClass('has-error').addClass('has-success');
+                $('#txtCpf').siblings('.tooltips').removeClass('fa-exclamation').addClass('fa-check').show();
+                $('#txtCpf').removeAttr('required');
+                $('#CPFInvalido').hide();
+
+                valido = true;
+            } else {
+                $('#txtCpf').closest('.form-group').removeClass('has-success').addClass('has-error');
+                $('#txtCpf').siblings('.tooltips').removeClass('fa-check').addClass('fa-exclamation').show();
+
+                $('#CPFInvalido').show();
+                $('#CPFInvalido').text('CPF inválido');
+                $('#txtCpf').attr('required', 'required');
+
+                valido = false;
+            }
+            return valido;
+        }
+
+        function validarDataNascimento() {
+            var idade;
+            var dataNascimento = $('#txtDataNasc').val();
+            var dataConvertida = moment(dataNascimento, 'DDMMYYYY');
+            let maiorDe14 = true;
+
+            if (dataConvertida.isValid()) {
+                idade = moment().diff(dataConvertida, 'years');
+
+                if (idade < 14) {
+                    Ecm.alertWarning('Pescador com menos de 14 (quatorze) anos de idade. Idade não permitida para pescadores profissionais.');
+                    maiorDe14 = false;
+                }
+
+                if (idade >= 14 && idade < 18) {
+                    $('#ddlCategoria').val('APRENDIZ');
+                    $('#ddlCategoria').prop('disabled', true);
+                    $("#ddlCategoria option[value='APRENDIZ']").show();
+                    $('#divAprendizAutorizacaoResponsavel').show();
+                    $('#divAprendizAutorizacaoResponsavel').find('input').attr('required', 'required');
+                    menorAprendiz = true;
+                } else if (idade >= 18) {
+                    $('#ddlCategoria').prop('disabled', false);
+                    $("#ddlCategoria option[value='APRENDIZ']").hide();
+                    $('#divAprendizAutorizacaoResponsavel').hide();
+                    $('#divAprendizAutorizacaoResponsavel').find('input').removeAttr('required');
+                    $('#divAprendizAutorizacaoJudicial').hide();
+                    $('#divAprendizAutorizacaoJudicial').find('input').removeAttr('required');
+                    menorAprendiz = false;
+                }
+            }
+            return maiorDe14;
+        }
+
+        function validateDadosPescaFields() {
+            if ($('#ddlFormaAtuacao option:selected').text() === 'Embarcado') {
+                $('.dadosdepesca .hideFields').show('fast');
+                $('.dadosdepesca').parent().children('.hideFields').eq(0).show('fast')
+            } else if ($('#ddlFormaAtuacao option:selected').text() !== 'Embarcado') {
+                $('.dadosdepesca .hideFields').hide('fast');
+                $('.dadosdepesca').parent().children('.hideFields').eq(0).hide('fast')
+            }
+
+            if ($('#ddlCategoria option:selected').text() === 'Industrial' &&
+                $('#ddlFormaAtuacao option:selected').text() === 'Embarcado') {
+                $('#txtNumeroTie').attr('disabled', true);
+                $('#txtNomeEmbarcacao').attr('disabled', true);
+                $('#txtNumeroRGP').attr('required', 'required');
+            } else {
+                $('#txtNumeroTie').attr('disabled', false);
+                $('#txtNomeEmbarcacao').attr('disabled', false);
+                $('#txtNumeroRGP').removeAttr('required');
+            }
+
+            if ($('#ddlCategoria option:selected').text() === 'Artesanal' &&
+                $('#ddlFormaAtuacao option:selected').text() === 'Embarcado'
+            ) {
+                $('#txtNumeroTie').attr('required', 'required');
+                $('#txtNomeEmbarcacao').attr('required', 'required');
+            } else {
+                $('#txtNumeroTie').removeAttr('required');
+                $('#txtNomeEmbarcacao').removeAttr('required');
+            }
+
+            if ($('#ddlCategoria option:selected').text() === 'Aprendiz' &&
+                $('#ddlFormaAtuacao option:selected').text() === 'Embarcado'
+            ) {
+                $('#txtNumeroTie').attr('required', 'required');
+                $('#txtNomeEmbarcacao').attr('required', 'required');
+            } else if ($('#ddlCategoria option:selected').text() !== 'Artesanal') {
+                $('#txtNumeroTie').removeAttr('required');
+                $('#txtNomeEmbarcacao').removeAttr('required');
+            }
+        }
+
+        function pesquisarEmbarcacao() {
+            Ecm.bloquearElemento('#divDadosEmbarcacao');
+
+            var tipoDocumentalId = 12,
+                totalDocumentosPorPagina = 10,
+                retornarAnexos = false,
+                config = {
+                    headers: {
+                        Authorization: 'Bearer ' + Ecm.token,
+                        'Content-Type': 'application/json'
+                    }
+                };
+
+            var parametros = JSON.stringify([
+                {
+                    Id: 27,
+                    TipoDocumentalId: 12,
+                    Nome: 'NOME-EMBARCACAO',
+                    ColunaTipo: 'C',
+                    Valor: $('#txtNumeroRGP').val(),
+                    Comparacao: 3
+                }
+            ]);
+
+            var urlPesquisarDocumento = `documentos/pesquisar/${tipoDocumentalId}/quantidade/${totalDocumentosPorPagina}/retornarAnexos/${retornarAnexos}`;
+
+            Ecm.Api2.Post(
+                urlPesquisarDocumento,
+                parametros,
+                function (retorno) {
+                    Ecm.desbloquearElemento('#divDadosEmbarcacao');
+
+                    if (retorno !== false && retorno !== undefined && retorno.length > 0) {
+                        $('#txtNomeEmbarcacao').val(retorno[0].camposValor[13].valor);
+                        $('#txtNumeroTie').val(retorno[0].camposValor[14].valor);
+                        $('#txtNumeroRGP').removeAttr('required');
+                        $('#txtNomeEmbarcacao').removeAttr('required');
+                        $('#txtNumeroTie').removeAttr('required');
+                        $('#divDadosEmbarcacao').show('fast');
+                        existeEmbarcacao = true;
+                    } else {
+                        $('#txtNomeEmbarcacao').val('');
+                        $('#txtNumeroTie').val('');
+                        $('#txtNomeEmbarcacao').attr('required', 'required');
+                        $('#txtNumeroTie').attr('required', 'required');
+                        existeEmbarcacao = false;
+                        Ecm.alertErro('Embarcação não encontrada ou não possui RAEP ativa.');
+                    }
+                },
+                function (erro) {
+                    console.log(erro);
+                },
+                config
+            );
+        }
+
+        function consultarEntidade() {
+            if (Ecm.validaCNPJ($('#txtCnpjEntidade').val())) {
+                Ecm.bloquearElemento($('#txtNomeEntidade').closest('div'));
+                Ecm.bloquearElemento('#div-Cnpj-Entidade');
+                $('#txtNomeEntidade').closest('.form-group').removeClass('has-error');
+                $('#CnpjInvalido').hide();
+
+                var tipoDocumentalId = 19,
+                    totalDocumentosPorPagina = 10,
+                    retornarAnexos = false,
+                    config = {
+                        headers: {
+                            Authorization: 'Bearer ' + Ecm.token,
+                            'Content-Type': 'application/json'
+                        }
+                    };
+
+                var parametros = JSON.stringify([
+                    {
+                        Id: 1,
+                        TipoDocumentalId: 19,
+                        Nome: 'CPF/CNPJ',
+                        ColunaTipo: 'C',
+                        Valor: $('#txtCnpjEntidade').val(),
+                        Comparacao: 3
+                    }
+                ]);
+
+                var urlPesquisarDocumento = `documentos/pesquisar/${tipoDocumentalId}/quantidade/${totalDocumentosPorPagina}/retornarAnexos/${retornarAnexos}`;
+
+                Ecm.Api2.Post(
+                    urlPesquisarDocumento,
+                    parametros,
+                    function (retorno) {
+                        Ecm.desbloquearElemento($('#txtNomeEntidade').closest('div'));
+                        Ecm.desbloquearElemento('#div-Cnpj-Entidade');
+
+                        if (retorno !== false && retorno !== undefined && retorno.length > 0) {
+                            $('#txtCnpjEntidade').removeAttr('required');
+                            $('#txtNomeEntidade').val(retorno[0].camposValor[1].valor);
+                            $('#txtNomeEntidade').attr('title', retorno[0].camposValor[1].valor);
+                            $('#ddlUfEntidade').val(retornaUf(retorno[0].camposValor[10].valor));
+                            $('#txtNomeEntidade').removeAttr('disabled');
+                            $('#txtNomeEntidade').removeAttr('required');
+                            $('#ddlUfEntidade').removeAttr('disabled');
+                            $('#ddlUfEntidade').removeAttr('required');
+                            $('#txtNomeEntidade').closest('.form-group').show('fast');
+                            $('#ddlUfEntidade').closest('.form-group').show('fast');
+
+                            $('#divCnpjEntidade input,#divCnpjEntidade select').attr('required', true); //Seta todos inputs como obrigatório
+                            $('#divEntidadeFiliada input, #divEntidadeFiliada select').attr('required', true); //Seta todos inputs como obrigatório
+
+                            existeEntidade = true;
+                        } else {
+                            $('#txtNomeEntidade').val('');
+                            $('#txtNomeEntidade').attr('title', '');
+                            $('#ddlUfEntidade').val('');
+                            $('#txtNomeEntidade').removeAttr('disabled');
+                            $('#ddlUfEntidade').removeAttr('disabled');
+
+                            $('#divCnpjEntidade input, #divCnpjEntidade select').attr('required', false); //Seta todos inputs como obrigatório
+                            $('#divEntidadeFiliada input, #divEntidadeFiliada select').attr('required', false); //Seta todos inputs como obrigatório
+                            toastr.error('Entidade não cadastrada no sistema');
+                            existeEntidade = false;
+                        }
+                    },
+                    function (erro) {
+                        toastr.error(erro);
+                    },
+                    config
+                );
+            } else {
+                var cnpj = $('#txtCnpjEntidade').val();
+                cnpj = cnpj.replace(/[^0-9]+/g, '');
+
+                $('#txtCnpjEntidade').closest('.form-group').addClass('has-error')
+                $('#CnpjInvalido').show();
+                if (cnpj.length == 14) toastr.error('CNPJ invalido!');
+
+                $('#txtNomeEntidade').val('');
+                $('#txtNomeEntidade').attr('title', '');
+                $('#ddlUfEntidade').val('');
+            }
+        }
+
+        function requiredCheckBox(selector) {
+            Ecm.registraEvento('change', selector, event => {
+                $(selector).children().each((i, e) => {
+                    if (!$(e).children()[0].checked) {
+                        $(`${selector} label span`).css('borderColor', 'red');
+                    } else {
+                        $(`${selector} label span`).css('borderColor', '#d9d9d9');
+                        return false;
+                    }
+                })
+            })
+        }
+
+        function validarProtocoloAnterior() {
+            if ($('#ddlTipoRegistro').val() == 'REGISTRO-COM-PROTOCOLO') {
+                $('#divProtocoloRegistroAnterior').show();
+                $('#uploadProtocoloRegistroAnterior').attr('required', 'required');
+            } else {
+                $('#divProtocoloRegistroAnterior').hide();
+                $('#uploadProtocoloRegistroAnterior').attr('required', false);
+            }
+        }
+
+        function validarNumerosIguais(valor) {
+            var r1 = valor % 10;
+
+            while (valor > 0) {
+                var r2 = valor % 10;
+                if (r2 !== r1) return false;
+                valor = Math.floor(valor / 10);
+            }
+            return true; // Passo 4.
+        }
+
+        function validarTituloEleitor(inscricao) {
+            inscricao = inscricao.replace('.', '').replace('-', '').replace(' ', '');
+
+            if (inscricao.length == 0) return false;
+
+            var paddedInsc = inscricao;
+            var dig1 = 0;
+            var dig2 = 0;
+
+            var tam = paddedInsc.length;
+            var digitos = paddedInsc.substr(tam - 2, 2);
+            var estado = paddedInsc.substr(tam - 4, 2);
+            var titulo = paddedInsc.substr(0, tam - 2);
+            var exce = estado == '01' || estado == '02';
+            dig1 =
+                (titulo.charCodeAt(0) - 48) * 9 +
+                (titulo.charCodeAt(1) - 48) * 8 +
+                (titulo.charCodeAt(2) - 48) * 7 +
+                (titulo.charCodeAt(3) - 48) * 6 +
+                (titulo.charCodeAt(4) - 48) * 5 +
+                (titulo.charCodeAt(5) - 48) * 4 +
+                (titulo.charCodeAt(6) - 48) * 3 +
+                (titulo.charCodeAt(7) - 48) * 2;
+            var resto = dig1 % 11;
+
+            if (resto == 0) {
+                if (exce) {
+                    dig1 = 1;
+                } else {
+                    dig1 = 0;
+                }
+            } else {
+                if (resto == 1) {
+                    dig1 = 0;
+                } else {
+                    dig1 = 11 - resto;
+                }
+            }
+
+            dig2 = (titulo.charCodeAt(8) - 48) * 4 + (titulo.charCodeAt(9) - 48) * 3 + dig1 * 2;
+            resto = dig2 % 11;
+
+            if (resto == 0) {
+                if (exce) {
+                    dig2 = 1;
+                } else {
+                    dig2 = 0;
+                }
+            } else {
+                if (resto == 1) {
+                    dig2 = 0;
+                } else {
+                    dig2 = 11 - resto;
+                }
+            }
+
+            if (digitos.charCodeAt(0) - 48 == dig1 && digitos.charCodeAt(1) - 48 == dig2) {
+                return true; // Titulo valido
+            } else {
+                return false;
+            }
+        }
+
+        function verificarTituloEleitor($elemento) {
+            if ($elemento && $($elemento).val()) {
+                var todosNumerosIguais = validarNumerosIguais($($elemento).val());
+                var classeValidacao = $('#TituloEleitorInvalido');
+
+                if (!todosNumerosIguais) {
+                    var tituloValido = validarTituloEleitor($($elemento).val());
+
+                    if (tituloValido) {
+                        $($elemento).closest('.form-group').removeClass('has-error').addClass('has-success');
+                        $($elemento)
+                            .siblings('.tooltips')
+                            .removeClass('fa-exclamation')
+                            .addClass('fa-check')
+                            .show();
+                        $(classeValidacao).hide();
+
+                        $('#uploadTituloEleitor').closest('.form-group').show();
+                        $('#uploadTituloEleitor').attr('required', 'required');
+
+                        $($elemento).removeAttr('required');
+                    } else {
+                        $($elemento).closest('.form-group').removeClass('has-success').addClass('has-error');
+                        $($elemento)
+                            .siblings('.tooltips')
+                            .removeClass('fa-check')
+                            .addClass('fa-exclamation')
+                            .show();
+
+                        $(classeValidacao).show();
+                        $(classeValidacao).text('Título de Eleitor inválido');
+
+                        $('#uploadTituloEleitor').closest('.form-group').hide();
+                        $('#uploadTituloEleitor').removeAttr('required');
+                        $($elemento).attr('required', 'required');
+                    }
+                } else {
+                    $($elemento).closest('.form-group').removeClass('has-success').addClass('has-error');
+                    $($elemento)
+                        .siblings('.tooltips')
+                        .removeClass('fa-check')
+                        .addClass('fa-exclamation')
+                        .show();
+                    $(classeValidacao).show();
+                    $(classeValidacao).text('Título de Eleitor inválido');
+                    $($elemento).attr('required', 'required');
+                }
+            }
+        }
+
+        function validarPisPasep(valor) {
+            var ftap = '3298765432';
+            var total = 0;
+            var i;
+            var resto = 0;
+            var numPIS = 0;
+            var strResto = '';
+
+            numPIS = valor;
+
+            if (numPIS == '' || numPIS == null) {
+                return false;
+            }
+
+            for (i = 0; i <= 9; i++) {
+                resultado = numPIS.slice(i, i + 1) * ftap.slice(i, i + 1);
+                total = total + resultado;
+            }
+
+            resto = total % 11;
+
+            if (resto != 0) {
+                resto = 11 - resto;
+            }
+
+            if (resto == 10 || resto == 11) {
+                strResto = resto + '';
+                resto = strResto.slice(1, 2);
+            }
+
+            if (resto != numPIS.slice(10, 11)) {
+                return false;
+            }
+
+            return true;
+        }
+
+        function retornarDeclaracao() {
+            $('#lbtDeclaracao').find('i').removeClass('fa-download').addClass('fa-spinner fa-spin');
+            $('#lbtDeclaracao').attr('disabled', true);
+
+            var parametros = JSON.stringify({
+                chave: 'DECLARACAO',
+                docVersaoId: $('.modal-body').data('versao-id'),
+                listaCampos: DocumentoVisualizacaoForm.retornarCamposComValoresTela(),
+                tipoAnexoId: 36,
+                pdf: true,
+                excluirArquivoOrigem: false
+            });
+            Ecm.ajax(
+                '../WS/Ecm.asmx/AnexarTemplateCamposTela',
+                parametros,
+                function (data) {
+                    $('#lbtDeclaracao').find('i').removeClass('fa-spinner fa-spin').addClass('fa-download');
+                    $('#lbtDeclaracao').attr('disabled', false);
+
+                    console.log(data);
+                    data = JSON.parse(data);
+                    $('a#linkProtocolo').attr({
+                        href: data.DiretorioArquivo
+                    });
+
+                    $('a#linkProtocolo')[0].click();
+                },
+                function () { }
+            );
+        }
+
+        function anexosEspecificos() {
+            let $autPais = $('#anexoAutorizacaoResponasavel')
+            let $autJudicial = $('#anexoAutorizacaoJudicial')
+            let $protocolo = $('#anexoProtocolo')
+            let $carteiraTrabalho = $('#anexoCarteiraTrabalho')
+            let $passaporte = $('#anexoPassaporte')
+            let $autTrabalho = $('#anexoAutorizacaoTrabalho')
+            let $declaracaoFiliado = $('#anexoComprovanteFiliacao')
+
+            $($autPais).hide().find('input').attr('required', false)
+            $($autJudicial).hide().find('input').attr('required', false)
+            $($autTrabalho).hide().find('input').attr('required', false)
+            $($carteiraTrabalho).hide().find('input').attr('required', false)
+            $($declaracaoFiliado).hide().find('input').attr('required', false)
+            $($passaporte).hide().find('input').attr('required', false)
+            $($protocolo).hide().find('input').attr('required', false)
+            switch ($('#ddlCategoria').val()) {
+                case 'APRENDIZ':
+                    $($autPais).show().find('input').attr('required', true)
+                    if ($('#ddlFormaAtuacao').val() == 'Embarcado') {
+                        $($autJudicial).show().find('input').attr('required', true)
+                    }
+                    break;
+                case 'Artesanal':
+                    if ($('#ddlTipoRegistro').val() == 'REGISTRO-COM-PROTOCOLO') {
+                        $($protocolo).show().find('input').attr('required', true)
+                    }
+                    break;
+                case 'Industrial':
+                    $($carteiraTrabalho).show().find('input').attr('required', true)
+                    break;
+            }
+
+            if ($('#ddlNacionalidade').val() == 'Estrangeira') {
+                $($passaporte).show().find('input').attr('required', true)
+                $($autTrabalho).show().find('input').attr('required', true)
+            }
+
+            let entColab = _.filter($('[name="opcao_34"]'), { checked: true })
+            if ($(entColab).val() == 'Sim') {
+                $($declaracaoFiliado).show().find('input').attr('required', true)
+            }
+        }
+
+        function order(select) {
+            var option = []
+            $(`#${select}`).children().each((i, e) => option.push($(e)))
+            for (i = 0; i < option.length; i++) {
+                for (x = i + 1; x < option.length; x++) {
+                    if ($(option[i]).children('label').html() == 'Outros') {
+                        let temp = option[i]
+                        option[i] = option[x]
+                        option[x] = temp
+                    }
+                }
+            }
+            $(`#${select}`).html('')
+            $.each(option, (i, e) => { $(`#${select}`).append(e) })
+        }
+
+        var retornaUf = function (nomeEstado) {
+            var uf = '';
+            switch (nomeEstado) {
+                case 'Acre':
+                    uf = 'AC';
+                    break;
+                case 'Alagoas':
+                    uf = 'AL';
+                    break;
+                case 'Amapá':
+                    uf = 'AP';
+                    break;
+                case 'Amazonas':
+                    uf = 'AM';
+                    break;
+                case 'Bahia':
+                    uf = 'BA';
+                    break;
+                case 'Ceará':
+                    uf = 'CE';
+                    break;
+                case 'Distrito Federal':
+                    uf = 'DF';
+                    break;
+                case 'Espírito Santo':
+                    uf = 'ES';
+                    break;
+                case 'Exterior':
+                    uf = 'EX';
+                    break;
+                case 'Goiás':
+                    uf = 'GO';
+                    break;
+                case 'Maranhão':
+                    uf = 'MA';
+                    break;
+                case 'Mato Grosso':
+                    uf = 'MT';
+                    break;
+                case 'Mato Grosso do Sul':
+                    uf = 'MS';
+                    break;
+                case 'Minas Gerais':
+                    uf = 'MG';
+                    break;
+                case 'Pará':
+                    uf = 'PA';
+                    break;
+                case 'Paraíba':
+                    uf = 'PB';
+                    break;
+                case 'Paraná':
+                    uf = 'PR';
+                    break;
+                case 'Pernambuco':
+                    uf = 'PE';
+                    break;
+                case 'Piauí':
+                    uf = 'PI';
+                    break;
+                case 'Rio de Janeiro':
+                    uf = 'RJ';
+                    break;
+                case 'Rio Grande do Norte':
+                    uf = 'RN';
+                    break;
+                case 'Rio Grande do Sul':
+                    uf = 'RS';
+                    break;
+                case 'Rondônia':
+                    uf = 'RO';
+                    break;
+                case 'Roraima':
+                    uf = 'RR';
+                    break;
+                case 'Santa Catarina':
+                    uf = 'SC';
+                    break;
+                case 'São Paulo':
+                    uf = 'SP';
+                    break;
+                case 'Sergipe':
+                    uf = 'SE';
+                    break;
+                case 'Tocantins':
+                    uf = 'TO';
+                    break;
+            }
+            return uf;
+        };
+
+        function dateConvert(date) {
+            date = date.substring(6, 8) + date.substring(4, 6) + date.substring(0, 4);
+            return date
+        }
+
+    </script>
+
+    <!-- Habilitar Próxima Etapa -->
+    <script>
+        function enabledNextStep(tab, ...selector) {
+            const [radioEntidade, campo27, campo28, campo132] = selector;
+            let validated = false;
+
+            for (i = 0; i < selector.length; i++) {
+                if (selector[i] != undefined && i === 0) {
+                    validated = validateRequiredRadio(`${tab} ${selector[i]}`);
+                    if (validated === false) {
+                        return false;
+                    }
+                } else if (selector[i] != undefined && i > 0) {
+                    validated = validateRequiredCheckbox(`${tab} ${selector[i]}`);
+                    if (validated === false) {
+                        return false;
+                    }
+                }
+            }
+
+            if (validated != false) {
+                validated = validateRequiredInputs()
+            };
+
+            return validated;
+        }
+
+        function validateRequiredInputs() {
+            const required = $('#abaAtual input, #abaAtual select').filter('[required]');
+
+            let validated = true;
+
+            $.each(required, (_, element) => {
+                if (!$(element).val()) {
+                    validated = false;
+                }
+            })
+
+            return validated;
+        }
+
+        function validateRequiredInputsAll() {
+            debugger
+            const required = $('#form-container input, #abaAtual select').filter('[required]');
+
+            let validated = true;
+
+            $.each(required, (_, element) => {
+                if (!$(element).val()) {
+                    validated = false;
+                }
+            })
+
+            // Valida campo textarea
+            if ($('#txtJustificativaCancelamento').val() === '' || $('#txtJustificativaCancelamento').val() === null) {
+                validated = false;
+            }
+
+            if($('#txtMotivoSolicitacao').val() === '' || $('#txtMotivoSolicitacao').val() === null ) {
+                validated = false;
+            }
+
+            return validated;
+        }
+
+        // Radios
+        function validateRequiredRadio(selector) {
+            let validated = false;
+
+            if ($(selector).length != 0) {
+                if ($(selector).val() !== "" || $(selector).val() !== null) {
+                    $(`${selector} label`).each((i, e) => {
+                        if ($(e).children()[0].checked) {
+                            validated = true;
+                            return false;
+                        }
+                    });
+                } else {
+                    validated = true;
+                }
+            } else {
+                validated = undefined;
+            }
+
+            return validated;
+        }
+
+        // Checkboxes
+        function validateRequiredCheckbox(selector) {
+            let validated = false;
+
+            if ($(selector).length != 0) {
+                if ($(selector).val() !== "" || $(selector).val() !== null) {
+                    $(selector).children().each((i, e) => {
+                        if ($(e).children()[0].checked) {
+                            validated = true;
+                            return false;
+                        } else {
+                            validated = false;
+                        }
+                    });
+                } else {
+                    validated = true;
+                }
+            } else {
+                validated = undefined;
+            }
+            return validated;
+        }
+
+        // Result [ O que acontecerá com o formulário de acordo com a resposta da função de validar campos obrigatórios ]
+        function validateRequiredResult(tab, result) {
+            const requiredInput = $(`${tab} input, ${tab} select`).filter('[required]');
+            const requiredCheckBox = $(`${tab} div`).filter('[data-tipo-fisico="LCK"]').filter('[required]');
+            const requiredRadio = $(`${tab} span`).filter('[data-tipo-fisico=RDB]').filter('[required]').attr('id');
+
+            let labelName = '';
+
+            if (result) {
+                $('[mensagemAlerta]').addClass('d-none');
+            }
+
+            if (!result) {
+                $('[mensagemAlerta]').removeClass('d-none');
+
+                $.each(requiredInput, (_, element) => {
+                    if ($(element).val() == null || $(element).val() == '') {
+                        labelName = $(element).closest('div').children('label').html().toUpperCase();
+
+                        Ecm.alertErro(`O CAMPO [ ${labelName} ] É DE PREENCHIMENTO OBRIGATÓRIO!`);
+                    }
+                });
+
+                $.each(requiredCheckBox, (index, element) => {
+                    if (!validateRequiredCheckbox($(element).eq(index - 1))) {
+                        labelName = $(element).closest('div').attr('data-nome-fisico');
+
+                        Ecm.alertErro(`O CAMPO [ ${labelName} ] É DE PREENCHIMENTO OBRIGATÓRIO!`);
+                    }
+                });
+
+                // Essa funcionalidade é limitada a apenas um campo tipo radio por aba [ ToDo: Deixar dinâmico ]
+                if (requiredRadio !== undefined) {
+                    if (!validateRequiredRadio(`#${requiredRadio}`)) {
+                    }
+
+                    Ecm.alertErro(`O CAMPO [ FILIADO A ENTIDADE COLABORADORA? ] É DE PREENCHIMENTO OBRIGATÓRIO!`);
+                }
+
+                if (!validarDataNascimento()) {
+                    validarDataNascimento();
+                }
+            }
+        }
+    </script>
+
+    <!-- Paginação -->
+    <script>
+        const list = $('#listPages').children();
+        const icons = $('#icones-cabecalho').children();
+        const prevButton = $('#prev-button');
+        const nextButton = $('#next-button');
+
+        const state = {
+            page: 1,
+            perPage: 1,
+            totalPages: list.length
+        }
+
+        const controls = {
+            prev() {
+                state.page--;
+
+                if (state.page < 1) {
+                    state.page++;
+                    prevButton.attr('disabled', true);
+                } else {
+                    prevButton.attr('disabled', false)
+                }
+
+                icons.eq(state.page - 1).removeClass('done').addClass('active');
+                icons.eq(state.page - 1).nextAll().removeClass('active done');
+            },
+            next() {
+                state.page++;
+
+                if ((state.page > state.totalPages) || !enabledNextStep('#abaAtual', '#radioEntidade', '#campo27', '#campo28', '#campo132') || !validarDataNascimento()) {
+                    state.page--;
+                    nextButton.attr('disabled', true);
+                }
+
+                if (!enabledNextStep('#abaAtual', '#radioEntidade', '#campo27', '#campo28', '#campo132') || !validarDataNascimento()) {
+                    validateRequiredResult('#abaAtual', false);
+                }
+
+                if (enabledNextStep('#abaAtual', '#radioEntidade', '#campo27', '#campo28', '#campo132') && $('#txtNomePai').val() === "") {
+                    $('#txtNomePai').val("Ignorado");
+                }
+
+                switch (state.page) {
+                    case 3:
+                        addFirstLine();
+                        break;
+                    case 4:
+                        anexosEspecificos();
+                        break;
+                }
+
+                icons.eq(state.page - 1).prevAll().removeClass('active').addClass('done');
+            },
+            createListeners() {
+                prevButton.click(function () {
+                    controls.prev();
+                    $('#abaAtual').children().addClass('d-none').appendTo($('#listPages'));
+
+                    update(state.page);
+                });
+
+                nextButton.click(() => {
+                    controls.next();
+                    $('#abaAtual').children().addClass('d-none').appendTo($('#listPages'));
+
+                    update(state.page);
+                });
+            }
+        }
+
+        function update(page) {
+            $('#abaAtual').html('');
+            list.eq(page - 1).removeClass('d-none').appendTo($('#abaAtual'));
+            icons.eq(page - 1).addClass('active');
+        }
+
+        function init() {
+            update(state.page);
+            controls.createListeners();
+        }
+
+        function addFirstLine() {
+            const gridId = parseInt($(".grid").attr("data-campo-id").replace("@@", "").replace("@@", ""));
+            if ($('.grid [data-corpo-linha-container]').size() < 1) {
+                setTimeout(function () {
+                    $('button').filter('[data-botao-adicionar]').trigger('click');
+                    Ecm.bloquearElemento('.grid');
+                    setTimeout(() => {
+                        $('button').filter('[data-botao-remover]').remove();
+                        let grid = $("[data-campo-id='@@" + gridId + "@@']")
+                        let linhas = $(grid).find('[data-corpo-linha-container]').find('select')
+                        $(linhas[0]).val('INTERESSADO(A)').attr('disabled', true)
+                        Ecm.desbloquearElemento('.grid')
+                    }, 1000);
+                }, 2000)
+
+            }
+        }
+
+        init();
+    </script>
+
+    <!-- Importação de dependências -->
+    <script src="../Scripts/webapi/ecmApi.js"></script>
+    <script src="assets/global/plugins/jquery-mask/jquery.mask.min.js"></script>
+    <script src="assets/global/plugins/jcrop/js/jquery.Jcrop.js"></script>
+</body>
+
+</html>

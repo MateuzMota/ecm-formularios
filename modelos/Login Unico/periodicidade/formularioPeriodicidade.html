@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script src="assets/global/plugins/jquery-mask/jquery.mask.min.js"></script>
+    <style type="text/css">
+        .input-icon.right>i {
+            right: 20px;
+        }
+
+        input[type="date"] {
+            padding-right: 0;
+        }
+
+        .menu-superior {
+            margin-bottom: 5px;
+        }
+
+        .form-group>label {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        h4 {
+            cursor: pointer;
+        }
+
+        .cabecalho {
+            font-size: medium;
+            font-weight: 500 !important;
+            background: #8cdad5 !important;
+            padding: 5px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+        }
+
+        .container-sistemas-disponiveis {
+            border: solid 1px #d8e4e3;
+            padding: 25px 70px 25px 70px;
+            font-size: small;
+            -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+        }
+
+        .container-sistemas-disponiveis hr {
+            margin: 10px 0;
+        }
+
+        .container-sistemas-disponiveis .form-group {
+            margin-bottom: 5px;
+        }
+
+        .tabbable-line>.tab-content {
+            padding: 0 !important;
+        }
+
+        .mt-element-step {
+            margin-bottom: 25px;
+            transition: transform 1s ease-in-out;
+        }
+
+        .mt-element-step .step-line .mt-step-col {
+            padding: 0 !important;
+            transition: transform 1s ease-in-out;
+        }
+
+        .mt-element-step .step-line .mt-step-number>i {
+            top: 15px !important;
+            /* cursor: pointer; */
+        }
+
+        #body-saida-embarcacao .portlet-body {
+            padding: 0 !important;
+        }
+
+        .mt-element-step .step-line .mt-step-title:before {
+            top: -13px !important;
+        }
+
+        .mt-element-step .step-line .mt-step-number {
+            padding: 3px;
+        }
+
+        .text-align-reverse {
+            text-align: -webkit-right;
+            text-align: -moz-right;
+            text-align: -o-right;
+            text-align: -ms-right;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .color-red {
+            color: red;
+        }
+
+        .disabled {
+            background-color: #eef1f5;
+        }
+
+        .invalido {
+            border: 1px solid red;
+        }
+
+        .divisor-input {
+            margin-bottom: 8px;
+        }
+
+        .sistemas-container {
+            border: none !important;
+            box-shadow: 0 0 black !important;
+        }
+
+        .rowFlex {
+            display: flex;
+            align-items: center;
+            /* border-bottom: #94a0b2 1px solid;
+            margin-bottom: 4px;
+            padding-bottom: 4px; */
+        }
+
+        h6 {
+            font-weight: bold;
+        }
+
+        @media (max-width: 767.98px) {
+            .container-sistemas-disponiveis {
+                padding: 25px 0px 0px 0px;
+            }
+
+            .form-group>label {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            img {
+                margin: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row" style="display: flex; align-items: center;">
+        <div class="profile-userpic col-md-3"><img alt="" class="img-responsive"
+                src="../Imagens/aparencia/customizado/LogoEllosP.png" /></div>
+
+        <div class="caption bold bs-glyphicon-class font-blue-oleo col-md-6">
+            <h3 id="txtTituloFormulario">Periodicidade Prova de Vida</h3>
+        </div>
+    </div>
+
+    <p>&nbsp;</p>
+
+    <h4 class="bs-glyphicon-class cabecalho" id="cabecalho-embarcacao">Prova de vida ( Valida&ccedil;&atilde;o Facial )
+    </h4>
+
+    <p>&nbsp;</p>
+
+    <form action="#" class="horizontal-form">
+        <div class="container-sistemas-disponiveis sistemas-container">
+            <div class="form-group row rowFlex"><label class="col-sm-3" for="CAMPO_1">Nome: </label>
+
+                <div class="col-sm-4"><input class="form-control" data-campo-id="@@1@@" data-nome="1 - Nome"
+                        data-tipo-documental-id="34" id="CAMPO_1" /></div>
+            </div>
+            &nbsp;
+
+            <p style="margin-bottom: 0px;"><span style="font-size:18px;"> <strong>Definir Periodicidade:</strong>
+                </span>&nbsp;</p>
+
+            <p style="margin-bottom: 0px;">&nbsp;</p>
+
+            <div class="form-group row rowFlex"><label class="col-sm-3" for="CAMPO_2">1 - Registro de Pescador
+                    Profissional</label>
+
+                <div class="col-sm-4"><select class="form-control date-picker" data-campo-id="@@2@@"
+                        data-nome="2 - Registro de Pescador Profissional" data-tipo-documental-id="34" id="CAMPO_2">
+                    </select></div>
+            </div>
+
+            <div class="form-group row rowFlex"><label class="col-sm-3" for="CAMPO_3">2 - Registro de Entidades
+                    Colaboradora</label>
+
+                <div class="col-sm-4"><select class="form-control date-picker" data-campo-id="@@3@@"
+                        data-nome="3 - Registro de Entidades Colaboradora" data-tipo-documental-id="34" id="CAMPO_3">
+                    </select></div>
+            </div>
+
+            <div class="form-group row rowFlex"><label class="col-sm-3" for="CAMPO_4">3 - Registro de Embarcacao
+                    Pesqueira</label>
+
+                <div class="col-sm-4"><select class="form-control date-picker" data-campo-id="@@4@@"
+                        data-nome="4 - Registro de Embarcacao Pesqueira" data-tipo-documental-id="34" id="CAMPO_4">
+                    </select></div>
+            </div>
+
+            <div class="form-group row rowFlex"><label class="col-sm-3" for="CAMPO_5">4 - Mapa de Bordo Online</label>
+
+                <div class="col-sm-4"><select class="form-control date-picker" data-campo-id="@@5@@"
+                        data-nome="5 - Mapa de Bordo Digital" data-tipo-documental-id="34" id="CAMPO_5"> </select></div>
+            </div>
+
+            <div class="form-group row rowFlex"><label class="col-sm-3" for="CAMPO_6">5 - Registro de Empresa
+                    Pesqueira</label>
+
+                <div class="col-sm-4"><select class="form-control date-picker" data-campo-id="@@6@@"
+                        data-nome="6 - Registro de Empresa Pesqueira" data-tipo-documental-id="34" id="CAMPO_6">
+                    </select></div>
+            </div>
+
+            <div class="form-group row rowFlex"><label class="col-sm-3" for="CAMPO_7">6 - Registro de Armador de
+                    Pesca</label>
+
+                <div class="col-sm-4"><select class="form-control date-picker" data-campo-id="@@7@@"
+                        data-nome="7 - Registro de Armador de Pesca" data-tipo-documental-id="34" id="CAMPO_7">
+                    </select></div>
+            </div>
+        </div>
+        <!-- Items here -->
+    </form>
+    <script>
+        DocumentoVisualizacaoForm.camposCarregados(() => {
+            var formularioAtivo = 0;
+
+            $('.date-picker').each((index, element) => {
+                $(element).attr('required', 'required')
+            })
+
+            $('[data-tab-name="anexo"]').hide();
+            $('[data-tab-name="versao-anterior"]').hide();
+
+            if (DocumentoVisualizacaoForm.retornaDocumento().atividadeId == 2) {
+                periodicidadeAtiva()
+            }
+            function periodicidadeAtiva() {
+                var parametros = JSON.stringify({
+                    usuarioId: 1,
+                    campoIdOrder: 0,
+                    tipoDocumentalId: 34,
+                    camposPesquisar: [{
+                        "Id": 1,
+                        "TipoDocumentalId": 34,
+                        "Nome": "Prova de vida",
+                        "ColunaTipo": "C",
+                        "Valor": "Prova de vida",
+                        "Comparacao": 6
+                    }],
+                    totalDocumentosPorPagina: 1000,
+                    paginacaoIndiceAtual: 0,
+                });
+                Ecm.ajax('../WS/Ecm.asmx/PesquisarOrder', parametros, function (data) {
+                    data = JSON.parse(data);
+                    $.each(data.documentos, function (i, e) { formularioAtivo += 1 })
+                    if (formularioAtivo > 0) {
+                        $('.fa-close').trigger('click')
+                        Ecm.alertErro('Formulario ja ativo! Por favor descarte o rascunho do seu registro.')
+                        Ecm.alertErro('Formulario disponível em "Tarefas pendentes" na aba "Periodicidade Login Unico".')
+                    }
+                },
+                    function (data) {
+                        data = JSON.parse(data);
+                        var $toast = toastr['error'](" ", "<i class='fa '></i>" + data.mensagem);
+                    });
+            }
+
+        })
+    </script>
+</body>
+
+</html>

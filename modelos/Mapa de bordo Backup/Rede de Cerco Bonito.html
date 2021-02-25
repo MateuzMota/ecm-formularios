@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script src="assets/global/plugins/jquery-mask/jquery.mask.min.js"></script>
+    <style type="text/css">
+        .input-icon.right>i {
+            right: 20px;
+        }
+
+        input[type="date"] {
+            padding-right: 0;
+        }
+
+        .menu-superior {
+            margin-bottom: 5px;
+        }
+
+        .form-group>label {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        h4 {
+            cursor: pointer;
+        }
+
+        .cabecalho {
+            font-size: medium;
+            font-weight: 500 !important;
+            background: #8cdad5 !important;
+            padding: 5px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+        }
+
+        .container-de-cadastro {
+            border: solid 1px #d8e4e3;
+            padding: 25px 140px 25px 70px;
+            font-size: small;
+            -webkit-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            -moz-box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+            box-shadow: 0px 1px 2px 0px rgba(194, 190, 194, 1);
+        }
+
+        .container-de-cadastro hr {
+            margin: 10px 0;
+        }
+
+        .container-de-cadastro .form-group {
+            margin-bottom: 5px;
+        }
+
+        .tabbable-line>.tab-content {
+            padding: 0 !important;
+        }
+
+        .mt-element-step {
+            margin-bottom: 25px;
+            transition: transform 1s ease-in-out;
+        }
+
+        .mt-element-step .step-line .mt-step-col {
+            padding: 0 !important;
+            transition: transform 1s ease-in-out;
+        }
+
+        .mt-element-step .step-line .mt-step-number>i {
+            top: 15px !important;
+            /* cursor: pointer; */
+        }
+
+        #body-saida-embarcacao .portlet-body {
+            padding: 0 !important;
+        }
+
+        .mt-element-step .step-line .mt-step-title:before {
+            top: -13px !important;
+        }
+
+        .mt-element-step .step-line .mt-step-number {
+            padding: 3px;
+        }
+
+        .text-align-reverse {
+            text-align: -webkit-right;
+            text-align: -moz-right;
+            text-align: -o-right;
+            text-align: -ms-right;
+        }
+
+        .font-bold {
+            font-weight: bold;
+        }
+
+        .color-red {
+            color: red;
+        }
+
+        .disabled {
+            background-color: #eef1f5;
+        }
+
+        .invalido {
+            border: 1px solid red;
+        }
+
+        @media (max-width: 767.98px) {
+            .container-de-cadastro {
+                padding: 25px 0px 0px 0px;
+            }
+
+            .form-group>label {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            img {
+                margin: auto;
+            }
+
+            #btnAdicionarCapturaDetalhe {
+                display: none !important;
+            }
+        }
+
+        /* .table-responsive [data-cabecalho-celula-container]{
+            min-width: 135px;
+        } */
+    </style>
+</head>
+
+<body class="vsc-initialized">
+    <div id="bodyMapaBordoRedeCercoBonito">
+        <div class="row">
+            <div class="profile-userpic col-md-3"><img alt="" class="img-responsive"
+                    src="../Imagens/aparencia/customizado/LogoEllosP.png" /></div>
+
+            <div class="caption bold bs-glyphicon-class font-blue-oleo col-md-6">
+                <h3 id="txtTituloFormulario">Formul&aacute;rio de Mapa de Bordo Digital - Rede de Cerco - Bonito</h3>
+            </div>
+        </div>
+
+        <div class="mt-element-step">
+            <div class="form-body">
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->
+                    <form action="#" class="form-horizontal">
+                        <div class="note note-warning" id="msgAlertaSaidaEmbarcacao">
+                            <p>Este acesso ao sistema de mapa de bordo digital &eacute; provis&oacute;rio. O acesso
+                                definitivo ser&aacute; liberado ap&oacute;s o cadastramento/recadastramento nacional das
+                                embarca&ccedil;&otilde;es no SisRGP 4.0.</p>
+                        </div>
+
+                        <div class="alert alert-danger bold" id="MensagemAlerta" role="alert" style="display:none;">
+                            Preencha todos os campos obrigat&oacute;rios antes de prosseguir.</div>
+
+                        <div class="tab-pane active" id="tab1">
+                            <h4 class="bs-glyphicon-class cabecalho" id="cabecalho-embarcacao">Frota de Rede de Cerco -
+                                Bonito</h4>
+
+                            <div class="container-de-cadastro" id="menuFrotaRedeCercoBonito">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Cruzeiros
+                                                pendentes:</label>
+
+                                            <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                    data-campo-id="@@21@@" data-nome="Cruzeiros pendentes"
+                                                    id="ddlCruzeirosPendentes" required="required"></select></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">A
+                                                embarca&ccedil;&atilde;o fez o cruzeiro indicado?</label>
+
+                                            <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                    data-campo-id="@@22@@"
+                                                    data-nome="A embarcação fez o cruzeiro indicado?"
+                                                    id="ddlConfirmacaoCruzeiro" required="required"></select></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Esp&eacute;cie
+                                                alvo do mapa</label>
+
+                                            <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                    data-campo-id="@@41@@" data-nome="Espécie alvo do mapa:"
+                                                    id="ddlEspecieAlvo" required="required"></select></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Nome da
+                                                embarca&ccedil;&atilde;o:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@2@@" data-nome="Nome da embarcação"
+                                                    id="txtNomeEmbarcacao" placeholder="Nome completo" type="text" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">N&deg;
+                                                inscri&ccedil;&atilde;o RGP:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@3@@" data-nome="Número de inscrição no RGP"
+                                                    id="txtNumeroRGPEmbarcacao" placeholder="Apenas letras e Números"
+                                                    type="text" /></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">N&uacute;mero TIE
+                                                da embarca&ccedil;&atilde;o:</label>
+
+                                            <div class="col-md-8 input-icon right"><input
+                                                    class="form-control input-sm number" data-campo-id="@@1@@"
+                                                    data-nome="Número TIE da embarcação" id="txtNumeroTie"
+                                                    maxlength="10" placeholder="Número TIE da embarcação" /></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label
+                                                class="control-label col-md-4">Empresa/armador:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@11@@" data-nome="Empresa/armador"
+                                                    id="txtEmpresaArmador" placeholder="Empresa/armador" type="text" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Porto de
+                                                sa&iacute;da:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@4@@" data-nome="Porto de saída" id="txtPortoSaida"
+                                                    placeholder="Porto de saída" type="text" /></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Data da
+                                                sa&iacute;da:</label>
+
+                                            <div class="col-md-8 input-icon right"><input
+                                                    class="form-control input-sm date-picker" data-campo-id="@@14@@"
+                                                    data-nome="Data prevista da saída" id="txtDataSaida"
+                                                    placeholder="Data prevista da saída" type="text" /></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Porto de
+                                                chegada:</label>
+
+                                            <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                    data-campo-id="@@13@@" data-nome="Porto de chegada"
+                                                    id="txtPortoChegada" placeholder="Porto de chegada" type="text" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Data da
+                                                chegada:</label>
+
+                                            <div class="col-md-8 input-icon right"><input
+                                                    class="form-control input-sm date-picker" data-campo-id="@@15@@"
+                                                    data-nome="Data prevista da chegada" id="txtDataChegada"
+                                                    placeholder="Data prevista da chegada" type="text" /></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Comprimento da
+                                                rede:</label>
+
+                                            <div class="col-md-8 input-icon right"><input
+                                                    class="form-control input-sm metrosSemDecimal" data-campo-id="@@5@@"
+                                                    data-nome="Comprimento da rede" id="txtComprimentoRede"
+                                                    placeholder="Comprimento da rede" type="text" /></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Altura da
+                                                rede:</label>
+
+                                            <div class="col-md-8 input-icon right"><input
+                                                    class="form-control input-sm metrosSemDecimal" data-campo-id="@@6@@"
+                                                    data-nome="Altura da rede" id="txtAlturaRede"
+                                                    placeholder="Comprimento da rede" type="text" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Capacidade do
+                                                por&atilde;o:</label>
+
+                                            <div class="col-md-8 input-icon right"><input
+                                                    class="form-control input-sm peso" data-campo-id="@@12@@"
+                                                    data-nome="Capacidade do porão" id="txtCapacidadePorao"
+                                                    placeholder="Capacidade do porão" type="text" /></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group"><label class="control-label col-md-4">Houve lances neste
+                                                cruzeiro?</label>
+
+                                            <div class="col-md-8 input-icon right"><select class="form-control input-sm"
+                                                    data-campo-id="@@23@@" data-nome="Houve lances neste cruzeiro"
+                                                    id="ddlHouveLance" required="required"></select></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 class="bs-glyphicon-class cabecalho">Lances</h4>
+
+                        <div class="container-de-cadastro" id="menuLances">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <h4>Lances</h4>
+
+                                            <div class="table-responsive gridCapturaPai" data-campo-id="@@24@@">
+                                                <table class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                        <tr data-cabecalho-container="">
+                                                            <th data-cabecalho-celula-container=""
+                                                                data-cabecalho-celula-container-template=""><span
+                                                                    data-cabecalho-celula-texto="">Campo 1</span></th>
+                                                            <th data-cabecalho-celula-container="" data-remover=""><span
+                                                                    data-cabecalho-celula-texto="">Campo 2</span></th>
+                                                            <th data-cabecalho-celula-container="" data-remover=""><span
+                                                                    data-cabecalho-celula-texto="">Campo N</span></th>
+                                                            <th data-cabecalho-celula-acoes=""
+                                                                style="text-align:center;">
+                                                                <span>A&ccedil;&otilde;es</span></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody data-corpo-container="">
+                                                        <tr data-corpo-linha-container="">
+                                                            <td data-corpo-celula-container=""
+                                                                data-corpo-celula-container-template="">
+                                                                <div data-corpo-celula-elemento-container=""><input
+                                                                        class="form-control input-sm" type="text" />
+                                                                    <div>&nbsp;</div>
+                                                                </div>
+                                                            </td>
+                                                            <td data-corpo-celula-container="" data-remover="">
+                                                                <div data-corpo-celula-elemento-container=""><input
+                                                                        class="form-control input-sm" type="text" />
+                                                                    <div>&nbsp;</div>
+                                                                </div>
+                                                            </td>
+                                                            <td data-corpo-celula-container="" data-remover="">
+                                                                <div data-corpo-celula-elemento-container=""><input
+                                                                        class="form-control input-sm" type="text" />
+                                                                    <div>&nbsp;</div>
+                                                                </div>
+                                                            </td>
+                                                            <td data-corpo-celula-acoes="" style="text-align:center;">
+                                                                <button class="btn default btn-xs" data-botao-editar=""
+                                                                    style="display:none;"><i
+                                                                        class="fa fa-edit"></i></button><button
+                                                                    class="btn default btn-xs" data-botao-linkar=""><i
+                                                                        class="fa fa-link"></i></button><button
+                                                                    class="btn red-sunglo btn-xs"
+                                                                    data-botao-remover=""><i
+                                                                        class="fa fa-remove"></i></button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <button class="btn blue btn-xs pull-right" data-botao-adicionar=""><i
+                                                        class="fa fa-plus"></i>Adicionar lance</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <h4>Captura</h4>
+
+                                            <div class="table-responsive gridCapturaFilho" data-campo-id="@@25@@">
+                                                <table class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                        <tr data-cabecalho-container="">
+                                                            <th data-cabecalho-celula-container=""
+                                                                data-cabecalho-celula-container-template=""><span
+                                                                    data-cabecalho-celula-texto="">Campo 1</span></th>
+                                                            <th data-cabecalho-celula-container="" data-remover=""><span
+                                                                    data-cabecalho-celula-texto="">Campo 2</span></th>
+                                                            <th data-cabecalho-celula-container="" data-remover=""><span
+                                                                    data-cabecalho-celula-texto="">Campo N</span></th>
+                                                            <th data-cabecalho-celula-acoes=""
+                                                                style="text-align:center;">
+                                                                <span>A&ccedil;&otilde;es</span></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody data-corpo-container="">
+                                                        <tr data-corpo-linha-container="">
+                                                            <td data-corpo-celula-container=""
+                                                                data-corpo-celula-container-template="">
+                                                                <div data-corpo-celula-elemento-container=""><input
+                                                                        class="form-control input-sm" type="text" />
+                                                                    <div>&nbsp;</div>
+                                                                </div>
+                                                            </td>
+                                                            <td data-corpo-celula-container="" data-remover="">
+                                                                <div data-corpo-celula-elemento-container=""><input
+                                                                        class="form-control input-sm" type="text" />
+                                                                    <div>&nbsp;</div>
+                                                                </div>
+                                                            </td>
+                                                            <td data-corpo-celula-container="" data-remover="">
+                                                                <div data-corpo-celula-elemento-container=""><input
+                                                                        class="form-control input-sm" type="text" />
+                                                                    <div>&nbsp;</div>
+                                                                </div>
+                                                            </td>
+                                                            <td data-corpo-celula-acoes="" style="text-align:center;">
+                                                                <button class="btn default btn-xs" data-botao-editar=""
+                                                                    style="display:none;"><i
+                                                                        class="fa fa-edit"></i></button><button
+                                                                    class="btn default btn-xs" data-botao-linkar=""><i
+                                                                        class="fa fa-link"></i></button><button
+                                                                    class="btn red-sunglo btn-xs"
+                                                                    data-botao-remover=""><i
+                                                                        class="fa fa-remove"></i></button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <button class="btn blue btn-xs pull-right" data-botao-adicionar=""><i
+                                                        class="fa fa-plus"></i>Nova captura</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <h4>Captura Incidental</h4>
+
+                                            <div class="table-responsive gridCapturaIncidental" data-campo-id="@@34@@">
+                                                <table class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                        <tr data-cabecalho-container="">
+                                                            <th data-cabecalho-celula-container=""
+                                                                data-cabecalho-celula-container-template=""><span
+                                                                    data-cabecalho-celula-texto="">Campo 1</span></th>
+                                                            <th data-cabecalho-celula-container="" data-remover=""><span
+                                                                    data-cabecalho-celula-texto="">Campo 2</span></th>
+                                                            <th data-cabecalho-celula-container="" data-remover=""><span
+                                                                    data-cabecalho-celula-texto="">Campo N</span></th>
+                                                            <th data-cabecalho-celula-acoes=""
+                                                                style="text-align:center;">
+                                                                <span>A&ccedil;&otilde;es</span></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody data-corpo-container="">
+                                                        <tr data-corpo-linha-container="">
+                                                            <td data-corpo-celula-container=""
+                                                                data-corpo-celula-container-template="">
+                                                                <div data-corpo-celula-elemento-container=""><input
+                                                                        class="form-control input-sm" type="text" />
+                                                                    <div>&nbsp;</div>
+                                                                </div>
+                                                            </td>
+                                                            <td data-corpo-celula-container="" data-remover="">
+                                                                <div data-corpo-celula-elemento-container=""><input
+                                                                        class="form-control input-sm" type="text" />
+                                                                    <div>&nbsp;</div>
+                                                                </div>
+                                                            </td>
+                                                            <td data-corpo-celula-container="" data-remover="">
+                                                                <div data-corpo-celula-elemento-container=""><input
+                                                                        class="form-control input-sm" type="text" />
+                                                                    <div>&nbsp;</div>
+                                                                </div>
+                                                            </td>
+                                                            <td data-corpo-celula-acoes="" style="text-align:center;">
+                                                                <button class="btn default btn-xs" data-botao-editar=""
+                                                                    style="display:none;"><i
+                                                                        class="fa fa-edit"></i></button><button
+                                                                    class="btn default btn-xs" data-botao-linkar=""
+                                                                    style="display:none;"><i
+                                                                        class="fa fa-link"></i></button><button
+                                                                    class="btn red-sunglo btn-xs" data-botao-remover=""
+                                                                    style="display:none;"><i
+                                                                        class="fa fa-remove"></i></button></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <button class="btn blue btn-xs pull-right" data-botao-adicionar=""
+                                                    id="btnAdicionarCapturaDetalhe" style="display:none;"><i
+                                                        class="fa fa-plus"></i>Nova Pesca</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Identificacao do Responsável do Preenchimento  -->
+
+                        <h4 class="bs-glyphicon-class cabecalho" id="cabecalho-identificacao-responsavel-preenchimento">
+                            Identifica&ccedil;&atilde;o do respons&aacute;vel pelo preenchimento</h4>
+
+                        <div class="container-de-cadastro" id="menu-identificacao-responsavel-preenchimento">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Nome:</label>
+
+                                        <div class="col-md-8 input-icon right"><input
+                                                class="form-control input-sm campoNome" data-campo-id="@@7@@"
+                                                data-nome="Nome do responsável pelo preenchimento"
+                                                id="txtNomeResponsavelPreenchimento" placeholder="Nome completo"
+                                                type="text" /></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">CPF:</label>
+
+                                        <div class="col-md-8 input-icon right"><i class="fa fa-exclamation tooltips"
+                                                data-container="body" data-original-title="informe um CPF válido"
+                                                style="display:none"></i> <input
+                                                class="form-control input-sm campoNumero campoCpf" data-campo-id="@@8@@"
+                                                data-nome="CPF do responsável" id="txtCpfResponsavelPreenchimento"
+                                                maxlength="18" placeholder="CPF do responsável" type="text" /> <span
+                                                class="color-red" id="CPFinvalido" style="display: none;"></span></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">Telefone
+                                            celular:</label>
+
+                                        <div class="col-md-8 input-icon right"><input class="form-control input-sm"
+                                                data-campo-id="@@9@@" data-nome="Telefone celular do responsável"
+                                                id="txtTelefoneCelularResponsavelPreenchimento"
+                                                placeholder="Telefone celular" type="text" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/row-->
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group"><label class="control-label col-md-4">E-mail:</label>
+
+                                        <div class="col-md-8 input-icon right"><input
+                                                class="form-control input-sm email" data-campo-id="@@10@@"
+                                                data-nome="E-mail do responsável" id="txtEmailResponsavelPreenchimento"
+                                                placeholder="E-mail" type="text" /></div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-group"><label
+                                            class="control-label col-md-4">Observa&ccedil;&otilde;es:</label>
+
+                                        <div class="col-md-8 input-icon right"><textarea cols="30"
+                                                data-campo-id="@@17@@" data-nome="Observações" id="taObservacoes"
+                                                name="taObservacoes" placeholder="Observações" rows="10"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="note note-warning" id="msgAvisoDados">
+                                        <p>1-Os dados fornecidos ser&atilde;o mantidos confidencialmente e ser&atilde;o
+                                            de uso restrito a pesquisa.<br />
+                                            2-A obrigatoriedade do fornecimento das informa&ccedil;&otilde;es sobre as
+                                            pescarias est&aacute; prevista no Decreto Lei n&ordm; 221/67 e Decreto
+                                            n&ordm; 4.810/03. O n&atilde;o cumprimento desta obrigatoriedade ou
+                                            fornecimento de informa&ccedil;&otilde;es falsas implicar&aacute; em
+                                            san&ccedil;&otilde;es que v&atilde;o desde multas (art. 56 do Decreto n&deg;
+                                            3179/99) at&eacute; o cancelamento das permiss&otilde;es de pesca e registro
+                                            (Instru&ccedil;&atilde;o Normativa Interministerial n&deg; 26/05).</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/row-->
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        Ecm.bloquearElemento(".botoes");
+        Ecm.bloquearElemento("#bodyMapaBordoRedeCercoBonito");
+        DocumentoVisualizacaoForm.camposCarregados(function () {
+
+            if (DocumentoVisualizacaoForm.retornaDocumento().atividadeId == "21")//Enviados
+            {
+                if (!validaUsuario()) {
+                    $(".botoes .editar").remove();//Remove botao de editar caso nao esteja no grupo Secretaria - Validação MB
+                }
+            }
+            function validaUsuario() {
+                var valida = false
+                var user = Ecm.retornaUsuario()
+                var userGroups = user.gruposId.split(',')
+                userGroups.forEach(function (e) {
+                    if (e == '162' || e == '163' || e == '152' || e == '1') {
+                        valida = true
+                    }
+                })
+                return valida
+            }
+
+            $('[data-tab-name="anexo"]').remove()
+            $('#versoes').remove()
+
+            Ecm.desbloquearElemento("#bodyMapaBordoRedeCercoBonito");
+            Ecm.desbloquearElemento(".botoes");
+            /*----------------------------------------------------------------Sets Iniciais----------------------------------------------------------------*/
+            $("#btnPrint").hide();
+            $(".info-extra").hide();
+            setTimeout(function () {
+                ClonarTransicao('#transicao-id-16', 'click', function () {
+                    ValidarPreenchimentosCamposEspecificos(function (valida, mensagem) {
+                        if (valida) {
+                            DocumentoVisualizacaoForm.publicarSaida('#transicao-id-16');
+                        } else {
+                            mensagemAlerta(mensagem);
+                        }
+                    });
+                });
+            }, 1000);
+
+            //Configurando variáveis iniciais
+
+            $("#txtTituloFormulario").text("Formulário de Mapa de Bordo Digital - Rede de Cerco - Bonito");//Título
+            var IdGridLance = parseInt($(".gridCapturaPai").attr("data-campo-id").replace("@@", "").replace("@@", ""));
+            var IdGridLanceCaptura = parseInt($(".gridCapturaFilho").attr("data-campo-id").replace("@@", "").replace("@@", ""));
+            var IdGridLanceCapturaIncidental = parseInt($(".gridCapturaIncidental").attr("data-campo-id").replace("@@", "").replace("@@", ""));
+            var loginUsuarioLogado = Ecm.retornaUsuario().login;
+            var nomeUsuarioLogado = Ecm.retornaUsuario().nome;
+
+            if ($("#txtNumeroRGPEmbarcacao").val() == "") {
+                $("#txtNumeroRGPEmbarcacao").val(loginUsuarioLogado);
+            }
+
+            if ($("#txtNomeEmbarcacao").val() == "") {
+                $("#txtNomeEmbarcacao").val(nomeUsuarioLogado);
+            }
+
+            $("#txtNumeroRGPEmbarcacao").attr("disabled", "disabled");
+            $("#txtNomeEmbarcacao").attr("disabled", "disabled");
+
+            if (!(DocumentoVisualizacaoForm.estouEditando())) {
+                $('button[data-botao-linkar]').attr('disabled', 'disabled');
+                $('button[data-botao-remover]').attr('disabled', 'disabled');
+                $('button[data-botao-adicionar]').attr('disabled', 'disabled');
+                $('#taObservacoes').attr('disabled', 'disabled');
+                $('#taObservacoes').addClass('disabled');
+            } else {
+                $('button[data-botao-linkar]').removeAttr('disabled');
+                $('button[data-botao-remover]').removeAttr('disabled');
+                $('button[data-botao-adicionar]').removeAttr('disabled');
+                $('#taObservacoes').removeAttr('disabled');
+                $('#taObservacoes').removeClass('disabled');
+            }
+
+            //Máscaras iniciais.
+            $(".email").inputmask('email');
+            $(".campoNome").inputmask("Regex", { regex: "[a-zA-Z- ]*" });
+            $('.number').inputmask({ alias: 'numeric', allowMinus: false, rightAlign: false });
+
+            $('.peso').inputmask("decimal", {
+                alias: "numeric",
+                groupSeparator: ".",
+                autoGroup: true,
+                digits: 2,
+                radixPoint: ",",
+                digitsOptional: false,
+                allowMinus: false,
+                suffix: " Kg",
+                placeholder: "",
+                rightAlign: false
+            });
+
+            $('.decimal').inputmask("decimal", {
+                alias: "numeric",
+                groupSeparator: ".",
+                autoGroup: true,
+                digits: 2,
+                radixPoint: ",",
+                digitsOptional: false,
+                allowMinus: false,
+                suffix: "",
+                placeholder: "",
+                rightAlign: false
+            });
+
+            $('.metros').inputmask("decimal", {
+                alias: "numeric",
+                groupSeparator: ".",
+                autoGroup: true,
+                digits: 2,
+                radixPoint: ",",
+                digitsOptional: false,
+                allowMinus: false,
+                suffix: " metros",
+                placeholder: "",
+                rightAlign: false
+            });
+            $('.metrosSemDecimal').inputmask("decimal", {
+                integerDigits: 5,
+                alias: "numeric",
+                suffix: " metros",
+                autoGroup: true,
+                thousands: ".",
+                groupSize: 3,
+                rightAlign: false,
+                groupSeparator: ".",
+                autoGroup: true,
+                radixPoint: ",",
+                autoUnmask: true
+            });
+            //Fim Mascaras iniciais
+
+            /*----------------------------------------------------------------Eventos Início----------------------------------------------------------------*/
+            Ecm.registraEvento("click", ".gridCapturaPai [data-botao-adicionar]", function () {//Evento para adicionar item ao grid Pai
+                AplicarAtributosGrid();
+                $("#btnAdicionarCapturaDetalhe").trigger('click');
+            });
+            Ecm.registraEvento('click', '#btnAdicionarCapturaDetalhe', function () {//Evento para adicionar item ao grid Detalhes
+                AplicarAtributosGrid();
+            });
+
+            Ecm.registraEvento('click', '.gridCapturaPai [data-botao-linkar]', function (elemento) {
+                $(elemento.currentTarget).closest('tr').find('.houvePesca').trigger('change');
+            });
+
+            Ecm.registraEvento('change focusout', '[data-grid-elemento]', function (event) {//Evento para tratar o bug de campos do tipo inteiro no grid.
+                $(event.target).attr('value', $(event.target).val());
+            });
+
+            Ecm.registraEvento("change", "#ddlHouveLance", function () {
+                if ($("#ddlConfirmacaoCruzeiro").val() == "Sim") {
+                    $("#menuRedeCercoBonito input,#menuRedeCercoBonito select").attr("required", "required");
+
+                    if ($("#ddlHouveLance").val() == "Sim") {
+                        $("#menuLances").show('fast');
+                    }
+                    else {
+                        $("#menuLances").hide('fast');
+                    }
+                }
+                else {
+                    $("#menuRedeCercoBonito input,#menuRedeCercoBonito select").attr("required", false);
+                    $("#menuLances").hide('fast');
+                }
+            });
+
+            Ecm.registraEvento("change", ".campoCpf", function (elemento) {
+                ValidaCampoCpf(elemento);
+            });
+
+            Ecm.registraEvento("change", "#ddlConfirmacaoCruzeiro", function (elemento) {
+                if ($("#ddlConfirmacaoCruzeiro").val() == "Sim") {
+                    $("#menuRedeCercoBonito input,#menuRedeCercoBonito select").attr("required", "required");
+                    $("#ddlHouveLance").val("").trigger("change");
+                    $("#ddlHouveLance").attr("disabled", false);
+                    $("#menu-identificacao-responsavel-preenchimento input,menu-identificacao-responsavel-preenchimento select").attr("required", "required");
+                    $("#menu-identificacao-responsavel-preenchimento").show('fast');
+                }
+                else {
+                    $("#menuRedeCercoBonito input,#menuRedeCercoBonito select").attr("required", false);
+                    $("#ddlHouveLance").val("Nao").trigger("change");
+                    $("#ddlHouveLance").attr("disabled", "disabled");
+                    $("#menu-identificacao-responsavel-preenchimento input,menu-identificacao-responsavel-preenchimento select").attr("required", false);
+                    $("#menu-identificacao-responsavel-preenchimento").hide('fast');
+                }
+            });
+
+            Ecm.registraEvento("focusout, change", ".dataLance", function (event) {
+
+                var arrDate = $(event.currentTarget).val().split("/");
+                var arrdataChegada = $("#txtDataChegada").val().split("/");
+                var arrdataSaida = $("#txtDataSaida").val().split("/");
+
+                if (arrdataChegada == undefined || arrdataChegada.length != 3) {
+                    $(event.target).val('');
+                    mensagemAlerta("Preencha a data de chegada.");
+                    return;
+                }
+                if (arrdataSaida == undefined || arrdataSaida.length != 3) {
+                    $(event.target).val('');
+                    mensagemAlerta("Preencha a data de saída.");
+                    return;
+                }
+
+                var dataChegada = new Date(arrdataChegada[2], arrdataChegada[1] - 1, arrdataChegada[0]);
+                var dataSaida = new Date(arrdataSaida[2], arrdataSaida[1] - 1, arrdataSaida[0]);
+                useDate = new Date(arrDate[2], arrDate[1] - 1, arrDate[0]);
+
+                if (useDate < dataSaida) {
+                    $(event.target).val('');
+                    mensagemAlerta("Data do lance não pode ser menor que a data de saída.");
+                }
+                else {
+                    if (useDate > dataChegada) {
+                        $(event.target).val('');
+                        mensagemAlerta("Data do lance não pode ser maior que a data de chegada.");
+                    }
+                }
+            });
+
+            Ecm.registraEvento("click", "[data-botao-adicionar]", function () {//Evento para adicionar item ao grid Pai
+                AplicarAtributosGrid();
+            });
+
+            Ecm.registraEvento('click', '.gridCapturaPai [data-apply="confirmation"]', function (elemento) {//Evento para Excluir o Detalhe da Captura ao excluir o Lance.
+                var idLance = $(elemento.currentTarget).closest("[data-corpo-linha-container]").find('input[idLance]').attr('idLance');
+                $(".gridCapturaDetalhes tr").find('input[idLance=' + idLance + ']').closest('tr').remove();
+                $(".gridCapturaDetalhes input[idlance]").val('').attr('idLance', null).trigger('change');
+
+                setTimeout(function () {
+                    AplicarAtributosGrid();
+                }, 500);
+            });
+
+            Ecm.registraEvento('change', '.gridCapturaPai .houvePesca', function (elemento) {
+
+                var idLance = $(elemento.currentTarget).closest('tr').find('input[idLance]').attr('idLance');
+                var detalhesObrigatorios = false;
+                if ($(elemento.currentTarget).val() == "Sim") {
+                    detalhesObrigatorios = true;
+                }
+
+                $.each($("[data-campo-id='@@" + IdGridLanceCapturaIncidental + "@@'] [idLance=" + idLance + "]").closest('tr').find("[data-grid-elemento]"), function (index, elementoDetalhe) {
+                    var atributosElemento = $(elementoDetalhe).data("get-campo-config");
+
+                    if (atributosElemento !== undefined) {
+                        switch (atributosElemento.id) {
+                            case 1://Espécie Incidental
+                                $(elementoDetalhe).attr('required', detalhesObrigatorios);
+                                $(elementoDetalhe).attr('data-nome', 'Espécie Incidental');
+                                break;
+                            case 2://Qtde. viva
+                                $(elementoDetalhe).attr('required', detalhesObrigatorios);
+                                $(elementoDetalhe).attr('data-nome', 'Qtde. viva');
+                                break;
+                            case 3://Qtde. morta
+                                $(elementoDetalhe).attr('required', detalhesObrigatorios);
+                                $(elementoDetalhe).attr('data-nome', 'Qtde. morta');
+                                break;
+                            case 4://Lance
+                                break;
+                        };
+                    }
+                });
+            });
+
+            Ecm.registraEvento('click', '.gridCapturaPai [data-apply="confirmation"]', function (elemento) {//Evento para Excluir o Detalhe da Captura ao excluir o Lance.
+
+                var idLance = $(elemento.currentTarget).closest("[data-corpo-linha-container]").find('input[idLance]').attr('idLance');
+                $(".gridCapturaIncidental tr").find('[idLance=' + idLance + ']').closest('tr').remove();
+                setTimeout(function () {
+                    AplicarAtributosGrid();
+                }, 500);
+            });
+
+            Ecm.registraEvento('change focusout', '.nomeEspecie', function (event) {
+
+                if ($(event.target).val() == 'SEM-DESCARTE') {
+                    $(event.target).closest('tr').find('.numeroVivos').val(0);
+                    $(event.target).closest('tr').find('.numeroMortos').val(0);
+                }
+            });
+            /*----------------------------------------------------------------Eventos Fim----------------------------------------------------------------*/
+
+            /*----------------------------------------------------------------Functions Início----------------------------------------------------------------*/
+            function ExisteCapturaParaEsteLance(idLinhaLance, callback) {
+                var temCapturaParaEsteLance = false;
+
+                var $linhasCapturas = $("[data-campo-id='@@" + IdGridLanceCaptura + "@@'] [data-corpo-linha-container]");
+
+                if ($linhasCapturas != undefined) {
+                    $linhasCapturas.each(function () {
+                        var linhaPaiUniqueId = $(this).data().linhaPaiUniqueId;
+
+                        if (linhaPaiUniqueId == idLinhaLance) {
+                            temCapturaParaEsteLance = true;
+                        }
+                    });
+                }
+
+                if (callback || typeof (callback) == "function")
+                    callback(temCapturaParaEsteLance);
+            };
+            function TodosOsLancesTemCaptura() {
+                var $lances = $("[data-campo-id='@@" + IdGridLance + "@@'] [data-corpo-linha-container]");
+                var todosLancesTemCaptura = true;
+
+                $lances.each(function () {
+                    var $lance = $(this);
+                    if ($($($lance).find('.houvePesca')).val() == "Sim") {
+
+                        ExisteCapturaParaEsteLance($lance.data().uniqueId, function (resultado) {
+                            todosLancesTemCaptura = resultado;
+                        });
+                    }
+                });
+                return todosLancesTemCaptura;
+            };
+
+            function ValidaDataLance($elemento) {
+                var valorElemento = $($elemento).val();
+                var valorDataSaida = $('#txtDataSaida').val();
+                var dataLance;
+                var dataSaida;
+
+                if (valorElemento != undefined) {
+                    //Padrão brasileiro, converter para americano
+                    var arrayValorElemento = valorElemento.split("/");
+                    var arrayValorDataSaida = valorDataSaida.split("/");
+
+                    valorElemento = arrayValorElemento[2] + "/" + arrayValorElemento[1] + "/" + arrayValorElemento[0];
+                    valorDataSaida = arrayValorDataSaida[2] + "/" + arrayValorDataSaida[1] + "/" + arrayValorDataSaida[0];
+
+                    dataLance = moment(valorElemento, "YYYY/MM/DD", true);
+                    dataSaida = moment(valorDataSaida, "YYYY/MM/DD", true);
+
+                    if (dataLance.isValid() && dataSaida.isValid()) {
+                        if (moment(dataLance).isBefore(dataSaida)) {
+                            return false;
+                        } else {
+                            mensagemAlerta();
+                            TodosOsCamposObrigatoriosEstaoPreenchidos();
+                        }
+                    }
+                    return true;
+                }
+            };
+
+            function ValidaDataChegada($elemento) {
+                var valorElemento = $($elemento).val();
+                var valorDataSaida = $('#txtDataSaida').val();
+                var dataChegada;
+                var dataSaida;
+
+                if (valorElemento != undefined) {
+                    //Padrão brasileiro, converter para americano
+                    var arrayValorElemento = valorElemento.split("/");
+                    var arrayValorDataSaida = valorDataSaida.split("/");
+
+                    valorElemento = arrayValorElemento[2] + "/" + arrayValorElemento[1] + "/" + arrayValorElemento[0];
+                    valorDataSaida = arrayValorDataSaida[2] + "/" + arrayValorDataSaida[1] + "/" + arrayValorDataSaida[0];
+
+                    dataChegada = moment(valorElemento, "YYYY/MM/DD", true);
+                    dataSaida = moment(valorDataSaida, "YYYY/MM/DD", true);
+
+                    if (dataChegada.isValid() && dataSaida.isValid()) {
+                        if (moment(dataChegada).isBefore(dataSaida)) {
+                            return false;
+                        } else {
+                            mensagemAlerta();
+                            TodosOsCamposObrigatoriosEstaoPreenchidos();
+                        }
+                    }
+                    return true;
+                }
+            };
+
+            function ValidarPreenchimentosCamposEspecificos(callback) {
+                var valida = true;
+                var retornoDataChegada;
+                var retornoLances;
+                var todosOsCamposEstaoPreenchidos;
+                var mensagem;
+                var $DataChegada = $("#txtDataChegada");
+                var $DataLance = $(".dataLance");
+
+                todosOsCamposEstaoPreenchidos = TodosOsCamposObrigatoriosEstaoPreenchidos();
+                retornoDataChegada = ValidaDataChegada($DataChegada);
+                retornoLances = TemLanceCadastrado();
+
+                if ($("#ddlConfirmacaoCruzeiro").val() == '') {
+                    valida = false;
+                    mensagem = "Obrigatório preencher o cruzeiro.";
+                }
+
+                if (!(todosOsCamposEstaoPreenchidos)) {
+                    valida = false;
+                    mensagem = "Preencha todos os campos obrigatórios antes de prosseguir";
+                }
+
+                if (!(retornoDataChegada)) {
+                    valida = false;
+                    mensagem = "Data de chegada não pode ser anterior a data de saída informada.";
+                }
+
+                if (!(retornoLances)) {
+                    valida = false;
+                    mensagem = "É necessário o preenchimento de pelo menos um lance";
+                }
+
+                if (!TodosOsLancesTemCaptura()) {
+                    valida = false;
+                    mensagem = "É necessário o preenchimento de pelo menos uma captura para cada lance.";
+                }
+
+                if (callback || typeof (callback) == "function")
+                    callback(valida, mensagem);
+            };
+
+            function ClonarTransicao(transicao, evento, funcao) {
+                if (!transicao || !$(transicao) || $(transicao).length <= 0) return;
+
+                $(transicao).hide().clone().off().removeClass("processo-acao").addClass("btnAuxiliar").insertAfter(transicao);
+
+                $(transicao + ".btnAuxiliar").show();
+
+                if (!evento || !funcao || typeof (funcao) != "function") return;
+
+                $(transicao + ".btnAuxiliar").off().on(evento, funcao);
+            };
+
+            function isFutureDate(dateText) {
+                var arrDate = dateText.split("/");
+                //var today = new Date();
+                var arrdataChegada = $("#txtDataChegada").val().split("/");
+                var dataChegada = new Date(arrdataChegada[2], arrdataChegada[1] - 1, arrdataChegada[0]);
+                useDate = new Date(arrDate[2], arrDate[1] - 1, arrDate[0]);
+
+                if (useDate > dataChegada) {
+                    return true;
+                } else return false;
+            };
+
+            function isPastDate(dateText) {
+                var arrDate = dateText.split("/");
+                //var today = new Date();
+                var arrdataSaida = $("#txtDataSaida").val().split("/");
+                var dataSaida = new Date(arrdataSaida[2], arrdataSaida[1] - 1, arrdataSaida[0]);
+                useDate = new Date(arrDate[2], arrDate[1] - 1, arrDate[0]);
+
+                if (useDate < dataSaida) {
+                    return true;
+                } else return false;
+            };
+
+            function ValidaCampoCpf(element) {
+                element = $(element.currentTarget);
+                if (Ecm.validaCPF(element.val().split(".").join("").replace("-", "")) == true) {
+                    element
+                        .closest(".form-group")
+                        .removeClass("has-error")
+                        .addClass("has-success");
+                    element
+                        .siblings(".tooltips")
+                        .removeClass("fa-exclamation")
+                        .addClass("fa-check")
+                        .show();
+                    $("#CPFinvalido").hide();
+                    mensagemAlerta();
+                } else {
+                    element
+                        .closest(".form-group")
+                        .removeClass("has-success")
+                        .addClass("has-error");
+                    element
+                        .siblings(".tooltips")
+                        .removeClass("fa-check")
+                        .addClass("fa-exclamation")
+                        .show();
+                    if (element.val().length > 0) {
+                        $("#CPFinvalido").show();
+                        $("#CPFinvalido").text("CPF inválido");
+                    }
+                }
+            };
+
+            function AplicarAtributosGrid() {
+                //Aplicar máscaras para o Grid de Lances (Campo idGridLance)
+                var qtdeLances = 1;
+                var qtdeLancesDetalhe = 1;
+
+                // Grid Lances
+                $.each($("[data-campo-id='@@" + IdGridLance + "@@'] [data-corpo-linha-container] [data-grid-elemento]"), function (index, elemento) {
+
+                    var atributosElemento = $(elemento).data("get-campo-config");
+
+                    switch (atributosElemento.id)//grid.OrdenarColunas([1,2,3,4,5,6,7,8,9]); 
+                    {
+                        case 1://Data do Lance
+                            $(elemento).attr('data-nome', 'Data do Lance');
+                            $(elemento).addClass('dataLance');
+                            $(elemento).attr('required', 'required');
+                            $(elemento).attr('idLance', qtdeLances);
+                            qtdeLances = qtdeLances + 1;
+                            break;
+                        case 2://Hora inicial da pesca
+                            $(elemento).attr('data-nome', 'Hora inicial da pesca');
+                            $(elemento).addClass('horas');
+                            $(elemento).attr('required', 'required');
+                            break;
+                        case 3://Hora final da pesca
+                            $(elemento).attr('data-nome', 'Hora final da pesca');
+                            $(elemento).addClass('horas');
+                            $(elemento).attr('required', 'required');
+                        case 4://Tempo de Procura
+                            $(elemento).attr('data-nome', 'Tempo de procura');
+                            $(elemento).addClass('horas');
+                            break;
+                        case 5://Profundidade
+                            $(elemento).attr('data-nome', 'Profundidade');
+                            $(elemento).attr('required', 'required');
+                            break;
+                        case 6://Temperatura da superfície
+                            $(elemento).attr('data-nome', 'Temperatura da superfície');
+                            $(elemento).addClass('temperatura');
+                            break;
+                        case 7://Latitude
+                            $(elemento).attr('data-nome', 'Latitude');
+                            $(elemento).addClass('latitude');
+                            $(elemento).attr('required', 'required');
+                            break;
+                        case 8://Longitude
+                            $(elemento).attr('data-nome', 'Longitude');
+                            $(elemento).addClass('longitude');
+                            $(elemento).attr('required', 'required');
+                            break;
+                        case 9://Houve pesca neste lance?
+                            $(elemento).attr('data-nome', 'Houve pesca');
+                            $(elemento).addClass('houvePesca');
+                            $(elemento).attr('required', 'required');
+                            break;
+                    }
+                });
+
+                var CapturaObrigatoria = false;
+
+                if ($(".gridCapturaPai .houvePesca:enabled").val() == "Sim") {
+                    CapturaObrigatoria = true;
+                }
+
+                //Grid Captura
+                $.each($("[data-campo-id='@@" + IdGridLanceCaptura + "@@'] [data-corpo-linha-container] [data-grid-elemento]"), function (index, elemento) {
+
+                    var atributosElemento = $(elemento).data("get-campo-config");
+                    $(elemento).attr('required', CapturaObrigatoria);
+
+                    switch (atributosElemento.id) {
+                        case 1://Espécie da Isca
+                            $(elemento).attr('data-nome', 'Espécie da Isca');
+                            break;
+                        case 2://Quantidade
+                            $(elemento).attr('data-nome', 'Quantidade');
+                            $(elemento).addClass('peso');
+                            break;
+                    }
+                });
+
+                $.each($("[data-campo-id='@@" + IdGridLanceCapturaIncidental + "@@'] [data-corpo-linha-container] [data-grid-elemento]"), function (index, elemento) {
+
+                    var atributosElemento = $(elemento).data("get-campo-config");
+                    $(elemento).attr('required', true);
+                    switch (atributosElemento.id) {
+                        case 1://Espécie incidental
+                            $(elemento).attr('idLance', qtdeLancesDetalhe);
+                            qtdeLancesDetalhe = qtdeLancesDetalhe + 1;
+                            $(elemento).attr('data-nome', 'Espécie incidental');
+                            $(elemento).addClass('nomeEspecie');
+                            break;
+                        case 2://Qtde viva
+                            $(elemento).attr('data-nome', 'Quantidade viva');
+                            $(elemento).addClass('numeroVivos');
+                            break;
+                        case 3://Qtde morta
+                            $(elemento).attr('data-nome', 'Quantidade morta');
+                            $(elemento).addClass('numeroMortos');
+                            break;
+                    }
+                });
+
+                AplicarMascarasGrid("[data-campo-id='@@" + IdGridLance + "@@']");
+                AplicarMascarasGrid("[data-campo-id='@@" + IdGridLanceCaptura + "@@']");
+                AplicarMascarasGrid("[data-campo-id='@@" + IdGridLanceCapturaIncidental + "@@']");
+            };
+
+            function AplicarMascarasGrid(nomeGrid) {
+                //Peso em Kg
+                $('.peso').inputmask("decimal", {
+                    alias: "numeric",
+                    groupSeparator: ".",
+                    autoGroup: true,
+                    digits: 2,
+                    radixPoint: ",",
+                    digitsOptional: false,
+                    allowMinus: false,
+                    suffix: " Kg",
+                    placeholder: "",
+                    rightAlign: false
+                });
+
+                //Número inteiro
+                $(nomeGrid + ' input.number').inputmask({ alias: 'numeric', allowMinus: false });
+
+                //Temperatura                
+                $("input.temperatura").inputmask("decimal", {
+                    mask: "99.9ºC",
+                    alias: "numeric",
+                    groupSeparator: ".",
+                    autoGroup: true,
+                    digits: 2,
+                    maxlength: 3,
+                    radixPoint: ",",
+                    digitsOptional: false,
+                    allowMinus: false,
+                    suffix: " º",
+                    placeholder: "",
+                    rightAlign: false
+                });
+
+                //Longitude
+                $(nomeGrid + ' input.longitude').inputmask({
+                    autoUnmask: true,
+                    mask: "99º99'999\"L|O",
+                    definitions: {
+                        "L": {
+                            validator: "[lL]",
+                            cardinality: 1,
+                            casing: "upper"
+                        },
+                        "O": {
+                            validator: "[oO]",
+                            cardinality: 1,
+                            casing: "upper"
+                        }
+                    }
+                });
+                //Latitude
+                $(nomeGrid + ' input.latitude').inputmask({
+                    autoUnmask: true,
+                    mask: "99º99'999\"N|S",
+                    definitions: {
+                        "N": {
+                            validator: "[nN]",
+                            cardinality: 1,
+                            casing: "upper"
+                        },
+                        "S": {
+                            validator: "[sS]",
+                            cardinality: 1,
+                            casing: "upper"
+                        }
+                    }
+                });
+                Ecm.registraEvento('focusout', '.latitude', function (event) {
+
+                    if ($(event.target).val().length != 11) {
+                        $(event.target).val("");
+                        $("#MensagemAlerta").text("Latitude deve ser totalmente preenchida.");
+                    }
+                });
+
+                Ecm.registraEvento('focusout', '.longitude', function (event) {
+
+                    if ($(event.target).val().length != 11) {
+                        $(event.target).val("");
+                        $("#MensagemAlerta").text("Longitude deve ser totalmente preenchida.");
+                    }
+                });
+
+                //Hora
+                $(nomeGrid + ' input.horas').inputmask("hh:mm");
+
+                //Data
+                $(nomeGrid + ' input.date-picker').inputmask("dd/mm/yyyy");
+                $(nomeGrid + ' input.date-picker').datepicker({
+                    closeText: 'Fechar',
+                    prevText: '&#x3c;Anterior',
+                    nextText: 'Pr&oacute;ximo&#x3e;',
+                    currentText: 'Hoje',
+                    monthNames: ['Janeiro', 'Fevereiro', 'Mar&ccedil;o', 'Abril', 'Maio', 'Junho',
+                        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                    monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun',
+                        'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    dayNames: ['Domingo', 'Segunda-feira', 'Ter&ccedil;a-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sabado'],
+                    dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+                    dayNamesMin: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+                    rtl: App.isRTL(),
+                    orientation: "left",
+                    autoclose: true,
+                    language: "pt-BR",
+                    format: "dd/mm/yyyy"
+                }).on('hide', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                });
+
+                $(nomeGrid + ' input.metros').inputmask("decimal", {
+                    alias: "numeric",
+                    groupSeparator: ".",
+                    autoGroup: true,
+                    digits: 2,
+                    radixPoint: ",",
+                    digitsOptional: false,
+                    allowMinus: false,
+                    suffix: " metros",
+                    placeholder: "",
+                    rightAlign: false
+                });
+            };
+
+            function mensagemAlerta(texto) {
+                $("#MensagemAlerta").show();
+
+                if (texto === undefined) {
+                    $("#MensagemAlerta").text(
+                        "Preencha todos os campos obrigatórios antes de prosseguir"
+                    );
+                } else {
+                    $("#MensagemAlerta").text(texto);
+                }
+            };
+
+            function TodosOsCamposObrigatoriosEstaoPreenchidos() {
+                var camposNaoPreenchidos = $("#tab1 input:invalid, select:invalid").filter('[required]:visible');
+
+                if (camposNaoPreenchidos.length == 0) {
+
+                    $("#MensagemAlerta").hide();
+                } else {
+                    mensagemAlerta();
+                    return false;
+                }
+                return true;
+            };
+
+            function TemLanceCadastrado() {
+                var lancesCadastrados = DocumentoVisualizacaoForm.retornaValorDosGrids()[0].Linhas.length;
+                var existeLanceCadastrado = true;
+
+                if (lancesCadastrados == 0 && $("#ddlHouveLance").val() == "Sim") {
+                    existeLanceCadastrado = false;
+                }
+                return existeLanceCadastrado;
+            };
+
+            setTimeout(function () {
+                AplicarAtributosGrid();
+            }, 2000);
+            /*----------------------------------------------------------------Functions Fim----------------------------------------------------------------*/
+        });
+    </script>
+</body>
+
+</html>
