@@ -1,23 +1,22 @@
-mesAtual = 3;
+data = DateTime.Now.ToString("yyyyMMddHHmmss");
+mesAtual = int.Parse(data.Substring(4, 2));
+diaAtual = int.Parse(data.Substring(7, 2));
 
-if( (mesAtual >= 1 && mesAtual <= 3) ) {
-    executa(mesAtual, 3);
-}
+if( (mesAtual == 2 && diaAtual == 25) ||
+	(mesAtual == 4 && diaAtual == 1) ||
+  	(mesAtual == 7 && diaAtual == 1) ||
+    (mesAtual == 10 && diaAtual == 1)
+  )
+{ return true; } else { return false; }
 
-if( (mesAtual >= 4 && mesAtual <= 6) ) {
-    executa(mesAtual, 6);
-}
 
-if( (mesAtual >= 7 && mesAtual <= 9) ) {
-    executa(mesAtual, 9);
-}
+data = DateTime.Now.ToString("yyyyMMddHHmmss");
+mesAtual = data.Substring(4, 2);
+diaAtual = data.Substring(7, 2);
 
-if( (mesAtual >= 10 && mesAtual <= 12) ) {
-    executa(mesAtual, 12);
-}
-
-function executa(mesAtual, b) {
-    for(let i = b; i >= mesAtual; i--) {
-        console.log(i);
-    }
-}
+if( (mesAtual == 1 && diaAtual == 1) ||
+	(mesAtual == 4 && diaAtual == 1) ||
+  	(mesAtual == 7 && diaAtual == 1) ||
+    (mesAtual == 10 && diaAtual == 1)
+  )
+{ return false; } else { return true; }
