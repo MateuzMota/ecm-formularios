@@ -775,7 +775,6 @@
             }
         }
 
-        debugger
         $.each(listaAnexos, function (i, val) {
             $('#listGroupDocumentosInseridos').show();
             if (val.anexoTipoId != '1' && val.anexoTipoId != '36' && val.anexoTipoId != '56') {
@@ -809,7 +808,7 @@
                     '</li>';
                 $('#ulDocumentosInseridos').append(elementoLinkInseridos);
             }
-            debugger
+
             if (val.anexoTipoId == '56') {
                 $('#listDocumentoDeclaracao').show();
                 elementoDocumentoDeclaracao =
@@ -863,12 +862,12 @@
             }
 
             $('#divJus').hide();
-            $('#transicao-id-71').prop('disabled', true);
-            $('#transicao-id-71').attr('disabled', 'disabled').attr('readonly', 'readonly');
-            $('#transicao-id-71').attr('title', 'Existem Pendências');
-            $('#transicao-id-58').prop('disabled', true);
-            $('#transicao-id-58').attr('disabled', 'disabled').attr('readonly', 'readonly');
-            $('#transicao-id-58').attr('title', 'Existem Pendências');
+            $('#transicao-id-72').prop('disabled', true);
+            $('#transicao-id-72').attr('disabled', 'disabled').attr('readonly', 'readonly');
+            $('#transicao-id-72').attr('title', 'Existem Pendências');
+            $('#transicao-id-61').prop('disabled', true);
+            $('#transicao-id-61').attr('disabled', 'disabled').attr('readonly', 'readonly');
+            $('#transicao-id-61').attr('title', 'Existem Pendências');
 
             $('#justificativa').removeAttr('required');
             $('#lbtDeclaracao').attr('disabled', true);
@@ -960,9 +959,9 @@
                 $inputUploadAnexo.siblings('p').hide();
                 $inputUploadAnexo.siblings('.fa-check').show();
 
-                $('#transicao-id-71').prop('disabled', false);
-                $('#transicao-id-71').removeAttr('disabled').removeAttr('readonly');
-                $('#transicao-id-71').attr('title', '');
+                $('#transicao-id-72').prop('disabled', false);
+                $('#transicao-id-72').removeAttr('disabled').removeAttr('readonly');
+                $('#transicao-id-72').attr('title', '');
             });
 
             Ecm.registraEvento('click', '.btn-remover', function (elemento) {
@@ -982,9 +981,9 @@
                 $inputUploadAnexo.siblings('p').show();
                 $inputUploadAnexo.siblings('.fa-check').hide();
 
-                $('#transicao-id-71').prop('disabled', true);
-                $('#transicao-id-71').attr('disabled', 'disabled').attr('readonly', 'readonly');
-                $('#transicao-id-71').attr('title', 'Existem Pendências');
+                $('#transicao-id-72').prop('disabled', true);
+                $('#transicao-id-72').attr('disabled', 'disabled').attr('readonly', 'readonly');
+                $('#transicao-id-72').attr('title', 'Existem Pendências');
             });
 
             Ecm.registraEvento('keyup change', '#txtJustificativa', function () {
@@ -992,30 +991,30 @@
             });
 
             function validardocumentosAprovados() {
-                validaBotoes(58, false);
-                validaBotoes(71, false);
+                validaBotoes(61, false);
+                validaBotoes(72, false);
 
                 $.each($('.documento-aprovado'), function (index, element) {
                     if ($(element).val() === "Nao") {
-                        validaBotoes(71, false);
+                        validaBotoes(72, false);
 
                         $('#divJus').show('fast').prop('required', true);
 
                         if ($('#divJus textarea').val() === '') {
-                            validaBotoes(58, false);
+                            validaBotoes(61, false);
                         } else {
-                            validaBotoes(58, true);
+                            validaBotoes(61, true);
                         }
                         return false;
                     }
                     if ($(element).val() === "Sim") {
-                        validaBotoes(71, true);
+                        validaBotoes(72, true);
 
                         $('#divJus').hide('fast').prop('required', false);
                     }
                     if ($(element).val() === "") {
-                        validaBotoes(58, false);
-                        validaBotoes(71, false);
+                        validaBotoes(61, false);
+                        validaBotoes(72, false);
 
                         $('#divJus').hide('fast').prop('required', false);
                     }
