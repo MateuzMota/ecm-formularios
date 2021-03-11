@@ -1122,6 +1122,12 @@
                     <!-- UF do Pescador para o grupo dinamico -->
                     <input class="form-control" data-campo-id="@@90@@" data-nome="dataAtividade" id="dataAtividade"
                         type="text" />
+                    <!-- Data Primeiro Registro -->
+                    <input class="form-control input-sm" data-campo-id="@@71@@"
+                    data-nome="	Data Primeiro Registro" id="txtDataPrimeiroRegistro" />
+                    <!-- Órgão Emissor Primeiro Registro -->
+                    <input class="form-control input-sm" data-campo-id="@@72@@"
+                    data-nome="Órgão Emissor Sigla" id="txtOrgaoEmissorPrimeiroRegistro" />
                 </div>
                 <!-- Botões de avançar e voltar -->
 
@@ -1174,7 +1180,7 @@
             // Auto preenchimento de campos necessários para o cpf light/CBC funcionar.
             if (DocumentoVisualizacaoForm.retornaDocumento().atividadeId == 2) {
                 const user = Ecm.retornaUsuario();
-                let json, result;
+                let json, result, pescador;
                 $('#txtCpf').prop('disabled', true)
                 if ($('#txtCpf').val() == '') {
                     $('#txtCpf').val(user.cpfCnpj);
@@ -1188,14 +1194,26 @@
                     json = $("#json").val();
                     json = JSON.parse(json);
                     result = json.cpfResult[0];
+                    pescador = json.pescador;
                     console.log(json);
 
                     if (json.cod === 1) {
                         setTimeout(function () {
+                            //Tipo de registro, depois desabilitando o campo
+                            if(pescador.status === 'DEFERIDO') {
+                                $('#ddlTipoRegistro').val('RECADASTRAMENTO').prop('disabled', true);
+                            } else if(pescador.status !== 'DEFERIDO') {
+                                $("#ddlTipoRegistro option[value='RECADASTRAMENTO']").remove();
+
+                                Ecm.alertInfo("Prezado usuário, aguarde o período de cadastramento de novos pescadores.");
+                            }
+
                             //Nome, depois desabilitando o campo
                             $('#txtNome').val(result.Nome).prop('disabled', true);
+                            
                             //Nome da mãe, depois desabilitando o campo
                             $('#txtNomeMae').val(result.NomeMae).prop('disabled', true);
+
                             //Decisão do preenchimento do sexo do usuario, depois desabilitando o campo
                             if (result.Sexo === 1) {
                                 $('#ddlSexo').val('Masculino');
@@ -1205,10 +1223,13 @@
                                 $('#ddlSexo').val('OUTROS');
                             }
                             $('#ddlSexo').prop('disabled', true);
+
                             //Formatando a data de nascimento, depois desabilitando o campo
                             $('#txtDataNasc').val(dateConvert(result.DataNascimento)).prop('disabled', true);
+
                             //Preechendo o celular com o DDD
                             $('#txtCelular').val(result.DDD + result.Telefone);
+
                             //Prrenchendo a nacionalidade, depois desabilitando o campo
                             if (result.NomePaisNacionalidade !== 'BRASIL') {
                                 $('#ddlNacionalidade').val('Naturalizado');
@@ -1218,6 +1239,7 @@
                                 $('#ddlNacionalidade').val('Brasileira');
                             }
                             $('#ddlNacionalidade').prop('disabled', true).trigger('change');
+
                             //Endereço
                             $('#txtCep').val(result.Cep);
                             $('#txtLogradouro').val(result.Logradouro)
@@ -1225,6 +1247,7 @@
                             $('#txtComplemento').val(result.Complemento);
                             $('#ddlEstado').val(result.UF).trigger('change');
                             $('#ddlCidade').val(result.Municipio)
+
                             //Campos ocultos
                             $('#naturezaOcupação').val(result.NaturezaOcupacao)
                             $('#nomeNaturezaOcupacao').val(result.NomeNaturezaOcupacao)
@@ -1234,9 +1257,13 @@
                             $('#anoObito').val(result.AnoObito)
                             $('#dataAtualizacao').val(dateConvert(result.DataAtualizacao))
                             $('#dataInscricao').val(dateConvert(result.DataInscricao))
+                            $('#txtDataPrimeiroRegistro').val(dateConvert(pescador.pescador_data_primeiro_registro))
+                            $('#txtOrgaoEmissorPrimeiroRegistro').val(pescador.pescador_orgao_emissor_rgp_1)
                         }, 1000);
                     } else {
                         $('#txtCpf').attr('disabled', true);
+                        $("#ddlTipoRegistro option[value='RECADASTRAMENTO']").remove();
+
                         Ecm.alertWarning(result.mensagem);
                     }
                 }
