@@ -1441,7 +1441,7 @@
     </div>
     <!-- Variáveis Globais -->
     <script>
-        $('[tituloCabecalho]').html('Cadastro de Pescador Profissional'); // Título do Cabecalho.
+        $('[tituloCabecalho]').html('Registro de Pescador Profissional Ativo'); // Título do Cabecalho.
         $('[mensagemAlerta]').html('Preencha todos os campos obrigat&oacute;rios antes de prosseguir.'); // Mensagem de Alerta.
         $('[tituloLightBoxDadosPessoais ]').html('Dados Pessoais do Pescador'); // Título da aba Menu Identificação.
         $('[tituloLightBoxDocumentacao ]').html('Documentação'); // Título da aba Menu Identificação.
@@ -2230,7 +2230,6 @@
         });
 
         Ecm.registraEvento('change', '#ddlTipoRegistro', function (element) {
-            validarProtocoloAnterior();
             $('#txtTipoRegistroDeclaracao').val($('#ddlTipoRegistro option:selected').text());
         });
 
@@ -2814,31 +2813,33 @@
             $($declaracaoFiliado).hide().find('input').attr('required', false)
             $($passaporte).hide().find('input').attr('required', false)
             $($protocolo).hide().find('input').attr('required', false)
-            switch ($('#ddlCategoria').val()) {
-                case 'APRENDIZ':
-                    $($autPais).show().find('input').attr('required', true)
-                    if ($('#ddlFormaAtuacao').val() == 'Embarcado') {
-                        $($autJudicial).show().find('input').attr('required', true)
-                    }
-                    break;
-                case 'Artesanal':
-                    if ($('#ddlTipoRegistro').val() == 'REGISTRO-COM-PROTOCOLO') {
-                        $($protocolo).show().find('input').attr('required', true)
-                    }
-                    break;
-                case 'Industrial':
-                    $($carteiraTrabalho).show().find('input').attr('required', true)
-                    break;
-            }
+            if(DocumentoVisualizacaoForm.estouEditando() === true) {
+                switch ($('#ddlCategoria').val()) {
+                    case 'APRENDIZ':
+                        $($autPais).show().find('input').attr('required', true)
+                        if ($('#ddlFormaAtuacao').val() == 'Embarcado') {
+                            $($autJudicial).show().find('input').attr('required', true)
+                        }
+                        break;
+                    case 'Artesanal':
+                        if ($('#ddlTipoRegistro').val() == 'REGISTRO-COM-PROTOCOLO') {
+                            $($protocolo).show().find('input').attr('required', true)
+                        }
+                        break;
+                    case 'Industrial':
+                        $($carteiraTrabalho).show().find('input').attr('required', true)
+                        break;
+                }
 
-            if ($('#ddlNacionalidade').val() == 'Estrangeira') {
-                $($passaporte).show().find('input').attr('required', true)
-                $($autTrabalho).show().find('input').attr('required', true)
-            }
+                if ($('#ddlNacionalidade').val() == 'Estrangeira') {
+                    $($passaporte).show().find('input').attr('required', true)
+                    $($autTrabalho).show().find('input').attr('required', true)
+                }
 
-            let entColab = _.filter($('[name="opcao_34"]'), { checked: true })
-            if ($(entColab).val() == 'Sim') {
-                $($declaracaoFiliado).show().find('input').attr('required', true)
+                let entColab = _.filter($('[name="opcao_34"]'), { checked: true })
+                if ($(entColab).val() == 'Sim') {
+                    $($declaracaoFiliado).show().find('input').attr('required', true)
+                }
             }
         }
 
