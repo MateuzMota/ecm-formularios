@@ -669,6 +669,10 @@
 
         let idGrid = parseInt($(".grid").attr("data-campo-id").replace("@@", "").replace("@@", ""));
 
+        $.each('.documento-aprovado', (index, elem) => {
+            validaDocumentacao($(elem).attr('data-campo-id'))
+        })
+        
         function validaBotoes(id, status) {
             if (status) {
                 $(`a[id^='transicao-id-${id}']`).prop('disabled', false);
@@ -737,6 +741,8 @@
                 $(elemento).attr('disabled', true);
             });
         }
+
+        $('.documento-aprovado').each(function(index, element) { validaDocumentacao(`[data-campo-id="${$(element).attr('data-campo-id')}"]`) })
 
         function retornaDataCampoId(tipo_Anexo_Id) {
             var retornoDataCampoId;
@@ -891,7 +897,7 @@
 
             $('#campoEspecifique').val($('#especifiqueLabel').val())
 
-            validardocumentosAprovados();
+            // validardocumentosAprovados();
 
             if (estouEditando) {
                 $('#idContent').find('input:file').attr('disabled', false);
@@ -921,10 +927,6 @@
                     $('#frameVisualizacao1').attr('src', retorno.imageUrl);
                     Ecm.desbloquearElemento('#frameVisualizacao1');
                 });
-            });
-
-            Ecm.registraEvento('change', '.documento-aprovado', function (elemento) {
-                validardocumentosAprovados();
             });
 
             Ecm.registraEvento('change', '.upload-file', function (elemento) {
@@ -986,39 +988,15 @@
                 $('#transicao-id-72').attr('title', 'Existem Pendências');
             });
 
-            Ecm.registraEvento('keyup change', '#txtJustificativa', function () {
-                validardocumentosAprovados();
-            });
-
-            function validardocumentosAprovados() {
-                validaBotoes(61, false);
-                validaBotoes(72, false);
-
-                $.each($('.documento-aprovado'), function (index, element) {
-                    if ($(element).val() === "Nao") {
-                        validaBotoes(72, false);
-
-                        $('#divJus').show('fast').prop('required', true);
-
-                        if ($('#divJus textarea').val() === '') {
-                            validaBotoes(61, false);
-                        } else {
-                            validaBotoes(61, true);
-                        }
-                        return false;
+            function validaDocumentacao(e) {
+                $(e).on('change', () => {
+                    if($(e).val() == "Nao") {
+                        $('#divJus').show('fast');
+                    } else if($(e).val() == "Sim") {
+                        $('#divJus').hide('fast');
+                    } else if($(e).val() == null || $(e).val() == '') {
                     }
-                    if ($(element).val() === "Sim") {
-                        validaBotoes(72, true);
-
-                        $('#divJus').hide('fast').prop('required', false);
-                    }
-                    if ($(element).val() === "") {
-                        validaBotoes(61, false);
-                        validaBotoes(72, false);
-
-                        $('#divJus').hide('fast').prop('required', false);
-                    }
-                });
+                })
             }
 
             function excluirAnexo(anexoId) {

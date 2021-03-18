@@ -771,8 +771,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- [ABA] - Questionário socioeconômico -->
 
+                    <!-- [ABA] - Questionário socioeconômico -->
                     <div class="tab-pane d-none" id="aba_3">
                         <h4 class="bs-glyphicon-class cabecalho" titulolightboxquestionariosocioeconomico="">&nbsp;</h4>
 
@@ -829,127 +829,132 @@
                                 <button class="btn blue btn-xs pull-right" data-botao-adicionar=""><i
                                         class="fa fa-plus"></i> Novo item</button>
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label"> Possui Outra
-                                        Atividade/Ocupa&ccedil;&atilde;o Al&eacute;m da Pesca? </label> <select
-                                        class="form-control input-sm" data-campo-id="@@133@@"
-                                        data-nome="QS_Possui Outra Atividade Além da Pesca"
-                                        id="ddlPossuiOutraAtividade"> </select></div>
+                            <h4 class="bs-glyphicon-class cabecalho" titulolightboxCaracterizacaoAtividade="">&nbsp;</h4>
+                            <div class="light-box">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label"> Possui Outra
+                                            Atividade/Ocupa&ccedil;&atilde;o Al&eacute;m da Pesca? </label> <select
+                                            class="form-control input-sm" data-campo-id="@@133@@"
+                                            data-nome="QS_Possui Outra Atividade Além da Pesca"
+                                            id="ddlPossuiOutraAtividade"> </select></div>
 
-                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
-                                        class="control-label">Se Sim, Qual Atividade?</label> <input
-                                        class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@134@@"
-                                        data-nome="QS_Se Sim Qual" id="txtQualAtividade"
-                                        pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+"
-                                        placeholder="Qual Atividade?" type="text" /></div>
+                                    <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
+                                            class="control-label">Se Sim, Qual Atividade?</label> <input
+                                            class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@134@@"
+                                            data-nome="QS_Se Sim Qual" id="txtQualAtividade"
+                                            pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+"
+                                            placeholder="Qual Atividade?" type="text" /></div>
 
-                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
-                                        class="control-label">Tempo de Profiss&atilde;o</label> <select
-                                        class="form-control input-sm" data-campo-id="@@141@@"
-                                        data-nome="QS_Tempo de Profissão" id="ddlTempoDeProfissao"> </select></div>
-                            </div>
+                                    <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
+                                            class="control-label">Tempo de Profiss&atilde;o</label> <select
+                                            class="form-control input-sm" data-campo-id="@@141@@"
+                                            data-nome="QS_Tempo de Profissão" id="ddlTempoDeProfissao"> </select></div>
+                                </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui Renda
-                                        N&atilde;o Originada da Pesca?</label> <select class="form-control input-sm"
-                                        data-campo-id="@@87@@" data-nome="Possui Renda Não Originada da Pesca"
-                                        data-placement="bottom" data-toggle="tooltip" id="ddlPossuiRenda"
-                                        title="Informe se possui qualquer renda não originada da atividade pesqueira. (Ex: Bolsa Família, Aposentadoria, Pensão, etc.)">
-                                    </select></div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui Renda
+                                            N&atilde;o Originada da Pesca?</label> <select class="form-control input-sm"
+                                            data-campo-id="@@87@@" data-nome="Possui Renda Não Originada da Pesca"
+                                            data-placement="bottom" data-toggle="tooltip" id="ddlPossuiRenda"
+                                            title="Informe se possui qualquer renda não originada da atividade pesqueira. (Ex: Bolsa Família, Aposentadoria, Pensão, etc.)">
+                                        </select></div>
 
-                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none"><label
-                                        class="control-label">Qual a Origem?</label> <select
-                                        class="form-control input-sm" data-campo-id="@@89@@" data-nome="Qual a Origem"
-                                        id="ddlOrigemRenda"> </select></div>
+                                    <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none"><label
+                                            class="control-label">Qual a Origem?</label> <select
+                                            class="form-control input-sm" data-campo-id="@@89@@" data-nome="Qual a Origem"
+                                            id="ddlOrigemRenda"> </select></div>
 
-                                <div class="col-sm-12 col-md-4 form-group secondHideField" style="display: none"><label
-                                        class="control-label">Origem da Renda</label> <input
-                                        class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@88@@"
-                                        data-nome="Origem da Renda" id="txtOrigemRenda"
-                                        pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+"
-                                        placeholder="Origem da Renda" type="text" /></div>
-                            </div>
+                                    <div class="col-sm-12 col-md-4 form-group secondHideField" style="display: none"><label
+                                            class="control-label">Origem da Renda</label> <input
+                                            class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@88@@"
+                                            data-nome="Origem da Renda" id="txtOrigemRenda"
+                                            pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+"
+                                            placeholder="Origem da Renda" type="text" /></div>
+                                </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Recebe Bolsa
-                                        Fam&iacute;lia?</label> <select class="form-control input-sm"
-                                        data-campo-id="@@137@@" data-nome="QS_Recebe Bolsa Familia"
-                                        id="ddlRecebeBolsaFamilia"> </select></div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Recebe Bolsa
+                                            Fam&iacute;lia?</label> <select class="form-control input-sm"
+                                            data-campo-id="@@137@@" data-nome="QS_Recebe Bolsa Familia"
+                                            id="ddlRecebeBolsaFamilia"> </select></div>
 
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Recebe Outro
-                                        Aux&iacute;lio?</label> <select class="form-control input-sm"
-                                        data-campo-id="@@138@@" data-nome="QS_Recebe Outro Auxilio"
-                                        id="ddlRecebeOutroAuxilio"> </select></div>
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Recebe Outro
+                                            Aux&iacute;lio?</label> <select class="form-control input-sm"
+                                            data-campo-id="@@138@@" data-nome="QS_Recebe Outro Auxilio"
+                                            id="ddlRecebeOutroAuxilio"> </select></div>
 
-                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
-                                        class="control-label">Qual?</label> <input
-                                        class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@139@@"
-                                        data-nome="QS_Qual Auxilio" id="txtQual"
-                                        pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+" placeholder="Qual?"
-                                        type="text" /></div>
-                            </div>
+                                    <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
+                                            class="control-label">Qual?</label> <input
+                                            class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@139@@"
+                                            data-nome="QS_Qual Auxilio" id="txtQual"
+                                            pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+" placeholder="Qual?"
+                                            type="text" /></div>
+                                </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Renda Total do
-                                        Pescador (Mensal)</label> <select class="form-control input-sm"
-                                        data-campo-id="@@135@@" data-nome="QS_Renda Total Pescador"
-                                        id="ddlRendaPescador"> </select></div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Renda Total do
+                                            Pescador (Mensal)</label> <select class="form-control input-sm"
+                                            data-campo-id="@@135@@" data-nome="QS_Renda Total Pescador"
+                                            id="ddlRendaPescador"> </select></div>
 
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Renda Total
-                                        Familiar (Mensal)</label> <select class="form-control input-sm"
-                                        data-campo-id="@@136@@" data-nome="QS_Renda Familiar Total"
-                                        id="ddlRendaFamiliar"> </select></div>
-                            </div>
-
-                            <h4 class="boldTitle" tituloligthboxinformacoessocioeconomicas="">&nbsp;</h4>
-
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui
-                                        Computador em Casa?</label> <select class="form-control input-sm"
-                                        data-campo-id="@@128@@" data-nome="QS_Possui Computador em Casa"
-                                        id="ddlPossuiComputador"> </select></div>
-
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tem Acesso a
-                                        Internet?</label> <select class="form-control input-sm" data-campo-id="@@129@@"
-                                        data-nome="QS_Tem Acesso a Internet" id="ddlTemAcessoAInternet"> </select></div>
-
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tem Aparelho
-                                        Celular em Casa?</label> <select class="form-control input-sm"
-                                        data-campo-id="@@130@@" data-nome="	QS_Tem Aparelho Celular em Casa"
-                                        id="ddlTemCelular"> </select></div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">A Casa Onde Mora
-                                        &eacute;:</label> <select class="form-control input-sm" data-campo-id="@@131@@"
-                                        data-nome="QS_A Casa Onde Mora é" id="ddlCasaOndeMora"> </select></div>
-
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui Curso de
-                                        Capacita&ccedil;&atilde;o Profissional?</label> <select
-                                        class="form-control input-sm" data-campo-id="@@142@@"
-                                        data-nome="QS_Possui curso" id="ddlPossuiCurso"> </select></div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tempo que Reside
-                                        no Munic&iacute;pio Atual</label> <select class="form-control input-sm"
-                                        data-campo-id="@@140@@" data-nome="QS_Tempo que Reside no Atual Municipio"
-                                        id="ddlTempoNoMunicipio"> </select></div>
-
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Acesso a
-                                        Servi&ccedil;os <i class="fa fa-info-circle tooltips"> <span
-                                                class="tooltiptext"> Identificar os serviços a que possui acesso no
-                                                município em que reside.</span> </i> </label>
-
-                                    <div class="mt-checkbox-list" data-campo-id="@@132@@" id="campo132"><label
-                                            class="mt-checkbox mt-checkbox-outline"> <input
-                                                data-nome="QS_Acesso a Serviços" data-valor="" id="chkListServicos"
-                                                name="QS - Acesso a Serviços" type="checkbox" /> <label
-                                                data-texto=""></label> <span></span> </label></div>
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Renda Total
+                                            Familiar (Mensal)</label> <select class="form-control input-sm"
+                                            data-campo-id="@@136@@" data-nome="QS_Renda Familiar Total"
+                                            id="ddlRendaFamiliar"> </select></div>
                                 </div>
                             </div>
-                        </div>
+
+                            <h4 class="bs-glyphicon-class cabecalho" titulolightboxAcessoAServicos="">&nbsp;</h4>
+                            <div class="light-box">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui
+                                            Computador em Casa?</label> <select class="form-control input-sm"
+                                            data-campo-id="@@128@@" data-nome="QS_Possui Computador em Casa"
+                                            id="ddlPossuiComputador"> </select></div>
+
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tem Acesso a
+                                            Internet?</label> <select class="form-control input-sm" data-campo-id="@@129@@"
+                                            data-nome="QS_Tem Acesso a Internet" id="ddlTemAcessoAInternet"> </select></div>
+
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tem Aparelho
+                                            Celular em Casa?</label> <select class="form-control input-sm"
+                                            data-campo-id="@@130@@" data-nome="	QS_Tem Aparelho Celular em Casa"
+                                            id="ddlTemCelular"> </select></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">A Casa Onde Mora
+                                            &eacute;:</label> <select class="form-control input-sm" data-campo-id="@@131@@"
+                                            data-nome="QS_A Casa Onde Mora é" id="ddlCasaOndeMora"> </select></div>
+
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui Curso de
+                                            Capacita&ccedil;&atilde;o Profissional?</label> <select
+                                            class="form-control input-sm" data-campo-id="@@142@@"
+                                            data-nome="QS_Possui curso" id="ddlPossuiCurso"> </select></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tempo que Reside
+                                            no Munic&iacute;pio Atual</label> <select class="form-control input-sm"
+                                            data-campo-id="@@140@@" data-nome="QS_Tempo que Reside no Atual Municipio"
+                                            id="ddlTempoNoMunicipio"> </select></div>
+
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Acesso a
+                                            Servi&ccedil;os <i class="fa fa-info-circle tooltips"> <span
+                                                    class="tooltiptext"> Identificar os serviços a que possui acesso no
+                                                    município em que reside.</span> </i> </label>
+
+                                        <div class="mt-checkbox-list" data-campo-id="@@132@@" id="campo132"><label
+                                                class="mt-checkbox mt-checkbox-outline"> <input
+                                                    data-nome="QS_Acesso a Serviços" data-valor="" id="chkListServicos"
+                                                    name="QS - Acesso a Serviços" type="checkbox" /> <label
+                                                    data-texto=""></label> <span></span> </label></div>
+                                    </div>
+                                </div>
+                            </div>
+                        
                     </div>
                     <!-- [ABA] - Anexos -->
 
@@ -974,7 +979,7 @@
                                     </div>
 
                                     <div class="col-sm-12 col-md-12" id="anexoRg">
-                                        <div class="form-group"><label class="control-label">Documento com
+                                        <div class="form-group"><label class="control-label">Documento de
                                                 identifica&ccedil;&atilde;o com foto</label> <i
                                                 class="fa fa-check font-green-jungle fa-2x" style="display: none"
                                                 title="Documento enviado!"> </i> <input
@@ -1471,6 +1476,10 @@
 
             $('#radioObjetivo').children().first().css('marginRight', '20px');
             $('#divDocumentoAdicional2').css('marginBottom', '0px');
+
+            $('#anexosContainer').each(function(index, element) {
+                $(element).children().css('marginBottom', '10px')
+            })
 
             //Ordenando os select
             order('campo27');
@@ -2401,6 +2410,12 @@
         }
 
         function validateDadosPescaFields() {
+            if($('#ddlCategoria option:selected').text() === 'Industrial') {
+                $("#ddlFormaAtuacao option[value='Desembarcado']").hide();
+            } else {
+                $("#ddlFormaAtuacao option[value='Desembarcado']").show();
+            }
+
             if ($('#ddlFormaAtuacao option:selected').text() === 'Embarcado') {
                 $('.dadosdepesca .hideFields').show('fast');
                 $('.dadosdepesca').parent().children('.hideFields').eq(0).show('fast')
@@ -3252,7 +3267,7 @@
             function renderButtonImpressao() {
                 var $anchor = $('<a/>');
                 $anchor.addClass('btn btn-sm blue js-exibirModalCarteirinha');
-                $anchor.html('Imprimir Carteirinha');
+                $anchor.html('IMPRIMIR CARTEIRA');
                 $anchor.attr('href', 'javascript:;');
 
                 $(window.document).find('.botoes').find('.js-exibirModalCarteirinha').remove();

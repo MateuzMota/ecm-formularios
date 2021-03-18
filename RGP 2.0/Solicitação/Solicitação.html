@@ -617,8 +617,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- [ABA] - Questionário socioeconômico -->
 
+                    <!-- [ABA] - Questionário socioeconômico -->
                     <div class="tab-pane d-none" id="aba_3">
                         <h4 class="bs-glyphicon-class cabecalho" titulolightboxquestionariosocioeconomico="">&nbsp;</h4>
 
@@ -675,127 +675,132 @@
                                 <button class="btn blue btn-xs pull-right" data-botao-adicionar=""><i
                                         class="fa fa-plus"></i> Novo item</button>
                             </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label"> Possui Outra
-                                        Atividade/Ocupa&ccedil;&atilde;o Al&eacute;m da Pesca? </label> <select
-                                        class="form-control input-sm" data-campo-id="@@133@@"
-                                        data-nome="QS_Possui Outra Atividade Além da Pesca"
-                                        id="ddlPossuiOutraAtividade"> </select></div>
+                            <h4 class="bs-glyphicon-class cabecalho" titulolightboxCaracterizacaoAtividade="">&nbsp;</h4>
+                            <div class="light-box">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label"> Possui Outra
+                                            Atividade/Ocupa&ccedil;&atilde;o Al&eacute;m da Pesca? </label> <select
+                                            class="form-control input-sm" data-campo-id="@@133@@"
+                                            data-nome="QS_Possui Outra Atividade Além da Pesca"
+                                            id="ddlPossuiOutraAtividade"> </select></div>
 
-                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
-                                        class="control-label">Se Sim, Qual Atividade?</label> <input
-                                        class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@134@@"
-                                        data-nome="QS_Se Sim Qual" id="txtQualAtividade"
-                                        pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+"
-                                        placeholder="Qual Atividade?" type="text" /></div>
+                                    <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
+                                            class="control-label">Se Sim, Qual Atividade?</label> <input
+                                            class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@134@@"
+                                            data-nome="QS_Se Sim Qual" id="txtQualAtividade"
+                                            pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+"
+                                            placeholder="Qual Atividade?" type="text" /></div>
 
-                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
-                                        class="control-label">Tempo de Profiss&atilde;o</label> <select
-                                        class="form-control input-sm" data-campo-id="@@141@@"
-                                        data-nome="QS_Tempo de Profissão" id="ddlTempoDeProfissao"> </select></div>
-                            </div>
+                                    <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
+                                            class="control-label">Tempo de Profiss&atilde;o</label> <select
+                                            class="form-control input-sm" data-campo-id="@@141@@"
+                                            data-nome="QS_Tempo de Profissão" id="ddlTempoDeProfissao"> </select></div>
+                                </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui Renda
-                                        N&atilde;o Originada da Pesca?</label> <select class="form-control input-sm"
-                                        data-campo-id="@@87@@" data-nome="Possui Renda Não Originada da Pesca"
-                                        data-placement="bottom" data-toggle="tooltip" id="ddlPossuiRenda"
-                                        title="Informe se possui qualquer renda não originada da atividade pesqueira. (Ex: Bolsa Família, Aposentadoria, Pensão, etc.)">
-                                    </select></div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui Renda
+                                            N&atilde;o Originada da Pesca?</label> <select class="form-control input-sm"
+                                            data-campo-id="@@87@@" data-nome="Possui Renda Não Originada da Pesca"
+                                            data-placement="bottom" data-toggle="tooltip" id="ddlPossuiRenda"
+                                            title="Informe se possui qualquer renda não originada da atividade pesqueira. (Ex: Bolsa Família, Aposentadoria, Pensão, etc.)">
+                                        </select></div>
 
-                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none"><label
-                                        class="control-label">Qual a Origem?</label> <select
-                                        class="form-control input-sm" data-campo-id="@@89@@" data-nome="Qual a Origem"
-                                        id="ddlOrigemRenda"> </select></div>
+                                    <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none"><label
+                                            class="control-label">Qual a Origem?</label> <select
+                                            class="form-control input-sm" data-campo-id="@@89@@" data-nome="Qual a Origem"
+                                            id="ddlOrigemRenda"> </select></div>
 
-                                <div class="col-sm-12 col-md-4 form-group secondHideField" style="display: none"><label
-                                        class="control-label">Origem da Renda</label> <input
-                                        class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@88@@"
-                                        data-nome="Origem da Renda" id="txtOrigemRenda"
-                                        pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+"
-                                        placeholder="Origem da Renda" type="text" /></div>
-                            </div>
+                                    <div class="col-sm-12 col-md-4 form-group secondHideField" style="display: none"><label
+                                            class="control-label">Origem da Renda</label> <input
+                                            class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@88@@"
+                                            data-nome="Origem da Renda" id="txtOrigemRenda"
+                                            pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+"
+                                            placeholder="Origem da Renda" type="text" /></div>
+                                </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Recebe Bolsa
-                                        Fam&iacute;lia?</label> <select class="form-control input-sm"
-                                        data-campo-id="@@137@@" data-nome="QS_Recebe Bolsa Familia"
-                                        id="ddlRecebeBolsaFamilia"> </select></div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Recebe Bolsa
+                                            Fam&iacute;lia?</label> <select class="form-control input-sm"
+                                            data-campo-id="@@137@@" data-nome="QS_Recebe Bolsa Familia"
+                                            id="ddlRecebeBolsaFamilia"> </select></div>
 
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Recebe Outro
-                                        Aux&iacute;lio?</label> <select class="form-control input-sm"
-                                        data-campo-id="@@138@@" data-nome="QS_Recebe Outro Auxilio"
-                                        id="ddlRecebeOutroAuxilio"> </select></div>
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Recebe Outro
+                                            Aux&iacute;lio?</label> <select class="form-control input-sm"
+                                            data-campo-id="@@138@@" data-nome="QS_Recebe Outro Auxilio"
+                                            id="ddlRecebeOutroAuxilio"> </select></div>
 
-                                <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
-                                        class="control-label">Qual?</label> <input
-                                        class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@139@@"
-                                        data-nome="QS_Qual Auxilio" id="txtQual"
-                                        pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+" placeholder="Qual?"
-                                        type="text" /></div>
-                            </div>
+                                    <div class="col-sm-12 col-md-4 form-group hideFields" style="display: none;"><label
+                                            class="control-label">Qual?</label> <input
+                                            class="form-control input-sm campoNome validaCaracteres" data-campo-id="@@139@@"
+                                            data-nome="QS_Qual Auxilio" id="txtQual"
+                                            pattern="[a-zA-Z0-9áàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+" placeholder="Qual?"
+                                            type="text" /></div>
+                                </div>
 
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Renda Total do
-                                        Pescador (Mensal)</label> <select class="form-control input-sm"
-                                        data-campo-id="@@135@@" data-nome="QS_Renda Total Pescador"
-                                        id="ddlRendaPescador"> </select></div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Renda Total do
+                                            Pescador (Mensal)</label> <select class="form-control input-sm"
+                                            data-campo-id="@@135@@" data-nome="QS_Renda Total Pescador"
+                                            id="ddlRendaPescador"> </select></div>
 
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Renda Total
-                                        Familiar (Mensal)</label> <select class="form-control input-sm"
-                                        data-campo-id="@@136@@" data-nome="QS_Renda Familiar Total"
-                                        id="ddlRendaFamiliar"> </select></div>
-                            </div>
-
-                            <h4 class="boldTitle" tituloligthboxinformacoessocioeconomicas="">&nbsp;</h4>
-
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui
-                                        Computador em Casa?</label> <select class="form-control input-sm"
-                                        data-campo-id="@@128@@" data-nome="QS_Possui Computador em Casa"
-                                        id="ddlPossuiComputador"> </select></div>
-
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tem Acesso a
-                                        Internet?</label> <select class="form-control input-sm" data-campo-id="@@129@@"
-                                        data-nome="QS_Tem Acesso a Internet" id="ddlTemAcessoAInternet"> </select></div>
-
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tem Aparelho
-                                        Celular em Casa?</label> <select class="form-control input-sm"
-                                        data-campo-id="@@130@@" data-nome="	QS_Tem Aparelho Celular em Casa"
-                                        id="ddlTemCelular"> </select></div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">A Casa Onde Mora
-                                        &eacute;:</label> <select class="form-control input-sm" data-campo-id="@@131@@"
-                                        data-nome="QS_A Casa Onde Mora é" id="ddlCasaOndeMora"> </select></div>
-
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui Curso de
-                                        Capacita&ccedil;&atilde;o Profissional?</label> <select
-                                        class="form-control input-sm" data-campo-id="@@142@@"
-                                        data-nome="QS_Possui curso" id="ddlPossuiCurso"> </select></div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tempo que Reside
-                                        no Munic&iacute;pio Atual</label> <select class="form-control input-sm"
-                                        data-campo-id="@@140@@" data-nome="QS_Tempo que Reside no Atual Municipio"
-                                        id="ddlTempoNoMunicipio"> </select></div>
-
-                                <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Acesso a
-                                        Servi&ccedil;os <i class="fa fa-info-circle tooltips"> <span
-                                                class="tooltiptext"> Identificar os serviços a que possui acesso no
-                                                município em que reside.</span> </i> </label>
-
-                                    <div class="mt-checkbox-list" data-campo-id="@@132@@" id="campo132"><label
-                                            class="mt-checkbox mt-checkbox-outline"> <input
-                                                data-nome="QS_Acesso a Serviços" data-valor="" id="chkListServicos"
-                                                name="QS - Acesso a Serviços" type="checkbox" /> <label
-                                                data-texto=""></label> <span></span> </label></div>
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Renda Total
+                                            Familiar (Mensal)</label> <select class="form-control input-sm"
+                                            data-campo-id="@@136@@" data-nome="QS_Renda Familiar Total"
+                                            id="ddlRendaFamiliar"> </select></div>
                                 </div>
                             </div>
-                        </div>
+
+                            <h4 class="bs-glyphicon-class cabecalho" titulolightboxAcessoAServicos="">&nbsp;</h4>
+                            <div class="light-box">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui
+                                            Computador em Casa?</label> <select class="form-control input-sm"
+                                            data-campo-id="@@128@@" data-nome="QS_Possui Computador em Casa"
+                                            id="ddlPossuiComputador"> </select></div>
+
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tem Acesso a
+                                            Internet?</label> <select class="form-control input-sm" data-campo-id="@@129@@"
+                                            data-nome="QS_Tem Acesso a Internet" id="ddlTemAcessoAInternet"> </select></div>
+
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tem Aparelho
+                                            Celular em Casa?</label> <select class="form-control input-sm"
+                                            data-campo-id="@@130@@" data-nome="	QS_Tem Aparelho Celular em Casa"
+                                            id="ddlTemCelular"> </select></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">A Casa Onde Mora
+                                            &eacute;:</label> <select class="form-control input-sm" data-campo-id="@@131@@"
+                                            data-nome="QS_A Casa Onde Mora é" id="ddlCasaOndeMora"> </select></div>
+
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Possui Curso de
+                                            Capacita&ccedil;&atilde;o Profissional?</label> <select
+                                            class="form-control input-sm" data-campo-id="@@142@@"
+                                            data-nome="QS_Possui curso" id="ddlPossuiCurso"> </select></div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Tempo que Reside
+                                            no Munic&iacute;pio Atual</label> <select class="form-control input-sm"
+                                            data-campo-id="@@140@@" data-nome="QS_Tempo que Reside no Atual Municipio"
+                                            id="ddlTempoNoMunicipio"> </select></div>
+
+                                    <div class="col-sm-12 col-md-4 form-group"><label class="control-label">Acesso a
+                                            Servi&ccedil;os <i class="fa fa-info-circle tooltips"> <span
+                                                    class="tooltiptext"> Identificar os serviços a que possui acesso no
+                                                    município em que reside.</span> </i> </label>
+
+                                        <div class="mt-checkbox-list" data-campo-id="@@132@@" id="campo132"><label
+                                                class="mt-checkbox mt-checkbox-outline"> <input
+                                                    data-nome="QS_Acesso a Serviços" data-valor="" id="chkListServicos"
+                                                    name="QS - Acesso a Serviços" type="checkbox" /> <label
+                                                    data-texto=""></label> <span></span> </label></div>
+                                    </div>
+                                </div>
+                            </div>
+                        
                     </div>
                     <!-- [ABA] - Anexos -->
 
@@ -820,7 +825,7 @@
                                     </div>
 
                                     <div class="col-sm-12 col-md-12" id="anexoRg">
-                                        <div class="form-group"><label class="control-label">Documento com
+                                        <div class="form-group"><label class="control-label">Documento de
                                                 identifica&ccedil;&atilde;o com foto</label> <i
                                                 class="fa fa-check font-green-jungle fa-2x" style="display: none"
                                                 title="Documento enviado!"> </i> <input
@@ -1032,35 +1037,44 @@
 
                     <div class="tab-pane d-none" id="aba_5">
                         <div class="light-box">
-                            <div class="note note-success bold text-justify" role="alert">Declaro, sob responsabilidade
-                                civil e penal, que as informa&ccedil;&otilde;es declaradas no &ldquo;Formul&aacute;rio
-                                de Requerimento de Licen&ccedil;a de Pescador Profissional&rdquo; s&atilde;o verdadeiras
-                                e que estou ciente que a informa&ccedil;&otilde;es n&atilde;o ver&iacute;dicas
-                                declaradas, implicar&atilde;o em penalidades previstas no Artigo 299 do C&oacute;digo
-                                Penal (Falsidade ideol&oacute;gica), al&eacute;m de san&ccedil;&otilde;es civis e
-                                administrativas cab&iacute;veis.<br />
+                            <div class="note note-success bold text-justify" role="alert">
+                                Declaro para fins legais, junto à Secretaria de Aquicultura e Pesca do Ministério
+                                da Agricultura, Pecuária e Abastecimento – SAP/MAPA, que as informações
+                                prestadas no “Formulário de Requerimento de Licença de Pescador Profissional”
+                                e os documentos anexados são verdadeiros e assumo inteira responsabilidade
+                                pelas informações prestadas e autenticidade das cópias dos documentos
+                                apresentados.
                                 <br />
-                                Declaro tamb&eacute;m estar plenamente ciente da legisla&ccedil;&atilde;o (Lei N&deg;
-                                10.779, de 25 de novembro de 2003 e Decreto N&deg; 8.424, de 31 de mar&ccedil;o de 2015)
-                                e obrigatoriedades relacionadas &agrave; solicita&ccedil;&atilde;o do benef&iacute;cio
-                                do Seguro Defeso, e que caso o solicite sem cumprir os crit&eacute;rios m&iacute;nimos
-                                obrigat&oacute;rios, estarei pass&iacute;vel a responder civilmente e penalmente caso
-                                seja comprovado dolo ou culpa.<br />
                                 <br />
-                                &ldquo;Art. 299 do C&oacute;digo Penal Brasileiro - Omitir, em documento p&uacute;blico
-                                ou particular, declara&ccedil;&atilde;o que dele devia constar, ou nele inserir ou fazer
-                                inserir declara&ccedil;&atilde;o falsa ou diversa da que devia ser escrita, com fim de
-                                prejudicar direito, criar obriga&ccedil;&atilde;o ou alterar a verdade sobre fato
-                                juridicamente relevante:<br />
+                                Declaro estar ciente de que a falsidade nas informações acima implicará nas
+                                penalidades cabíveis, previstas no Artigo 299 do Código Penal, além de sanções
+                                civis e administrativas.
                                 <br />
-                                Pena - reclus&atilde;o, de um a cinco anos, e multa, se o documento &eacute;
-                                p&uacute;blico, e reclus&atilde;o de 1 a 3 anos, e multa, se o documento &eacute;
-                                particular. &rdquo;<br />
                                 <br />
-                                Declaro tamb&eacute;m estar ciente que caso tenha declarado ser filiado a alguma
-                                entidade colaboradora, autorizo a entidade colaboradora em quest&atilde;o a ter acesso a
-                                meus dados de registro, bem como a me representar perante aos &oacute;rg&atilde;os
-                                competentes da pesca.
+                                “Art. 299 do Código Penal Brasileiro - Omitir, em documento público ou
+                                particular, declaração que dele devia constar, ou nele inserir ou fazer inserir
+                                declaração falsa ou diversa da que devia ser escrita, com fim de prejudicar
+                                direito, criar obrigação ou alterar a verdade sobre fato juridicamente relevante:
+                                <br />
+                                <br />
+                                Pena - reclusão, de um a cinco anos, e multa, se o documento é público, e
+                                reclusão de 1 a 3 anos, e multa, se o documento é particular. ”
+                                <br />
+                                <br />
+                                Declaro também estar plenamente ciente da legislação que rege o Seguro
+                                Desemprego do Pescador Artesanal – SDPA, Lei N° 10.779, de 25 de novembro
+                                de 2003; e Decreto N° 8.424, de 31 de março de 2015, e obrigatoriedades
+                                relacionadas à solicitação do benefício do Seguro Defeso, e que caso o solicite
+                                sem cumprir os critérios mínimos obrigatórios, estarei sujeito as sanções em
+                                âmbito administrativo, civil e penal, em caso de prestação de informações ou de
+                                dados falsos.
+                                <br />
+                                <br />
+                                Autorizo que a Secretaria de Aquicultura e Pesca – SAP/MAPA tenha acesso às
+                                minhas informações contidas em outras bases governamentais (Receita Federal,
+                                Cadastro Base do Cidadão – CBC, Cadastro Nacional de Informações Sociais –
+                                CNIS e Tribunal Superior Eleitoral – TSE), para fins de cruzamento de dados e
+                                validação das informações prestadas.
                             </div>
 
                             <div class="row col-md-12">
@@ -1070,6 +1084,7 @@
                                         <span class="box"></span> Declaro que li e concordo com as
                                         informa&ccedil;&otilde;es acima. </label>
                                 </div>
+                                <br />
                             </div>
                         </div>
                     </div>
@@ -1150,6 +1165,8 @@
         $('[tituloGridSocioeconomico]').html('Componentes da família: identificar todas as pessoas que moram na mesma casa, incluindo o interessado.'); // Título do GRID da aba de Questionário Socioeconômico.
         $('[tituloLigthBoxInformacoesSocioeconomicas]').html('Informações Socioeconômicas') // Título da aba Informações Socioeconômicas.
         $('[tituloLightBoxInformacoesAdicionais]').html('Informações Adicionais'); // Título da aba Informações Adicionais.
+        $('[titulolightboxAcessoAServicos]').html('Acesso a Serviços Públicos e Infraestrutura')
+        $('[titulolightboxCaracterizacaoAtividade]').html('Caracterização da Atividade Profissional e Renda')
     </script><!-- Sets, Eventos e Funções Globais-->
     <script>
         Ecm.bloquearElemento('#modal-form');
@@ -1168,6 +1185,10 @@
 
             $('#form-container input:visible').filter('[type=file]').attr('required', true); //Seta todos os anexos como obrigatórios.
             $('#form-container input:visible').filter('[type=file]').closest('.form-group').addClass('has-error');
+
+            $('#anexosContainer').each(function(index, element) {
+                $(element).children().css('marginBottom', '10px')
+            })
 
             //Ordenando os select
             order('campo27');
@@ -1992,6 +2013,12 @@
         }
 
         function validateDadosPescaFields() {
+            if($('#ddlCategoria option:selected').text() === 'Industrial') {
+                $("#ddlFormaAtuacao option[value='Desembarcado']").hide();
+            } else {
+                $("#ddlFormaAtuacao option[value='Desembarcado']").show();
+            }
+
             if($('#ddlFormaAtuacao option:selected').text() === 'Embarcado') {
                 $('.dadosdepesca .hideFields').show('fast');
                 $('.dadosdepesca').parent().children('.hideFields').eq(0).show('fast')
@@ -2716,6 +2743,10 @@
 
                 icons.eq(state.page - 1).removeClass('done').addClass('active');
                 icons.eq(state.page - 1).nextAll().removeClass('active done');
+
+                if(state.page != 5) {
+                    nextButton.show();
+                }
             },
             next() {
                 state.page++;
@@ -2739,6 +2770,11 @@
 
                 if (state.page == 4) {
                     anexosEspecificos();
+                }
+
+                if(state.page == 5) {
+                    nextButton.hide();
+                    $('#cbxCarregarProximaTarefa').parent().hide()
                 }
 
                 icons.eq(state.page - 1).prevAll().removeClass('active').addClass('done');

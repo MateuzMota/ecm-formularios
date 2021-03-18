@@ -526,6 +526,8 @@
 
         let idGrid = parseInt($(".grid").attr("data-campo-id").replace("@@", "").replace("@@", ""));
 
+        $('[data-tab-name="anexo"]').hide()
+
         function validaBotoes(id, status) {
             if(status) {
                 $(`a[id^='transicao-id-${id}']`).prop('disabled', false);
