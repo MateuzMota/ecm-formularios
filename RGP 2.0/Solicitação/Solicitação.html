@@ -1514,6 +1514,16 @@
 
             Ecm.registraEvento("click", ".grid [data-botao-adicionar]", () => {
                 requiredGridFields();
+
+                $('[data-corpo-container]').children().first().attr('class', 'first')
+
+                var gridOptions = $('[data-corpo-container]').children().not('.first').children().children('div').children('select').children('option')
+
+                $.each(gridOptions, function(index, element) {
+                    if($(element).val() == "INTERESSADO(A)") {
+                        $(element).remove()
+                    }
+                })
             });
 
             // Configurações de Anexos
@@ -2015,8 +2025,10 @@
         function validateDadosPescaFields() {
             if($('#ddlCategoria option:selected').text() === 'Industrial') {
                 $("#ddlFormaAtuacao option[value='Desembarcado']").hide();
+                $('#ddlFormaAtuacao').val('Embarcado').prop('disabled', true);
             } else {
                 $("#ddlFormaAtuacao option[value='Desembarcado']").show();
+                $('#ddlFormaAtuacao').prop('disabled', false);
             }
 
             if($('#ddlFormaAtuacao option:selected').text() === 'Embarcado') {

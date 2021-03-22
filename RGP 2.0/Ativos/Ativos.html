@@ -1741,6 +1741,14 @@
 
                 Ecm.registraEvento("click", ".grid [data-botao-adicionar]", () => {
                     requiredGridFields();
+                    
+                    var gridOptions = $('[data-corpo-container]').children().not('.first').children().children('div').children('select').children('option')
+
+                    $.each(gridOptions, function(index, element) {
+                        if($(element).val() == "INTERESSADO(A)") {
+                            $(element).remove()
+                        }
+                    })
                 });
 
                 let grid = $("[data-campo-id='@@" + gridId + "@@']");
@@ -2412,8 +2420,10 @@
         function validateDadosPescaFields() {
             if($('#ddlCategoria option:selected').text() === 'Industrial') {
                 $("#ddlFormaAtuacao option[value='Desembarcado']").hide();
+                $('#ddlFormaAtuacao').val('Embarcado').prop('disabled', true);
             } else {
                 $("#ddlFormaAtuacao option[value='Desembarcado']").show();
+                $('#ddlFormaAtuacao').prop('disabled', false);
             }
 
             if ($('#ddlFormaAtuacao option:selected').text() === 'Embarcado') {
